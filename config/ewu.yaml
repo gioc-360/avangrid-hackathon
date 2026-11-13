@@ -308,3 +308,10 @@ profiles:
       peak_cut_export_mw: {value: 8.8, unit: MW, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:21"}
       peak_cut_behind_meter_mw: {value: 7.0, unit: MW, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:21"}
       overloaded_pct_at_100: {value: 28.5, unit: "% of transformers, moderate, limit 1.00", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:3"}
+    tolerances:
+      overloaded_pts: {value: 1.5, unit: percentage points, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+      fixed_pts: {value: 2, unit: percentage points, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+      average_units: {value: 0.15, unit: units per fixed transformer, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+      winter_pts: {value: 5, unit: percentage points, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+      money_share: {value: 0.15, unit: share of the target, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+      peak_mw: {value: 0.5, unit: MW, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
