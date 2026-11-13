@@ -24,6 +24,7 @@ FIELDS = {"overloaded_pct": "% of transformers", "fixed_of_overloaded_pct": "% o
 SHARES = {"fixed_units_1_2_pct": ("fixed_units_1_2", "transformers"), "fixed_units_3_4_pct": ("fixed_units_3_4", "transformers"),
           "upgrades_pct": ("upgrades", "transformers"), "upgrade_of_overloaded_pct": ("upgrades", "overloaded")}
 # the money columns in deck v3's words (docs/TERMS.md); the keys stay the fact names
+INPUT_WORDS = {"ev_start_pmf": "EV start-hour shares", "hp_increment": "heat pump curve"}
 MONEY_WORDS = {"gross": "gross cost", "net_without_nyserda": "net cost without NYSERDA", "avangrid_cost": "net cost",
                "upgrade_all": "Upgrade all"}
 
@@ -85,11 +86,28 @@ def record_deck_screen(result, seconds):
     record("ewu.deck.seconds", round(seconds, 1), "s", "whole deck screen, data load included")
 
 
+def peak_cut_line(config):
+    """Deck v3's summer peak cut: the teammate's priority homes, her ranking rerun on our data (checks/teammate_audit.py)."""
+    import json
+    from analysis.facts import FACTS
+    facts = json.loads(FACTS.read_text()) if FACTS.exists() else {}
+    keys = ("teammate.audit.rerun.priority_homes", "teammate.audit.rerun.fleet_priority.peak_cut_mw",
+            "teammate.audit.rerun.fleet_priority.top50_cut_mw")
+    if any(k not in facts for k in keys):
+        return "Summer peak cut: not recorded yet; run checks/teammate_audit.py"
+    homes, peak, top = (facts[k]["value"] for k in keys)
+    return (f"Summer peak cut (deck v3), {homes:,} priority homes x {config_value('profiles.deck.units_per_host', config)} units, "
+            f"the teammate's ranking rerun on our data: export allowed {peak:.2f} MW off the yearly peak "
+            f"(mean over the top {config_value('profiles.deck.peak_hours', config)} hours {top:.2f} MW)")
+
+
 def print_deck_screen(result, config, limit, seconds):
     setup = result["setup"]
     print(f"EWU screen, deck profile: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
           f"standard kVA rating, overloaded above {limit:.2f} x rating; managed charging {'on' if result['managed'] else 'off'}")
-    print("Arrays: " + "; ".join(f"{name} {deck.array_label(origin)}" for name, origin in setup["origins"].items()) + "\n")
+    origins = set(setup["origins"].values())
+    print("The teammate's EV start-hour shares and heat pump curve: " + (deck.array_label(origins.pop()) if len(origins) == 1 else
+          "; ".join(f"{INPUT_WORDS.get(name, name)} {deck.array_label(origin)}" for name, origin in setup["origins"].items())) + "\n")
     rows = [("Overloaded, % of transformers", "overloaded_pct", "{:.1f}"), ("Fixed by batteries, %", "fixed_of_overloaded_pct", "{:.1f}"),
             ("Average units per fixed", "average_units", "{:.2f}"), ("Winter nights, % of overloaded", "winter_of_overloaded_pct", "{:.1f}")]
     print(f"{'':<34} {'moderate':>10} {'high':>10}")
@@ -98,12 +116,12 @@ def print_deck_screen(result, config, limit, seconds):
     for column in deck_money.COLUMNS:
         print(f"{'NYSEG ' + MONEY_WORDS[column] + ', $M':<34} "
               + " ".join(f"{result['money'][(s, limit)]['nyseg_musd'][column]:>10.1f}" for s in deck.SCENARIOS))
+    in_v3 = config_value("profiles.deck.limits_in_deck_v3", config)
     print("\nOverloaded % by loading limit: " + "; ".join(
-        f"{lim:.2f}: " + "/".join(f"{result['cells'][(s, lim)]['overloaded_pct']:.1f}" for s in deck.SCENARIOS)
+        f"{lim:.2f}{'' if lim in in_v3 else ' (not in deck v3)'}: "
+        + "/".join(f"{result['cells'][(s, lim)]['overloaded_pct']:.1f}" for s in deck.SCENARIOS)
         for lim in config_value("profiles.deck.overload_limit_options", config)))
-    p = result["peak"]
-    print(f"Summer peak cut, {p['hosts']:,} priority homes x 2 units: export allowed {p['export_peak_drop_mw']:.2f} MW off the yearly peak "
-          f"(mean over the top {p['hours']} hours {p['export_mw']:.2f} MW); behind the meter {p['behind_meter_mw']:.2f} MW (mean over those hours)")
+    print(peak_cut_line(config))
     print(f"\n{seconds:.1f} s, full meter data, aggregates only")
 
 

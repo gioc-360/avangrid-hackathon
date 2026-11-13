@@ -151,7 +151,7 @@ def print_inventory(summary):
     print(f"{'technology':<18} {'homes':>7} {'% homes':>8}  confidence")
     for c, v in summary["classes"].items():
         print(f"{c:<18} {v['count']:>7,} {v['share_pct']:>8.2f}  {v['confidence']}")
-    print(f"\n{'segment':<18} {'homes':>7} {'% homes':>8}")
+    print(f"\n{'home type':<18} {'homes':>7} {'% homes':>8}")
     for s, v in summary["segments"].items():
         print(f"{s:<18} {v['count']:>7,} {v['share_pct']:>8.2f}")
     print(f"\n{'program':<24} {'eligible':>8} {'% homes':>8}")

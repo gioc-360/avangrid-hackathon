@@ -274,7 +274,7 @@ The team settled the final deck's method on 2026-11-13 (runs/teammate_deck_spec_
 by default as the `deck` profile; the earlier method is kept, unchanged, as the `cautious` profile
 (`--profile cautious`). The `deck-replica` profile (`bin/ewu screen --replica`) follows the teammate's own
 ewu_sim_bo2.py line for line, read from a verbatim copy in runs/teammate_code_2026-11-13/, and equals her run on
-3,000 of 3,000 transformers in each case. The deck profile now loads her two arrays, ev_start_pmf.npy and
+3,000 of 3,000 transformers in each case. The deck profile now loads the teammate's EV start-hour shares and heat pump curve, ev_start_pmf.npy and
 hp_increment.npy: given by the teammate, built by her ewu_inputs.py from the hackathon meter data, copied by
 `bin/ewu arrays` into data/processed and checked by sha256 against config/ewu.yaml on every run.
 
@@ -289,7 +289,7 @@ line 30). Our earlier readings are still reported beside them.
 | Rating | smallest of 25 to 167 kVA at or above today's group peak / 0.85, kW read as kVA | the same, capped at 167 kVA | the same | today's group peak x 1.15 |
 | Groups | 3,000 of 8 homes, seed 5, no home twice | seed 11, a home may sit in two groups | seed 5 | seed 0 |
 | EV and heat pump tiers | our inventory (Level 2 EV, electric heat) | her customer_classification.csv, read in place | High or Medium EV, primary electric heat | our inventory |
-| New EV and heat pump load | her two arrays | her two arrays | her two arrays | measured sessions and slope |
+| New EV and heat pump load | the teammate's EV start-hour shares and heat pump curve | the same | the same | measured sessions and slope |
 | Fix order | batteries only, 1 to 4 units | the same, sized with 8.064 kWh | the same | Flag, Shift, Protect, Upgrade |
 | Moderate 2030: overloaded | 9.73% | 9.83% | 9.8% | 26.0% |
 | High 2030: overloaded | 29.87% | 29.83% | 29.8% | 56.07% |

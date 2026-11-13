@@ -19,7 +19,7 @@ Code: `analysis/classify.py:109 F.ev_l2_night_share` (the rule), `analysis/class
 
 ### Q2. How does a home end up eligible for a program?
 
-`ewu inventory` joins the technology flags, segment and battery tier into one row per home, then applies each
+`ewu inventory` joins the technology flags, home type and battery tier into one row per home, then applies each
 program's rule from config: the home must have every flag the rule names and none of the excluded flags (vacant
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
 Across all 33,757 usable homes, 69.07% are eligible for at least one program.
@@ -31,7 +31,7 @@ Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:147 managed_charg
 ### Q3. There is no meter-to-transformer map. How do you know which homes share a transformer?
 
 We do not; we simulate it and say so. `build_transformers` cuts the homes into groups of 8, either at random or
-sorted by segment so neighbors are alike (the clustered case), and draws 3,000 groups per seed with no home in
+sorted by home type so neighbors are alike (the clustered case), and draws 3,000 groups per seed with no home in
 two groups. The real map plugs in through `load_map`, which reads meter_id, transformer_id and kva and refuses a
 meter listed under two transformers; `bin/ewu screen --map file.csv` runs the same steps on it, with uneven
 group sizes handled in batches.
@@ -163,7 +163,7 @@ Code: `analysis/facts.py:18 def record(key, value`, `checks/trace_numbers.py:59 
 Nowhere off this machine. Per-home and per-transformer values go through `record(..., private=True)` into
 outputs/private/, which git ignores, and a test checks git really ignores it. Commands print aggregates only, and
 a test checks the inventory printout holds no customer number. The demo page shows no real home: the Network view draws
-synthetic transformers (8 homes summed each) and Inventory draws Composite homes (segment averages); a test
+synthetic transformers (8 homes summed each) and Inventory draws Composite homes (home type averages); a test
 checks the page carries no single home and no battery host's charge. The page is built locally and is gitignored.
 
 Code: `analysis/facts.py:19 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
@@ -178,7 +178,7 @@ time as `ewu.cli.screen_seconds` in facts, and fails at 60 s. Loading is
 summed per transformer with one sparse matrix product per chunk of homes, and every later step works on arrays
 of transformers by hours, so cost grows with the number of transformers, not with loops over homes.
 
-Code: `checks/demo_check.py:41 def time_live_screen`, `checks/demo_check.py:95 checks.screen_seconds_max`,
+Code: `checks/demo_check.py:41 def time_live_screen`, `checks/demo_check.py:93 checks.screen_seconds_max`,
 `ewu/stress.py:35-44 out += pick @ rows`.
 
 ### Q15. Synthetic transformers change with the seed. How stable are the results?
@@ -206,6 +206,6 @@ instead of the equal-block split.
 
 Code: `ewu/deck_views.py:23 def deck_states`, `ewu/deck_views.py:26 deck.run_deck`,
 `ewu/deck_views.py:34 def view_counts`, `ewu/network.py:30 def feeder_of`, `config/ewu.yaml:138 feeders:`,
-`ewu/demo_template.html:283 function look`, `ewu/demo_template.html:307 function networkSvg`,
+`ewu/demo_template.html:290 function look`, `ewu/demo_template.html:314 function networkSvg`,
 `checks/demo_audit.py:106 net_view and`,
 `tests/test_network.py:97 def test_the_deck_network_counts_equal_the_deck_screen`, `ewu/feeders.py:41 def load_map`.

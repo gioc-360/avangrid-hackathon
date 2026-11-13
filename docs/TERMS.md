@@ -22,7 +22,7 @@ are not words on a page and are not checked.
 | A home that holds battery units for its transformer | battery host | 1 | `\bhost homes?\b` `(?<!battery )\bhosts?\b` |
 | Replacing a transformer with a larger one | upgrade | upgrad-, 37 | `\bnew transformers?\b` `\btransformer replacements?\b` `\breplace the transformer` |
 | An overloaded transformer that 1 to 4 battery units bring back within its limit | fixed by batteries | fixed by batteries / batteries fix, 3 | `\bfixed without an? upgrade` `\bprotect(s\|ed\|ing)\b` `\bclear(s\|ed)?\b` |
-| The plan's steps in order | Flag, Place, Dispatch, Upgrade (the cautious profile: Flag, Shift, Place, Upgrade) | slide 12, 1 each | `\bprotect\b` `\bladder\b` `\brungs?\b` `\bfix order\b` |
+| The plan's steps in order | Flag, Place, Dispatch, Upgrade (the cautious profile: Flag, Shift, Place, Upgrade); the page and `bin/ewu screen` size batteries and run three of the four, never Dispatch, and say so | slide 12, 1 each | `\bprotect\b` `\bladder\b` `\brungs?\b` `\bfix order\b` `\bdeck v3's steps\b` |
 | The battery plan priced against Upgrade all | battery path | 3 | `\bbattery-only\b` |
 | Battery path cost after the customer lease and NYSERDA | net cost | 5 | `\bavangrid cost\b` |
 | Battery path cost before the lease and NYSERDA | gross cost | Gross, 1 | `\bat gross\b` |
@@ -35,14 +35,18 @@ are not words on a page and are not checked.
 | An overload in the winter months (November to March, the teammate's rule) | winter nights | 3 | `\bwinter[- ]driven\b` |
 | EV charging moved out of the evening peak | managed charging | not in deck v3 | `\bstagger(ed\|ing)? (ev )?charging\b` `\bstaggering\b` `\bsmart charging\b` |
 | A modeled transformer of 8 real homes, since the data has no meter-to-transformer map | synthetic transformer | 4 | `\bsynthetic groups?\b` `\bsimulated (neighborhood )?transformers?\b` `\btransformer groups?\b` `\brandom groups?\b` |
+| The modeled substation, feeders and synthetic transformers the Network view draws | synthetic network | not in deck v3 (the page's tag) | `\bsimulated grid\b` `\bsimulated network\b` `\bsynthetic grid\b` |
 | A 2030 adoption setting | scenario | Scenario, 1 (tie with case, 1; names below, 14) | `\b(moderate\|high\|base\|conservative)[ -]cases?\b` `\bin each case\b` `\bthe same case\b` |
 | The two scenarios | Moderate 2030, High 2030 (Moderate, High) | 14 | `\baggressive\b` `\bmid scenario\b` |
+| One of the engine's own rule groups the Inventory view picks (EV home, Electric heat, EV and electric heat, Summer peaker, Solar, Baseline) | home type | not in deck v3 (deck v3's segment is the teammate's seven, below) | `\bshare of segment\b` `\bpick a segment\b` `\bsegment averages\b` |
 | The seven segments | High use, heavy AC; Evening AC peakers; Steady mid users; Low use, light cooling; Electric heating homes; Seasonal and intermittent; Solar prosumers | slides 6, 7, A6, A7 | none found |
 | Electric vehicle | EV | 40 | `\belectric vehicles?\b` `(?-i:\bL[12]\b)` `\bfast home EV charger\b` `\bslow EV charging\b` |
 | A 7.2 kW home charger / charging from an outlet | Level 2 / Level 1 (spelled Level two / Level one on the page, where a digit fails the number check) | 4 | `(?-i:\bL[12]\b)` |
 | Heat pump | heat pump | 33 | `(?-i:\bHPs?\b)` |
+| The people in the homes the programs reach | customers | customer, 32 | `\bhomeowners?\b` |
 | The utility the plan scales to | NYSEG | 20 | `\bNew York State Electric\b` |
 | What the meter reads in a home (AC, EV, heat pump, solar, pool) | technology | 7 | `\bequipment\b` `\bappliances?\b` `\bdevice class(es)?\b` |
+| The teammate's two input files (ev_start_pmf.npy, hp_increment.npy) | the teammate's EV start-hour shares and heat pump curve | not in deck v3 | `\btwo arrays\b` `\binput arrays\b` `\b(EV\|heat pump) (and heat pump )?tables\b` `^Arrays:` |
 | The teammate's own simulation, which our replica follows | the teammate's model | not in deck v3 | `\bher code\b` `\bher model\b` `\boriginal model\b` `\bteammate's code\b` |
 | Money over 15 years at 7% | present value | 2 | `\bNPV\b` |
 
@@ -83,9 +87,10 @@ here. For the teammates:
 
 ## Open points for Gio
 
-- Two ideas share the word segment. Deck v3's seven segments come from the teammate's k-means; the app's
+- Two ideas shared the word segment. Deck v3's seven segments come from the teammate's k-means; the app's
   Inventory view picks among the engine's own rule groups (Baseline, Summer peaker, EV home, Electric heat,
-  Solar, ...), which have different members and counts. Renaming one of them is a content decision, not a
-  synonym fix, so it is left as is.
+  Solar, ...), which have different members and counts. The engine's groups are now called home types on the
+  page, in the guide and in `bin/ewu inventory`, so segment means only deck v3's seven. Showing v3's seven
+  segments in the Inventory view instead is the other way, Gio's call.
 - "Winter nights" is deck v3's word for the 80% to 90% share; the rule behind the number counts overloaded
   hours in November to March, not hours of the night.

@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 5.3,
+  "value": 5.2,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -6880,7 +6880,7 @@
   "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
  },
  "ewu.deck.seconds": {
-  "value": 2.1,
+  "value": 2.0,
   "unit": "s",
   "script": "ewu/deck_screen.py",
   "method": "whole deck screen, data load included"
@@ -14564,7 +14564,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.3,
+  "value": 3.2,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

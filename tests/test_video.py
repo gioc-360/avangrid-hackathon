@@ -75,7 +75,11 @@ def test_pointer_top_speed_stays_under_800_film_px():
 
 
 def test_terminal_check_catches_an_edited_number():
-    lines = (ROOT / "docs/demo/cli_output.txt").read_text().splitlines()[1:]
+    # the earlier film shows the cautious screen; docs/demo/cli_output.txt holds deck v3's run only, so run it here
+    from ewu import config_value
+    run = subprocess.run([str(ROOT / "bin/ewu"), "screen", "--profile", "cautious", "--scenario", config_value("demo.scenario"),
+                          "--margin", str(config_value("demo.margin"))], capture_output=True, text=True, timeout=600, check=True)
+    lines = run.stdout.splitlines()
     typed = [["out", 1.0, ln] for ln in lines]
     assert term_take.screen_check(typed) == []
     assert any("Flag" in p for p in term_take.screen_check([[k, t, ln.replace("26.00", "25.00")] for k, t, ln in typed]))

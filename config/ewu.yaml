@@ -248,6 +248,8 @@ profiles:
                      basis: "teammate spec 2026-11-13 (final deck)"}
     overload_limit_options: {value: [1.00, 1.10, 1.20, 1.40], unit: loading as a multiple of rating,
                              source: "repo:runs/teammate_deck_spec_2026-11-13.txt:3", basis: "teammate spec 2026-11-13 (final deck)"}
+    limits_in_deck_v3: {value: [1.10, 1.20, 1.40], unit: loading limits deck v3 shows, assumption: true,
+                        basis: "read from deck v3 (D4G Cornell 2_Final Submission_v3.pptx) slides 28 and 29 (A13), which test 110%, 120% and 140% only; the spec keeps 100% as a sensitivity, so the page and CLI label it not in deck v3"}
     ev_excluded_flags: {value: [is_ev_l2], unit: inventory flags that already count as an EV home, assumption: true,
                         basis: "teammate excludes homes flagged High or Medium EV (spec line 8); our inventory has Level 2 (confidence high) and Level 1 (confidence low), no medium tier, so only Level 2 is excluded"}
     hp_excluded_flags: {value: [is_electric_heat], unit: inventory flags that already count as primary electric heat,

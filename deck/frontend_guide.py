@@ -22,7 +22,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 VIEWS = [
     ("step=deck", "Summary", "Deck v3's headline numbers, one column per scenario, all from our engine's deck profile.",
      "Whoever presents: the slides and the tool show the same numbers.", "Hover a number to see the fact it comes from."),
-    ("step=network&net=today", "Network: today", "The whole simulated grid: one substation, six feeders, 3,000 transformers of 8 real homes each.",
+    ("step=network&net=today", "Network: today", "The whole synthetic network: one substation, six feeders, 3,000 transformers of 8 real homes each.",
      "Distribution planner.", "The buttons above the diagram step through the plan on the same network."),
     ("step=network&net=flag", "Network: 2030: Flag", "Which transformers are overloaded once 2030 EVs and heat pumps are added.",
      "Distribution planner.", "Click a transformer to see its worst day against its limit (keep that view on the laptop)."),
@@ -31,7 +31,7 @@ VIEWS = [
     ("step=overview", "Overview", "The plan on one screen: overloaded, fixed by batteries, upgrade, and saving against Upgrade all.",
      "Anyone new to the tool.", "Switch scenario and loading limit; open “How this is computed” for assumptions."),
     ("step=inventory", "Inventory", "What technology each kind of home has, read from hourly meter data, and which programs it is eligible for.",
-     "Customer programs team.", "Pick a segment; homes shown are composites of segment averages, not real customers."),
+     "Customer programs team.", "Pick a home type; each home shown is a composite, the average of that home type, not a real customer."),
     ("step=flag", "Flag", "How many transformers are overloaded, and how that moves with the loading limit.",
      "Distribution planner.", "Switch scenario and limit to see the range."),
     ("step=protect", "Place", "How many overloaded transformers batteries fix, and with how many battery units each.",
@@ -62,7 +62,7 @@ def page_html(shots):
              "the engine's stored facts, and checks fail the build if one does not match.</p>"
              "<table><tr><th>Tag</th><th>Meaning</th></tr>"
              "<tr><td>GIVEN</td><td>In the hackathon data: hourly meter data, weather, labeled homes</td></tr>"
-             "<tr><td>DERIVED</td><td>Computed from given data: technology inventory, segments, EV sessions, her EV and heat pump tables</td></tr>"
+             "<tr><td>DERIVED</td><td>Computed from given data: technology inventory, home types, EV sessions. The teammate's EV start-hour shares and heat pump curve are built from the same meter data; the page tags them GIVEN, from the teammate</td></tr>"
              "<tr><td>SIMULATED</td><td>Modeled, not observed: transformers and feeders (no map was given), 2030 adopters, overloads and fixes</td></tr>"
              "<tr><td>ASSUMED</td><td>To confirm with Avangrid: kW read as kVA, the loading limit, prices, discount rate</td></tr></table>"
              "<p class='lead'>Run it: <code>bin/ewu demo</code> opens this page; <code>bin/ewu screen</code> runs the plan live in seconds; "

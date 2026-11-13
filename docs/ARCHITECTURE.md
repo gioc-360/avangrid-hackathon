@@ -63,7 +63,7 @@ Everything runs on one machine with no network calls. Real home-level rows stay 
 
 ```
 make env        # .venv with requirements.txt
-make data features model    # zips to load matrix, features, classes, segments
+make data features model    # zips to load matrix, features, classes, home types
 bin/ewu screen  # the steps live on the full data
 bin/ewu plan    # action lists
 make check      # trust layer

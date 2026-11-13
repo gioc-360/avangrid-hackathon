@@ -1,7 +1,7 @@
 # Avangrid AMI hackathon: end uses, segments, batteries
 
 Hourly smart-meter data for 33,757 homes plus weather. The pipeline classifies technology (EV Level 1/2, AC,
-electric and heat-pump heat, water heaters, pools, hot tubs, solar and solar + battery), segments homes, and
+electric and heat-pump heat, water heaters, pools, hot tubs, solar and solar + battery), sorts homes into home types, and
 ranks and sizes behind-the-meter batteries (Enphase IQ 10C). The repo also checks itself: one command answers
 "are we still solving the problem they set?" and "does every number and quote trace to code or a source page?"
 
@@ -9,7 +9,7 @@ ranks and sizes behind-the-meter batteries (Enphase IQ 10C). The repo also check
 
 ```
 make env                      # Python 3.12 venv from requirements.txt
-make all                      # zips -> matrix -> features -> classes -> segments -> batteries -> readout (~4 min)
+make all                      # zips -> matrix -> features -> classes -> home types -> batteries -> readout (~4 min)
 make check                    # problem coverage + source checks + battery recompute (about 70 s)
 make check DECK=deck.pptx     # also trace every number and quote on every slide
 ```
@@ -25,7 +25,7 @@ off the import path).
 
 ```
 bin/ewu --help                                     # list the commands
-bin/ewu inventory                                  # Parts 1 and 2: technology, segment, eligible programs per home
+bin/ewu inventory                                  # Parts 1 and 2: technology, home type, eligible programs per home
 bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Place, Upgrade on the full data, live
 bin/ewu screen --map meters.csv                    # same, on a real map: meter_id, transformer_id, kva
 bin/ewu network                                    # the screen's synthetic network, transformer by transformer, for the page

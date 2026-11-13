@@ -38,7 +38,7 @@ Every number here was measured by deck/engine_specs.py on this machine and writt
 | Run | Seconds | Fact key |
 |---|---|---|
 | Ingest the zips into the matrix | 16.8 | scale.ingest_seconds |
-| Segment homes | 1.7 | scale.segment_seconds |
+| Sort homes into home types | 1.7 | scale.segment_seconds |
 | Battery sizing (analysis/bess.py) | 25.7 | scale.bess_seconds |
 | Stress grid, every scenario, grouping, seed and margin | 19.2 | ewu.stress.grid_seconds |
 | Attribution and shift grid | 139.8 | ewu.attribution.grid_seconds |
@@ -65,7 +65,7 @@ The screen limit is 60 s (config checks.screen_seconds_max).
 
 | Command | What it does |
 |---|---|
-| `inventory` | technology, segment and eligible programs for every home |
+| `inventory` | technology, home type and eligible programs for every home |
 | `screen [--scenario] [--margin] [--grouping] [--map CSV]` | Flag, Shift, Place, Upgrade for one scenario and sizing, live |
 | `network` | the screen's synthetic network, transformer by transformer, for the page |
 | `coldsnap [--date]` | battery duration test through the cold snap |
@@ -105,7 +105,7 @@ The action lists come from `bin/ewu plan` (ewu/plan.py, ewu/plan_output.py). Col
 A scheduled batch job on Avangrid's own data platform; the cadence is our proposal, for example after each month's meter data lands:
 
 1. `make env` once: a Python 3.12 virtual environment from requirements.txt.
-2. `make data features model`: zips to the matrix, features, classes, segments and battery sizing.
+2. `make data features model`: zips to the matrix, features, classes, home types and battery sizing.
 3. `bin/ewu plan --private`: the transformer and home action lists, written inside their platform.
 4. `make check` and `pytest tests/`: the job fails loudly if any number stops tracing.
 
@@ -118,12 +118,12 @@ It runs offline: no web service, no cloud, no customer data leaves the machine i
 | Hourly meter data, 33,757 usable homes x 8,760 hours | GIVEN | In the hackathon data (35,725 meters supplied) |
 | Hourly weather | GIVEN | In the hackathon data |
 | Labeled EV, heat pump and solar homes | GIVEN | In the hackathon data (samples, used to check detection) |
-| Technology inventory, segments, program eligibility | DERIVED | Computed from the given meter and weather data |
+| Technology inventory, home types, program eligibility | DERIVED | Computed from the given meter and weather data |
 | Level 2 EV charging sessions | DERIVED | Measured from the given meter data, then reused for 2030 EVs |
 | Transformers (3,000 of 8 homes) and feeders | SIMULATED | No meter-to-transformer map was given; real homes are grouped at random until Avangrid's map is loaded with --map |
 | 2030 EV and heat pump adopters | SIMULATED | Scenario draws (moderate 20% EV, 15% heat pump; high 35%, 30%) |
 | Overloads, Shift, Place, Upgrade results | SIMULATED | Model output on the synthetic transformers and 2030 load |
 | transformer_actions.csv | SIMULATED | Model output per synthetic transformer |
-| battery_hosts.csv, program_targets.csv (showcase) | SIMULATED | Simulated homes (SIM- ids) drawn from segment statistics; real lists only with --private, never shared |
+| battery_hosts.csv, program_targets.csv (showcase) | SIMULATED | Simulated homes (SIM- ids) drawn from home type statistics; real lists only with --private, never shared |
 | Transformer ratings, 120% limit, prices, discount rate | ASSUMED | Placeholders in config/ewu.yaml, each with its source or "assumption"; to confirm with Avangrid |
 | capital_plan.csv | ASSUMED | Model output priced at placeholder costs |

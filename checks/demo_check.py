@@ -6,8 +6,8 @@ What: confirms outputs/demo/ewu_demo.html loads nothing from outside; renders it
       8 views filled, Network states drawn equal to facts, no NaN, every shown number bound to its key and equal
       to it at the shown precision (checks/demo_audit.py judges each state); screenshots each view to
       outputs/private/demo_shots/; times `bin/ewu screen` (fails at the config limit), records
-      ewu.cli.screen_seconds, writes docs/demo/cli_output.txt (deck run, then the cautious ladder the earlier film
-      shows; the page itself carries deck-profile numbers only), where every number must trace. `--selftest`
+      ewu.cli.screen_seconds, writes docs/demo/cli_output.txt (the deck run only, deck v3's numbers; the cautious
+      profile stays in the CLI), where every number must trace. `--selftest`
       plants seven bad pages.
 Why:  the demo is what judges see. A number typed into the page, a stale page after a rerun, a step that fails
       to draw or a link that needs the network would each break the promise that everything traces to code.
@@ -39,14 +39,12 @@ def page_states(sources):
 
 
 def time_live_screen():
-    """Run the default deck screen (timed), then the cautious ladder the video films; return seconds and both outputs."""
-    runs = []
-    for args in ([], ["--profile", "cautious", "--scenario", config_value("demo.scenario"), "--margin", str(config_value("demo.margin"))]):
-        started, run = time.time(), subprocess.run([str(ROOT / "bin/ewu"), "screen", *args], capture_output=True, text=True, timeout=600)
-        if run.returncode:
-            raise SystemExit(f"FAIL  bin/ewu screen exited {run.returncode}: {run.stderr[-400:]}")
-        runs.append((time.time() - started, f"$ bin/ewu screen {' '.join(args)}".rstrip() + f"\n{run.stdout}"))
-    return runs[0][0], "\n".join(text for _, text in runs)
+    """Run the default deck screen, timed; return seconds and its output (deck v3's numbers only: the cautious
+    profile stays in the CLI, so the fallback a presenter shows carries nothing v3 does not)."""
+    started, run = time.time(), subprocess.run([str(ROOT / "bin/ewu"), "screen"], capture_output=True, text=True, timeout=600)
+    if run.returncode:
+        raise SystemExit(f"FAIL  bin/ewu screen exited {run.returncode}: {run.stderr[-400:]}")
+    return time.time() - started, f"$ bin/ewu screen\n{run.stdout}"
 
 
 def run_selftest():
