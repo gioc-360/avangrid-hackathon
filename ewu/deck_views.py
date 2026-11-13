@@ -41,6 +41,49 @@ def view_counts(states):
             for view, w_ in words.items()}
 
 
+PRIVATE = ("state", "flag", "over_today", "units", "units_needed", "feeder", "limit_kw", "day", "peak_hour_of_day",
+           "base_kw", "ev_kw", "hp_kw", "after_kw", "peak_base_kw", "peak_ev_kw", "peak_hp_kw", "peak_kw", "excess_kw")
+INTS = ("state", "flag", "over_today", "units", "units_needed", "feeder", "day", "peak_hour_of_day")
+
+
+def network_arrays(states, config):
+    """Per synthetic transformer (8-home sums) for the page's Network view: state 0 within, 2 protected, 3 upgrade
+    (the cautious codes, no 1 since the deck has no Shift step), units, and the worst 2030 day by hour. After is the
+    load capped at the limit for a protected transformer: the battery sizing rule covers every day's excess."""
+    setup, parts, st = states["setup"], states["parts"], states["cell"]["state"]
+    base, ev, hp, ceiling = setup["base"], parts["ev"], parts["hp"], st["ceiling"]
+    total, n = base + ev + hp, setup["groups"].count
+    worst, rows = st["worst_hour"], np.arange(n)
+    day = worst // 24
+    after = np.where(st["fixed"][:, None], np.minimum(total, ceiling[:, None]), total)
+    at = lambda series: np.round(series[rows, worst], 1)
+    return {"state": np.select([states["action"] == 1, states["action"] == 2], [2, 3], 0), "flag": states["action"] > 0,
+            "over_today": states["over_today"], "units": states["units"], "units_needed": np.where(st["over"], st["units"], 0),
+            "feeder": network.feeder_of(n, config_value("network.feeders", config)), "limit_kw": np.round(ceiling, 1),
+            "day": day, "peak_hour_of_day": worst % 24, "base_kw": network.day_rows(base, day), "ev_kw": network.day_rows(ev, day),
+            "hp_kw": network.day_rows(hp, day), "after_kw": network.day_rows(after, day), "peak_base_kw": at(base),
+            "peak_ev_kw": at(ev), "peak_hp_kw": at(hp), "peak_kw": at(total), "excess_kw": np.round(np.maximum(at(total) - ceiling, 0), 1)}
+
+
+def record_network(states, counts, config, name):
+    """Counts to facts under ewu.<name>.<scenario>.; per-transformer arrays to the private facts only, ewu.<name>.t."""
+    from analysis.facts import forget, record
+    scenario, limit = states["scenario"], states["limit"]
+    how = (f"deck profile, {scenario} 2030, limit {limit} x standard kVA rating, seed {states['setup']['seed']}"
+           f"{', managed charging (optional)' if states['cell']['managed'] else ''}; same run as bin/ewu screen")
+    forget(f"ewu.{name}.{scenario}.")
+    for view, words in counts.items():
+        for word, n in words.items():
+            record(f"ewu.{name}.{scenario}.{view}.{word}", n, "transformers", how)
+    record(f"ewu.{name}.transformers_drawn", int(states["setup"]["groups"].count), "transformers", how)
+    record(f"ewu.{name}.homes", int(len(states["setup"]["groups"].homes)), "homes", "homes in the drawn transformers")
+    arrays = network_arrays(states, config)
+    forget(f"ewu.{name}.t.", private=True)
+    for field in PRIVATE:
+        record(f"ewu.{name}.t.{field}", np.asarray(arrays[field]).astype(int if field in INTS else float).tolist(),
+               "kW" if field.endswith("_kw") else "", "per synthetic transformer, 8 homes summed; " + how, private=True)
+
+
 def network_main(scenario=None, limit=None, managed=None):
     config = read_config()
     scenario = scenario or config_value("demo.scenario", config)
@@ -50,11 +93,9 @@ def network_main(scenario=None, limit=None, managed=None):
     counts = view_counts(states)
     official = limit == config_value("profiles.deck.overload_limit", config) and not states["cell"]["managed"]
     if official:
-        from analysis.facts import record
-        how = f"deck profile, {scenario} 2030, limit {limit} x standard kVA rating, seed {states['setup']['seed']}; same run as bin/ewu screen"
-        for view, words in counts.items():
-            for word, n in words.items():
-                record(f"ewu.deck.network.{scenario}.{view}.{word}", n, "transformers", how)
+        record_network(states, counts, config, "deck.network")
+        managed_states = deck_states(read_inputs(), config, scenario, limit, True)   # the optional scenario, for the page
+        record_network(managed_states, view_counts(managed_states), config, "deck.network_managed")
     print(f"Network, deck profile: {states['setup']['groups'].count:,} synthetic transformers, {scenario} 2030, limit {limit:.2f}")
     for view, words in counts.items():
         print(f"  {view:<8} " + ", ".join(f"{w} {n:,}" for w, n in words.items()))

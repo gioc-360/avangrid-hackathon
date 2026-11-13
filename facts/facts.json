@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 4.8,
+  "value": 4.6,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -6135,6 +6135,12 @@
   "script": "ewu/deck_views.py",
   "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
  },
+ "ewu.deck.network.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/deck_views.py",
+  "method": "homes in the drawn transformers"
+ },
  "ewu.deck.network.moderate.flag.over": {
   "value": 292,
   "unit": "transformers",
@@ -6188,6 +6194,78 @@
   "unit": "transformers",
   "script": "ewu/deck_views.py",
   "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.transformers_drawn": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/deck_views.py",
+  "method": "homes in the drawn transformers"
+ },
+ "ewu.deck.network_managed.moderate.flag.over": {
+  "value": 43,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.flag.within": {
+  "value": 2957,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.protect.over": {
+  "value": 4,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.protect.protected": {
+  "value": 39,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.protect.within": {
+  "value": 2957,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.today.within": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.upgrade.protected": {
+  "value": 39,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.upgrade.upgrade": {
+  "value": 4,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.moderate.upgrade.within": {
+  "value": 2957,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
+ },
+ "ewu.deck.network_managed.transformers_drawn": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5, managed charging (optional); same run as bin/ewu screen"
  },
  "ewu.deck.nyseg_transformers": {
   "value": 111250,
@@ -6466,7 +6544,7 @@
   "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
  },
  "ewu.deck.seconds": {
-  "value": 2.2,
+  "value": 2.0,
   "unit": "s",
   "script": "ewu/deck_screen.py",
   "method": "whole deck screen, data load included"
@@ -14150,7 +14228,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.3,
+  "value": 2.2,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

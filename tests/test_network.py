@@ -76,3 +76,14 @@ def test_the_page_carries_the_network_and_builds_offline():
     assert not demo_check.OUTSIDE.search(html)
     assert '"network":true' in html and "private:ewu.network.t.state" in html
     assert not any("meter" in k or "customer" in k for k in values if k.startswith("private:ewu.network."))
+
+
+def test_the_page_draws_the_deck_network_by_default():
+    values = demo_page.collect_values(CONFIG)
+    assert all("ewu.deck.network." in k for k in demo_page.NEEDS["network"])
+    state = values["private:ewu.deck.network.t.state"]
+    scenario = CONFIG["demo"]["scenario"]["value"]
+    assert len(state) == values["fact:ewu.deck.network.transformers_drawn"]
+    for code, word in ((0, "within"), (2, "protected"), (3, "upgrade")):
+        assert state.count(code) == values[f"fact:ewu.deck.network.{scenario}.upgrade.{word}"], word
+    assert 'S = { step: "deck", prof: "deck"' in demo_page.TEMPLATE.read_text()

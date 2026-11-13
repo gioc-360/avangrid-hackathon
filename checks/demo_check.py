@@ -27,6 +27,15 @@ SHOTS, CLI_OUTPUT = ROOT / "outputs" / "private" / "demo_shots", ROOT / "docs" /
 OUTSIDE, BROKEN = re.compile(r"https?://|<link\b|@import|\bsrc\s*=|url\(", re.I), re.compile(r"\b(NaN|undefined|Infinity)\b")
 STEPS = ("deck", "network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
 NET_VIEWS, MARKS = ("today", "flag", "shift", "protect", "upgrade"), ("polyline", "rect", "path", "circle", "line")
+DECK_VIEWS = ("today", "flag", "protect", "upgrade")   # the deck profile's battery-only ladder: no Shift step
+NET_PROFILES = {"deck": ("ewu.deck.network.", DECK_VIEWS), "managed": ("ewu.deck.network_managed.", DECK_VIEWS),
+                "cautious": ("ewu.network.", NET_VIEWS)}
+
+
+def net_facts(prof):
+    """Count-fact prefix the page's Network view reads for one setup (deck counts sit under the demo scenario)."""
+    base = NET_PROFILES[prof][0]
+    return f"fact:{base}" if prof == "cautious" else f"fact:{base}{config_value('demo.scenario')}."
 
 
 class RenderedPage(HTMLParser):
@@ -96,11 +105,12 @@ def audit_raw(raw, sources):
     return problems
 
 
-def audit_dom(dom, sources, net_view=None):
+def audit_dom(dom, sources, net_view=None, prof="deck"):
     """Problems in one rendered state: unfilled views, broken or unbound numbers, Network states unequal to facts."""
     page = RenderedPage()
     page.feed(dom)
-    stored = {k.rsplit(".", 1)[1]: v for k, v in sources.items() if net_view and k.startswith(f"fact:ewu.network.{net_view}.") and v}
+    prefix = net_facts(prof)
+    stored = {k.rsplit(".", 1)[1]: v for k, v in sources.items() if net_view and k.startswith(f"{prefix}{net_view}.") and v}
     problems = [] if page.looks == stored else [f"network {net_view}: drawn {page.looks} vs facts {stored}"]
     problems += [f"{s}: not built" if v["not_built"] else f"{s}: not filled ({v['bound']} numbers, {v['marks']} chart marks)"
                 for s, v in page.steps.items() if v["not_built"] or not v["bound"] or not v["marks"]]
@@ -124,11 +134,18 @@ def run_chrome(url, profile, *extra):
 
 def page_states(sources):
     """Every scenario x grouping x sizing, cycling homes, hosts, Network ladder steps and one transformer per state."""
-    homes, state = int(sources.get("fact:ewu.demo.home_count") or 1), sources.get("private:ewu.network.t.state") or []
-    firsts = [state.index(k) for k in range(4) if k in state] or [-1]
+    homes = int(sources.get("fact:ewu.demo.home_count") or 1)
+    profs = [p for p, (base, _) in NET_PROFILES.items() if sources.get(f"private:{base}t.state")] or ["deck"]
     cells = itertools.product(("moderate", "high"), ("random", "same_segment"), range(len(config_value("transformer.sizing_margins"))))
-    return [f"home={i % homes}&scenario={s}&grouping={g}&margin={m}&hosts={i % 2}&net={NET_VIEWS[i % len(NET_VIEWS)]}"
-            f"&t={firsts[i % len(firsts)]}" for i, (s, g, m) in enumerate(cells)]
+    out = []
+    for i, (s, g, m) in enumerate(cells):
+        prof = profs[i % len(profs)]
+        base, views = NET_PROFILES[prof]
+        state = sources.get(f"private:{base}t.state") or []
+        firsts = [state.index(k) for k in range(4) if k in state] or [-1]
+        out.append(f"home={i % homes}&scenario={s}&grouping={g}&margin={m}&hosts={i % 2}&prof={prof}"
+                   f"&net={views[(i // len(profs)) % len(views)]}&t={firsts[(i // len(profs)) % len(firsts)]}")
+    return out
 
 
 def time_live_screen():
@@ -174,7 +191,7 @@ def main():
     with tempfile.TemporaryDirectory(dir=ROOT / "outputs" / "private") as profile:
         for state in states:
             found, count = audit_dom(run_chrome(f"{PAGE.as_uri()}#{state}", profile, "--dump-dom"), sources,
-                                     re.search(r"net=(\w+)", state).group(1))
+                                     re.search(r"net=(\w+)", state).group(1), re.search(r"prof=(\w+)", state).group(1))
             problems += [f"{state}: {p}" for p in found]
             numbers += count
         SHOTS.mkdir(parents=True, exist_ok=True)

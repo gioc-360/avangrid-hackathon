@@ -9,8 +9,8 @@ Why:  the live demo must work with no network and no server, and every number on
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
       which checks/demo_check.py compares with the stored value.
 How:  the values travel inside the page as one JSON block; the template's script draws the steps from them.
-      The page shows no real home: Network draws the demo screen's synthetic transformers (8 homes summed
-      each, ewu/network.py), Inventory draws a Composite home per segment (segment averages, public facts), and Protect draws one 8-home transformer's cold snap load from
+      The page shows no real home: Network draws the deck profile's synthetic transformers by default (8 homes summed
+      each, ewu/deck_views.py; optional managed charging and the cautious setup, ewu/network.py, on buttons), Inventory draws a Composite home per segment (segment averages, public facts), and Protect draws one 8-home transformer's cold snap load from
       outputs/private/facts_private.json with battery charge from the fleet facts, never a host's own charge.
       The page stays gitignored. A step whose inputs are missing shows "not built" and the keys it lacks,
       instead of failing quietly.
@@ -22,13 +22,14 @@ TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
 FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.",
                  "ewu.deck.", "ewu.deck_replica.")
-PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.")
+PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.", "ewu.deck.network.t.", "ewu.deck.network_managed.t.")
 NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
 NEEDS = {
     "deck": ["fact:ewu.deck.moderate.limit_120.overloaded_pct", "fact:ewu.deck_replica.moderate.limit_120.overloaded_pct",
              "fact:ewu.deck.peakcut.export_peak_drop_mw", "fact:ewu.deck.inputs.hp_increment.annual_kwh"],
-    "network": ["fact:ewu.network.transformers_drawn", "fact:ewu.network.upgrade.upgrade", "private:ewu.network.t.state",
-                "private:ewu.network.t.feeder", "private:ewu.network.t.base_kw", "private:ewu.network.t.over_today"],
+    "network": ["fact:ewu.deck.network.transformers_drawn", "fact:ewu.deck.network.moderate.upgrade.upgrade",
+                "private:ewu.deck.network.t.state", "private:ewu.deck.network.t.feeder", "private:ewu.deck.network.t.base_kw",
+                "private:ewu.deck.network.t.over_today"],
     "inventory": ["fact:ewu.inventory.homes", "fact:ewu.inventory.any_program_pct", "fact:ewu.demo.home_count",
                   "fact:ewu.demo.composite_0.flags", "fact:ewu.demo.composite_0.winter_day_kw"],
     "screen": ["fact:ewu.sensitivity.moderate.random.margin_115.flagged_pct",
