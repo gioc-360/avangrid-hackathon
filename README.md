@@ -48,6 +48,8 @@ make prototype                                     # rebuild all of the above fr
 Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
 one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
 traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
+The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
+file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.
 
 ## How the pieces fit
 

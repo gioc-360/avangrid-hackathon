@@ -166,6 +166,7 @@ checks:
   module_line_cap: {value: 200, unit: lines per module, source: "repo:docs/PROTOTYPE_PLAN.md:158"}
   screen_seconds_max: {value: 60, unit: seconds, source: "repo:docs/PROTOTYPE_PLAN.md:78"}
   examiner_pass: {value: 9, unit: correct answers of 10, source: "repo:docs/PROTOTYPE_PLAN.md:237"}
+  qa_questions: {value: 10, unit: questions in docs/CODE_QA.md, source: "repo:docs/PROTOTYPE_PLAN.md:104"}
   judge_anchor_score: {value: 4.14, unit: weighted judge score of anchor A1, source: "repo:docs/PROTOTYPE_PLAN.md:235"}
   judge_noise: {value: 0.1, unit: weighted score points, source: "repo:docs/PROTOTYPE_PLAN.md:240"}
 
