@@ -410,7 +410,7 @@ function stepNetwork() {
   const ladder = ns.views.map(([id, name]) => btn(S.net === id, { net: id }, name)).join("");
   const setups = [["deck", "Deck setup"], ["managed", "Managed charging (optional)"], ["cautious", "Cautious setup (earlier method)"]]
     .filter(([p]) => hasProf(p)).map(([p, name]) => btn(S.prof === p, { prof: p, t: -1, net: keepView(NET_SRC[p].views) }, name)).join("");
-  const tag = { deck: "Deck setup", managed: "Deck setup, managed charging (optional)", cautious: "Cautious setup (earlier method)" }[S.prof];
+  const tag = "Synthetic network &middot; " + { deck: "Deck setup", managed: "Deck setup, managed charging (optional)", cautious: "Cautious setup (earlier method)" }[S.prof];
   const sc = esc(word(V["config:demo.scenario"]));
   return `<p class="eyebrow"><b>Network</b>
     <button type="button" class="tag" onclick="openHow('network')" aria-label="${tag}: open How this is computed">${tag}</button></p>
