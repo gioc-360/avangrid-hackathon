@@ -14,7 +14,7 @@ from analysis import facts
 from checks import check_all, config_check
 
 ROOT = Path(__file__).resolve().parent.parent
-NEW_CHECKS = ("config_check", "trace_numbers", "demo_check", "qa_refs", "judge_rounds_check")
+NEW_CHECKS = ("config_check", "trace_numbers", "demo_check", "qa_refs", "judge_rounds_check", "review_numbers")
 EM_DASH = chr(0x2014)
 PLAIN_NAME = re.compile(r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$")
 

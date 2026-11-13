@@ -31,6 +31,7 @@ bin/ewu screen --map meters.csv                    # same, on a real map: meter_
 bin/ewu coldsnap --date 2026-02-07                 # battery hour by hour through the Feb 7-8 cold snap
 bin/ewu tophours                                   # MW the battery hosts cut in the system's top 20 and 50 hours
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
+bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
 bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
 bin/ewu demo                                       # the offline 4-step demo page
 make prototype                                     # rebuild all of the above from data/processed

@@ -4,7 +4,9 @@ Mostly yes, because on a cold night the heat pump fills the transformer and the 
 Heat pumps are running in 90.52% of the hours a transformer is over its limit, yet in 95.38% of those hours
 the transformer would stay under the limit with no new EV load at all (moderate 2030 scenario). Staggering
 cannot fix the transformers that overload on heat pumps alone, 1.97% of all transformers in the moderate
-scenario and 11.73% in the high one, so those go to batteries or an upgrade.
+scenario and 11.73% in the high one, so those go to batteries or an upgrade. The answer holds at the
+measured heat pump load and weakens as that load grows: at 1.5 times the measured slope, staggering fixes 60.7%
+of overloaded transformers instead of 78.56% (see "How much the answer leans on the heat pump slope").
 
 Every number below comes from facts/facts.json (written by ewu/attribution.py and ewu/stress.py) or from
 config/ewu.yaml, and `checks/trace_numbers.py docs/FINDINGS.md` fails the build if one does not. Unless a line
@@ -26,7 +28,9 @@ overloads happen while EVs decide whether they happen. We measured which one it 
 | Transformers overloaded, EV charging unmanaged | 26.18% | 54.77% |
 | Overload hours with heat pumps running | 90.52% | 94.81% |
 | Overload hours where the heat pump is the larger cause | 4.57% | 13.61% |
-| Overload hours where the EV is the larger cause | 95.43% | 86.39% |
+| Overload hours where the EV is strictly the larger cause | 19.42% | 11.83% |
+| Overload hours that need both new loads (neither alone crosses the limit) | 76.0% | 74.56% |
+| Overload hours where the EV is at least as large a cause (both rows above, plus rare exact ties) | 95.43% | 86.39% |
 | Overload hours that stay under the limit with no new EV load | 95.38% | 86.22% |
 | Energy above the limit caused by EVs | 56.77% | 50.48% |
 | Energy above the limit caused by heat pumps | 43.23% | 49.52% |
@@ -40,9 +44,13 @@ overloads happen while EVs decide whether they happen. We measured which one it 
 A new heat pump adds 0.05 kW for every degree below 60 F, so it adds a few kW for many hours. A new Level
 2 charger adds 7.2 kW for the length of a session, 3.78 hours on average in the measured sessions. The heat
 pump raises the floor all night; the charger is the spike that crosses the limit. That is why the heat pump is
-running in 90.52% of overload hours while the EV is the larger cause in 95.43% of them. In the moderate
-scenario the worst hour of only 0.61% of overloaded transformers is led by the heat pump (1.85% in the high
-scenario). The teammate's 73% is consistent with our timing number, not with our cause number.
+running in 90.52% of overload hours while 95.38% of them stay under the limit with no new EV load. Most
+overload hours, 76.0%, need both: neither new load alone crosses the limit, so the split gives the two equal
+shares. The EV is strictly the larger cause in 19.42% and the heat pump in 4.57%. In the moderate scenario the
+worst hour of only 0.61% of overloaded transformers is led by the heat pump (1.85% in the high scenario), and
+50.6% of worst hours need both. The teammate's 73% is consistent with our timing number, not with a cause
+number. An earlier version of this page called the 95.43% "EV at least as large" share "EV larger"; the number
+review caught it.
 
 Staggering moves the same EV energy into the window that opens at hour 23 and closes at hour 3 of the clock, at half power, with each EV on a
 transformer given its own start slot. Half power halves the spike, and separate slots stop two cars on one
@@ -79,6 +87,70 @@ transformers from 32.65% to 10.24% and fixes 68.7% of them; heat pumps lead 7.8%
 89.51%. In the high scenario staggering cuts 53.65% to 29.76%. The heat-pump-only floor rises to 4.31% and
 18.23% of all transformers.
 
+## How much the answer leans on the heat pump slope
+
+The heat pump load is one slope, 0.05 kW per F below 60 F (3.0 kW per heat pump at 0 F). It is the median
+difference between electric-heat homes and the rest at the coldest hours, not a model of a heat pump, so it
+could be low. `bin/ewu robustness` reruns the whole attribution and shift grid (5 seeds, random grouping) with
+only that slope scaled.
+
+| Heat pump slope, times measured | 1.0 | 1.5 | 2.0 |
+|---|---|---|---|
+| kW per heat pump at 0 F | 3.0 | 4.5 | 6.0 |
+| Moderate: overloaded, EV charging unmanaged | 26.18% | 32.74% | 39.39% |
+| Moderate: overloaded transformers that staggering fixes | 78.56% | 60.7% | 46.1% |
+| Moderate: overload hours where the heat pump is the larger cause | 4.57% | 26.67% | 50.29% |
+| Moderate: overload hours that stay under with no new EV load | 95.38% | 73.22% | 49.65% |
+| Moderate: overload hours that need both new loads | 76.0% | 66.88% | 47.34% |
+| Moderate: worst hour led by the heat pump | 0.61% | 5.19% | 15.25% |
+| Moderate: overload with no new EV at all, % of all transformers | 1.97% | 8.53% | 17.29% |
+| High: overloaded transformers that staggering fixes | 59.43% | 37.91% | 23.75% |
+| High: overload hours where the heat pump is the larger cause | 13.61% | 43.33% | 64.34% |
+
+"EVs decide whether a transformer overloads, heat pumps decide when" holds near the measured slope. At 2 times
+the slope the heat pump leads about half the overload hours in the moderate case and most of them in the high
+case, staggering fixes less than half, and the work moves to Protect and Upgrade. A metered sample of heat pump
+homes would settle the slope; until then the staggering share is a range from 46.1% to 78.56% (moderate).
+
+## How much the answer leans on who adopts what
+
+The runs draw EV and heat pump adopters off one random order per seed, so high adopters include moderate ones.
+A side effect the number review found: 97.91% of new heat pump homes also get a new EV, which stacks both
+loads on the same transformers. That rule is now a labeled assumption in config/ewu.yaml
+(`adopters_share_one_order`), and `bin/ewu robustness` reruns with heat pump adopters drawn apart.
+
+| Moderate 2030, today's peak times 1.15 | One order (recorded) | Drawn apart |
+|---|---|---|
+| New heat pump homes that also get a new EV | 97.91% | 20.25% |
+| Overloaded, EV charging unmanaged | 26.18% | 25.28% |
+| Overloaded transformers that staggering fixes | 78.56% | 83.83% |
+| Overload hours with heat pumps running | 90.52% | 81.28% |
+| Overload hours that stay under with no new EV load | 95.38% | 91.65% |
+| Overload hours that need both new loads | 76.0% | 60.6% |
+| Overloaded, at least 3 hours a year | 16.41% | 14.2% |
+
+In the high case drawn apart, 57.74% overload instead of 54.77% and staggering fixes 63.63% instead of
+59.43%. The answer holds either way, and drawing apart makes staggering look slightly better, so the
+recorded runs are the cautious reading for Shift.
+
+## How long the flag lasts
+
+A transformer is flagged if any one hour of the year goes above 1.2 times its rating. Many flags are short.
+The same runs, counting hours over per transformer (EV charging unmanaged, random grouping, 5 seeds):
+
+| Rating, today's peak times | 1.05 | 1.15 | 1.30 | 1.50 |
+|---|---|---|---|---|
+| Moderate: flagged, any hour over | 42.84% | 26.18% | 11.87% | 3.74% |
+| Moderate: flagged, at least 3 hours over | 28.75% | 16.41% | 6.39% | 1.67% |
+| Moderate: share of flagged over fewer than 3 hours | 32.9% | 37.31% | 46.15% | 55.26% |
+| High: flagged, any hour over | 71.71% | 54.77% | 33.05% | 14.38% |
+| High: flagged, at least 3 hours over | 58.38% | 41.27% | 22.2% | 8.4% |
+| High: share of flagged over fewer than 3 hours | 18.59% | 24.64% | 32.84% | 41.59% |
+
+The 3-hour rule is a labeled assumption in config/ewu.yaml, not an Avangrid rule; it shows how much of the flag
+rests on one or two hours a year. The upgrade-everything comparison below prices every flagged transformer at
+$15,000 (mid), even one over the limit for a single hour a year, so it is the costliest reading of the flag.
+
 ## How the split works
 
 The energy above the limit in an hour is the load minus 1.2 times the rating, when positive. Today's load
@@ -86,7 +158,8 @@ goes first, because it is already on the wire: it is charged only with what it w
 which is 0.0% in every case, since each rating is at least today's peak times 1.05. The EV and the heat pump
 then split the rest by their added effect averaged over both orders of arrival (a two-load Shapley value), so
 the shares always add up to the hour's energy above the limit. An hour's larger cause is the load with the
-larger share. "Stays under the limit with no new EV load" means today's load plus the heat pumps never crosses
+larger share. When neither new load alone would cross the limit, the two shares are equal; those hours are
+counted apart as "need both", and "at least as large" includes them. "Stays under the limit with no new EV load" means today's load plus the heat pumps never crosses
 the limit in that hour. Code: ewu/attribution.py (split, counts, facts), ewu/shift.py (timer and staggered
 placement), tests/test_attribution.py (shares add up, energy is moved and never lost, facts match).
 
@@ -112,6 +185,12 @@ NYSERDA incentive of $200 per kWh, and capacity value at the system peak.
 
 Each protected transformer takes 1.42 batteries on average (the fewest of one or two hosts with one or two
 units that clears every hour of the year), and each flagged transformer has 2.7 new EV homes to enroll.
+
+Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt the
+flagged share and its duration, the heat pump and EV shares of overload hours, the 3 kVA pass shares and the
+pricing arithmetic behind the 51.92% ladder share, each its own way. It did not rerun the battery dispatch or the
+fit-score host choice, so the battery counts behind the 1.42 batteries per protected transformer have not
+been recomputed independently. That rerun is still open.
 
 ### One cleared transformer: batteries against the upgrade
 
@@ -194,4 +273,7 @@ Transformers are synthetic groups of homes because no meter-to-transformer map e
 are today's peak times a margin, not nameplates. The staggered window, half power and timer hour are the
 teammate's settings, flagged as assumptions in config/ewu.yaml. Each staggered session runs until its energy
 is delivered, so a long session at half power can run past the window's close. The heat pump load is one measured slope per
-degree, not a model of each home.
+degree, not a model of each home; the slope table above shows how far the answer moves if it is low. A flag is any
+one hour over the limit; the duration table shows how many flags rest on one or two hours. Adopters of both
+devices come off one random order, so new heat pumps and new EVs mostly land in the same homes; the adoption
+table shows the answer holds when they are drawn apart.

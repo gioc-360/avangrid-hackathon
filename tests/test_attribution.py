@@ -62,6 +62,24 @@ def test_shares_sum_to_100_pct_in_every_cell(summary):
         assert n["hours_over"] > 0 and n["overloaded"] > 0
 
 
+def test_hours_needing_both_loads_are_ties_counted_apart():
+    """A tie (neither new load alone crosses) goes to the EV under argmax, so it is counted apart (M8 review)."""
+    base, ceiling = np.array([[40.0, 40.0, 40.0]]), np.array([45.0])
+    ev, hp = np.array([[3.0, 7.2, 1.0]]), np.array([[3.0, 1.0, 7.2]])   # tie, EV alone over, heat pump alone over
+    n = attribution.attribute_overloads(base, ev, hp, ceiling)
+    assert (n["hours_over"], n["hours_lead_ev"], n["hours_lead_hp"]) == (3, 2, 1)
+    assert n["hours_both_needed"] == 1 and n["hours_ev_strictly_larger"] == 1
+
+
+def test_strict_ev_and_both_needed_hours_sit_inside_the_ev_at_least_as_large_count(summary):
+    """EV-led (argmax) = strictly larger + ties; both-needed hours are ties, and so are rare hours where both
+    new loads cross by the same kW (for example two heat pumps at 24 F against one charger at half power)."""
+    for key, cell in summary.items():
+        n = cell["counts"]
+        assert n["hours_ev_strictly_larger"] + n["hours_both_needed"] <= n["hours_lead_ev"], key
+        assert n["hours_lead_ev"] + n["hours_lead_hp"] + n["hours_lead_base"] == n["hours_over"], key
+
+
 def test_shifting_moves_ev_energy_and_loses_none(one_run):
     groups, parts, owner = one_run
     unmanaged = shift.ev_loading_by_mode("unmanaged", parts, owner, groups.count, CONFIG)

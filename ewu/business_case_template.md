@@ -15,25 +15,43 @@ Shifting is the money saver. A battery is the targeted rung for the places shift
 |---|---|---|---|---|
 | Moderate 2030 (EV charging unmanaged) | [[ewu.stress.moderate.random.margin_105.overloaded_pct]]% | [[ewu.stress.moderate.random.margin_115.overloaded_pct]]% | [[ewu.stress.moderate.random.margin_130.overloaded_pct]]% | [[ewu.stress.moderate.random.margin_150.overloaded_pct]]% |
 | High 2030 (EV charging unmanaged) | [[ewu.stress.high.random.margin_105.overloaded_pct]]% | [[ewu.stress.high.random.margin_115.overloaded_pct]]% | [[ewu.stress.high.random.margin_130.overloaded_pct]]% | [[ewu.stress.high.random.margin_150.overloaded_pct]]% |
+| Moderate 2030, over at least [[config:robustness.flag_min_hours]] hours a year | [[ewu.robustness.flag_hours.moderate.random.margin_105.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.moderate.random.margin_130.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.moderate.random.margin_150.flagged_min_hours_pct]]% |
+| High 2030, over at least [[config:robustness.flag_min_hours]] hours a year | [[ewu.robustness.flag_hours.high.random.margin_105.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.high.random.margin_115.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.high.random.margin_130.flagged_min_hours_pct]]% | [[ewu.robustness.flag_hours.high.random.margin_150.flagged_min_hours_pct]]% |
 
-A flag is any hour above [[config:transformer.overload_limit|.1f]] times the rating; the tool also reports how long and how far. On the
+A flag is any hour above [[config:transformer.overload_limit|.1f]] times the rating, so the flag is also a duration question.
+In the moderate case at today's peak times [[config:transformer.base_margin]], [[ewu.robustness.flag_hours.moderate.random.margin_115.short_of_flagged_pct]]% of flagged transformers are over for fewer than
+[[config:robustness.flag_min_hours]] hours a year (median [[ewu.robustness.flag_hours.moderate.random.margin_115.median_hours_of_flagged|.0f]] hours). A rule of at least [[config:robustness.flag_min_hours]] hours over flags [[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct]]% instead of
+[[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_pct]]%. Upgrade-all prices every flagged transformer at $[[config:prices.upgrade_cost_usd|,.0f]] (mid), even one over for a single hour a year,
+so it is the costliest reading of the flag; Avangrid's own duration rule is an ask. On the
 Feb 7-8 cold snap, with staggered charging, [[ewu.coldsnap.moderate.staggered.margin_115.flagged_pct|.2f]]% of transformers go over, for a median of
 [[ewu.coldsnap.moderate.staggered.margin_115.hours_over_median|.0f]] hours and [[ewu.coldsnap.moderate.staggered.margin_115.kwh_over_median]] kWh above the limit.
 
-## WHY: EV timing decides whether a transformer overloads; heat pumps decide when
+## WHY: at the measured heat pump load, EV timing decides whether a transformer overloads; heat pumps decide when
 
 Heat pumps run in [[ewu.attribution.moderate.random.margin_115.unmanaged.hours_with_hp_running_pct]]% of overload hours but are the larger cause in only
-[[ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_hp_pct]]%. The heat pump raises the floor all night; the charger is the spike that crosses the limit.
+[[ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_hp_pct]]%. In [[ewu.attribution.moderate.random.margin_115.unmanaged.hours_both_needed_pct]]% of overload hours it takes both: neither new load alone crosses the
+limit. What decides the program is that [[ewu.attribution.moderate.random.margin_115.unmanaged.hours_clear_without_ev_pct]]% of overload hours stay under with no new EV load.
+The heat pump raises the floor all night; the charger is the spike that crosses the limit.
 So staggering cuts the moderate case from [[ewu.stress.moderate.random.margin_115.overloaded_pct]]% to [[ewu.shift.moderate.random.margin_115.staggered.overloaded_pct]]% of transformers. A simple timer that
 starts every car at once does not: it nets [[ewu.shift.moderate.random.margin_115.timer.overloaded_pct]]% in the moderate case and backfires in the high
 case, from [[ewu.stress.high.random.margin_115.overloaded_pct]]% to [[ewu.shift.high.random.margin_115.timer.overloaded_pct]]%, because cars start together on the coldest nights.
 
+That answer leans on one input. The heat pump load is a single slope, [[config:scenarios.loads.hp_kw_per_degf]] kW per F below [[config:scenarios.loads.hp_balance_temp_f]] F
+([[ewu.robustness.hp_slope_x100.kw_at_0f|.1f]] kW at 0 F), taken as the median difference between electric-heat homes and the rest, not a heat pump model.
+At [[config:robustness.hp_slope_multipliers.1]] times that slope, staggering fixes [[ewu.robustness.hp_slope_x150.moderate.margin_115.staggered.fixed_pct]]% instead of [[ewu.robustness.hp_slope_x100.moderate.margin_115.staggered.fixed_pct]]% and the heat pump leads
+[[ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_lead_hp_pct]]% of overload hours; at [[config:robustness.hp_slope_multipliers.2|.0f]] times, [[ewu.robustness.hp_slope_x200.moderate.margin_115.staggered.fixed_pct]]% and [[ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_lead_hp_pct]]% (moderate). So the answer holds
+near the measured slope. A heavier heat pump moves work from Shift to Protect and Upgrade; metered heat
+pump homes would settle the slope. A second soft input: the runs draw both devices off one random order, so
+[[ewu.robustness.adoption_one_order.moderate.margin_115.hp_homes_with_new_ev_pct]]% of new heat pump homes also get a new EV (a labeled assumption). Drawn apart ([[ewu.robustness.adoption_own_order.moderate.margin_115.hp_homes_with_new_ev_pct]]% overlap),
+[[ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.overloaded_pct]]% of transformers overload instead of [[ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.overloaded_pct]]% and staggering fixes [[ewu.robustness.adoption_own_order.moderate.margin_115.staggered.fixed_pct]]%, so the answer does not rest on the stacking.
+
 What shifting cannot reach is where a battery earns its place:
 - **Heat pumps alone.** [[ewu.attribution.moderate.random.margin_115.unmanaged.overloaded_without_ev_of_all_pct]]% of transformers (moderate) and [[ewu.attribution.high.random.margin_115.unmanaged.overloaded_without_ev_of_all_pct]]% (high) overload with no
   new EV at all. These are heat pump nights, and no EV program reaches them.
-- **The 3 kVA rule.** A home may add about [[config:transformer.service_added_kva_max]] kVA without a service study. Only [[bess.headroom_rule.ev_pass_pct_none]]% of homes
-  without an EV can add a Level 2 charger within it today; one battery unit raises that to [[bess.headroom_rule.ev_pass_pct_one_unit]]%, two to
-  [[bess.headroom_rule.ev_pass_pct_two_units|.0f]]%. The battery lets that home electrify now.
+- **The 3 kVA rule.** A home may add about [[config:transformer.service_added_kva_max]] kVA without a service study. With a charge as long as the
+  measured mean session ([[ewu.headroom.ev.measured_mean_hours]] hours from [[config:robustness.headroom_ev_start_hour]]:00, an assumed start), only [[ewu.headroom.ev.charge_measured_mean.pass_pct_none]]% of homes without
+  an EV can add a Level 2 charger within it today; one battery unit raises that to [[ewu.headroom.ev.charge_measured_mean.pass_pct_one_unit]]%, two to
+  [[ewu.headroom.ev.charge_measured_mean.pass_pct_two_units|.0f]]%. The older [[config:robustness.headroom_ev_hours_assumed]]-hour charge (an assumption) gave [[ewu.headroom.ev.charge_assumed.pass_pct_one_unit]]% for one unit. Two units let that home electrify now.
 - **The cold snap.** One host home with two units ([[ewu.coldsnap.moderate.staggered.margin_115.hosts_1.usable_kwh]] kWh) clears [[ewu.coldsnap.moderate.staggered.margin_115.hosts_1.cleared_pct]]% of the
   transformers still over on Feb 7-8, with state of charge carried hour by hour.
 
@@ -66,6 +84,11 @@ portable number is kW per battery.
 | 2. Shift | Default EV homes on flagged transformers to staggered charging | [[ewu.sensitivity.moderate.random.margin_115.shift_fixed_pct]]% fixed |
 | 3. Protect | One or two fit-score host homes, one or two units each ([[ewu.sensitivity.moderate.random.margin_115.batteries_per_protected]] per transformer) | [[ewu.sensitivity.moderate.random.margin_115.protected_pct]]% cleared |
 | 4. Upgrade | Upgrade what nothing else clears | [[ewu.sensitivity.moderate.random.margin_115.upgrade_left_pct]]% |
+
+Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt headline numbers
+its own way, among them the flagged share and its duration, the heat pump and EV shares of overload hours, the
+3 kVA pass shares and the pricing arithmetic behind the [[ewu.economics.headline.ladder_share_pct.base]]% ladder share. It did not rerun the battery dispatch or the fit-score host choice, so the battery
+counts ([[ewu.sensitivity.moderate.random.margin_115.batteries_per_protected]] per protected transformer) have not been recomputed independently; that rerun is still open.
 
 **The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
 $[[ewu.economics.battery_vs_upgrade.mid.battery_yearly_usd|,.0f]] a year against $[[ewu.economics.battery_vs_upgrade.mid.upgrade_yearly_usd|,.0f]] for the upgrade they put off (equal life, [[config:prices.discount_rate|.0%]] rate). A battery beats

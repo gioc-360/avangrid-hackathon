@@ -15,25 +15,43 @@ Shifting is the money saver. A battery is the targeted rung for the places shift
 |---|---|---|---|---|
 | Moderate 2030 (EV charging unmanaged) | 42.84% | 26.18% | 11.87% | 3.74% |
 | High 2030 (EV charging unmanaged) | 71.71% | 54.77% | 33.05% | 14.38% |
+| Moderate 2030, over at least 3 hours a year | 28.75% | 16.41% | 6.39% | 1.67% |
+| High 2030, over at least 3 hours a year | 58.38% | 41.27% | 22.2% | 8.4% |
 
-A flag is any hour above 1.2 times the rating; the tool also reports how long and how far. On the
+A flag is any hour above 1.2 times the rating, so the flag is also a duration question.
+In the moderate case at today's peak times 1.15, 37.31% of flagged transformers are over for fewer than
+3 hours a year (median 4 hours). A rule of at least 3 hours over flags 16.41% instead of
+26.18%. Upgrade-all prices every flagged transformer at $15,000 (mid), even one over for a single hour a year,
+so it is the costliest reading of the flag; Avangrid's own duration rule is an ask. On the
 Feb 7-8 cold snap, with staggered charging, 2.70% of transformers go over, for a median of
 3 hours and 3.02 kWh above the limit.
 
-## WHY: EV timing decides whether a transformer overloads; heat pumps decide when
+## WHY: at the measured heat pump load, EV timing decides whether a transformer overloads; heat pumps decide when
 
 Heat pumps run in 90.52% of overload hours but are the larger cause in only
-4.57%. The heat pump raises the floor all night; the charger is the spike that crosses the limit.
+4.57%. In 76.0% of overload hours it takes both: neither new load alone crosses the
+limit. What decides the program is that 95.38% of overload hours stay under with no new EV load.
+The heat pump raises the floor all night; the charger is the spike that crosses the limit.
 So staggering cuts the moderate case from 26.18% to 5.65% of transformers. A simple timer that
 starts every car at once does not: it nets 24.28% in the moderate case and backfires in the high
 case, from 54.77% to 56.14%, because cars start together on the coldest nights.
 
+That answer leans on one input. The heat pump load is a single slope, 0.05 kW per F below 60 F
+(3.0 kW at 0 F), taken as the median difference between electric-heat homes and the rest, not a heat pump model.
+At 1.5 times that slope, staggering fixes 60.7% instead of 78.56% and the heat pump leads
+26.67% of overload hours; at 2 times, 46.1% and 50.29% (moderate). So the answer holds
+near the measured slope. A heavier heat pump moves work from Shift to Protect and Upgrade; metered heat
+pump homes would settle the slope. A second soft input: the runs draw both devices off one random order, so
+97.91% of new heat pump homes also get a new EV (a labeled assumption). Drawn apart (20.25% overlap),
+25.28% of transformers overload instead of 26.18% and staggering fixes 83.83%, so the answer does not rest on the stacking.
+
 What shifting cannot reach is where a battery earns its place:
 - **Heat pumps alone.** 1.97% of transformers (moderate) and 11.73% (high) overload with no
   new EV at all. These are heat pump nights, and no EV program reaches them.
-- **The 3 kVA rule.** A home may add about 3 kVA without a service study. Only 0.7% of homes
-  without an EV can add a Level 2 charger within it today; one battery unit raises that to 57.2%, two to
-  100%. The battery lets that home electrify now.
+- **The 3 kVA rule.** A home may add about 3 kVA without a service study. With a charge as long as the
+  measured mean session (3.78 hours from 18:00, an assumed start), only 0.5% of homes without
+  an EV can add a Level 2 charger within it today; one battery unit raises that to 40.6%, two to
+  100%. The older 2-hour charge (an assumption) gave 57.2% for one unit. Two units let that home electrify now.
 - **The cold snap.** One host home with two units (20.16 kWh) clears 89.88% of the
   transformers still over on Feb 7-8, with state of charge carried hour by hour.
 
@@ -66,6 +84,11 @@ portable number is kW per battery.
 | 2. Shift | Default EV homes on flagged transformers to staggered charging | 20.57% fixed |
 | 3. Protect | One or two fit-score host homes, one or two units each (1.42 per transformer) | 5.23% cleared |
 | 4. Upgrade | Upgrade what nothing else clears | 0.42% |
+
+Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt headline numbers
+its own way, among them the flagged share and its duration, the heat pump and EV shares of overload hours, the
+3 kVA pass shares and the pricing arithmetic behind the 51.92% ladder share. It did not rerun the battery dispatch or the fit-score host choice, so the battery
+counts (1.42 per protected transformer) have not been recomputed independently; that rerun is still open.
 
 **The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
 $1,720 a year against $1,209 for the upgrade they put off (equal life, 7% rate). A battery beats

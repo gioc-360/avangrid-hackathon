@@ -24,7 +24,7 @@ program's rule from config: the home must have every flag the rule names and non
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
 Across all 33,757 usable homes, 69.07% qualify for at least one program.
 
-Code: `ewu/inventory.py:53 homes[needs].all`, `config/ewu.yaml:139 managed_charging:`,
+Code: `ewu/inventory.py:53 homes[needs].all`, `config/ewu.yaml:142 managed_charging:`,
 `tests/test_inventory.py:50 def test_every_program_is_exactly_its_config_rule`,
 `tests/test_inventory.py:61 def test_changing_a_config_rule_changes_eligibility`.
 
@@ -37,7 +37,7 @@ meter listed under two transformers; `bin/ewu screen --map file.csv` runs the sa
 group sizes handled in batches.
 
 Code: `ewu/feeders.py:26 def build_transformers`, `ewu/feeders.py:41 def load_map`,
-`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:127 "--map"`,
+`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:136 "--map"`,
 `tests/test_screen.py:60 def test_a_real_map_with_uneven_transformers_runs`,
 `tests/test_stress.py:76 def test_no_home_sits_in_two_transformers`.
 
@@ -49,7 +49,7 @@ its load passes 1.2 times that rating. Sizing is the input we know least, so eve
 as the margin rises. Ratings are in kW at unity power factor, which the code labels as an assumption.
 
 Code: `ewu/feeders.py:58-60 dtype=np.float64) * margin`, `ewu/stress.py:74-80 ceiling = (limit * np.asarray(rating_kw))`,
-`config/ewu.yaml:40 sizing_margins:`, `config/ewu.yaml:45 overload_limit:`,
+`config/ewu.yaml:43 sizing_margins:`, `config/ewu.yaml:48 overload_limit:`,
 `tests/test_stress.py:94 def test_overloaded_share_never_rises_as_margin_rises`.
 
 ### Q5. Where does the 2030 load come from?
@@ -58,34 +58,43 @@ Adopters are drawn from homes that do not have the device today and are not vaca
 15% a heat pump in the moderate scenario. Each new EV charges on the days and at the start hours and lengths
 measured from real Level 2 sessions in this data, at 7.2 kW. Each new heat pump adds 0.05 kW for every degree
 below the balance point, from the measured cold-weather slope. Transformer load is exactly today's load plus the
-two adds, which a test checks.
+two adds, which a test checks. Both devices are drawn off one random order per seed, so 97.91% of new heat pump
+homes also get a new EV. That stacking is a labeled assumption in config; with heat pump adopters drawn apart
+(20.25% also get an EV), 25.28% of transformers overload instead of 26.18% and staggering fixes 83.83% of them
+instead of 78.56%, so the answer does not rest on it.
 
-Code: `ewu/adoption.py:37 def measure_ev_sessions`, `ewu/adoption.py:61 def pick_adopters`,
-`ewu/adoption.py:99-103 def heat_pump_kw`, `ewu/stress.py:98 total = parts["base"] + parts["ev"] + parts["hp"]`,
+Code: `ewu/adoption.py:39 def measure_ev_sessions`, `ewu/adoption.py:63 def pick_adopters`,
+`ewu/adoption.py:71 adopters_share_one_order`, `config/ewu.yaml:34 adopters_share_one_order:`,
+`ewu/adoption.py:103-107 def heat_pump_kw`, `ewu/stress.py:98 total = parts["base"] + parts["ev"] + parts["hp"]`,
 `tests/test_stress.py:40 def test_loading_equals_base_plus_ev_plus_heat_pump_adds`.
 
 ### Q6. Your teammate says most overloads are heat pump nights, yet EV staggering fixes most of them. Which is it?
 
 Both, once timing is separated from cause. Each overload hour's energy above the limit is split between the EV
 and the heat pump by their effect averaged over both orders of arrival (a two-load Shapley value), after today's
-load takes only what it would put over alone. Heat pumps are running in 90.52% of overload hours, but the EV is
-the larger cause in 95.43% of them, so moving EV charging fixes most overloads. Transformers that overload on
-heat pumps alone, 1.97% of all transformers, cannot be fixed by any charging program.
+load takes only what it would put over alone. Heat pumps are running in 90.52% of overload hours. In 76.0% of
+them neither new load alone would cross the limit, so it takes both and the split gives them equal shares; the
+EV is strictly the larger cause in 19.42% and the heat pump in 4.57%. What decides the program is that 95.38% of
+overload hours stay under the limit with no new EV load, so moving EV charging fixes most overloads. Transformers
+that overload on heat pumps alone, 1.97% of all transformers, cannot be fixed by any charging program. (An
+earlier answer read the "EV at least as large" count, 95.43%, as "EV larger"; the number review caught it.)
 
-Code: `ewu/attribution.py:31-38 def fair_shares`, `ewu/attribution.py:56 still_over = ((base + hp) > ceiling[:, None])`,
+Code: `ewu/attribution.py:35-42 def fair_shares`, `ewu/attribution.py:60 still_over = ((base + hp) > ceiling[:, None])`,
+`ewu/attribution.py:61 needs_both = (base[t, h] + ev[t, h] <= limit)`,
 `tests/test_attribution.py:44 def test_fair_split_adds_up_to_the_energy_above_the_limit`.
 
 ### Q7. What does staggered charging do, and does it lose any energy?
 
-Each EV on a transformer gets its own start slot in the overnight window, ranked among that transformer's EVs,
+Each EV on a transformer gets its own start slot in the overnight window, ranked among that transformer's EVs
+(round robin once a transformer has more EVs than hours in the window),
 and charges at half power until the same energy is in. Half power halves the spike and separate slots stop two
 cars stacking. The energy each session delivers is computed before it is moved, and a test checks that every
 home gets the same energy in every mode. Staggering cuts overloaded transformers from 26.18% to 5.65%.
 
 Code: `ewu/shift.py:60 def stagger_slots`, `ewu/shift.py:76 config_value("shift.stagger_power_share", config) * charger_kw`,
 `ewu/shift.py:80 energy = delivered_hours(ev_sessions) * charger_kw`,
-`tests/test_attribution.py:65 def test_shifting_moves_ev_energy_and_loses_none`,
-`tests/test_attribution.py:96 def test_staggered_evs_on_one_transformer_start_in_different_slots`.
+`tests/test_attribution.py:83 def test_shifting_moves_ev_energy_and_loses_none`,
+`tests/test_attribution.py:114 def test_staggered_evs_on_one_transformer_start_in_different_slots`.
 
 ### Q8. Is the battery model physical, or does it just subtract kW?
 
@@ -176,5 +185,5 @@ runs one of them). A test requires the seeds to agree on the overloaded share wi
 the widest gap in any cell is 1.37 points. `make prototype`
 rebuilds every output and the demo page from the processed data.
 
-Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:161 seeds:`,
+Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:177 seeds:`,
 `tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:33 prototype:`.

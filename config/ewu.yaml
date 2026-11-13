@@ -31,6 +31,9 @@ scenarios:
                            quote: "held 2+ hours"}
     ev_neutral_day_low_f: {value: 55, unit: F daily mean, source: "repo:analysis/classify.py:33"}
     ev_neutral_day_high_f: {value: 70, unit: F daily mean, source: "repo:analysis/classify.py:33"}
+    adopters_share_one_order: {value: true, unit: EV and heat pump adopters drawn from one random order per seed,
+                               assumption: true,
+                               basis: "M1 drew both devices off one order so high includes moderate; as a side effect most new heat pump homes also get a new EV. The M8 review found it; ewu/robustness.py reruns with false"}
 
 transformer:
   homes_per_transformer: {value: 8, unit: homes, source: "repo:docs/PROTOTYPE_PLAN.md:10",
@@ -156,6 +159,19 @@ programs:
     home_battery: {value: [is_bess_candidate], unit: flags a home must all have, source: "repo:analysis/bess.py:106",
                    quote: "event-window load >=3.5 kW", assumption: true,
                    basis: "the existing battery candidate rule; is_bess_candidate = a battery tier was assigned"}
+
+# Robustness tests added after the M8 review: how far the answers move when a soft input moves.
+robustness:
+  hp_slope_multipliers: {value: [1.0, 1.5, 2.0], unit: multiples of the measured heat pump kW per F, assumption: true,
+                         basis: "the slope is a median difference between electric-heat and other homes at the 200 coldest hours, not a heat pump model; 1.5 and 2 test a heavier heat pump"}
+  flag_min_hours: {value: 3, unit: hours a year above the limit before a transformer counts as flagged, assumption: true,
+                   basis: "a duration rule in place of any single hour over; Avangrid's own rule is an ask"}
+  headroom_ev_start_hour: {value: 18, unit: hour of day (24 h) a new Level 2 charge starts in the 3 kVA test,
+                           source: "repo:analysis/bess.py:170", assumption: true,
+                           basis: "start hour of the existing headroom rule; measured starts spread over the evening"}
+  headroom_ev_hours_assumed: {value: 2, unit: hours of full-power charging in the existing 3 kVA test,
+                              source: "repo:analysis/bess.py:13", quote: "charging 18-20h daily", assumption: true,
+                              basis: "the existing headroom rule charges 18:00 to 19:59; measured sessions run longer"}
 
 checks:
   seeds: {value: 5, unit: random seeds, source: "repo:docs/PROTOTYPE_PLAN.md:198"}

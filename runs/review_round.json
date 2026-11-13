@@ -1,0 +1,226 @@
+{
+  "milestone": "M8",
+  "date": "2026-11-13",
+  "who": "number review and code examiner run by the fix-M8 build agent, which did not write the M0 to M7 code; not a separate agent per role",
+  "method": "number_checks are written by checks/review_numbers.py (own code, no ewu imports, aggregates only); examiner_answers were made by opening every reference a CODE_QA.md answer cites and testing its claim against the code and facts",
+  "number_checks": [
+    {
+      "fact": "data.customers_usable",
+      "fact_value": 33757,
+      "recomputed": 33757.0,
+      "how": "rows of load.npy with 90% of hours read, NaN scan",
+      "match": true,
+      "tolerance": 0
+    },
+    {
+      "fact": "ewu.adoption.ev_session_mean_hours",
+      "fact_value": 3.78,
+      "recomputed": 3.78,
+      "how": "runs found with np.diff on each Level 2 home",
+      "match": true,
+      "tolerance": 0.005
+    },
+    {
+      "fact": "ewu.stress.moderate.random.margin_115.overloaded_pct",
+      "fact_value": 26.18,
+      "recomputed": 26.05,
+      "how": "own simulation, seeds 101-105, both devices off one shuffle",
+      "match": true,
+      "tolerance": 1.5,
+      "own_order": {
+        "fact": "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.overloaded_pct",
+        "fact_value": 25.28,
+        "recomputed": 25.67,
+        "how": "own simulation, heat pump adopters drawn apart",
+        "match": true,
+        "tolerance": 1.5
+      }
+    },
+    {
+      "fact": "ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct",
+      "fact_value": 16.41,
+      "recomputed": 16.25,
+      "how": "own simulation, seeds 101-105, both devices off one shuffle",
+      "match": true,
+      "tolerance": 1.5,
+      "own_order": {
+        "fact": "ewu.robustness.adoption_own_order.moderate.margin_115.flagged_min_hours_pct",
+        "fact_value": 14.2,
+        "recomputed": 14.08,
+        "how": "own simulation, heat pump adopters drawn apart",
+        "match": true,
+        "tolerance": 1.5
+      }
+    },
+    {
+      "fact": "ewu.attribution.moderate.random.margin_115.unmanaged.hours_with_hp_running_pct",
+      "fact_value": 90.52,
+      "recomputed": 90.67,
+      "how": "own simulation, seeds 101-105, both devices off one shuffle",
+      "match": true,
+      "tolerance": 1.5,
+      "own_order": {
+        "fact": "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_with_hp_running_pct",
+        "fact_value": 81.28,
+        "recomputed": 81.12,
+        "how": "own simulation, heat pump adopters drawn apart",
+        "match": true,
+        "tolerance": 1.5
+      }
+    },
+    {
+      "fact": "ewu.attribution.moderate.random.margin_115.unmanaged.hours_ev_strictly_larger_pct",
+      "fact_value": 19.42,
+      "recomputed": 19.65,
+      "how": "own simulation, seeds 101-105, both devices off one shuffle",
+      "match": true,
+      "tolerance": 1.5,
+      "own_order": {
+        "fact": "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct",
+        "fact_value": 31.07,
+        "recomputed": 30.64,
+        "how": "own simulation, heat pump adopters drawn apart",
+        "match": true,
+        "tolerance": 1.5
+      }
+    },
+    {
+      "fact": "ewu.headroom.ev.charge_measured_mean.pass_pct_one_unit",
+      "fact_value": 40.6,
+      "recomputed": 40.6,
+      "how": "charging hours only, 3.78 h charge",
+      "match": true,
+      "tolerance": 0.05
+    },
+    {
+      "fact": "ewu.headroom.ev.charge_assumed.pass_pct_one_unit",
+      "fact_value": 57.2,
+      "recomputed": 57.2,
+      "how": "charging hours only, 2 h charge",
+      "match": true,
+      "tolerance": 0.05
+    },
+    {
+      "fact": "ewu.economics.headline.ladder_share_pct.base",
+      "fact_value": 51.92,
+      "recomputed": [
+        51.66,
+        52.05
+      ],
+      "how": "annuity math on the rounded pooled shares, mid prices",
+      "match": true,
+      "tolerance": "fact inside the interval the rounded inputs allow"
+    },
+    {
+      "fact": "ewu.economics.battery_vs_upgrade.mid.tie_unit_usd_equal_life",
+      "fact_value": 7730,
+      "recomputed": [
+        7726.04,
+        7780.64
+      ],
+      "how": "upgrade yearly cost over batteries per cleared times the battery annuity",
+      "match": true,
+      "tolerance": "fact inside the interval the rounded inputs allow"
+    }
+  ],
+  "first_pass_number_checks": {
+    "result": "7 of 10 matched",
+    "how": "same script before the fixes, heat pump adopters drawn apart only, compared with the recorded facts",
+    "mismatches": [
+      {
+        "fact": "ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct",
+        "fact_value": 16.41,
+        "recomputed": 14.07,
+        "cause": "the recorded runs draw EV and heat pump adopters off one random order, so 97.91% of new heat pump homes also get a new EV",
+        "resolution": "labeled: config scenarios.loads.adopters_share_one_order (assumption), and bin/ewu robustness now records the drawn-apart variant; both now match"
+      },
+      {
+        "fact": "ewu.attribution.moderate.random.margin_115.unmanaged.hours_with_hp_running_pct",
+        "fact_value": 90.52,
+        "recomputed": 82.2,
+        "cause": "same adoption-order stacking",
+        "resolution": "same label and variant; both now match"
+      },
+      {
+        "fact": "ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_ev_pct",
+        "fact_value": 95.43,
+        "recomputed": 31.09,
+        "cause": "argmax gives tied hours to the EV; in 76.0% of overload hours neither new load alone crosses the limit and the two shares are equal, so 95.43% means EV at least as large, not EV larger",
+        "resolution": "fixed: ewu/attribution.py now records hours_both_needed_pct and hours_ev_strictly_larger_pct; FINDINGS, CODE_QA Q6 and the business case reworded; the strict share now matches"
+      }
+    ]
+  },
+  "examiner_answers": [
+    {
+      "question": "Q3. There is no meter-to-transformer map. How do you know which homes share a transformer?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "build_transformers permutes homes, cuts groups of k and draws count groups without replacement; load_map refuses a meter under two transformers. Claims hold."
+    },
+    {
+      "question": "Q4. How big is each transformer, and what counts as overloaded?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "rate() is today's group peak times margin, overload_metrics flags any hour above limit x rating; margins and limit read from config; unity power factor is stated in rate's docstring. Config line refs had moved and were updated."
+    },
+    {
+      "question": "Q5. Where does the 2030 load come from?",
+      "first_read_pass": false,
+      "pass": true,
+      "note": "Draw rules and session sampling match the code, but the answer left out that both devices come off one random order, so 97.91% of new heat pump homes also get a new EV. Added, with the drawn-apart result."
+    },
+    {
+      "question": "Q6. Your teammate says most overloads are heat pump nights, yet EV staggering fixes most of them. Which is it?",
+      "first_read_pass": false,
+      "pass": true,
+      "note": "fair_shares is a correct two-load Shapley split, but the answer read hours_lead_ev (argmax, ties to EV) as 'EV larger'. Reworded with the strict share 19.42%, the both-needed share 76.0% and the 95.38% that clear with no new EV."
+    },
+    {
+      "question": "Q7. What does staggered charging do, and does it lose any energy?",
+      "first_read_pass": false,
+      "pass": true,
+      "note": "stagger_slots ranks EVs per transformer modulo the window hours, so a transformer with more EVs than window hours reuses slots; the answer said each gets its own slot. Wording now says round robin. Energy is computed before the move (delivered_hours x charger kW) and the test checks it."
+    },
+    {
+      "question": "Q8. Is the battery model physical, or does it just subtract kW?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "dispatch.py discharges min(load above ceiling, power, charge above floor, host draw when no export), charges only into room under the ceiling, capped by power and free capacity, and stores inn x efficiency. Claims hold."
+    },
+    {
+      "question": "Q11. A battery lasts 15 years and a transformer 30. How do you compare their cost?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "capital_recovery_factor and deferral_value match the stated formulas; every price is read from config; the review script rebuilt 51.92% and the $7,730 tie on its own annuity math."
+    },
+    {
+      "question": "Q12. How do I know a number on the page or in a doc was not typed by hand?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "record() is the one writer; trace_numbers fails a number that matches no fact or config input. Caveat: it matches any of about 1,800 keys at the shown precision, so a typed number can pass by coincidence (in this review a typed 1.5 traced to a sizing margin). The claim as written holds."
+    },
+    {
+      "question": "Q13. Where does customer data go?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "record(private=True) writes outputs/private/facts_private.json, .gitignore line 21 ignores outputs/private/, and the review script prints aggregates only. Claims hold."
+    },
+    {
+      "question": "Q15. Random groups change with the seed. How stable are the results?",
+      "first_read_pass": true,
+      "pass": true,
+      "note": "build_transformers seeds its generator; the widest seed gap in facts is 1.37 points against the 1.5 tolerance in config; the review's own seeds 101 to 105 land within tolerance of every simulated fact."
+    }
+  ],
+  "examiner_pass": {
+    "first_read": 7,
+    "after_fixes": 10,
+    "of": 10
+  },
+  "earlier_verifier_findings": [
+    "heat pump slope sensitivity: fixed by ewu/robustness.py slope variants",
+    "flag duration: fixed by flagged share at 3 or more hours and the one-hour upgrade pricing line",
+    "3 kVA one-unit number: fixed by ewu/headroom.py with the measured session length; 2-hour window labeled in config",
+    "battery counts behind the ladder share not recomputed: labeled as open in FINDINGS and the business case; still open"
+  ]
+}

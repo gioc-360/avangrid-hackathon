@@ -11,6 +11,8 @@ How:  a charging hour is load at least `ev_session_jump_kw` above that day's 25t
       then charges on a day with the measured probability, at `ev_l2_kw`, with a start and length drawn
       together from the measured sessions. Adopters are drawn without replacement from grouped homes that do
       not have the device today and are not vacant; one random order per seed, so high adopters include moderate.
+      With `adopters_share_one_order` true (the recorded runs) EV and heat pump adopters come off the same order,
+      so most new heat pump homes also get a new EV; false gives the heat pump its own order (the M8 variant).
 """
 import numpy as np
 from ewu import config_value
@@ -66,6 +68,8 @@ def pick_adopters(group_homes, homes, scenario, seed, config):
     vacant = homes["is_other_inactive"].to_numpy()
     picks = []
     for device, has_today in (("ev_share", "is_ev_l2"), ("hp_share", "is_electric_heat")):
+        if device == "hp_share" and not config_value("scenarios.loads.adopters_share_one_order", config):
+            order = grouped[np.random.default_rng((seed, 3)).permutation(len(grouped))]
         share = config_value(f"scenarios.{scenario}.{device}", config)
         eligible = order[~homes[has_today].to_numpy()[order] & ~vacant[order]]
         wanted = int(round(share * len(grouped)))

@@ -2,8 +2,9 @@
 
 What: fair_shares() splits the energy above the limit in each overload hour among base, EV and heat pump;
       attribute_overloads() counts overload hours by their lead cause, the shares of energy above the limit,
-      the lead cause of each transformer's worst hour, how many overload hours fall while heat pumps run, and
-      how many hours and transformers clear with no new EV load at all; run_attribution() reruns the M1
+      the lead cause of each transformer's worst hour, how many overload hours fall while heat pumps run,
+      how many hours and transformers clear with no new EV load at all, and how many hours need both new
+      loads (either one alone stays under the limit); run_attribution() reruns the M1
       stress test under unmanaged, timer and staggered EV charging at every sizing margin;
       record_attribution() writes the aggregates to facts.
 Why:  the teammate's case says most overloads are heat pump nights and also that staggering EVs fixes most
@@ -13,7 +14,10 @@ How:  the energy above the limit in an hour is max(load - limit x rating, 0). To
       it is already on the wire: base gets only what it would put over the limit alone. EV and heat pump then
       split the rest by their added effect averaged over both orders of arrival (a two-load Shapley value),
       so the three shares add up to the hour's energy above the limit exactly. An hour's lead cause is the
-      load with the largest share. Seeds are pooled before shares are taken, so shares sum to 100%.
+      load with the largest share; when EV and heat pump shares are equal (whenever neither new load alone
+      would cross the limit, and rarely when both cross by the same kW), argmax gives the hour to the EV, so
+      "EV-led" means "EV at least as large"; the M8 review added the strict and both-needed counts. Seeds are pooled
+      before shares are taken, so shares sum to 100%.
 """
 import sys
 from pathlib import Path
@@ -54,6 +58,9 @@ def attribute_overloads(base, ev, hp, ceiling):
     worst_shares = fair_shares(base[worst_t, worst], ev[worst_t, worst], hp[worst_t, worst], ceiling[worst_t])
     worst_lead = np.stack([worst_shares[s] for s in SOURCES]).argmax(0)
     still_over = ((base + hp) > ceiling[:, None]).any(1)
+    needs_both = (base[t, h] + ev[t, h] <= limit) & (base[t, h] + hp[t, h] <= limit)
+    worst_needs_both = ((base[worst_t, worst] + ev[worst_t, worst] <= ceiling[worst_t])
+                        & (base[worst_t, worst] + hp[worst_t, worst] <= ceiling[worst_t]))
     return {"hours_over": len(t), "transformers": len(ceiling), "overloaded": int(overloaded.sum()),
             "kwh_over_total": float(excess.sum()),
             **{f"hours_lead_{s}": int((lead == i).sum()) for i, s in enumerate(SOURCES)},
@@ -61,7 +68,9 @@ def attribute_overloads(base, ev, hp, ceiling):
             **{f"worst_lead_{s}": int((worst_lead == i).sum()) for i, s in enumerate(SOURCES)},
             "overloaded_without_ev": int((overloaded & still_over).sum()),
             "hours_with_hp_running": int((hp[t, h] > 0).sum()),
-            "hours_clear_without_ev": int((base[t, h] + hp[t, h] <= limit).sum())}
+            "hours_clear_without_ev": int((base[t, h] + hp[t, h] <= limit).sum()),
+            "hours_both_needed": int(needs_both.sum()), "worst_both_needed": int(worst_needs_both.sum()),
+            "hours_ev_strictly_larger": int((shares["ev"] > np.maximum(shares["hp"], shares["base"])).sum())}
 
 
 def run_attribution(inputs, config, seeds, scenarios=stress.SCENARIOS, groupings=feeder_groups.MODES):
@@ -125,6 +134,9 @@ def summarize_runs(runs, config):
             "overloaded_without_ev_of_all_pct": percent_of(a["overloaded_without_ev"], a["transformers"]),
             "hours_with_hp_running_pct": percent_of(a["hours_with_hp_running"], a["hours_over"]),
             "hours_clear_without_ev_pct": percent_of(a["hours_clear_without_ev"], a["hours_over"]),
+            "hours_both_needed_pct": percent_of(a["hours_both_needed"], a["hours_over"]),
+            "hours_ev_strictly_larger_pct": percent_of(a["hours_ev_strictly_larger"], a["hours_over"]),
+            "worst_hour_both_needed_pct": percent_of(a["worst_both_needed"], a["overloaded"]),
             "hours_over_per_transformer": round(a["hours_over"] / a["transformers"], 2)}
         summary[(scenario, grouping, mode)] = cell
     return summary

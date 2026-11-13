@@ -4,7 +4,8 @@ What: `inventory` lists every home's equipment, segment and eligible programs (a
       rows in outputs/private); `screen --scenario moderate --margin 1.15` runs Flag, Shift, Protect, Upgrade
       live on the full data; `coldsnap --date 2026-02-07` runs the battery duration test through the cold
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
-      `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `case` writes
+      `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
+      the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `case` writes
       the one-page business case from facts; `demo` builds the offline 4-step page and opens it.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
       never a customer or a single transformer.
@@ -100,6 +101,14 @@ def run_top_hours_command(args):
     return 0
 
 
+def run_robustness_command(args):
+    from ewu import headroom, robustness
+    robustness.main()
+    print()
+    headroom.main()
+    return 0
+
+
 def run_case_command(args):
     from ewu import business_case
     business_case.main()
@@ -133,6 +142,8 @@ def main(argv=None):
     grid.set_defaults(run=run_sensitivity_command)
     top = commands.add_parser("tophours", help="MW the fit-score batteries cut in the system's top 20 and 50 hours")
     top.set_defaults(run=run_top_hours_command)
+    rob = commands.add_parser("robustness", help="heat pump slope variants, flag durations, 3 kVA test by charge length")
+    rob.set_defaults(run=run_robustness_command)
     case = commands.add_parser("case", help="write docs/BUSINESS_CASE.md with every number filled from facts")
     case.set_defaults(run=run_case_command)
     demo = commands.add_parser("demo", help="build the offline 4-step demo page and open it")

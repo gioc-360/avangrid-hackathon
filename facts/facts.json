@@ -1050,13 +1050,25 @@
   "method": "share x grouped homes"
  },
  "ewu.attribution.grid_seconds": {
-  "value": 35.3,
+  "value": 139.8,
   "unit": "s",
   "script": "ewu/attribution.py",
   "method": "whole attribution and shift grid"
  },
+ "ewu.attribution.high.random.margin_115.staggered.hours_both_needed_pct": {
+  "value": 70.45,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.staggered.hours_clear_without_ev_pct": {
   "value": 70.85,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_ev_strictly_larger_pct": {
+  "value": 0.43,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1127,6 +1139,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.random.margin_115.staggered.worst_hour_both_needed_pct": {
+  "value": 77.03,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.staggered.worst_hour_ev_led_pct": {
   "value": 79.71,
   "unit": "%",
@@ -1139,8 +1157,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.random.margin_115.timer.hours_both_needed_pct": {
+  "value": 64.15,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.timer.hours_clear_without_ev_pct": {
   "value": 90.76,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_ev_strictly_larger_pct": {
+  "value": 26.78,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1211,6 +1241,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.random.margin_115.timer.worst_hour_both_needed_pct": {
+  "value": 38.96,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.timer.worst_hour_ev_led_pct": {
   "value": 99.92,
   "unit": "%",
@@ -1223,8 +1259,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 74.56,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.unmanaged.hours_clear_without_ev_pct": {
   "value": 86.22,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 11.83,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1295,6 +1343,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.random.margin_115.unmanaged.worst_hour_both_needed_pct": {
+  "value": 52.04,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.random.margin_115.unmanaged.worst_hour_ev_led_pct": {
   "value": 98.15,
   "unit": "%",
@@ -1307,8 +1361,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_both_needed_pct": {
+  "value": 63.35,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.staggered.hours_clear_without_ev_pct": {
   "value": 64.42,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_ev_strictly_larger_pct": {
+  "value": 1.11,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1379,6 +1445,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.staggered.worst_hour_both_needed_pct": {
+  "value": 71.89,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.staggered.worst_hour_ev_led_pct": {
   "value": 78.65,
   "unit": "%",
@@ -1391,8 +1463,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_both_needed_pct": {
+  "value": 53.03,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.timer.hours_clear_without_ev_pct": {
   "value": 82.79,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_ev_strictly_larger_pct": {
+  "value": 30.13,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1463,6 +1547,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.timer.worst_hour_both_needed_pct": {
+  "value": 25.16,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.timer.worst_hour_ev_led_pct": {
   "value": 99.96,
   "unit": "%",
@@ -1475,8 +1565,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 64.12,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_clear_without_ev_pct": {
   "value": 78.49,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 14.63,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1547,6 +1649,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.worst_hour_both_needed_pct": {
+  "value": 34.38,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.high.same_segment.margin_115.unmanaged.worst_hour_ev_led_pct": {
   "value": 97.79,
   "unit": "%",
@@ -1559,8 +1667,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_both_needed_pct": {
+  "value": 80.86,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.staggered.hours_clear_without_ev_pct": {
   "value": 81.49,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_ev_strictly_larger_pct": {
+  "value": 0.63,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1631,6 +1751,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.staggered.worst_hour_both_needed_pct": {
+  "value": 83.14,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.staggered.worst_hour_ev_led_pct": {
   "value": 86.67,
   "unit": "%",
@@ -1643,8 +1769,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_both_needed_pct": {
+  "value": 65.5,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.timer.hours_clear_without_ev_pct": {
   "value": 97.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_ev_strictly_larger_pct": {
+  "value": 31.61,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1715,6 +1853,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.timer.worst_hour_both_needed_pct": {
+  "value": 44.15,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.timer.worst_hour_ev_led_pct": {
   "value": 100.0,
   "unit": "%",
@@ -1727,8 +1871,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 76.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.unmanaged.hours_clear_without_ev_pct": {
   "value": 95.38,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 19.42,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1799,6 +1955,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.worst_hour_both_needed_pct": {
+  "value": 50.6,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.random.margin_115.unmanaged.worst_hour_ev_led_pct": {
   "value": 99.39,
   "unit": "%",
@@ -1811,8 +1973,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_both_needed_pct": {
+  "value": 76.2,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_clear_without_ev_pct": {
   "value": 77.59,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_ev_strictly_larger_pct": {
+  "value": 1.42,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1883,6 +2057,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.worst_hour_both_needed_pct": {
+  "value": 80.34,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.staggered.worst_hour_ev_led_pct": {
   "value": 87.63,
   "unit": "%",
@@ -1895,8 +2075,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_both_needed_pct": {
+  "value": 56.02,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.timer.hours_clear_without_ev_pct": {
   "value": 94.21,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_ev_strictly_larger_pct": {
+  "value": 38.3,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -1967,6 +2159,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.worst_hour_both_needed_pct": {
+  "value": 32.52,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.timer.worst_hour_ev_led_pct": {
   "value": 99.95,
   "unit": "%",
@@ -1979,8 +2177,20 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 68.28,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_clear_without_ev_pct": {
   "value": 92.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 23.92,
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
@@ -2051,6 +2261,12 @@
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.worst_hour_both_needed_pct": {
+  "value": 33.57,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
  "ewu.attribution.moderate.same_segment.margin_115.unmanaged.worst_hour_ev_led_pct": {
   "value": 99.59,
   "unit": "%",
@@ -2064,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 7.2,
+  "value": 10.8,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -6823,6 +7039,60 @@
   "script": "ewu/fitscore.py",
   "method": "days holding at least one top hour"
  },
+ "ewu.headroom.ev.charge_assumed.pass_pct_none": {
+  "value": 0.7,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 2 h at full power"
+ },
+ "ewu.headroom.ev.charge_assumed.pass_pct_one_unit": {
+  "value": 57.2,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 2 h at full power"
+ },
+ "ewu.headroom.ev.charge_assumed.pass_pct_two_units": {
+  "value": 100.0,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 2 h at full power"
+ },
+ "ewu.headroom.ev.charge_measured_mean.pass_pct_none": {
+  "value": 0.5,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 3.78 h at full power"
+ },
+ "ewu.headroom.ev.charge_measured_mean.pass_pct_one_unit": {
+  "value": 40.6,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 3.78 h at full power"
+ },
+ "ewu.headroom.ev.charge_measured_mean.pass_pct_two_units": {
+  "value": 100.0,
+  "unit": "% of homes without an EV today",
+  "script": "ewu/headroom.py",
+  "method": "new peak within today's peak + 3 kVA (read as kW); charge 3.78 h at full power"
+ },
+ "ewu.headroom.ev.homes_tested": {
+  "value": 29793,
+  "unit": "homes",
+  "script": "ewu/headroom.py",
+  "method": "no EV today, not vacant or seasonal"
+ },
+ "ewu.headroom.ev.measured_mean_hours": {
+  "value": 3.78,
+  "unit": "hours",
+  "script": "ewu/headroom.py",
+  "method": "mean measured Level 2 session, used as the charge length"
+ },
+ "ewu.headroom.seconds": {
+  "value": 32.1,
+  "unit": "s",
+  "script": "ewu/headroom.py",
+  "method": ""
+ },
  "ewu.inventory.any_program_pct": {
   "value": 69.07,
   "unit": "% of homes",
@@ -7219,6 +7489,864 @@
   "script": "ewu/inventory.py",
   "method": ""
  },
+ "ewu.robustness.adoption_one_order.high.margin_115.flagged_min_hours_pct": {
+  "value": 41.27,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.hp_homes_with_new_ev_pct": {
+  "value": 97.92,
+  "unit": "% of new heat pump homes",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.staggered.fixed_pct": {
+  "value": 59.43,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 74.56,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 86.22,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 11.83,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 13.61,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 94.81,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.overloaded_pct": {
+  "value": 54.77,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 11.73,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.high.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 1.85,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.flagged_min_hours_pct": {
+  "value": 16.41,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.hp_homes_with_new_ev_pct": {
+  "value": 97.91,
+  "unit": "% of new heat pump homes",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.staggered.fixed_pct": {
+  "value": 78.56,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 76.0,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 95.38,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 19.42,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 4.57,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 90.52,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.overloaded_pct": {
+  "value": 26.18,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 1.97,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_one_order.moderate.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 0.61,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters one order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.flagged_min_hours_pct": {
+  "value": 42.33,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.hp_homes_with_new_ev_pct": {
+  "value": 35.36,
+  "unit": "% of new heat pump homes",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.staggered.fixed_pct": {
+  "value": 63.63,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 66.91,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 82.36,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 15.53,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 17.56,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 92.8,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.overloaded_pct": {
+  "value": 57.74,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 11.23,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.high.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 4.36,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.flagged_min_hours_pct": {
+  "value": 14.2,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.hp_homes_with_new_ev_pct": {
+  "value": 20.25,
+  "unit": "% of new heat pump homes",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.staggered.fixed_pct": {
+  "value": 83.83,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 60.6,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 91.65,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 31.07,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 8.33,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 81.28,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.overloaded_pct": {
+  "value": 25.28,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 1.85,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.adoption_own_order.moderate.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 2.51,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump adopters own order"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_105.flagged_min_hours_pct": {
+  "value": 58.38,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_105.flagged_pct": {
+  "value": 71.71,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_105.median_hours_of_flagged": {
+  "value": 13.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_105.short_of_flagged_pct": {
+  "value": 18.59,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_115.flagged_min_hours_pct": {
+  "value": 41.27,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_115.flagged_pct": {
+  "value": 54.77,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_115.median_hours_of_flagged": {
+  "value": 8.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_115.short_of_flagged_pct": {
+  "value": 24.64,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_130.flagged_min_hours_pct": {
+  "value": 22.2,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_130.flagged_pct": {
+  "value": 33.05,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_130.median_hours_of_flagged": {
+  "value": 5.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_130.short_of_flagged_pct": {
+  "value": 32.84,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_150.flagged_min_hours_pct": {
+  "value": 8.4,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_150.flagged_pct": {
+  "value": 14.38,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_150.median_hours_of_flagged": {
+  "value": 3.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.high.random.margin_150.short_of_flagged_pct": {
+  "value": 41.59,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_105.flagged_min_hours_pct": {
+  "value": 28.75,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_105.flagged_pct": {
+  "value": 42.84,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_105.median_hours_of_flagged": {
+  "value": 5.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_105.short_of_flagged_pct": {
+  "value": 32.9,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct": {
+  "value": 16.41,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_115.flagged_pct": {
+  "value": 26.18,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_115.median_hours_of_flagged": {
+  "value": 4.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_115.short_of_flagged_pct": {
+  "value": 37.31,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_130.flagged_min_hours_pct": {
+  "value": 6.39,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_130.flagged_pct": {
+  "value": 11.87,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_130.median_hours_of_flagged": {
+  "value": 3.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_130.short_of_flagged_pct": {
+  "value": 46.15,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_150.flagged_min_hours_pct": {
+  "value": 1.67,
+  "unit": "% of transformers over at least 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_150.flagged_pct": {
+  "value": 3.74,
+  "unit": "% of transformers over at least 1 hour a year",
+  "script": "ewu/robustness.py",
+  "method": "mean of seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_150.median_hours_of_flagged": {
+  "value": 2.0,
+  "unit": "hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.flag_hours.moderate.random.margin_150.short_of_flagged_pct": {
+  "value": 55.26,
+  "unit": "% of flagged transformers over fewer than 3 hours a year",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.staggered.fixed_pct": {
+  "value": 59.43,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.staggered.overloaded_pct": {
+  "value": 22.35,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 74.56,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 86.22,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 11.83,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 13.61,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 94.81,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.overloaded_pct": {
+  "value": 54.77,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 11.73,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.high.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 1.85,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.kw_at_0f": {
+  "value": 3.0,
+  "unit": "kW per heat pump at 0 F",
+  "script": "ewu/robustness.py",
+  "method": ""
+ },
+ "ewu.robustness.hp_slope_x100.kw_per_degf": {
+  "value": 0.05,
+  "unit": "kW per F below the balance point",
+  "script": "ewu/robustness.py",
+  "method": "config slope x 1.0"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.staggered.fixed_pct": {
+  "value": 78.56,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.staggered.overloaded_pct": {
+  "value": 5.65,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 76.0,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 95.38,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 19.42,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 4.57,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 90.52,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.overloaded_pct": {
+  "value": 26.18,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 1.97,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x100.moderate.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 0.61,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.staggered.fixed_pct": {
+  "value": 37.91,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.staggered.overloaded_pct": {
+  "value": 40.31,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 53.27,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 56.53,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 3.4,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 43.33,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 98.43,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.overloaded_pct": {
+  "value": 64.7,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 31.56,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.high.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 13.8,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.kw_at_0f": {
+  "value": 4.5,
+  "unit": "kW per heat pump at 0 F",
+  "script": "ewu/robustness.py",
+  "method": ""
+ },
+ "ewu.robustness.hp_slope_x150.kw_per_degf": {
+  "value": 0.075,
+  "unit": "kW per F below the balance point",
+  "script": "ewu/robustness.py",
+  "method": "config slope x 1.5"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.staggered.fixed_pct": {
+  "value": 60.7,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.staggered.overloaded_pct": {
+  "value": 12.99,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 66.88,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 73.22,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 6.44,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 26.67,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 96.81,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.overloaded_pct": {
+  "value": 32.74,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 8.53,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x150.moderate.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 5.19,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 1.5, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.staggered.fixed_pct": {
+  "value": 23.75,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.staggered.overloaded_pct": {
+  "value": 55.51,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 34.4,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 35.59,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 1.26,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 64.34,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 99.37,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.overloaded_pct": {
+  "value": 72.63,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 49.41,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.high.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 33.61,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.kw_at_0f": {
+  "value": 6.0,
+  "unit": "kW per heat pump at 0 F",
+  "script": "ewu/robustness.py",
+  "method": ""
+ },
+ "ewu.robustness.hp_slope_x200.kw_per_degf": {
+  "value": 0.1,
+  "unit": "kW per F below the balance point",
+  "script": "ewu/robustness.py",
+  "method": "config slope x 2.0"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.staggered.fixed_pct": {
+  "value": 46.1,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.staggered.overloaded_pct": {
+  "value": 21.42,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_both_needed_pct": {
+  "value": 47.34,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 49.65,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_ev_strictly_larger_pct": {
+  "value": 2.38,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 50.29,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 98.78,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.overloaded_pct": {
+  "value": 39.39,
+  "unit": "% of transformers",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 17.29,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.hp_slope_x200.moderate.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 15.25,
+  "unit": "%",
+  "script": "ewu/robustness.py",
+  "method": "pooled seeds, random grouping, heat pump slope x 2.0, rating = today's peak x base margin"
+ },
+ "ewu.robustness.seconds": {
+  "value": 420.1,
+  "unit": "s",
+  "script": "ewu/robustness.py",
+  "method": "slope variants, flag durations, adoption order"
+ },
  "ewu.screen.high.random.margin_115.batteries": {
   "value": 882,
   "unit": "batteries",
@@ -7424,7 +8552,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 5.9,
+  "value": 8.6,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"
