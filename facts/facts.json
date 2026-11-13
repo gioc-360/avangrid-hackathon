@@ -14659,7 +14659,7 @@
   "method": "load_present.npy on disk, header included"
  },
  "specs.matrix.full_load_seconds": {
-  "value": 0.18,
+  "value": 0.7,
   "unit": "s",
   "script": "deck/engine_specs.py",
   "method": "np.load of the whole matrix plus one sum, warm disk cache"
@@ -14689,7 +14689,7 @@
   "method": "rows of outputs/bess_candidates.csv"
  },
  "specs.output.demo_page_bytes": {
-  "value": 2000320,
+  "value": 2000335,
   "unit": "bytes",
   "script": "deck/engine_specs.py",
   "method": "outputs/demo/ewu_demo.html, one offline file"

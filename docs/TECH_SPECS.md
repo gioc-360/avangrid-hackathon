@@ -10,9 +10,9 @@ Every number here was measured by deck/engine_specs.py on this machine and writt
 |---|---|---|
 | Language | Python 3.12.0 | specs.python_version |
 | Key packages | numpy 2.5.4, pandas 3.1.1, polars 2.1.0, pyarrow 26.0.1, scipy 1.18.1, scikit-learn 1.9.1, PyYAML 6.0.3, openpyxl 3.1.5, matplotlib 3.11.2, python-pptx 1.0.2, pytest 9.2.0 | specs.package.* |
-| Engine code | 2,799 lines in 21 tracked ewu modules, longest 200 (cap 200) | specs.code.engine.* |
+| Engine code | 3,262 lines in 24 ewu modules, none over 200 | specs.code.engine.* |
 | Pipeline code | 1,013 lines in 8 analysis modules | specs.code.analysis.* |
-| Checks and tests | 1,539 lines in 10 check files; 1,626 lines in 16 test files | specs.code.checks.*, specs.code.tests.* |
+| Checks and tests | 1,539 lines in 10 check files; 1,750 lines in test files | specs.code.checks.*, specs.code.tests.* |
 | Tests | 132 collected by pytest | specs.tests_collected |
 | Check scripts | 9 (checks/*.py, less the battery_model helper) | specs.check_scripts |
 | make check | exit 0 in 21 s | specs.make_check.* |
