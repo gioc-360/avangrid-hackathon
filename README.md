@@ -16,6 +16,39 @@ make check DECK=deck.pptx     # also trace every number and quote on every slide
 
 Data is not in the repo (event-confidential). Point `DATA=` at the folder holding the four zips.
 
+## Run the EWU tool
+
+Electrify Without Upgrade (EWU) finds the neighborhood transformers that 2030 EVs and heat pumps will push
+over their limit and gives each the cheapest fix. It runs offline on the processed meter data; every command
+prints aggregates only. Run it as `bin/ewu` (`python -I -m ewu` does not work, because `-I` keeps the repo
+off the import path).
+
+```
+bin/ewu --help                                     # list the commands
+bin/ewu inventory                                  # Parts 1 and 2: equipment, segment, eligible programs per home
+bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Protect, Upgrade on the full data, live
+bin/ewu screen --map meters.csv                    # same, on a real map: meter_id, transformer_id, kva
+bin/ewu coldsnap --date 2026-02-07                 # battery hour by hour through the Feb 7-8 cold snap
+bin/ewu tophours                                   # MW the battery hosts cut in the system's top 20 and 50 hours
+bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
+bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
+bin/ewu demo                                       # the offline 4-step demo page
+make prototype                                     # rebuild all of the above from data/processed
+```
+
+```
+┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+│ meter data   │──▶│ FLAG         │──▶│ SHIFT        │──▶│ PROTECT      │──▶│ UPGRADE      │
+│ + map (opt.) │   │ stress.py    │   │ shift.py     │   │ fitscore.py  │   │ economics.py │
+│ inventory.py │   │ any hour over│   │ staggered EV │   │ dispatch.py  │   │ what is left │
+└──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
+                          every number ──▶ analysis/facts.py record() ──▶ facts/facts.json
+```
+
+Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
+one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
+traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
+
 ## How the pieces fit
 
 | Step | Script | Output |

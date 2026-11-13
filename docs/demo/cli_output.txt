@@ -11,4 +11,4 @@ Staggering newly overloads 0.07% of transformers; they join Protect or Upgrade.
 Batteries: 213 units, 1.43 per protected transformer.
 Ladder cost as % of upgrading every flagged transformer (equal life): low prices 69.09%, mid prices 51.79%, high prices 43.14%
 
-2.6 s, full meter data, aggregates only
+5.9 s, full meter data, aggregates only

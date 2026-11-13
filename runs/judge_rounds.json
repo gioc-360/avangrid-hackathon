@@ -1,0 +1,298 @@
+{
+ "anchor": {
+  "ref": "A1",
+  "title": "System-Peak Battery Fit Score",
+  "weighted": 4.14,
+  "scores": {
+   "value": 4.56,
+   "analytics": 3.82,
+   "presentation": 3.94,
+   "innovation": 3.92
+  },
+  "source": "runs/anchors.json entry A1; scores are the 9-judge means from the 2026-11-12 proposal round"
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "date": "2026-11-13",
+   "judged": [
+    "runs/business_case_team_v2.txt (the teammate one-pager)",
+    "docs/COMPANY_BRIEF.md",
+    "docs/demo/cli_output.txt",
+    "outputs/readout.html",
+    "bin/ewu --help",
+    "challenge PDFs, rubric, kickoff deck, office-hours transcript"
+   ],
+   "weights": {
+    "value": 0.4,
+    "analytics": 0.35,
+    "presentation": 0.15,
+    "innovation": 0.1
+   },
+   "judges": [
+    {
+     "seat": "judge1",
+     "role": "Scott Bochenek, Program Director, Load Research (judge)",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "There's real load research underneath this, and the pitch on top doesn't hold up against it. I'd score it 3.28 against A1's 4.14.\n\nWhat I liked. The classification is the most honest I've seen on the heat question, the one I told you we struggle with. You found 3,793 electric heat homes, put a range on it (\"3,793 to 5,496 depending on threshold\"), and admitted \"Heat pump vs resistance cannot be split reliably\" (AUC 0.762). You also found \"Only 29.3% of listed EV homes show home Level 2 charging\". Weather adding 3.3 AUC points for heat pumps answers one of our consideration questions directly. The 3 kVA result is clean and uses our own rule: \"only 0.7% can add a Level 2 EV within 3 kVA today; one unit raises that to 57%, two to 100%.\" That is a battery story I can take to Customer Programs. \"If every managed EV starts at 11pm, overloads rise\" is a useful warning for program design.\n\nNow the problem. The business case says \"Transformers overloaded with no action 9.8%\" and puts Electrify Without Upgrade at \"$27M\". Your own tool, run live, prints \"Flag over the limit, EV charging unmanaged 26.00\". Your FINDINGS table puts the same two items at \"26.18% | 9.8%\" and \"$226.8M present value | $27M\". It also says \"Batteries add cost wherever they are used, so the ladder costs more than shift-then-upgrade in every cell.\" Yet the one-pager says \"Every battery avoids an upgrade, then cuts the peak\" and \"the same battery beats the upgrade.\" Both can't be right. The headline \"73% driven by winter heat pump nights\" is contradicted by your own attribution: \"4.57% led by the heat pump.\"\n\nThe transformers are \"8 random homes\", not a feeder. \"The grid is sized for its 78.5 MW peak\" is your 33,757-home sample, not our grid. You cite 2 July but never tell me how many of the system top 20 or 50 hours a battery actually covers. That was the one thing I asked for (\"how many of those top hours can your solution reduce\"). A1 answers it directly. Here the battery candidates are still \"loaded at least 3.5 kW through the season's event hours on 9 of 10 event days\", the flat-high shape I said a battery covers poorly. Small, but it shows: the readout gives the winter peak as \"8 February\" at \"7.1F\" in one place and \"Feb 8, 2.1F\" in another, and I gave you February 7th. For reproducibility, the README never mentions bin/ewu, and \"python -m ewu\" fails.",
+     "weakest": "Proposed Solution & Business Value. The case's own code doesn't reproduce its headline numbers: 9.8% overloaded against the code's 26.18%, $27M against $226.8M, and \"battery beats the upgrade\" against the code's tie price of $7,730 per unit, below the $9,000 to $13,000 assumed price range. It also never measures battery coverage of the system top hours (2 July, 7 February).",
+     "hardest_question": "Your one-pager says 9.8% of transformers overload and the fix costs $27M. Your own tool says 26% and $226.8M, and that batteries cost more than the upgrade they replace in every case. Which number do you want me to take to our planners? And how many of the top 50 system hours does one of your two-unit batteries actually cut, on a transformer you built from 8 random homes?",
+     "one_fix": "Rebuild the business case from the code's outputs: 26.18% flagged, 78.56% fixed by staggered charging, $226.8M against $436.9M, and a battery tie price of $7,730 per unit. Cut \"Every battery avoids an upgrade\" and the 73% heat-pump claim. Add one exhibit: the system top 20 and 50 hours, checked against July 2 and February 7, and the share of each that the fit-score batteries cut."
+    },
+    {
+     "seat": "judge2",
+     "role": "Judge, Senior Manager, Clean Energy Policy - Energy Storage, 2026 Avangrid Energy Innovation Hackathon",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "This scores 3.28 against A1's 4.14. The framing is the best storage-policy story in the room, but the team's own prototype contradicts the one-pager's money claim. Before this goes in front of judges, either rebuild the business case on the prototype's numbers or drop the claim that batteries save capital.\n\nWhat I like. \"Flag, Shift, Protect, Upgrade\" is a ladder a utility could actually run, and it starts with the cheapest option. The 3 kVA finding is the strongest storage insight I have seen in this field: \"only 0.7% can add a Level 2 EV within 3 kVA today; one unit raises that to 57%, two to 100%.\" The team also admits \"A battery fleet for the peak alone does not pay ... 0.85 of cost\". Putting the battery on winter nights fits Scott's doubt about winter thermostat events [08:03]. The cold-snap dispatch runs on February 7, the winter peak date Scott gave. Under the pitch, Parts 1 and 2 are strong. The EV and heat-pump probabilities come from a positive-unlabeled model (AUC 0.81 for EV, 0.76 for heat pump). Solar recall is 92.2% with confidence intervals. The team says plainly that clustering fails (silhouette 0.125). Every number on the demo page is tied to a fact the code wrote.\n\nWhat sinks it. I ran the tool myself.\n\n1. The prototype does not reproduce the business case. \"bin/ewu screen\" for moderate 2030 flags 26.00% of transformers. The one-pager says 9.8%. For high 2030 the tool flags 56.07% and the one-pager says 29.8%. The team's own FINDINGS.md lists both columns and says \"the cause of each gap is not known.\"\n\n2. The tool says batteries lose to the upgrade. \"bin/ewu sensitivity\" prints \"Battery vs upgrade, mid prices, per cleared transformer: 1.42 batteries, $1,720/yr vs upgrade $1,209/yr\". Batteries lose at low and high prices too. It also prints \"Shift, then upgrade (no batteries): 43.47%\" against 51.92% for the full ladder, so adding batteries makes the plan more expensive. That directly contradicts \"Every battery avoids an upgrade\" and \"the same battery beats the upgrade.\"\n\n3. The NYSEG totals do not match. The one-pager says $27M for the ladder against $164M to upgrade everything. The tool says $226.8M against $436.9M. In the high case the tool shows the ladder at 75% to 114% of the cost of upgrading everything.\n\n4. Two of the one-pager's claims fail in its own tool. On \"73% of overloads driven by winter heat pump nights\", the rebuild finds only 4.57% of overloads led by the heat pump. On \"Simple timers backfire\", at today's peak times 1.15 the timer lowers overloads from 26.18% to 24.28%.\n\n5. Numbers drift between documents. Electric heat's share of the winter peak is 27% in the one-pager, 31.4% in the readout and 21.1% in the segment table. Electric heat homes are 5,190 in one place and 3,793 in another. Priority battery homes are 2,610 in one place and 5,341 in another.\n\n6. The transformers are synthetic. They are random groups of 8 homes, and Scott said \"today there's not a lot of bottleneck\" [09:19]. The local overload story is a 2030 projection built on invented grouping.\n\nAgainst A1. A1 answers the exact question Scott asked twice: \"how many of those top hours can your solution reduce\" [15:28], with peaky homes ranked above flat-high ones. The one-pager never reports MW cut in the system's top 20 to 50 hours. A1 wins on fit to what the judges asked and on internal consistency.\n\nSmaller points. There is no deck yet, and the rubric says only the deck is scored. The CLI as documented, \"python -I -m ewu --help\", fails with \"No module named ewu\". Only bin/ewu works, and the README never mentions ewu.",
+     "weakest": "The business case's central value claim, that batteries placed on overloaded transformers beat the upgrade and save $137M to $363M, is refuted by the team's own tool. That tool prints battery cost of $1,720 a year against $1,209 a year for the upgrade, and shift-then-upgrade without batteries at 43.47% against 51.92% for the ladder. The headline overload rates (9.8% and 29.8% against the tool's 26% and 56%) do not reproduce either.",
+     "hardest_question": "Your own sensitivity run says a protected transformer's batteries cost $1,720 a year against $1,209 for the upgrade, and that shifting EV charging and then upgrading, with no batteries at all, costs less than your full ladder (43.47% against 51.92%). So why should Avangrid lease a single battery under this program, and how many MW does it cut in the system's top 20 to 50 hours on July 2 and February 7?",
+     "one_fix": "Rebuild the one-pager on the prototype's numbers (26% and 56% flagged; $226.8M against $436.9M). Recast the battery as the tool for the cases its own outputs still support: getting a home under the 3 kVA rule so it can electrify now (0.7% of homes qualify without a battery, 57% with one unit, 100% with two), and winter top-hour relief where thermostat events will not work. Drop \"every battery avoids an upgrade\". Add the number Scott asked for: MW cut in the system's top 20 to 50 hours, checked against July 2 and February 7, with a peaky-versus-flat fit score that sets the candidate threshold."
+    },
+    {
+     "seat": "judge3",
+     "role": "Andrew Leja, Customer Programs & Products Manager (judge), scoring the one-page business case plus the EWU prototype (demo page shots, CLI, readout)",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "The four-step ladder (Flag, Shift, Protect, Upgrade) is the most program-ready framing I have seen. It names the offer, the price and the cost at each step, and \"Simple timers backfire; smart staggered charging works\" (11pm starts push overloads from 9.8% to 16%) is a finding I would take straight to managed-charging design. But the pitch's spine, \"Every battery avoids an upgrade, then cuts the peak\" and \"About 1.7 units (about $11,500 before NYSERDA) replace a $15,000 upgrade\", is contradicted by the team's own prototype. Step 4 of the demo says: \"Batteries alone cost more than the upgrade at these prices... In the base case, shifting is what saves the money; batteries add cost.\" The demo also prices the full ladder at 51.92% of upgrade-all, which is more than shift-then-upgrade at 43.47%. The headline numbers do not match the tool either. The one-pager says 9.8% of transformers are overloaded under the moderate scenario and the program saves $164M vs $27M. The demo, on the same definition (rating = peak x 1.15, over 1.20x), says 26.18%, and its NYSEG figures are $436.9M vs $226.8M. None of 9.8, 29.8, 8.7, 19.5, 5,190 or 1,331 appears in facts.json, in a repo whose whole pitch is that every number traces back to its source. Every overload number rests on synthetic transformers (\"8 random homes\"). The demo's own sizing sweep moves the flagged share from 42.84% to 3.74%, so \"By 2030, electrification overloads 10% to 30%\" is a modeling choice, not a finding. A1 does what Scott literally asked: it counts the NYISO top 20/50/100 hours, dispatches the battery into them and draws a supply curve to set the threshold. This case never says how many system top hours it removes. A1 wins on value and on analytics.",
+     "weakest": "Value: the battery economics contradict themselves. The business case sells batteries as cheaper than upgrades. The team's own demo shows that at mid prices 1.42 batteries cost $1,720 a year against $1,209 for the upgrade, and that adding batteries raises the ladder's cost above shift-then-upgrade. On top of that, the one-pager's headline numbers (9.8%, $164M/$27M) do not appear in the tool's outputs (26.18%, $436.9M/$226.8M). The program prices and terms (\"$55 a month for 2\", \"as at Stillwater\", \"NYSERDA $200 per kWh\", \"as OptimizEV\", \"3.4 times operating cash flow\") sit in the team's own brief under \"Unverified, do not trust\". The $55 lease is Green Mountain Power in Vermont, not a NYSEG program.",
+     "hardest_question": "Your demo's Step 4 says \"batteries add cost\" and puts the full ladder at 51.92% of upgrade cost, against 43.47% for shifting then upgrading. So why should I fund a Protect step at all instead of running managed charging and upgrading the remaining 0.4% to 0.9%? And of the top 20 system hours, which you never count, how many does your battery fleet actually remove?",
+     "one_fix": "Regenerate the one-pager from facts.json so it uses the demo's numbers (26.18% flagged at x1.15, a 3.74% to 42.84% range across sizing, a 51.92% ladder vs 43.47% shift-only). Rewrite the battery claim to what the model shows: batteries beat the upgrade only below about $7,730 per unit, or where shifting cannot clear the transformer. Then add one line on the top-N system-hour reduction the dispatched fleet delivers on July 2 and February 7, so Scott's question is answered."
+    },
+    {
+     "seat": "judge4",
+     "role": "Director, Advanced Load Forecasting (Avangrid judge panel)",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "Good idea, strong pipeline underneath, but the one-page case and the team's own tool disagree on almost every headline number. As the forecasting judge I cannot put either set into a plan until they agree. The frame is right for a wires company: \"The street transformer, not the system, is what stops electrification\", and the cheapest-first ladder (Flag, Shift, Protect, Upgrade) is a real program design. The finding that \"If every managed EV starts at 11pm, overloads rise from 9.8% to 16%\" is the most useful sentence in the submission, and the 3 kVA result (\"only 0.7% can add a Level 2 EV within 3 kVA today; one unit raises that to 57%, two to 100%\") answers the challenge spec directly. Part 1 underneath is solid and honest: solar at 92.2% recall and 86.5% precision, recall with 95% intervals, heat pump vs resistance AUC 0.762 stated as unsplittable, silhouette 0.125 stated as a continuum. Then I ran the documented CLI. `bin/ewu screen --scenario moderate --margin 1.15` prints \"Flag ... 26.00%\", but the case says \"9.8%\". docs/FINDINGS.md says heat pumps lead only \"4.57%\" of overload hours, against the case's \"73% ... driven by winter heat pump nights\". The case leads with \"Every battery avoids an upgrade\" and \"Batteries earn their place by avoiding capital\". The repo says \"Batteries add cost wherever they are used, so the ladder costs more than shift-then-upgrade in every cell\", with a tie price of $7,730 a unit against a $9,000 to $13,000 placeholder. The case gives \"$27M\" against \"$164M\"; the repo gives $226.8M against $436.9M. Credit to the repo for printing the conflict table openly, but that means a judge who opens GitHub finds the deck's thesis contradicted by its own code. On forecasting basics: 2030 adoption of 20% EV and 15% HP is \"teammate scenario ... not verified\". Transformers are random groups of 8 homes rated at today's peak x 1.15. Scott's explicit ask, MW removed in the system top 20 to 50 hours, never appears in the case. A1 is a narrower idea, but it scores higher because it answers the judge's stated objective (system top hours, Feb 7 and Jul 2) with one consistent number chain. The readout also says \"Two independent analysts (plain Claude, and Claude using the skills)\". That line has no place in a utility submission and costs presentation points.",
+     "weakest": "Proposed Solution and Business Value. The battery economics headline (\"Every battery avoids an upgrade\", $27M vs $164M, 1.7 units at about $11,500 beat a $15,000 upgrade) is contradicted by the team's own sensitivity grid. That grid shows the ladder at 30.8% to 151.19% of upgrade-all, and shift-then-upgrade without batteries cheaper in every cell. Peak reduction in system top hours, the metric Scott named, is missing from the case.",
+     "hardest_question": "Your case says 9.8% of transformers overload in moderate 2030, that 73% of overloads are heat pump nights, and that batteries beat a $15,000 upgrade. Your own `bin/ewu screen` prints 26%, your attribution says heat pumps lead 4.57% of overload hours, and your FINDINGS say batteries cost more than the upgrade they defer in every one of 16 cells unless a unit installs under $7,730. Which numbers go in my 2030 load forecast and capital plan, and why should I trust the other ones you showed me?",
+     "one_fix": "Rebuild the one-page case on the repo's numbers and drop the teammate figures: 26.18% flagged, staggering fixes 78.56%, ladder 51.92% vs shift-then-upgrade 43.47% of upgrade-all at mid prices. Reframe batteries as the rung that pays only below the $7,730 tie price or with NYSERDA, lease and capacity value counted, and turn that tie price into the ask to Avangrid. Add one line of MW removed in the system top 20 and 50 hours (Feb 7, Jul 2) so the case answers Scott's stated objective."
+    },
+    {
+     "seat": "judge5",
+     "role": "Data Engineer judge (Brian Denny seat), read the code, facts.json, config, readout, demo page screenshots and CLI",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "The engine under this entry is better than most teams will have, but the one-page business case and the team's own prototype contradict each other on the two numbers that carry the pitch, so I score it 3.28, well under A1's 4.14. The case says \"Every battery avoids an upgrade\" and \"About 1.7 units (about $11,500 before NYSERDA) replace a $15,000 upgrade.\" Step 4 of the demo, built from the same repo, says \"Batteries alone cost more than the upgrade at these prices... they tie at $7,730 per unit. In the base case, shifting is what saves the money; batteries add cost.\" The case says moderate 2030 overloads \"9.8%\" of transformers. The CLI prints \"Flag ... 26.00\", and FINDINGS.md says 26.18%. The case says NYSEG spends \"$27M\" against \"$164M\". The demo page says \"$226.8M for the ladder\" against \"$436.9M.\" So the ladder costs 52% of the upgrade bill, not 16%. The case also says \"Share of overloads driven by winter heat pump nights 73% / 89%\". FINDINGS.md says the EV is the larger cause in \"95.43%\" of overload hours, and the heat pump is just running in the background (\"The teammate's 73% is consistent with our timing number, not with our cause number\"). A judge who opens the repo sees the deck's story disproved by its own code.\n\nWhat earns credit. The classification layer is real and checked: a positive-unlabeled gradient-boosting model (\"out-of-fold AUC 0.81 EV, 0.76 heat pump\"), a weather lift that was actually measured (\"3.3 AUC points for heat pumps\"), solar at \"92.2% recall, 86.5% precision\", and an honest \"silhouette 0.125\" that justifies rule-based segments. The dispatch simulation tracks state of charge and runs a 16-cell sensitivity grid. One finding is worth money to a programs team: \"A timer that starts every car at hour 23 ... newly overloads 4.17% of all transformers.\" Scale holds up: 298,032,553 rows ingested in 16.8 s, and the screen runs in 3.3 s. Facts are traced to their source, and assumptions are flagged in config/ewu.yaml. That discipline is rare.\n\nWhat a data engineer will attack. (1) Every transformer number rests on synthetic groups of 8 random homes rated at \"today's peak x 1.15\". The flagged share swings from 42.84% to 3.74% across the margins the team chose, yet the case prints 9.8% to one decimal as fact. (2) The case barely answers Scott's stated metric, \"how many of those top hours can your solution reduce\". The fit score with 40 system top hours exists in the code, but it is not on the page. (3) Reproducibility of the headline tool is broken as documented. \"python -I -m ewu --help\" fails with \"No module named ewu\". The README never mentions bin/ewu or Electrify Without Upgrade. DEMO_SCRIPT.md and CODE_QA.md do not exist (M7 was not done). The screenshots sit in outputs/private, not docs/demo. (4) Several COMPANY_BRIEF lines (Rate Decoupling, \"3.4 times operating cash flow\", OptimizEV $150, $60/kW-yr, Eversource upgrade price) cite only the business case itself, which is circular. The readout uses $100/kW-yr where the case uses $60. (5) readout.html includes a \"Plain Claude vs. Claude with skills\" table. That is internal tooling, and it looks odd to a utility judge. (6) The Step 3 hero chart shows a 20.16 kWh battery shaving \"3.56 kWh above its limit over the two days\". That is honest, but it makes the battery look oversized for the job.\n\nWhy A1 is ahead. A1 aims directly at Scott's own question (system top 20, 50 and 100 hours, peaky versus flat-high homes, a supply curve to set the threshold), and its evidence is internally consistent. This entry has more machinery, but it pitches a battery thesis that its own economics module rejects.",
+     "weakest": "Business value is contradicted by the team's own code. The business case claims batteries beat upgrades (\"1.7 units ... replace a $15,000 upgrade\", \"$27M vs $164M\", 9.8% overloaded, overloads \"driven by winter heat pump nights\"). The prototype's facts.json and demo show 26.18% flagged, a ladder at 51.92% of upgrade cost ($226.8M vs $436.9M), \"batteries add cost\" at mid prices, and EVs leading 95.43% of overload hours. On top of that, every transformer figure comes from synthetic 8-home groups whose overload rate moves tenfold with an assumed rating margin.",
+     "hardest_question": "Your one-pager says \"Every battery avoids an upgrade\" and that 1.7 units at about $11,500 replace a $15,000 upgrade. Your own demo, Step 4, says \"Batteries alone cost more than the upgrade at these prices ... batteries add cost,\" at $1,720 a year against $1,209. The same pages give 9.8% versus 26.18% of transformers overloaded. Which numbers are you standing behind? And since the rating margin you assumed moves the overload share from 3.74% to 42.84%, what do you get when you run this on Avangrid's real transformer ratings?",
+     "one_fix": "Rewrite the business case from the prototype's facts.json and drop the teammate figures. State the flagged share as a range across the rating margins (26.18% moderate at x1.15, 3.74% to 42.84% across margins). Make staggered charging the money saver (the ladder costs 51.92% of upgrade-all, shift-then-upgrade 43.47%), and add the timer backfire. Reposition batteries as the fix for the heat-pump-only floor (1.97% moderate, 11.73% high), worth it below $7,730 per unit. Add one line from the fit score on how many system top-hour kW a host battery cuts, so the case answers Scott's question. In the same pass, add a \"Run the EWU tool\" section to the README with bin/ewu, ship DEMO_SCRIPT.md, and delete the Plain-vs-Skills table from the readout."
+    },
+    {
+     "seat": "judge6",
+     "role": "Director, Reliability & Tech Processes (owns distribution transformers), Avangrid",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3,
+      "presentation": 2.5,
+      "innovation": 4
+     },
+     "weighted": 3.03,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.82,
+      "presentation": -1.44,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "This team picked the right question for my desk and then lost track of its own numbers. \"Flag, Shift, Protect, Upgrade\" is how I want non-wires alternatives framed: cheapest kW first, capital last. The stagger finding is the most useful thing in the submission: \"If every managed EV starts at 11pm, overloads rise from 9.8% to 16%.\" Utilities learn that timer snapback lesson the hard way. Routing winter load to batteries instead of thermostats also fits what Scott said (\"people are going to be less open to the idea\"). The pipeline underneath is honest work. It uses rules plus a positive-unlabeled model with out-of-fold AUC 0.81 for EV and 0.76 for heat pump, admits EV recall of 29.3%, checks silhouette before rejecting k-means, and shows the rating sensitivity as a range (42.84% to 3.74%) instead of hiding it. Then the one-pager and the prototype disagree on almost every headline. The page says moderate 2030 overloads \"9.8%\" of transformers and the live tool says \"26.18%\". The page says \"Still need an upgrade: under 0.1%\" and the tool says 0.42 to 0.6%. The page says \"$164M vs $27M\" and the tool says \"$436.9M ... against $226.8M\". Electric heat homes are \"5,190\" on the page but \"3,793 to 5,496\" in the readout. EV homes are \"1,331\" on the page and 734 Level 2 in the readout. The page puts electric heat at 27% of the winter peak and the readout at 31.4%. Battery homes are \"2,610 priority homes\" on the page and 5,341 in the readout. The worst case is the thesis itself. The page says \"Every battery avoids an upgrade\" and \"the same battery beats the upgrade\", but the team's own Step 4 says \"Batteries alone cost more than the upgrade at these prices ... shifting is what saves the money; batteries add cost,\" with a tie at $7,730 per unit while the readout assumes $9,000 to $13,000. From my seat, the overload test is also not how transformers fail. It flags a unit if it is over \"1.20 x their rating in some hour of the year\", and the rating is synthetic (\"today's peak x 1.15\", \"8 random homes\"). The page says 73% to 89% of overloads fall on \"winter heat pump nights\", which is exactly when a pole-top unit has the most thermal headroom. One cold hour at 120% is a loading-guide question, not a replacement order. I am also seeing a readout that says \"Two independent analysts (plain Claude, and Claude using the skills)\". I found no slide deck, and the deck is the only thing scored. A1 is narrower but stays consistent with itself: NYISO system top hours, dispatch-based coverage, and a threshold read off a supply curve, which is the rule Scott asked for. A1 is ahead.",
+     "weakest": "Internal contradiction on the core claim. The business case says \"Every battery avoids an upgrade\" at 9.8% overloaded and $27M. The team's own prototype, built on the same data, shows 26.18% overloaded, $226.8M, and \"batteries add cost\". The transformer overload test underneath both is any single hour above 1.2 times a guessed rating, with no allowance for cold-weather (ambient) rating gains or for how long the overload lasts.",
+     "hardest_question": "Your page says 9.8% of transformers overload and every battery beats a $15,000 upgrade. Your own tool, on screen, says 26% overload and \"batteries add cost\", with a tie at $7,730 per unit against your $9,000 to $13,000 assumption. Which one do you want me to take to capital planning? And why should one hour at 120% of a guessed rating, on a minus 5 F February night when the unit has its most thermal headroom, count as an overload at all?",
+     "one_fix": "Regenerate the business case and the deck from the prototype's facts.json so there is one set of numbers. Replace the \"any hour above 1.2x\" flag with a winter-adjusted, duration-based loading test (hours and kWh over an ambient-corrected limit). Restate the battery claim as the tool actually finds it: Shift fixes most overloads, and a battery is placed only where it beats the $7,730 per unit tie price or avoids a 3 kVA service upgrade. Show the result as a range over rating margins, with a real meter-to-transformer map as the single ask."
+    },
+    {
+     "seat": "judge7",
+     "role": "Senior Director, Technology, Innovation & Quality (Enrique Bosch seat)",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 3,
+      "innovation": 4
+     },
+     "weighted": 3.28,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -0.94,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "Best framing in the room, and the team's own tool undercuts it. \"Flag, Shift, Protect, Upgrade\" is a ladder a utility could adopt on Monday, and \"If every managed EV starts at 11pm, overloads rise from 9.8% to 16%\" is a finding I would repeat to my VP. The trouble starts when I open the prototype. The one-pager says \"Every battery avoids an upgrade\" and \"About 1.7 units (about $11,500 before NYSERDA) replace a $15,000 upgrade.\" The demo, run on the same scenario, says \"Batteries alone cost more than the upgrade at these prices... In the base case, shifting is what saves the money; batteries add cost.\" Its own bars show it: shift-only costs 43.47% of upgrading everything, and the full ladder with batteries costs 51.92%. The headline numbers disagree too. The page says 9.8% of transformers overloaded and $27M vs $164M. The demo says 26.18% (the CLI says 26.00%) and $226.8M vs $436.9M. The cost range runs from 30.80% to 151.19%, so in some cells the plan costs more than doing nothing clever. All of it rests on transformers that are \"synthetic (8 random homes, sized to today's peak plus 15%)\", and the flagged share swings from 42.84% at x1.05 to 3.74% at x1.50 on a margin the team picked. Part 1 is strong and mostly hidden: a positive-unlabeled model at AUC 0.81 for EV and 0.76 for heat pump, a \"3.3 AUC points\" lift from weather, solar at \"92.2% recall, 86.5% precision\", and an honest \"silhouette 0.125\". On the page all of that shrinks to one Flag row. Scott told every team the goal is \"the top, some number of hours\", and nothing here says how many of the top 20 or 50 system hours the plan removes. Scott also said \"today there's not a lot of bottleneck,\" which this 2030 premise has to answer head on. The readout's \"Plain Claude vs. Claude with skills\" section has to come out of anything a judge sees. A1 stays ahead because it answers the question the SME asked, and its numbers do not argue with each other.",
+     "weakest": "The battery economics contradict each other across the two deliverables. The page says \"Every battery avoids an upgrade,\" but the demo says \"batteries add cost\" (ladder 51.92% vs shift-only 43.47%), and the overload headline is 9.8% on the page against 26.18% in the tool. The business value line is built on the claim the prototype refutes, so Value cannot score above 3.",
+     "hardest_question": "Your tool says that at mid prices 1.42 batteries cost $1,720 a year against $1,209 for the upgrade, and that adding Protect raises the ladder from 43.47% to 51.92% of the upgrade bill. So why should Avangrid lease a single battery instead of running staggered charging and upgrading the rest? Then tell me which of 9.8% and 26.18% is your real moderate-2030 overload share, and why it moves elevenfold when you change a rating margin you chose yourself.",
+     "one_fix": "Regenerate the one-pager from the prototype's facts so every number matches the tool. State the true result: shifting carries the savings, and batteries pay only on transformers where shifting fails, or above $7,730 a unit break-even. Lead with the sizing margin as a range (42.84% to 3.74%). Add one line from the fit-score dispatch on how many of the top 20 and top 50 system hours the selected hosts cut, which is the metric Scott asked for."
+    },
+    {
+     "seat": "judge8",
+     "role": "Director, Regulatory Affairs NY (Avangrid), judging the one-page business case \"Electrify Without Upgrade\" plus the ewu prototype (CLI, 4-step demo page, readout)",
+     "held_out": false,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 2.5,
+      "innovation": 4
+     },
+     "weighted": 3.2,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -1.44,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "The team's own prototype contradicts the business case on its main claim. I could not take this to the PSC as a non-wires case, and it scores about 3.2 against A1's 4.14.\n\nValue (3). The Flag, Shift, Protect, Upgrade ladder is the right shape for a utility, and the 3 kVA result answers the brief: \"only 0.7% can add a Level 2 EV within 3 kVA today; one unit raises that to 57%, two to 100%.\" The problem is the money. The one-pager says \"Every battery avoids an upgrade\" and \"About 1.7 units (about $11,500 before NYSERDA) replace a $15,000 upgrade.\" The team's own demo, Step 4, says the opposite: \"Batteries alone cost more than the upgrade at these prices ... shifting is what saves the money; batteries add cost.\" At equal life, 1.42 batteries cost $1,720 a year against $1,209 for the upgrade. The full ladder comes to 51.92% of the upgrade-everything cost, but shifting alone comes to 43.47%, so adding batteries raises the total. The headline dollar figures also disagree:\n\n- One-pager: \"$164M\" for upgrading everything vs \"$27M\" for the ladder (moderate case).\n- Prototype: \"$436.9M\" vs \"$226.8M\" for the same case.\n- In the high scenario at low prices, the prototype's ladder ($703.3M) costs more than upgrading everything ($609.3M).\n\nThe regulatory lines are unsourced, and the team's own company brief files them under \"Unverified, do not trust\":\n- \"NYSEG's Rate Decoupling Mechanism returns the value\"\n- \"can seek a return on avoided capital\"\n- \"capital spending runs at 3.4 times operating cash flow\"\n\nA regulatory reader needs the actual NY hook: the NWA / BCA framework, who owns the batteries, who pays, and what dispatch rights the utility gets over a leased battery at a customer's home. None of that is there.\n\nAnalytics (3.5). The classification and segmentation work is real and honest. It finds 92.2% of the listed solar homes (recall) with 86.5% precision. It admits that \"Load shapes are a continuum\" (silhouette 0.125). Its finding that only 29.3% of listed EV homes show home Level 2 charging is a genuine insight. Three things pull it down:\n\n1. **The transformers are synthetic.** They are \"8 random homes, sized to today's peak plus 15%\", so every local claim is an assumption stacked on an assumption. The tool does honestly show the overloaded share moving from 42.84% to 3.74% as the assumed rating changes.\n2. **The overload share disagrees with the tool.** The one-pager says 9.8% of transformers overload in the moderate case. The CLI and demo say 26.18% under the same settings: rating x1.15, overload above 1.20.\n3. **The heat-pump attribution contradicts the pipeline.** The one-pager says 73% / 89% of overloads are \"driven by winter heat pump nights\". The pipeline's own facts say EV charging leads 95.43% of overload hours in the moderate unmanaged case, with heat pumps at 4.57%. Heat pumps are only \"running\" in about 89% of those hours. Running is not driving.\n\nPresentation (2.5). There is no deck, and only the deck is scored. The one-pager is dense and its numbers don't match the tool's. The readout opens with \"Two independent analysts (plain Claude, and Claude using the skills)\", which no utility judge should ever read. The README does not document the ewu CLI at all. The demo page is the best artifact: clean, four steps, and every number hoverable to the key behind it.\n\nInnovation (4). Running a transformer stress test from AMI data alone, with a hook for a real map (`--map` meter_id, transformer_id, kva), is a planning tool Avangrid does not have. The finding that simple timers backfire (\"If every managed EV starts at 11pm, overloads rise from 9.8% to 16%\") is new and useful for managed-charging tariff design.\n\nAgainst A1, this is worse. A1 answers what Scott, the Program Director of Load Research, asked for at office hours: \"how many of those top hours can your solution reduce\", against NYISO system hours, as a threshold-setting rule. Its economics agree with themselves. EWU is the bigger idea, but it rests on synthetic transformers, and Scott himself said \"today there's not a lot of bottleneck\". Most importantly, EWU's own tool undercuts the battery's role in it.",
+     "weakest": "The one-pager and the prototype disagree on the main claim. The business case says \"Every battery avoids an upgrade\". The prototype's Money step says \"Batteries alone cost more than the upgrade at these prices ... batteries add cost\". The overload share (9.8% vs 26.18%), the NYSEG dollar totals ($164M/$27M vs $436.9M/$226.8M) and the heat-pump attribution (73% vs 4.57% of overload hours) also disagree. The regulatory claims are unsourced.",
+     "hardest_question": "Your own tool says that at equal life the batteries cost $1,720 a year against $1,209 for the upgrade, and that adding them raises the ladder from 43.47% to 51.92% of the upgrade cost. Under the NY benefit-cost framework, why would the PSC let us spend ratepayer money on Protect instead of Shift then Upgrade? And who owns, dispatches and pays for a leased battery sitting at a customer's home?",
+     "one_fix": "Regenerate every number on the one-pager and the deck from the current facts.json, so the overload share, the attribution and the NYSEG dollars match the tool. Then restate the thesis the way the tool reports it: \"Shift is the money-saver; a battery is the targeted fix where staggered charging fails and the 3 kVA limit blocks a Level 2 charger, plus winter cold-snap insurance.\" Drop or source the decoupling, avoided-capital-return and 3.4x claims, and put the NY non-wires-alternative cost-test question on the slide as an open item for Avangrid."
+    },
+    {
+     "seat": "judge9",
+     "role": "Senior Director, Talent Development (held-out judge)",
+     "held_out": true,
+     "scores": {
+      "value": 3,
+      "analytics": 3.5,
+      "presentation": 2.5,
+      "innovation": 4
+     },
+     "weighted": 3.2,
+     "gap_to_anchor": {
+      "value": -1.56,
+      "analytics": -0.32,
+      "presentation": -1.44,
+      "innovation": 0.08
+     },
+     "vs_A1": "worse",
+     "bonus_point": false,
+     "verdict": "Your best idea is the one most likely to get you knocked out, because the one-page business case and your own demo report different headline numbers. In finals Q&A that reads as a team that is not on the same page.\n\nWhat works. \"The street transformer, not the system, is what stops electrification\" is a real reframe. The four-step plan (Flag, Shift, Protect, Upgrade) is something a programs manager could run on Monday. The finding that \"if every managed EV starts at 11pm, overloads rise from 9.8% to 16%\" is the most memorable insight I have seen this week, and the cold-snap test of whether a battery lasts two nights is grown-up engineering. The readout behind it covers every class in Part 1 and states its confidence, for example \"low: dehumidifiers and well pumps look alike.\" That is honest, and I respect it.\n\nWhat breaks it. The business case says moderate 2030 overloads \"9.8%\" of transformers. The demo's Screen step says \"26.18%\", and the CLI agrees at 26.00%. The business case puts batteries at 1.1% of transformers with \"1.7 units on average\". The demo says 5.23% with 1.42. The business case says \"$27M\" against \"$164M\", about a sixth of the cost. The demo says \"The ladder costs 51.92% of upgrading every flagged transformer\" and, worse, \"Batteries alone cost more than the upgrade at these prices,\" at \"$1,720 a year against $1,209.\" That sentence directly contradicts your thesis line, \"Every battery avoids an upgrade, then cuts the peak.\" The heat numbers drift too: the one-pager has \"11% of homes but 27% of the winter peak\" and \"5,190 primary electric heat homes\", while the readout has 31.4% and 3,793 (range 3,793 to 5,496). Your own company brief tags the $60 per kW, NYSERDA $200 per kWh, OptimizEV, Stillwater and Eversource figures as \"Unverified, do not trust\", and they carry the whole WHY section. The readout prices capacity at $100 per kW a year, the one-pager at $60. Finally, the headline stands on synthetic transformers (\"8 random homes\") and swings from 42.84% to 3.74% as the sizing assumption moves from x1.05 to x1.50. You do show that swing, which is good, but the one-pager leads with a single number.\n\nFrom my seat, the readout also exposes your process instead of your answer. \"Two independent analysts (plain Claude, and Claude using the skills)\" and \"every one must be replaced with a sourced value before the deck\" are internal notes. A load-research director will lose trust reading them.\n\nCompared with A1. A1 answers what Scott actually asked: \"the top 20, 30, 50, whatever hours\" and \"the more peaky... the better candidate.\" It picks batteries for system top hours and checks itself against his Feb 7 and July 2 dates. Your one-pager never mentions top system hours. Scott also said \"today there's not a lot of bottleneck\" at the local level, and you are betting the case on a 2030 local bottleneck that runs on synthetic grouping. You are more inventive than A1 but less aligned and less consistent. Today you would not make the top five on the deck alone.",
+     "weakest": "Internal consistency: the business case and the prototype disagree on the headline overload rate (9.8% vs 26.18%), the battery share (1.1% vs 5.23%), the units per transformer (1.7 vs 1.42) and the economics ($27M vs $164M, against \"ladder costs 51.92%\" and \"batteries alone cost more than the upgrade\"). The value claim rests on inputs your own brief marks unverified.",
+     "hardest_question": "Your page says each battery replaces a $15,000 upgrade, and your own demo says batteries cost $1,720 a year against $1,209 for the upgrade. Which is true? And if it is the demo, why should Avangrid lease a single battery instead of just doing staggered charging and upgrading the rest?",
+     "one_fix": "Regenerate every number on the one-pager and in the deck from the same screen run the demo uses, as a range across the sizing margins. Then rewrite the WHY so it says what the demo says: staggered charging carries the savings, and batteries pay only where they enable a Level 2 charger or a winter top-hour cut. Tie that cut to Scott's Feb 7 and July 2 system hours, and remove the plain-vs-skills analyst comparison and the internal assumption notes from anything a judge will see."
+    }
+   ],
+   "average_weighted": 3.23,
+   "average_weighted_used_8": 3.24,
+   "held_out_weighted": 3.2,
+   "average_by_criterion": {
+    "value": 3.0,
+    "analytics": 3.44,
+    "presentation": 2.83,
+    "innovation": 4.0
+   },
+   "gap_to_anchor_by_criterion": {
+    "value": -1.56,
+    "analytics": -0.38,
+    "presentation": -1.11,
+    "innovation": 0.08
+   },
+   "gap_to_anchor_weighted": -0.91,
+   "fixes_applied": [
+    {
+     "id": "F1",
+     "asked_by": 8,
+     "gap": "the one-pager and the tool disagree (9.8% vs 26.18% flagged; battery claimed to beat the upgrade, the tool says it costs more)",
+     "done": "docs/BUSINESS_CASE.md written by ewu/business_case.py from facts.json and config only; flagged share stated as a range over sizing margins; shift as the money saver; battery recast to heat-pump-only transformers, the 3 kVA rule and the cold snap, worth it below the tie price per unit; timer backfire; NY non-wires cost test as an open ask; unsourced decoupling, capex multiple and avoided-capital-return claims dropped",
+     "check": "tests/test_business_case.py; checks/trace_numbers.py docs/BUSINESS_CASE.md"
+    },
+    {
+     "id": "F2",
+     "asked_by": 7,
+     "gap": "no number for Scott's metric: MW cut in the system's top 20 to 50 hours, checked against Jul 2 and Feb 7",
+     "done": "ewu/tophours.py and bin/ewu tophours: annual top 20 and top 50, winter top hours and each named date's peak hour; fit-score hosts vs random hosts on the same transformers; kW per battery, fleet MW, share of load; Feb 7 shown to sit outside today's annual top 50",
+     "check": "tests/test_tophours.py"
+    },
+    {
+     "id": "F3",
+     "asked_by": 2,
+     "gap": "judges could not find how to run the tool (python -I -m ewu fails) and the readout carried an off-topic plain-vs-skills table",
+     "done": "README section 'Run the EWU tool' with every bin/ewu command and one diagram; plain-vs-skills table and analyst sentence removed from analysis/report.py and outputs/readout.html",
+     "check": "bin/ewu --help; tests/test_house_rules.py"
+    }
+   ],
+   "not_fixed_tonight": [
+    "winter-adjusted, duration-based loading limit (ambient derate cut in plan S5; hours and kWh over are reported instead)",
+    "a real meter-to-transformer map (an Avangrid ask; --map flag exists)",
+    "docs/DEMO_SCRIPT.md (milestone M7)",
+    "the deck (teammate builds it)"
+   ],
+   "next_round_should_read": "docs/BUSINESS_CASE.md in place of runs/business_case_team_v2.txt"
+  }
+ ]
+}

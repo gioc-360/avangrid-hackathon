@@ -69,6 +69,8 @@ battery:
   top_hours_per_season: {value: 20, unit: highest system hours per season, source: "repo:analysis/features.py:112",
                          basis: "same top-hour rule the existing pipeline uses for coincident peak"}
   winter_months: {value: [11, 12, 1, 2, 3], unit: months, source: "repo:analysis/features.py:111"}
+  system_top_hour_counts: {value: [20, 50], unit: highest system hours of the whole year,
+                          source: "repo:sources/qa/office-hours-2026-11-12-scott.txt:129", quote: "top 20, 30, 50"}
   summer_months: {value: [6, 7, 8], unit: months, source: "repo:analysis/features.py:111"}
 
 shift:

@@ -37,6 +37,8 @@ prototype:       ## EWU prototype: check the config, then rebuild every EWU outp
 	$(PY) ewu/attribution.py
 	bin/ewu coldsnap
 	$(PY) ewu/fitscore.py
+	bin/ewu tophours
 	bin/ewu sensitivity
 	bin/ewu screen
+	bin/ewu case
 	bin/ewu demo --no-open

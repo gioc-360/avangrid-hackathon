@@ -2064,7 +2064,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 3.3,
+  "value": 7.2,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -4042,7 +4042,7 @@
   "method": "pooled 5 seeds, random grouping, Feb 7-8 window, battery dispatched all year; no battery"
  },
  "ewu.coldsnap.seconds": {
-  "value": 23.6,
+  "value": 58.3,
   "unit": "s",
   "script": "ewu/coldsnap.py",
   "method": "whole cold snap run"
@@ -7219,6 +7219,126 @@
   "script": "ewu/inventory.py",
   "method": ""
  },
+ "ewu.screen.high.random.margin_115.batteries": {
+  "value": 882,
+  "unit": "batteries",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.batteries_per_protected": {
+  "value": 1.54,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.ev_homes_per_flagged": {
+  "value": 3.51,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.flagged": {
+  "value": 1682,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.flagged_pct": {
+  "value": 56.07,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.high.ladder_share_pct": {
+  "value": 74.73,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.low.ladder_share_pct": {
+  "value": 113.98,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.mid.ladder_share_pct": {
+  "value": 87.81,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.new_from_stagger_pct": {
+  "value": 0.17,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.protect_set_pct": {
+  "value": 22.93,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.protected": {
+  "value": 572,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.protected_of_set_pct": {
+  "value": 83.14,
+  "unit": "% of transformers still over with staggered charging",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.protected_pct": {
+  "value": 19.07,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.seconds": {
+  "value": 7.6,
+  "unit": "s",
+  "script": "ewu/screen.py",
+  "method": "whole live screen, data load included"
+ },
+ "ewu.screen.high.random.margin_115.shift_fixed": {
+  "value": 999,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.shift_fixed_pct": {
+  "value": 33.3,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.transformers": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.upgrade_left": {
+  "value": 116,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.high.random.margin_115.upgrade_left_pct": {
+  "value": 3.87,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
  "ewu.screen.moderate.random.margin_115.batteries": {
   "value": 213,
   "unit": "batteries",
@@ -7304,7 +7424,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.6,
+  "value": 5.9,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"
@@ -7338,6 +7458,126 @@
   "unit": "% of all transformers",
   "script": "ewu/screen.py",
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_120.batteries": {
+  "value": 144,
+  "unit": "batteries",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.batteries_per_protected": {
+  "value": 1.45,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.ev_homes_per_flagged": {
+  "value": 2.87,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.flagged": {
+  "value": 614,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.flagged_pct": {
+  "value": 20.47,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.high.ladder_share_pct": {
+  "value": 40.34,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.low.ladder_share_pct": {
+  "value": 65.78,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.mid.ladder_share_pct": {
+  "value": 48.82,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.new_from_stagger_pct": {
+  "value": 0.1,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.protect_set_pct": {
+  "value": 3.73,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.protected": {
+  "value": 99,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.protected_of_set_pct": {
+  "value": 88.39,
+  "unit": "% of transformers still over with staggered charging",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.protected_pct": {
+  "value": 3.3,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.seconds": {
+  "value": 6.0,
+  "unit": "s",
+  "script": "ewu/screen.py",
+  "method": "whole live screen, data load included"
+ },
+ "ewu.screen.moderate.random.margin_120.shift_fixed": {
+  "value": 505,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.shift_fixed_pct": {
+  "value": 16.83,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.transformers": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.upgrade_left": {
+  "value": 13,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
+ },
+ "ewu.screen.moderate.random.margin_120.upgrade_left_pct": {
+  "value": 0.43,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.2"
  },
  "ewu.sensitivity.cells": {
   "value": 16,
@@ -8210,7 +8450,7 @@
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
  "ewu.sensitivity.seconds": {
-  "value": 73.2,
+  "value": 173.2,
   "unit": "s",
   "script": "ewu/cli.py",
   "method": "whole sensitivity grid and pricing"
@@ -9288,6 +9528,1116 @@
   "unit": "synthetic transformers",
   "script": "ewu/stress.py",
   "method": "per seed"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.summer_peak_date.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.summer_peak_date.fleet_mw": {
+  "value": 2.129,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.summer_peak_date.kw_per_battery": {
+  "value": 3.18,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.summer_peak_date.share_of_load_pct": {
+  "value": 3.791,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_20.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_20.fleet_mw": {
+  "value": 1.174,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_20.kw_per_battery": {
+  "value": 1.75,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_20.share_of_load_pct": {
+  "value": 2.219,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_50.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_50.fleet_mw": {
+  "value": 1.053,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_50.kw_per_battery": {
+  "value": 1.57,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.top_50.share_of_load_pct": {
+  "value": 2.132,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_peak_date.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_peak_date.fleet_mw": {
+  "value": 2.475,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_peak_date.kw_per_battery": {
+  "value": 3.69,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_peak_date.share_of_load_pct": {
+  "value": 3.979,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_top.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_top.fleet_mw": {
+  "value": 1.364,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_top.kw_per_battery": {
+  "value": 2.03,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_1.winter_top.share_of_load_pct": {
+  "value": 2.299,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.summer_peak_date.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.summer_peak_date.fleet_mw": {
+  "value": 2.456,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.summer_peak_date.kw_per_battery": {
+  "value": 1.83,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.summer_peak_date.share_of_load_pct": {
+  "value": 4.373,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_20.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_20.fleet_mw": {
+  "value": 1.833,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_20.kw_per_battery": {
+  "value": 1.37,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_20.share_of_load_pct": {
+  "value": 3.465,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_50.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_50.fleet_mw": {
+  "value": 1.596,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_50.kw_per_battery": {
+  "value": 1.19,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.top_50.share_of_load_pct": {
+  "value": 3.233,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_peak_date.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_peak_date.fleet_mw": {
+  "value": 3.353,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_peak_date.kw_per_battery": {
+  "value": 2.5,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_peak_date.share_of_load_pct": {
+  "value": 5.39,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_top.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_top.fleet_mw": {
+  "value": 2.318,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_top.kw_per_battery": {
+  "value": 1.73,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.fit_score.units_2.winter_top.share_of_load_pct": {
+  "value": 3.906,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.flagged_per_seed": {
+  "value": 670.4,
+  "unit": "transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.summer_peak_date.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.summer_peak_date.fleet_mw": {
+  "value": 1.241,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.summer_peak_date.kw_per_battery": {
+  "value": 1.85,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.summer_peak_date.share_of_load_pct": {
+  "value": 2.21,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_20.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_20.fleet_mw": {
+  "value": 0.822,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_20.kw_per_battery": {
+  "value": 1.23,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_20.share_of_load_pct": {
+  "value": 1.553,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_50.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_50.fleet_mw": {
+  "value": 0.734,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_50.kw_per_battery": {
+  "value": 1.09,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.top_50.share_of_load_pct": {
+  "value": 1.486,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_peak_date.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_peak_date.fleet_mw": {
+  "value": 1.731,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_peak_date.kw_per_battery": {
+  "value": 2.58,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_peak_date.share_of_load_pct": {
+  "value": 2.783,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_top.batteries": {
+  "value": 670.4,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_top.fleet_mw": {
+  "value": 1.044,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_top.kw_per_battery": {
+  "value": 1.56,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_1.winter_top.share_of_load_pct": {
+  "value": 1.76,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.summer_peak_date.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.summer_peak_date.fleet_mw": {
+  "value": 1.324,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.summer_peak_date.kw_per_battery": {
+  "value": 0.99,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.summer_peak_date.share_of_load_pct": {
+  "value": 2.358,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_20.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_20.fleet_mw": {
+  "value": 1.123,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_20.kw_per_battery": {
+  "value": 0.84,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_20.share_of_load_pct": {
+  "value": 2.123,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_50.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_50.fleet_mw": {
+  "value": 0.998,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_50.kw_per_battery": {
+  "value": 0.74,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.top_50.share_of_load_pct": {
+  "value": 2.021,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_peak_date.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_peak_date.fleet_mw": {
+  "value": 2.012,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_peak_date.kw_per_battery": {
+  "value": 1.5,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_peak_date.share_of_load_pct": {
+  "value": 3.234,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_top.batteries": {
+  "value": 1340.8,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_top.fleet_mw": {
+  "value": 1.548,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_top.kw_per_battery": {
+  "value": 1.15,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.high.staggered.margin_115.random.units_2.winter_top.share_of_load_pct": {
+  "value": 2.609,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.summer_peak_date.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.summer_peak_date.fleet_mw": {
+  "value": 0.509,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.summer_peak_date.kw_per_battery": {
+  "value": 3.0,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.summer_peak_date.share_of_load_pct": {
+  "value": 0.908,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_20.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_20.fleet_mw": {
+  "value": 0.29,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_20.kw_per_battery": {
+  "value": 1.71,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_20.share_of_load_pct": {
+  "value": 0.549,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_50.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_50.fleet_mw": {
+  "value": 0.259,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_50.kw_per_battery": {
+  "value": 1.53,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_50.share_of_load_pct": {
+  "value": 0.526,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_peak_date.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_peak_date.fleet_mw": {
+  "value": 0.617,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_peak_date.kw_per_battery": {
+  "value": 3.64,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_peak_date.share_of_load_pct": {
+  "value": 1.21,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_top.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_top.fleet_mw": {
+  "value": 0.342,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_top.kw_per_battery": {
+  "value": 2.01,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.winter_top.share_of_load_pct": {
+  "value": 0.697,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.summer_peak_date.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.summer_peak_date.fleet_mw": {
+  "value": 0.57,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.summer_peak_date.kw_per_battery": {
+  "value": 1.68,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.summer_peak_date.share_of_load_pct": {
+  "value": 1.018,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_20.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_20.fleet_mw": {
+  "value": 0.441,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_20.kw_per_battery": {
+  "value": 1.3,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_20.share_of_load_pct": {
+  "value": 0.835,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_50.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_50.fleet_mw": {
+  "value": 0.383,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_50.kw_per_battery": {
+  "value": 1.13,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.top_50.share_of_load_pct": {
+  "value": 0.778,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_peak_date.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_peak_date.fleet_mw": {
+  "value": 0.822,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_peak_date.kw_per_battery": {
+  "value": 2.42,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_peak_date.share_of_load_pct": {
+  "value": 1.614,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_top.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_top.fleet_mw": {
+  "value": 0.573,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_top.kw_per_battery": {
+  "value": 1.69,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.fit_score.units_2.winter_top.share_of_load_pct": {
+  "value": 1.169,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.flagged_per_seed": {
+  "value": 169.6,
+  "unit": "transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.summer_peak_date.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.summer_peak_date.fleet_mw": {
+  "value": 0.294,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.summer_peak_date.kw_per_battery": {
+  "value": 1.73,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.summer_peak_date.share_of_load_pct": {
+  "value": 0.525,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_20.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_20.fleet_mw": {
+  "value": 0.198,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_20.kw_per_battery": {
+  "value": 1.17,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_20.share_of_load_pct": {
+  "value": 0.376,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_50.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_50.fleet_mw": {
+  "value": 0.176,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_50.kw_per_battery": {
+  "value": 1.04,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_50.share_of_load_pct": {
+  "value": 0.357,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_peak_date.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_peak_date.fleet_mw": {
+  "value": 0.39,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_peak_date.kw_per_battery": {
+  "value": 2.3,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_peak_date.share_of_load_pct": {
+  "value": 0.765,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_top.batteries": {
+  "value": 169.6,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_top.fleet_mw": {
+  "value": 0.244,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_top.kw_per_battery": {
+  "value": 1.44,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_1.winter_top.share_of_load_pct": {
+  "value": 0.497,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.summer_peak_date.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.summer_peak_date.fleet_mw": {
+  "value": 0.31,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.summer_peak_date.kw_per_battery": {
+  "value": 0.91,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.summer_peak_date.share_of_load_pct": {
+  "value": 0.553,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_20.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_20.fleet_mw": {
+  "value": 0.266,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_20.kw_per_battery": {
+  "value": 0.78,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_20.share_of_load_pct": {
+  "value": 0.503,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_50.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_50.fleet_mw": {
+  "value": 0.236,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_50.kw_per_battery": {
+  "value": 0.69,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.top_50.share_of_load_pct": {
+  "value": 0.479,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_peak_date.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_peak_date.fleet_mw": {
+  "value": 0.445,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_peak_date.kw_per_battery": {
+  "value": 1.31,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_peak_date.share_of_load_pct": {
+  "value": 0.873,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_top.batteries": {
+  "value": 339.2,
+  "unit": "batteries per seed",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_top.fleet_mw": {
+  "value": 0.349,
+  "unit": "MW, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_top.kw_per_battery": {
+  "value": 1.03,
+  "unit": "kW per battery, mean over the set",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.moderate.staggered.margin_115.random.units_2.winter_top.share_of_load_pct": {
+  "value": 0.711,
+  "unit": "% of the 2030 load of all homes on the 3,000 transformers",
+  "script": "ewu/tophours.py",
+  "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
+ },
+ "ewu.tophours.seconds": {
+  "value": 32.4,
+  "unit": "s",
+  "script": "ewu/tophours.py",
+  "method": "whole top-hours run"
+ },
+ "ewu.tophours.sets.summer_peak_date.days": {
+  "value": 1,
+  "unit": "days",
+  "script": "ewu/tophours.py",
+  "method": "days holding those hours"
+ },
+ "ewu.tophours.sets.summer_peak_date.hours": {
+  "value": 1,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "metered system load of the whole sample"
+ },
+ "ewu.tophours.sets.summer_peak_date.hours_on_summer_peak_date": {
+  "value": 1,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-07-02"
+ },
+ "ewu.tophours.sets.summer_peak_date.hours_on_winter_peak_date": {
+  "value": 0,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-02-07"
+ },
+ "ewu.tophours.sets.top_20.days": {
+  "value": 4,
+  "unit": "days",
+  "script": "ewu/tophours.py",
+  "method": "days holding those hours"
+ },
+ "ewu.tophours.sets.top_20.hours": {
+  "value": 20,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "metered system load of the whole sample"
+ },
+ "ewu.tophours.sets.top_20.hours_on_summer_peak_date": {
+  "value": 8,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-07-02"
+ },
+ "ewu.tophours.sets.top_20.hours_on_winter_peak_date": {
+  "value": 0,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-02-07"
+ },
+ "ewu.tophours.sets.top_50.days": {
+  "value": 10,
+  "unit": "days",
+  "script": "ewu/tophours.py",
+  "method": "days holding those hours"
+ },
+ "ewu.tophours.sets.top_50.hours": {
+  "value": 50,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "metered system load of the whole sample"
+ },
+ "ewu.tophours.sets.top_50.hours_on_summer_peak_date": {
+  "value": 11,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-07-02"
+ },
+ "ewu.tophours.sets.top_50.hours_on_winter_peak_date": {
+  "value": 0,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-02-07"
+ },
+ "ewu.tophours.sets.winter_peak_date.days": {
+  "value": 1,
+  "unit": "days",
+  "script": "ewu/tophours.py",
+  "method": "days holding those hours"
+ },
+ "ewu.tophours.sets.winter_peak_date.hours": {
+  "value": 1,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "metered system load of the whole sample"
+ },
+ "ewu.tophours.sets.winter_peak_date.hours_on_summer_peak_date": {
+  "value": 0,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-07-02"
+ },
+ "ewu.tophours.sets.winter_peak_date.hours_on_winter_peak_date": {
+  "value": 1,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-02-07"
+ },
+ "ewu.tophours.sets.winter_top.days": {
+  "value": 5,
+  "unit": "days",
+  "script": "ewu/tophours.py",
+  "method": "days holding those hours"
+ },
+ "ewu.tophours.sets.winter_top.hours": {
+  "value": 20,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "metered system load of the whole sample"
+ },
+ "ewu.tophours.sets.winter_top.hours_on_summer_peak_date": {
+  "value": 0,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-07-02"
+ },
+ "ewu.tophours.sets.winter_top.hours_on_winter_peak_date": {
+  "value": 4,
+  "unit": "hours",
+  "script": "ewu/tophours.py",
+  "method": "hours of the set on 2026-02-07"
+ },
+ "ewu.tophours.summer_peak_date.rank": {
+  "value": 1,
+  "unit": "rank among 8,760 hours",
+  "script": "ewu/tophours.py",
+  "method": "the date's highest metered system hour; rank 1 = highest of the year"
+ },
+ "ewu.tophours.winter_peak_date.rank": {
+  "value": 123,
+  "unit": "rank among 8,760 hours",
+  "script": "ewu/tophours.py",
+  "method": "the date's highest metered system hour; rank 1 = highest of the year"
  },
  "flex.ac_weather_load_mw": {
   "value": 39.7,

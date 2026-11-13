@@ -9,7 +9,6 @@ import yaml
 ROOT = Path(os.path.expanduser("~/avangrid-hackathon"))
 F = json.loads((ROOT / "facts/facts.json").read_text())
 D = json.loads((ROOT / "outputs/report_data.json").read_text())
-CMP = json.loads((ROOT / "outputs/comparison.json").read_text())
 CIT = {c["id"]: c for c in yaml.safe_load((ROOT / "checks/citations.yaml").read_text())["citations"]}
 
 import sys; sys.path.insert(0, str(ROOT / "analysis"))
@@ -63,15 +62,6 @@ findings = [
   f"The pipeline keeps them out of battery and DR targeting."),
 ]
 
-rows = []
-for r in CMP:
-    pv = "; ".join(f"{html.escape(str(x['value']))} {html.escape(x['unit'])}".strip() for x in r["pipeline"].values())
-    badge = lambda ok: '<span class="ok">✓ quote verified</span>' if ok else '<span class="bad">not found</span>'
-    rows.append(f"<tr><td><b>{html.escape(r['finding'])}</b>{('<div class=note>' + html.escape(r['note']) + '</div>') if r.get('note') else ''}</td>"
-                f"<td>“{html.escape(r['plain'])}”<br>{badge(r['plain_verified'])}</td>"
-                f"<td>“{html.escape(r['skills'])}”<br>{badge(r['skills_verified'])}</td>"
-                f"<td class=num>{pv}</td><td><span class='verdict {r['verdict']}'>{r['verdict']}</span></td></tr>")
-
 assumptions = [f"<li>{html.escape(k.split('.',1)[1].replace('_',' '))}: <b>{x['value']}</b> {html.escape(x['unit'])}. {html.escape(x['method'])}</li>"
                for k, x in F.items() if k.startswith("assumption.")]
 
@@ -117,7 +107,7 @@ td.num{{font-variant-numeric:tabular-nums}}.note{{color:var(--ink3);font-size:12
 code{{font-size:12.5px;background:var(--rule);padding:1px 5px;border-radius:4px}}ul.src li,ul.as li{{margin:0 0 6px;font-size:13px;color:var(--ink2)}}
 </style></head><body><main>
 <h1>What the meters are really saying</h1>
-<p class="sub">{v('data.customers_usable')} homes × 8,760 hours, 1 Sep 2025 to 31 Aug 2026. Two independent analysts (plain Claude, and Claude using the skills) worked from the same data; every number below comes from the shared pipeline in <code>analysis/</code>, and every quote and citation is machine-checked. {v('data.customers_missing')} of the promised {v('data.customers_promised')} customers have no data and {v('data.customers_partial_excluded')} more miss over 10% of hours, so they are left out. Customers 10,001 to 20,000 come from the corrected upload.</p>
+<p class="sub">{v('data.customers_usable')} homes × 8,760 hours, 1 Sep 2025 to 31 Aug 2026. Every number below comes from the pipeline in <code>analysis/</code>, and every quote and citation is machine-checked. {v('data.customers_missing')} of the promised {v('data.customers_promised')} customers have no data and {v('data.customers_partial_excluded')} more miss over 10% of hours, so they are left out. Customers 10,001 to 20,000 come from the corrected upload.</p>
 
 <div class="card"><h2 style="margin-top:0">Seven findings, in order of how much they change a decision</h2><ol class="find">
 {''.join(f'<li><b>{t}</b>{d}</li>' for t, d in findings)}
@@ -133,15 +123,11 @@ code{{font-size:12.5px;background:var(--rule);padding:1px 5px;border-radius:4px}
 <div class="card chart"><h3>The battery is an electrification enabler</h3><p>Homes that stay within the 3 kVA rule after adding the load (%)</p><div id="c-kva"></div></div>
 </div>
 
-<h2>Plain Claude vs. Claude with skills vs. the pipeline</h2>
-<p class="sub">Each quote is checked word for word against that analyst's report by <code>checks/compare.py</code>. A verdict of differ means their definitions differed and the pipeline column decides.</p>
-<div class="card scroll"><table><colgroup><col style='width:26%'><col style='width:24%'><col style='width:24%'><col style='width:18%'><col style='width:8%'></colgroup><tr><th>Finding</th><th>Plain analyst</th><th>Skills analyst</th><th>Pipeline (facts.json)</th><th></th></tr>{''.join(rows)}</table></div>
-
 <h2>Part 1: classification</h2><div class="card scroll"><table><tr><th>Class</th><th>Homes</th><th>Share</th><th>Evidence (rule)</th><th>Confidence</th></tr>{cls_rows}</table>
 <p class="note">EV and heat-pump probabilities come from a positive-unlabeled gradient-boosting model (out-of-fold AUC {v('class.ev.pu_auc',2)} EV, {v('class.heat_pump.pu_auc',2)} heat pump). Weather features add {v('class.weather_gain.heat_pump_auc_points')} AUC points for heat pumps and {v('class.weather_gain.ev_auc_points')} for EVs. Customer-level output: <code>outputs/customer_classes.csv</code>.</p></div>
 
 <h2>Part 2: segments and what to do with each</h2><div class="card scroll"><table><tr><th>Segment</th><th>Homes</th><th>Share</th><th>Summer peak</th><th>Winter peak</th><th>Action</th></tr>{seg_rows}</table>
-<p class="note">Rule-based because k-means finds no strong natural clusters (silhouette {v('insight.kmeans_silhouette_k3',3)} at k=3, {v('insight.kmeans_silhouette_k6',3)} at k=6). Both analysts found the same.</p></div>
+<p class="note">Rule-based because k-means finds no strong natural clusters (silhouette {v('insight.kmeans_silhouette_k3',3)} at k=3, {v('insight.kmeans_silhouette_k6',3)} at k=6).</p></div>
 
 <h2>Part 3: batteries and flexibility</h2><div class="card"><p>Candidates: {v('bess.candidates.count')} homes ({v('bess.candidates.share_pct')}%) loaded at least 3.5 kW through the season's event hours on 9 of 10 event days. Median relief per home {v('bess.relief_per_home_kw')} kW; median own-peak cut {v('bess.peak_reduction_kw')} kW ({v('bess.peak_reduction_pct')}% of the home's annual peak); {v('bess.load_shift_mwh_yr')} MWh a year moved out of 4 to 9 pm. The best 1,000 homes give {v('bess.supply_curve.top1000_summer_mw')} MW summer and {v('bess.supply_curve.top1000_winter_mw')} MW winter. Solar homes have surplus to charge from on {v('bess.solar_charge_days')} days a year. Bill savings ${v('bess.bill_savings_per_home_usd_yr')} a year per median home and payback {v('bess.simple_payback_low_yr')} to {v('bess.simple_payback_high_yr')} years both rest on assumed prices listed below. Ranked list: <code>outputs/bess_candidates.csv</code>.</p></div>
 
