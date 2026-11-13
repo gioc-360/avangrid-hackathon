@@ -5,11 +5,11 @@
  ],
  [
   "Engine code",
-  "2,799 lines in 21 ewu modules, none over 200"
+  "3,262 lines in 24 ewu modules, none over 200"
  ],
  [
   "Pipeline, checks",
-  "analysis 1,013 lines; checks 1,539; tests 1,626"
+  "analysis 1,013 lines; checks 1,539; tests 1,750"
  ],
  [
   "Command line",
@@ -17,7 +17,7 @@
  ],
  [
   "Input matrix",
-  "33,757 homes x 8,760 hours, float32, 1.18 GB; full read 0.18 s"
+  "33,757 homes x 8,760 hours, float32, 1.18 GB; full read 0.7 s"
  ],
  [
   "Live screen",
@@ -29,7 +29,7 @@
  ],
  [
   "Trust",
-  "132 tests, 9 check scripts, make check exit 0 in 21 s"
+  "135 tests, 9 check scripts, make check exit 0 in 21 s"
  ],
  [
   "Runs on",
