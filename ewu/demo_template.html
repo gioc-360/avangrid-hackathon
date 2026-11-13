@@ -91,7 +91,7 @@ details.how code { font-size: 16px; background: var(--chip); padding: 0 4px; bor
 /* the one marker app-wide for a number that rests on an assumption or placeholder: it opens the disclosure */
 button.est { font-size: 13px; font-weight: 600; vertical-align: super; line-height: 1; padding: 1px 5px; margin-left: 3px;
   border: 1px solid var(--ctl); border-radius: 4px; background: transparent; color: var(--muted); letter-spacing: 0.02em; }
-button.tag { font-size: 15px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--chip); border: 1px dashed var(--ctl); color: var(--ink); }
+button.tag { font-size: 18px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--chip); border: 1px dashed var(--ctl); color: var(--ink); }
 a.next { display: inline-block; margin-top: 18px; color: var(--accent); font-weight: 600; text-decoration: none; }
 a.next:hover { text-decoration: underline; }
 .notbuilt { color: var(--upgrade); font-weight: 600; }
@@ -108,7 +108,9 @@ a.next:hover { text-decoration: underline; }
 .netcard { padding: 10px 12px; }
 svg.net { cursor: pointer; }
 svg.net text { fill: var(--ink); font-size: 18px; }
-svg.net text.feeder { font-weight: 600; font-size: 17px; }
+svg.net text.feeder { font-weight: 600; font-size: 18px; }
+.netgrid.open svg.net text { font-size: 26px; }
+.detail svg text { font-size: 19px; }
 .g-within { fill: var(--node); }
 .g-over, .g-upgrade { fill: var(--upgrade); }
 .g-upgrade { stroke: var(--ink); stroke-width: 2.4; }
@@ -278,7 +280,8 @@ function look(i, view) {
   return view === "upgrade" ? "upgrade" : "over";
 }
 // layout: substation left, a bus, one trunk per feeder, laterals of 4 transformers above and below the trunk
-const NW = 1500, NH = 780, X0 = 250, X1 = 1488, TOP = 16;
+// BUS is the substation bus bar; X0 leaves room for a feeder label at the drill-down's larger text size
+const NW = 1500, NH = 780, BUS = 180, X0 = 330, X1 = 1488, TOP = 16;
 let LAYOUT = null;
 function layout() {
   if (LAYOUT) return LAYOUT;
@@ -297,21 +300,21 @@ function networkSvg(view) {
   let wires = "";
   for (let f = 0; f < L.nf; f++) {
     const y = trunk(f), lats = Math.ceil(L.per[f] / 8);
-    wires += `M150,${y}H${X0 + (lats - 1) * L.pitch}`;
+    wires += `M${BUS},${y}H${X0 + (lats - 1) * L.pitch}`;
     for (let l = 0; l < lats; l++) wires += `M${(X0 + l * L.pitch).toFixed(1)},${y - 48}V${y + 48}`;
   }
-  const labels = Array.from({ length: L.nf }, (_, f) => `<text class="feeder" x="160" y="${trunk(f) - 8}">Feeder ${String.fromCharCode(65 + f)}</text>`).join("");
+  const labels = Array.from({ length: L.nf }, (_, f) => `<text class="feeder" x="${BUS + 10}" y="${trunk(f) - 8}">Feeder ${String.fromCharCode(65 + f)}</text>`).join("");
   const nodes = L.pos.map(([x, y], i) => { const lk = look(i, view);
     return `<g data-t="${i}" data-look="${lk}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${GLYPH[lk]}</g>`; }).join("");
   const sel = S.t >= 0 && S.t < L.pos.length ? `<circle cx="${L.pos[S.t][0].toFixed(1)}" cy="${L.pos[S.t][1].toFixed(1)}" r="10" fill="none" stroke="var(--ink)" stroke-width="2.4"/>` : "";
-  const sub = `<rect x="12" y="${NH / 2 - 40}" width="112" height="80" rx="8" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
-    <circle cx="58" cy="${NH / 2 - 6}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="78" cy="${NH / 2 - 6}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/>
-    <text x="68" y="${NH / 2 + 30}" text-anchor="middle" style="font-size:15px">Substation</text>`;
+  const sub = `<rect x="8" y="${NH / 2 - 44}" width="150" height="92" rx="8" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+    <circle cx="73" cy="${NH / 2 - 12}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="93" cy="${NH / 2 - 12}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/>
+    <text x="83" y="${NH / 2 + 34}" text-anchor="middle">Substation</text>`;
   return `<svg class="net" viewBox="0 0 ${NW} ${NH}" role="img" aria-label="One-line diagram of the synthetic network: a substation, its feeders and every transformer, marked by state; Enter opens the most urgent transformer, arrow keys step through those in the same state" tabindex="0" onclick="pickNode(event)" onkeydown="netKey(event)">
     <path d="${wires}" fill="none" stroke="var(--wire)" stroke-width="1"/>
-    ${Array.from({ length: L.nf }, (_, f) => `<line x1="150" x2="${X0 + (Math.ceil(L.per[f] / 8) - 1) * L.pitch}" y1="${trunk(f)}" y2="${trunk(f)}" stroke="var(--ink)" stroke-width="2.4"/>`).join("")}
-    <line x1="124" x2="150" y1="${NH / 2}" y2="${NH / 2}" stroke="var(--ink)" stroke-width="3"/>
-    <line x1="150" x2="150" y1="${trunk(0)}" y2="${trunk(L.nf - 1)}" stroke="var(--ink)" stroke-width="5"/>
+    ${Array.from({ length: L.nf }, (_, f) => `<line x1="${BUS}" x2="${X0 + (Math.ceil(L.per[f] / 8) - 1) * L.pitch}" y1="${trunk(f)}" y2="${trunk(f)}" stroke="var(--ink)" stroke-width="2.4"/>`).join("")}
+    <line x1="158" x2="${BUS}" y1="${NH / 2}" y2="${NH / 2}" stroke="var(--ink)" stroke-width="3"/>
+    <line x1="${BUS}" x2="${BUS}" y1="${trunk(0)}" y2="${trunk(L.nf - 1)}" stroke="var(--ink)" stroke-width="5"/>
     ${sub}${labels}<g>${nodes}</g>${sel}</svg>`;
 }
 function pickNode(ev) {

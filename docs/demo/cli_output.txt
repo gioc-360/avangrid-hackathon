@@ -13,4 +13,4 @@ Batteries: 213 units, 1.43 per protected transformer.
 Ladder cost as % of upgrading every flagged transformer (equal life):
 low prices 69.09%, mid prices 51.79%, high prices 43.14%
 
-2.3 s, full meter data, aggregates only
+2.2 s, full meter data, aggregates only

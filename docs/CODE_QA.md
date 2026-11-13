@@ -205,8 +205,8 @@ each state at every ladder step and fails when they differ from the facts. With 
 `bin/ewu screen --map` replaces the random groups through `load_map`; the feeders would then come from your map
 instead of the equal-block split.
 
-Code: `ewu/network.py:94 def run_network`, `ewu/network.py:97 screen.screen_setup`,
-`ewu/network.py:101 sensitivity.ladder_states_for_one_run`, `ewu/network.py:30 def feeder_of`,
-`ewu/network.py:42 def looks`, `config/ewu.yaml:138 feeders:`, `ewu/demo_template.html:271 function look`,
-`ewu/demo_template.html:295 function networkSvg`, `checks/demo_check.py:104 net_view and`,
+Code: `ewu/network.py:95 def run_network`, `ewu/network.py:98 screen.screen_setup`,
+`ewu/network.py:102 sensitivity.ladder_states_for_one_run`, `ewu/network.py:30 def feeder_of`,
+`ewu/network.py:42 def looks`, `config/ewu.yaml:138 feeders:`, `ewu/demo_template.html:273 function look`,
+`ewu/demo_template.html:298 function networkSvg`, `checks/demo_check.py:104 net_view and`,
 `tests/test_network.py:28 def test_state_counts_equal_the_screen_for_the_demo_seed`, `ewu/feeders.py:41 def load_map`.

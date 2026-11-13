@@ -85,10 +85,11 @@ def battery_net_load(st, top, top_day, config):
     return net, hosts, units
 
 
-def day_rows(series, day):
-    """(T, 24) slice of a (T, 8760) series at each transformer's day, rounded for the page."""
+def day_rows(series, day, decimals=2):
+    """(T, 24) slice of a (T, 8760) series at each transformer's day, rounded for the page (None keeps it raw)."""
     hours = day[:, None] * 24 + np.arange(24)[None, :]
-    return np.round(np.take_along_axis(series, hours, axis=1), 2)
+    rows = np.take_along_axis(series, hours, axis=1)
+    return rows if decimals is None else np.round(rows, decimals)
 
 
 def run_network(inputs, config):
@@ -123,7 +124,7 @@ def run_network(inputs, config):
             "base_kw": day_rows(base, day), "ev_kw": day_rows(parts["ev"], day), "hp_kw": day_rows(parts["hp"], day),
             "ev_staggered_kw": day_rows(ev_staggered, day), "after_kw": day_rows(after, day),
             "peak_base_kw": at(base), "peak_ev_kw": at(np.where(protect[:, None], ev_staggered, parts["ev"])),
-            "peak_hp_kw": at(parts["hp"]), "peak_kw": at(worse), "peak_after_kw": at(after),
+            "peak_hp_kw": at(parts["hp"]), "peak_kw": at(worse), "peak_after_kw": np.round(day_rows(after, day, None).max(1), 1),
             "counts": view_counts(state, flag, over_today), "homes": int(len(groups.homes)), "seed": run["seed"],
             "transformers": int(groups.count), "today_over": today_over}
 

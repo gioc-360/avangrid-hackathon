@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 3.0,
+  "value": 2.9,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -8720,7 +8720,7 @@
   "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
  },
  "ewu.network.seconds": {
-  "value": 5.7,
+  "value": 3.1,
   "unit": "s",
   "script": "ewu/network.py",
   "method": "whole network run, data load included"
@@ -10508,7 +10508,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.3,
+  "value": 2.2,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"
