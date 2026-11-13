@@ -1,8 +1,9 @@
 """EWU command line: one subcommand per milestone, run as `bin/ewu <subcommand>`.
 
 What: `coldsnap --date 2026-02-07` runs the battery duration test through the cold snap and prints the
-      aggregate table and the hour-by-hour state of charge across both nights. Later milestones add
-      `inventory`, `sensitivity`, `screen` and `demo` here.
+      aggregate table and the hour-by-hour state of charge across both nights; `sensitivity` runs the ladder
+      over every scenario, sizing margin and grouping mode, prices it and prints the grid and the headline
+      range. Later milestones add `inventory`, `screen` and `demo` here.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
       never a customer or a single transformer.
 How:  argparse subcommands; each calls one module's run, summarize and record functions. Facts are written
@@ -73,12 +74,65 @@ def run_coldsnap_command(args):
     return 0
 
 
+def print_sensitivity(pooled, priced, config):
+    """One row per grid cell: the ladder as shares of all transformers, then its cost against upgrading all."""
+    from ewu import economics
+    from ewu.stress import margin_label
+    print(f"{'scenario':<9} {'grouping':<13} {'margin':>6} {'flag %':>7} {'shift %':>7} {'protect %':>9} "
+          f"{'upgrade %':>9} {'batt/prot':>9} {'ladder cost % of upgrade-all: mid':>34} {'low':>6} {'high':>6} {'0% rate':>7}")
+    for cell in sorted(pooled):
+        s, costs = pooled[cell]["shares"], priced[cell]
+        share = {case: costs[(case, "discounted")]["share_of_upgrade_all_pct"]["ladder"] for case in economics.PRICE_CASES}
+        print(f"{cell[0]:<9} {cell[1]:<13} {cell[2]:>6.2f} {s['flagged_pct']:>7.2f} {s['shift_fixed_pct']:>7.2f} "
+              f"{s['protected_pct']:>9.2f} {s['upgrade_left_pct']:>9.2f} {s['batteries_per_protected']:>9.2f} "
+              f"{share['mid']:>34.2f} {share['low']:>6.2f} {share['high']:>6.2f} "
+              f"{costs[('mid', 'zero_rate')]['share_of_upgrade_all_pct']['ladder']:>7.2f}")
+    base = (config_value("demo.scenario", config), "random", config_value("transformer.base_margin", config))
+    head = economics.headline_range(priced, base)
+    print(f"\nHeadline: the ladder costs {head['base']:.2f}% of upgrading every flagged transformer "
+          f"({base[0]}, {base[1]} grouping, {margin_label(base[2])}, mid prices), "
+          f"range {head['low']:.2f}% to {head['high']:.2f}% over all {len(pooled)} cells and price cases")
+    alone = economics.headline_range(priced, base, "shift_then_upgrade")
+    print(f"Shift, then upgrade (no batteries): {alone['base']:.2f}%, range {alone['low']:.2f}% to {alone['high']:.2f}%")
+    for case in economics.PRICE_CASES:
+        b = economics.battery_against_upgrade(pooled[base], economics.prices_for_case(case, config))
+        print(f"Battery vs upgrade, {case} prices, per cleared transformer: {b['batteries_per_cleared']} batteries, "
+              f"${b['battery_yearly_usd']:,}/yr vs upgrade ${b['upgrade_yearly_usd']:,}/yr; tie at "
+              f"${b['tie_unit_usd_equal_life']:,} per unit (equal life), ${b['tie_unit_usd_deferral']:,} (deferral)")
+    mid = priced[base][("mid", "discounted")]["present_usd"]
+    scale = economics.nyseg_transformers(config) / pooled[base]["transformers"] / 1e6
+    print(f"Scaled to NYSEG (labeled assumption: {economics.nyseg_transformers(config):,.0f} transformers like ours), "
+          f"present value: upgrade all ${mid['upgrade_all'] * scale:,.1f}M, ladder ${mid['ladder'] * scale:,.1f}M")
+
+
+def run_sensitivity_command(args):
+    from ewu import economics, sensitivity
+    from analysis.facts import record
+    config = read_config()
+    started = time.time()
+    runs = sensitivity.run_sensitivity(read_inputs(), config, range(config_value("checks.seeds", config)))
+    pooled = sensitivity.summarize_ladder(runs)
+    priced = economics.price_every_cell(pooled, config)
+    sensitivity.record_ladder(pooled)
+    economics.record_economics(pooled, priced, config)
+    seconds = time.time() - started
+    record("ewu.sensitivity.seconds", round(seconds, 1), "s", "whole sensitivity grid and pricing")
+    print(f"Sensitivity grid: {len(pooled)} cells, {config_value('checks.seeds', config)} seeds, "
+          f"{config_value('transformer.count', config)} synthetic transformers per seed; shares are % of all transformers; "
+          f"discount rate {config_value('prices.discount_rate', config)}\n")
+    print_sensitivity(pooled, priced, config)
+    print(f"\nfacts recorded; {seconds:.1f} s")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="ewu", description="Electrify Without Upgrade prototype")
     commands = parser.add_subparsers(dest="command", required=True)
     cold = commands.add_parser("coldsnap", help="battery duration test through the cold snap")
     cold.add_argument("--date", default=config_value("demo.cold_snap_start"), help="first day of the window")
     cold.set_defaults(run=run_coldsnap_command)
+    grid = commands.add_parser("sensitivity", help="ladder and its cost over scenarios x sizing margins x groupings")
+    grid.set_defaults(run=run_sensitivity_command)
     args = parser.parse_args(argv)
     return args.run(args)
 

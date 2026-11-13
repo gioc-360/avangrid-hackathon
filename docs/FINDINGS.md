@@ -90,6 +90,78 @@ larger share. "Stays under the limit with no new EV load" means today's load plu
 the limit in that hour. Code: ewu/attribution.py (split, counts, facts), ewu/shift.py (timer and staggered
 placement), tests/test_attribution.py (shares add up, energy is moved and never lost, facts match).
 
+## Money: the ladder against upgrading every flagged transformer
+
+Shifting EV charging is where the money is. Batteries, at the placeholder prices in config/ewu.yaml, cost more than the upgrade they put off. In the moderate scenario at today's peak times 1.15, the full ladder (Shift, Protect, Upgrade) costs 51.92% of upgrading every flagged transformer on an equal-life basis, while shifting and then upgrading what is still over, with no batteries, costs 43.47%. Across all 16 grid cells (two scenarios, four sizing margins, two grouping modes) and the low and high price cases, the ladder runs from 30.8% to 151.19% of the upgrade-everything cost, and shift-then-upgrade from 28.72% to 102.97%. A battery beats the upgrade only when an installed unit costs under $7,730 (mid prices, equal life); the placeholder range is $9,000 to $13,000 a unit.
+
+How the money is counted. Every price is an input in config/ewu.yaml with its source or an assumption flag, and ewu/economics.py
+types none. A battery lasts its 15-year warranty and a transformer 30 years, so each is turned into an equal-life yearly cost
+at a 7% discount rate (a placeholder; Avangrid's cost of capital is an ask), which replaces the battery at the end of its life
+at the same price. Upgrades cost $10,000, $15,000 or $20,000 (low, mid, high; the teammate's range credited to Eversource,
+not verified). Batteries cost $9,000 to $13,000 per installed battery unit (placeholders); the mid case takes the middle of that range.
+Staggered charging costs $150 to enroll and $86 a year per EV home (the teammate's OptimizEV figures, not verified), for every new
+EV home on a flagged transformer. Not counted, all upside for batteries and none verified: lease payments from hosts, the
+NYSERDA incentive of $200 per kWh, and capacity value at the system peak.
+
+| Ladder rung, moderate 2030, peak x 1.15, random grouping | Share of all transformers |
+|---|---|
+| Flag: overloaded with unmanaged EV charging | 26.18% |
+| Shift: fixed by staggered charging | 20.57% |
+| Protect: cleared by fit-score batteries (92.57% of the 5.65% still over) | 5.23% |
+| Upgrade: left when no battery option clears it | 0.42% |
+
+Each protected transformer takes 1.42 batteries on average (the fewest of one or two hosts with one or two
+units that clears every hour of the year), and each flagged transformer has 2.7 new EV homes to enroll.
+
+### One cleared transformer: batteries against the upgrade
+
+| Price case | Battery capital | Battery, yearly | Upgrade, yearly | Unit price that ties, equal life | Deferral value | Unit price that ties, deferral |
+|---|---|---|---|---|---|---|
+| low | $12,818 | $1,407 | $806 | $5,154 | $6,376 | $4,477 |
+| mid | $15,666 | $1,720 | $1,209 | $7,730 | $9,563 | $6,715 |
+| high | $18,515 | $2,033 | $1,612 | $10,307 | $12,751 | $8,953 |
+
+Two fair framings, one answer. Equal life asks whether batteries replaced every 15 years cost less a year than an upgrade that lasts
+30; at mid prices they cost $1,720 a year against $1,209. Deferral asks what holding the upgrade off for the
+battery's 15-year life is worth today: $9,563 at mid prices, against $15,666 for the batteries. A deferral is never
+worth more than the upgrade itself, and at a zero discount rate it is worth nothing, which the tests check. At a zero rate the
+ladder costs 92.42% of upgrading everything and shift-then-upgrade 70.65%, because the battery is bought twice in
+30 years and the yearly charging fee is never discounted.
+
+### Every grid cell, mid prices, 7% discount rate
+
+| Scenario | Grouping | Sizing | Flag % | Shift % | Protect % | Upgrade % | Batteries per protected | Ladder, % of upgrade-all | Shift then upgrade, % |
+|---|---|---|---|---|---|---|---|---|---|
+| moderate | random | peak x 1.05 | 42.84 | 30.79 | 11.03 | 1.16 | 1.43 | 58.81 | 47.82 |
+| moderate | random | peak x 1.15 | 26.18 | 20.57 | 5.23 | 0.42 | 1.42 | 51.92 | 43.47 |
+| moderate | random | peak x 1.30 | 11.87 | 10.1 | 1.69 | 0.1 | 1.34 | 44.57 | 39.81 |
+| moderate | random | peak x 1.50 | 3.74 | 3.44 | 0.3 | 0.0 | 1.42 | 39.0 | 35.62 |
+| moderate | same segment | peak x 1.05 | 43.81 | 27.03 | 13.79 | 3.05 | 1.52 | 72.83 | 56.6 |
+| moderate | same segment | peak x 1.15 | 32.65 | 22.43 | 8.69 | 1.55 | 1.56 | 65.87 | 50.92 |
+| moderate | same segment | peak x 1.30 | 20.11 | 15.21 | 4.39 | 0.56 | 1.54 | 58.11 | 46.44 |
+| moderate | same segment | peak x 1.50 | 10.5 | 8.67 | 1.73 | 0.11 | 1.45 | 49.2 | 41.8 |
+| high | random | peak x 1.05 | 71.71 | 35.4 | 28.25 | 8.21 | 1.63 | 102.21 | 77.35 |
+| high | random | peak x 1.15 | 54.77 | 32.55 | 18.24 | 4.11 | 1.59 | 89.1 | 69.37 |
+| high | random | peak x 1.30 | 33.05 | 23.34 | 8.46 | 1.32 | 1.58 | 75.75 | 60.9 |
+| high | random | peak x 1.50 | 14.38 | 11.29 | 2.91 | 0.21 | 1.53 | 67.0 | 56.37 |
+| high | same segment | peak x 1.05 | 62.85 | 22.79 | 26.03 | 14.13 | 1.77 | 121.57 | 89.95 |
+| high | same segment | peak x 1.15 | 53.65 | 23.98 | 20.51 | 9.25 | 1.75 | 111.06 | 82.43 |
+| high | same segment | peak x 1.30 | 41.1 | 22.54 | 13.85 | 4.72 | 1.74 | 98.62 | 73.84 |
+| high | same segment | peak x 1.50 | 26.67 | 17.15 | 7.77 | 1.77 | 1.67 | 86.3 | 66.72 |
+
+Shifting is the cheapest rung in every cell. Batteries add cost wherever they are used, so the ladder costs more than
+shift-then-upgrade in every cell at these prices; the gap is widest where high adoption, clustered neighbors and tight sizing
+leave many transformers still over after shifting. Batteries earn their rung only if Avangrid's installed price, lease income, incentives
+or capacity value bring a unit under the tie price above.
+
+Scaled to NYSEG (a labeled assumption): 890,000 electric customers over 8 homes per transformer is 111,250 transformers, as if
+every customer were a home like our sample, which is how the teammate scaled. For the moderate scenario at mid prices, in present
+value over the transformer's 30-year life, upgrading every flagged transformer costs $436.9M, the ladder $226.8M
+($210.0M less) and shift-then-upgrade $189.9M.
+
+Code: ewu/sensitivity.py (the ladder in every cell), ewu/economics.py (prices, equal life, deferral, scaling),
+tests/test_economics.py, and `bin/ewu sensitivity`, which reruns the grid and prints this table.
+
 ## Our rebuild versus the teammate's numbers (decision D2)
 
 Our rebuild is the reference. Differences are reported here and not tuned away. We cannot see the teammate's
@@ -105,6 +177,15 @@ transformer, 3,000 transformers, sizing at today's peak times 1.15 and the limit
 | Overloaded transformers fixed by staggering, moderate | 78.56% | 88.8% (8.7 of 9.8 points) |
 | Overloaded transformers fixed by staggering, high | 59.43% | 65.4% (19.5 of 29.8 points) |
 | Overloaded with a timer at hour 23, moderate | 24.28% | 16% |
+| Cleared by batteries, moderate | 5.23% | 1.1% |
+| Still need an upgrade, moderate | 0.42% | under 0.1% |
+| Upgrade every overloaded transformer, NYSEG, moderate | $436.9M present value, equal to the capital | $164M capital |
+| Electrify Without Upgrade ladder, NYSEG, moderate | $226.8M present value | $27M |
+| Cleared by batteries, high | 18.24% | 9.6% |
+| Still need an upgrade, high | 4.11% | 0.9% |
+| Upgrade every overloaded transformer, NYSEG, high | $913.9M present value, equal to the capital | $498M capital |
+| Electrify Without Upgrade ladder, NYSEG, high | $814.3M present value | $135M |
+| Batteries per protected transformer, moderate | 1.42 | 1.7 |
 | Measured EV charging sessions | 20,940 | about 20,800 |
 
 ## Limits

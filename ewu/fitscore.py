@@ -66,18 +66,18 @@ def choose_hosts(policy, scores, home_kw, worst_hour, count, random_key):
     raise ValueError(f"policy must be one of {POLICIES}, not {policy}")
 
 
-def flagged_setup(inputs, groups, base, parts, config):
-    """Transformers over the limit in any hour with staggered EV charging, their homes' kW, and their worst hour."""
+def flagged_setup(inputs, groups, base, parts, config, margin=None):
+    """Transformers over the limit with staggered EV charging (base margin unless given), homes' kW, worst hour."""
     owner = stress.transformer_of_each_home(groups, len(inputs["homes"]))
     ceiling = config_value("transformer.overload_limit", config) * feeder_groups.rate(
-        base.max(1), config_value("transformer.base_margin", config))
+        base.max(1), margin or config_value("transformer.base_margin", config))
     total = base + shift.ev_loading_by_mode(EV_MODE, parts, owner, groups.count, config) + parts["hp"]
     above = np.maximum(total - ceiling[:, None], 0.0)
     flagged = np.flatnonzero((above > dispatch.OVER_TOLERANCE_KW).any(1))
     homes = groups.homes.reshape(groups.count, -1)[flagged]
     home_kw = dispatch.own_loading(inputs, parts, homes.ravel(), owner, EV_MODE, config).astype(np.float32)
     return {"total": total[flagged], "ceiling": ceiling[flagged], "homes": homes, "transformers": groups.count,
-            "home_kw": home_kw.reshape(len(flagged), homes.shape[1], -1), "worst_hour": above[flagged].argmax(1)}
+            "flagged": flagged, "home_kw": home_kw.reshape(len(flagged), homes.shape[1], -1), "worst_hour": above[flagged].argmax(1)}
 
 
 def place_and_dispatch(setup, top, top_day, seed, scenario_index, config):
