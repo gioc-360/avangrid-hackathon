@@ -6,7 +6,8 @@ What: `inventory` lists every home's equipment, segment and eligible programs (a
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
       `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
       the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `case` writes
-      the one-page business case from facts; `demo` builds the offline 4-step page and opens it.
+      the one-page business case from facts; `demo` builds the offline demo page (side panel: Overview, Inventory,
+      Flag, Shift, Protect, Upgrade, Money) and opens it.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
       never a customer or a single transformer.
 How:  argparse subcommands; each calls one module's run, summarize and record functions and ewu/printouts.py
@@ -41,7 +42,8 @@ def run_coldsnap_command(args):
           f"{config_value('transformer.count', config)} synthetic transformers per seed, rating = today's peak x "
           f"{config_value('transformer.base_margin', config)}, limit {config_value('transformer.overload_limit', config)} x rating")
     print(f"Each host: {spec['energy_kwh']:.2f} kWh, {spec['power_kw']:.2f} kW, round trip {spec['efficiency']}; "
-          f"columns 'Nh' = N host homes per flagged transformer\n")
+          f"columns: med = median over flagged transformers, p90 = 90th percentile, run = longest stretch of hours over, "
+          f"'Nh' = N host homes per flagged transformer\n")
     printouts.print_coldsnap_table(summary, hosts)
     show = (config_value("demo.scenario", config), "staggered")
     print(f"\nHour by hour, {show[0]} 2030, staggered EV charging, share of flagged transformers:")
@@ -146,7 +148,7 @@ def main(argv=None):
     rob.set_defaults(run=run_robustness_command)
     case = commands.add_parser("case", help="write docs/BUSINESS_CASE.md with every number filled from facts")
     case.set_defaults(run=run_case_command)
-    demo = commands.add_parser("demo", help="build the offline 4-step demo page and open it")
+    demo = commands.add_parser("demo", help="build the offline demo page and open it")
     demo.add_argument("--no-open", action="store_true", help="build only")
     demo.set_defaults(run=run_demo_command)
     args = parser.parse_args(argv)

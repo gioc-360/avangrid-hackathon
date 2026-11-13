@@ -1,16 +1,19 @@
-"""Demo page: the offline 4-step page judges click through, built only from numbers the code already wrote.
+"""Demo page: the offline page judges click through one step at a time from its side panel, built only from
+numbers the code already wrote.
 
 What: collect_values() gathers every fact, private fact and config input the page may show, each under a
-      prefixed key (fact:, private:, config:); steps_built() says which of the 4 steps has what it needs;
-      build_page() pours both into ewu/demo_template.html and writes outputs/demo/ewu_demo.html.
+      prefixed key (fact:, private:, config:); steps_built() says which data group (inventory, screen, cold
+      snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
+      outputs/demo/ewu_demo.html.
 Why:  the live demo must work with no network and no server, and every number on it must trace to code. The
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
       which checks/demo_check.py compares with the stored value.
 How:  the values travel inside the page as one JSON block; the template's script draws the steps from them.
-      The page shows no real home: step 1 draws a Composite home per segment (segment averages, public
-      facts), and the cold snap step draws one 8-home transformer's load from outputs/private/facts_private.json
-      with battery charge from the fleet facts, never a host's own charge. The page stays gitignored. A step whose inputs are missing shows "not built" and the keys
-      it lacks, instead of failing quietly.
+      The page shows no real home: Inventory draws a Composite home per segment (segment averages,
+      public facts), and Protect draws one 8-home transformer's cold snap load from
+      outputs/private/facts_private.json with battery charge from the fleet facts, never a host's own charge.
+      The page stays gitignored. A step whose inputs are missing shows "not built" and the keys it lacks,
+      instead of failing quietly.
 """
 import json
 from ewu import ROOT

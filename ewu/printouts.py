@@ -43,6 +43,7 @@ def print_sensitivity(pooled, priced, config):
     """One row per grid cell: the ladder as shares of all transformers, then its cost against upgrading all."""
     from ewu import economics
     from ewu.stress import margin_label
+    print("batt/prot = batteries per protected transformer; ladder cost columns are price cases, discounted unless '0% rate'")
     print(f"{'scenario':<9} {'grouping':<13} {'margin':>6} {'flag %':>7} {'shift %':>7} {'protect %':>9} "
           f"{'upgrade %':>9} {'batt/prot':>9} {'ladder cost % of upgrade-all: mid':>34} {'low':>6} {'high':>6} {'0% rate':>7}")
     for cell in sorted(pooled):

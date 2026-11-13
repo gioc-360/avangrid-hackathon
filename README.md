@@ -33,7 +33,7 @@ bin/ewu tophours                                   # MW the battery hosts cut in
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
 bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
 bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
-bin/ewu demo                                       # the offline 4-step demo page
+bin/ewu demo                                       # the offline demo page, steps in a side panel
 make prototype                                     # rebuild all of the above from data/processed
 ```
 

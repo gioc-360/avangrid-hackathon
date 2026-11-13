@@ -1,11 +1,11 @@
-"""Demo check: the offline demo page renders all 4 steps, every number on it is a stored number, and the live
+"""Demo check: the offline demo page renders all 7 steps, every number on it is a stored number, and the live
 screen command answers on the full data in under a minute.
 
 What: confirms outputs/demo/ewu_demo.html exists and loads nothing from outside; renders it in headless Chrome in
-      every scenario x grouping x sizing state (cycling homes and host counts) and requires each of the 4 steps
+      every scenario x grouping x sizing state (cycling homes and host counts) and requires each of the 7 steps
       filled, no NaN or undefined, every shown number inside an element that names its key, and each equal to
-      that fact, private fact or config input at the shown precision; saves one screenshot per step to
-      outputs/private/demo_shots/; times `bin/ewu screen` on the full data, fails at the config limit, records
+      that fact, private fact or config input at the shown precision; saves one 1920x1080 screenshot per step,
+      chosen by its side panel link (#step=<id>), to outputs/private/demo_shots/; times `bin/ewu screen` on the full data, fails at the config limit, records
       ewu.cli.screen_seconds and writes its aggregate output to docs/demo/cli_output.txt, where every number
       must trace. `--selftest` plants seven bad pages and must catch each while passing a clean one.
 Why:  the demo is what judges see. A number typed into the page, a stale page after a rerun, a step that fails
@@ -28,7 +28,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SHOTS, CLI_OUTPUT = ROOT / "outputs" / "private" / "demo_shots", ROOT / "docs" / "demo" / "cli_output.txt"
 OUTSIDE = re.compile(r"https?://|<link\b|@import|\bsrc\s*=|url\(", re.I)
 BROKEN = re.compile(r"\b(NaN|undefined|Infinity)\b")
-STEPS = ("step1", "step2", "step3", "step4")
+STEPS = ("overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
 
 
 class RenderedPage(HTMLParser):
@@ -142,16 +142,16 @@ def time_live_screen():
 
 def run_selftest():
     sources = {"config:transformer.overload_limit": 1.2, "fact:x.share_pct": 51.92}
-    step = lambda i: f'<section id="step{i}"><span class="n" data-key="fact:x.share_pct">51.92</span>% <svg><polyline/></svg></section>'
+    step = lambda s: f'<section id="{s}"><span class="n" data-key="fact:x.share_pct">51.92</span>% <svg><polyline/></svg></section>'
     payload = '<script type="application/json" id="data">{"values": {"fact:x.share_pct": 51.92}}</script>'
-    clean = "".join(step(i) for i in range(1, 5)) + payload
+    clean = "".join(step(s) for s in STEPS) + payload
     plants = {"unbound number": clean.replace("% <svg>", "% of 42 homes <svg>", 1),
               "number unequal to its fact": clean.replace(">51.92<", ">51.29<", 1),
               "outside script": clean + '<script src="https://cdn.example/x.js"></script>',
               "NaN on the page": clean.replace("% <svg>", "% NaN <svg>", 1),
-              "empty step": clean.replace(step(4), '<section id="step4"></section>'),
+              "empty step": clean.replace(step("money"), '<section id="money"></section>'),
               "stale stored value": clean.replace('{"fact:x.share_pct": 51.92}', '{"fact:x.share_pct": 50.0}'),
-              "step not built": clean.replace(step(3), '<section id="step3"><p class="notbuilt">not built</p></section>')}
+              "step not built": clean.replace(step("protect"), '<section id="protect"><p class="notbuilt">not built</p></section>')}
     found = audit_raw(clean, sources) + audit_dom(clean, sources)[0]
     ok = not found
     print(f"{'PASS' if ok else 'FAIL'}  clean planted page has no problems {found}")
@@ -177,10 +177,10 @@ def main():
             problems += [f"{state}: {p}" for p in found]
             numbers += count
         SHOTS.mkdir(parents=True, exist_ok=True)
-        for i in range(1, 5):
-            run_chrome(f"{PAGE.as_uri()}#only={i}", profile, f"--screenshot={SHOTS / f'step{i}.png'}",
-                       "--window-size=1280,1100")
-            problems += [] if (SHOTS / f"step{i}.png").stat().st_size > 10_000 else [f"step{i} screenshot is blank"]
+        for step in STEPS:
+            run_chrome(f"{PAGE.as_uri()}#step={step}", profile, f"--screenshot={SHOTS / f'{step}.png'}",
+                       "--window-size=1920,1080")
+            problems += [] if (SHOTS / f"{step}.png").stat().st_size > 10_000 else [f"{step} screenshot is blank"]
     seconds, output = time_live_screen()
     from analysis.facts import record
     record("ewu.cli.screen_seconds", round(seconds, 1), "s", "wall clock of bin/ewu screen on the full data, from demo_check")
@@ -191,7 +191,7 @@ def main():
     _, untraced = trace_numbers.trace_document(CLI_OUTPUT, trace_numbers.numeric_sources())
     problems += [f"cli output: {shown} at {where} traces to nothing" for where, shown, _ in untraced]
     print("".join(f"FAIL  {p}\n" for p in problems[:40]), end="")
-    print(f"demo_check: {len(states)} rendered states, {numbers} bound numbers checked, 4 screenshots in "
+    print(f"demo_check: {len(states)} rendered states, {numbers} bound numbers checked, {len(STEPS)} screenshots in "
           f"{SHOTS.relative_to(ROOT)}, live screen {seconds:.1f} s (limit {limit} s), {len(problems)} problems")
     sys.exit(1 if problems else 0)
 
