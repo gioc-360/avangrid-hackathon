@@ -1,4 +1,4 @@
-.PHONY: all env data features model check
+.PHONY: all env data features model check test prototype
 PY := .venv/bin/python -I
 DATA ?= /Users/giocaballero/Downloads/00_Hackathon Materials/Data
 # the original 10001_20000 zip repeats customers 1-10,000; the corrected upload is a folder
@@ -26,3 +26,9 @@ model:           ## classify, segment, size batteries -> facts/facts.json + outp
 
 check:           ## are we solving their problem, and is every number traced?
 	$(PY) checks/check_all.py $(if $(DECK),--deck "$(DECK)")
+
+test:            ## EWU prototype tests (config, house rules, then one file per milestone)
+	$(PY) -m pytest -q tests/
+
+prototype:       ## EWU prototype: check the config, then rebuild every EWU output from data/processed
+	$(PY) checks/config_check.py

@@ -1,0 +1,139 @@
+# Every input to the EWU prototype, in one place.
+# Each input is {value, unit, source} or {value, unit, assumption: true, basis}; it may carry both.
+# checks/config_check.py opens every source and fails unless the value (or `quote`) is really there.
+# Source forms:
+#   repo:PATH:LINE    the value, or the quote, appears on that line of a repo file
+#   fact:KEY          the value equals facts/facts.json KEY
+#   pdf:DOC:PAGE      the value, or the quote, appears on that page (DOC named in checks/requirements.yaml)
+#   citation:ID       the value is listed for that page-verified citation in checks/citations.yaml
+# assumption: true means nobody outside this team has confirmed the value; `basis` says where it came from.
+
+scenarios:
+  moderate:
+    ev_share: {value: 0.20, unit: share of homes adding an EV by 2030, source: "repo:runs/business_case_team_v2.txt:6",
+               assumption: true, basis: "teammate scenario; said to follow New York 2030 targets, not verified"}
+    hp_share: {value: 0.15, unit: share of homes adding a heat pump by 2030, source: "repo:runs/business_case_team_v2.txt:6",
+               assumption: true, basis: "teammate scenario; said to follow New York 2030 targets, not verified"}
+  high:
+    ev_share: {value: 0.35, unit: share of homes adding an EV by 2030, source: "repo:runs/business_case_team_v2.txt:7",
+               assumption: true, basis: "teammate scenario; said to follow New York 2030 targets, not verified"}
+    hp_share: {value: 0.30, unit: share of homes adding a heat pump by 2030, source: "repo:runs/business_case_team_v2.txt:7",
+               assumption: true, basis: "teammate scenario; said to follow New York 2030 targets, not verified"}
+  loads:
+    ev_l2_kw: {value: 7.2, unit: kW per unmanaged Level 2 charger, source: "repo:analysis/bess.py:13",
+               assumption: true, basis: "charger rating used by the existing battery headroom rule"}
+    hp_kw_per_degf: {value: 0.05, unit: kW added per F below the balance point, source: "fact:bess.headroom_rule.hp_kw_per_degf"}
+    hp_balance_temp_f: {value: 60, unit: F, source: "repo:analysis/bess.py:174",
+                        assumption: true, basis: "balance point used when the heat pump slope was fit"}
+
+transformer:
+  homes_per_transformer: {value: 8, unit: homes, source: "repo:docs/PROTOTYPE_PLAN.md:10",
+                          assumption: true, basis: "decision D3, the teammate's group size; no meter map exists"}
+  count: {value: 3000, unit: synthetic transformers, source: "repo:runs/business_case_team_v2.txt:5",
+          assumption: true, basis: "teammate stress-test size"}
+  sizing_margins: {value: [1.05, 1.15, 1.30, 1.50], unit: rating as a multiple of today's group peak,
+                   source: "repo:docs/PROTOTYPE_PLAN.md:149", assumption: true,
+                   basis: "sensitivity range answering judge objection 2; real ratings are an Avangrid ask"}
+  base_margin: {value: 1.15, unit: rating as a multiple of today's group peak, source: "repo:runs/business_case_team_v2.txt:59",
+                quote: "plus 15%", assumption: true, basis: "teammate default sizing"}
+  overload_limit: {value: 1.20, unit: loading as a multiple of rating, source: "repo:runs/business_case_team_v2.txt:59",
+                   assumption: true, basis: "teammate threshold; real loading limits are an Avangrid ask"}
+  service_added_kva_max: {value: 3, unit: kVA added to a 200 A service without study, source: "pdf:challenge:3",
+                          quote: "approximately 3 kVA"}
+
+battery:
+  energy_kwh_two_units: {value: 20.16, unit: kWh, source: "pdf:challenge:3"}
+  energy_kwh_per_unit: {value: 10.08, unit: kWh, source: "pdf:challenge:3"}
+  power_kw_two_units: {value: 7.68, unit: kW continuous, source: "pdf:challenge:3"}
+  peak_kw_two_units: {value: 11.52, unit: kW for 10 seconds, source: "pdf:challenge:3"}
+  round_trip_efficiency: {value: 0.894, unit: share of energy returned, source: "pdf:challenge:3"}
+  life_years: {value: 15, unit: years of program warranty, source: "pdf:challenge:3"}
+  units_per_host_max: {value: 2, unit: IQ 10C units per home, source: "pdf:challenge:3", quote: "(2 Units)"}
+
+shift:
+  timer_start_hour: {value: 23, unit: hour of day (24 h), source: "repo:runs/business_case_team_v2.txt:35",
+                     quote: "starts at 11pm", assumption: true, basis: "teammate timer mode"}
+  stagger_start_hour: {value: 23, unit: hour of day (24 h), source: "repo:runs/business_case_team_v2.txt:35",
+                       quote: "from 11pm to 3am", assumption: true, basis: "teammate staggered window"}
+  stagger_end_hour: {value: 3, unit: hour of day (24 h), source: "repo:runs/business_case_team_v2.txt:35",
+                     quote: "from 11pm to 3am", assumption: true, basis: "teammate staggered window"}
+  stagger_power_share: {value: 0.5, unit: share of charger kW, source: "repo:runs/business_case_team_v2.txt:35",
+                        quote: "at half power", assumption: true, basis: "teammate staggered mode"}
+
+prices:
+  upgrade_cost_usd: {value: 15000, unit: $ per transformer upgrade, source: "repo:runs/business_case_team_v2.txt:34",
+                     assumption: true, basis: "teammate midpoint; credited to Eversource, page not verified"}
+  upgrade_cost_low_usd: {value: 10000, unit: $ per transformer upgrade, source: "repo:runs/business_case_team_v2.txt:60",
+                         assumption: true, basis: "teammate range; credited to Eversource, page not verified"}
+  upgrade_cost_high_usd: {value: 20000, unit: $ per transformer upgrade, source: "repo:runs/business_case_team_v2.txt:60",
+                          assumption: true, basis: "teammate range; credited to Eversource, page not verified"}
+  capacity_value_usd_kw_yr: {value: 60, unit: $ per kW-year, source: "repo:runs/business_case_team_v2.txt:53",
+                             assumption: true, basis: "teammate value credited to NYISO rest of state, not verified; the existing pipeline uses the next entry instead"}
+  capacity_value_pipeline_usd_kw_yr: {value: 100.0, unit: $ per kW-year, source: "fact:assumption.capacity_value_usd_kw_yr",
+                                      assumption: true, basis: "placeholder in the existing pipeline; disagrees with the teammate value above"}
+  nyserda_incentive_usd_kwh: {value: 200, unit: $ per kWh installed, source: "repo:runs/business_case_team_v2.txt:60",
+                              assumption: true, basis: "teammate value; NYSERDA eligibility for leased batteries is an Avangrid ask"}
+  battery_unit_cost_low_usd: {value: 9000, unit: $ per IQ 10C installed, source: "fact:assumption.unit_cost_low_usd",
+                              assumption: true, basis: "placeholder in the existing pipeline"}
+  battery_unit_cost_high_usd: {value: 13000, unit: $ per IQ 10C installed, source: "fact:assumption.unit_cost_high_usd",
+                               assumption: true, basis: "placeholder in the existing pipeline"}
+  battery_lease_usd_month_two_units: {value: 55, unit: $ per month for two batteries, source: "citation:vermont-gmp-vpp",
+                                      assumption: true, basis: "Green Mountain Power, Vermont, 10-year lease; applying it to NYSEG is our assumption"}
+  managed_charging_enroll_usd: {value: 150, unit: $ per EV home once, source: "repo:runs/business_case_team_v2.txt:47",
+                                assumption: true, basis: "teammate value credited to OptimizEV, not verified"}
+  managed_charging_usd_yr: {value: 86, unit: $ per EV home per year, source: "repo:runs/business_case_team_v2.txt:47",
+                            assumption: true, basis: "teammate value credited to OptimizEV, not verified"}
+  transformer_life_years: {value: 30, unit: years, source: "repo:docs/PROTOTYPE_PLAN.md:152",
+                           assumption: true, basis: "plan objection 5 says 30+ years; no utility source yet"}
+  discount_rate: {value: 0.07, unit: share per year, assumption: true,
+                  basis: "placeholder; no Avangrid cost of capital in our sources; M5 also reports a zero rate"}
+  nyseg_electric_customers: {value: 890000, unit: customers, source: "citation:avangrid-utilities-2018",
+                             assumption: true, basis: "2018 count of all NYSEG electric customers; the teammate treats it as homes"}
+
+demo:
+  scenario: {value: moderate, unit: scenario name, source: "repo:docs/PROTOTYPE_PLAN.md:78", assumption: true,
+             basis: "the live screen command in the plan"}
+  margin: {value: 1.15, unit: rating as a multiple of today's group peak, source: "repo:docs/PROTOTYPE_PLAN.md:78",
+           assumption: true, basis: "the live screen command in the plan"}
+  summer_peak_date: {value: "2026-07-02", unit: date, source: "repo:sources/qa/office-hours-2026-11-12-scott.txt:91",
+                     quote: "July 2nd"}
+  winter_peak_date: {value: "2026-02-07", unit: date, source: "repo:sources/qa/office-hours-2026-11-12-scott.txt:92",
+                     quote: "February 7th"}
+  cold_snap_start: {value: "2026-02-07", unit: date, source: "repo:docs/PROTOTYPE_PLAN.md:45", quote: "Feb 7-8"}
+  cold_snap_end: {value: "2026-02-08", unit: date, source: "repo:docs/PROTOTYPE_PLAN.md:45", quote: "Feb 7-8"}
+
+checks:
+  seeds: {value: 5, unit: random seeds, source: "repo:docs/PROTOTYPE_PLAN.md:198"}
+  seed_tolerance_pts: {value: 1.5, unit: percentage points of overloaded share, source: "repo:docs/PROTOTYPE_PLAN.md:198"}
+  energy_balance_tolerance_pct: {value: 0.1, unit: "% of energy moved", source: "repo:docs/PROTOTYPE_PLAN.md:200"}
+  attribution_sum_tolerance_pts: {value: 0.01, unit: percentage points, assumption: true,
+                                  basis: "rounding only; shares are computed exactly and must sum to 100"}
+  module_line_cap: {value: 200, unit: lines per module, source: "repo:docs/PROTOTYPE_PLAN.md:158"}
+  screen_seconds_max: {value: 60, unit: seconds, source: "repo:docs/PROTOTYPE_PLAN.md:78"}
+  examiner_pass: {value: 9, unit: correct answers of 10, source: "repo:docs/PROTOTYPE_PLAN.md:237"}
+  judge_anchor_score: {value: 4.14, unit: weighted judge score of anchor A1, source: "repo:docs/PROTOTYPE_PLAN.md:235"}
+  judge_noise: {value: 0.1, unit: weighted score points, source: "repo:docs/PROTOTYPE_PLAN.md:240"}
+
+# Numbers the teammate reported, with their line, used only for the D2 difference table. Never targets.
+teammate_reference:
+  transformers_simulated: {value: 3000, unit: transformers, source: "repo:runs/business_case_team_v2.txt:5"}
+  overloaded_pct_moderate: {value: 9.8, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:9"}
+  overloaded_pct_high: {value: 29.8, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:10"}
+  hp_night_share_pct_moderate: {value: 73, unit: "% of overloads", source: "repo:runs/business_case_team_v2.txt:12"}
+  hp_night_share_pct_high: {value: 89, unit: "% of overloads", source: "repo:runs/business_case_team_v2.txt:13"}
+  shift_fixed_pct_moderate: {value: 8.7, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:15"}
+  shift_fixed_pct_high: {value: 19.5, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:16"}
+  units_per_transformer: {value: 1.7, unit: batteries per protected transformer, source: "repo:runs/business_case_team_v2.txt:17"}
+  battery_fixed_pct_moderate: {value: 1.1, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:18"}
+  battery_fixed_pct_high: {value: 9.6, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:19"}
+  upgrade_left_pct_moderate: {value: 0.1, unit: "% of transformers, upper bound", source: "repo:runs/business_case_team_v2.txt:21",
+                              quote: "under 0.1%"}
+  upgrade_left_pct_high: {value: 0.9, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:22"}
+  batteries_nyseg_moderate: {value: 2100, unit: batteries, source: "repo:runs/business_case_team_v2.txt:24"}
+  batteries_nyseg_high: {value: 17700, unit: batteries, source: "repo:runs/business_case_team_v2.txt:25"}
+  upgrade_all_cost_musd_moderate: {value: 164, unit: $M, source: "repo:runs/business_case_team_v2.txt:27"}
+  upgrade_all_cost_musd_high: {value: 498, unit: $M, source: "repo:runs/business_case_team_v2.txt:28"}
+  ewu_cost_musd_moderate: {value: 27, unit: $M, source: "repo:runs/business_case_team_v2.txt:30"}
+  ewu_cost_musd_high: {value: 135, unit: $M, source: "repo:runs/business_case_team_v2.txt:31"}
+  timer_overloaded_pct_moderate: {value: 16, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:35"}
+  ev_sessions: {value: 20800, unit: charging sessions, source: "repo:runs/business_case_team_v2.txt:59"}
