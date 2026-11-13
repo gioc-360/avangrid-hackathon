@@ -24,20 +24,20 @@ VIEWS = [
      "Whoever presents: the slides and the tool show the same numbers.", "Hover a number to see the fact it comes from."),
     ("step=network&net=today", "Network: today", "The whole simulated grid: one substation, six feeders, 3,000 transformers of 8 real homes each.",
      "Distribution planner.", "The buttons above the diagram step through the plan on the same network."),
-    ("step=network&net=flag", "Network: 2030 Flag", "Which transformers go over their limit once 2030 EVs and heat pumps are added.",
+    ("step=network&net=flag", "Network: 2030: Flag", "Which transformers are overloaded once 2030 EVs and heat pumps are added.",
      "Distribution planner.", "Click a transformer to see its worst day against its limit (keep that view on the laptop)."),
-    ("step=network&net=upgrade", "Network: after every fix", "What is left for a new transformer after home batteries do their part.",
+    ("step=network&net=upgrade", "Network: + Upgrade", "What is left for an upgrade after batteries fix what they can.",
      "Planner and finance.", "Compare the counts in the top right with the Flag view."),
-    ("step=overview", "Overview", "The plan on one screen: problem size, fixes in order, cost against upgrading everything.",
+    ("step=overview", "Overview", "The plan on one screen: overloaded, fixed by batteries, upgrade, and saving against Upgrade all.",
      "Anyone new to the tool.", "Switch scenario and overload limit; open “How this is computed” for assumptions."),
-    ("step=inventory", "Inventory", "What equipment each kind of home has, read from hourly meter data, and which programs it qualifies for.",
+    ("step=inventory", "Inventory", "What technology each kind of home has, read from hourly meter data, and which programs it is eligible for.",
      "Customer programs team.", "Pick a segment; homes shown are composites of segment averages, not real customers."),
-    ("step=flag", "Flag", "How many transformers overload, and how that moves with the overload limit.",
+    ("step=flag", "Flag", "How many transformers are overloaded, and how that moves with the overload limit.",
      "Distribution planner.", "Switch scenario and limit to see the range."),
-    ("step=protect", "Protect", "How many overloaded transformers home batteries fix, and with how many units each.",
-     "Planner and programs team.", "Read the bar: fixed by a few units, by more, or upgraded."),
+    ("step=protect", "Place", "How many overloaded transformers batteries fix, and with how many battery units each.",
+     "Planner and programs team.", "Read the bar: fixed by batteries with one or two units, with three or four, or upgrade."),
     ("step=upgrade", "Upgrade", "The transformers batteries cannot fix.", "Planner and finance.", "Read with the Money view."),
-    ("step=money", "Money", "Deck v3's money: gross, net without NYSERDA and Avangrid cost against upgrading every overloaded transformer.",
+    ("step=money", "Money", "Deck v3's money: gross cost, net cost without NYSERDA and net cost against Upgrade all.",
      "Finance and regulatory.", "Open “How this is computed” for prices and the money basis."),
 ]
 
@@ -62,7 +62,7 @@ def page_html(shots):
              "the engine's stored facts, and checks fail the build if one does not match.</p>"
              "<table><tr><th>Tag</th><th>Meaning</th></tr>"
              "<tr><td>GIVEN</td><td>In the hackathon data: hourly meter data, weather, labeled homes</td></tr>"
-             "<tr><td>DERIVED</td><td>Computed from given data: equipment inventory, segments, EV sessions, her EV and heat pump tables</td></tr>"
+             "<tr><td>DERIVED</td><td>Computed from given data: technology inventory, segments, EV sessions, her EV and heat pump tables</td></tr>"
              "<tr><td>SIMULATED</td><td>Modeled, not observed: transformers and feeders (no map was given), 2030 adopters, overloads and fixes</td></tr>"
              "<tr><td>ASSUMED</td><td>To confirm with Avangrid: kW read as kVA, the overload limit, prices, discount rate</td></tr></table>"
              "<p class='lead'>Run it: <code>bin/ewu demo</code> opens this page; <code>bin/ewu screen</code> runs the plan live in seconds; "

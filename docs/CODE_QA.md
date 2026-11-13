@@ -22,7 +22,7 @@ Code: `analysis/classify.py:109 F.ev_l2_night_share` (the rule), `analysis/class
 `ewu inventory` joins the equipment flags, segment and battery tier into one row per home, then applies each
 program's rule from config: the home must have every flag the rule names and none of the excluded flags (vacant
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
-Across all 33,757 usable homes, 69.07% qualify for at least one program.
+Across all 33,757 usable homes, 69.07% are eligible for at least one program.
 
 Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:147 managed_charging:`,
 `tests/test_inventory.py:51 def test_every_program_is_exactly_its_config_rule`,
@@ -195,8 +195,8 @@ Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:18
 
 The Network view draws the deck screen's own network, not a picture of one. `deck_states` calls the same setup and
 the same run as `bin/ewu screen` (the deck profile deck v3 uses: moderate 2030, a 120% limit, random grouping,
-seed 5), so its 3,000 transformers and 24,000 homes split into 2,708 within limit, 287 protected by home
-batteries and 5 for a new transformer, which are the screen's counts; a test holds them equal. Feeders are an
+seed 5), so its 3,000 transformers and 24,000 homes split into 2,708 within limit, 287 fixed by
+batteries and 5 for an upgrade, which are the screen's counts; a test holds them equal. Feeders are an
 illustrative split: transformer ids are cut into 6 equal blocks, a config input marked as an assumption, because
 the data has no feeder map. The page draws one substation, a trunk per feeder and every transformer on a
 lateral, and its `look` rule is the same as `view_counts` in Python; `demo_check.py` counts the drawn transformers

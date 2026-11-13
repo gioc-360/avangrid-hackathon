@@ -15,7 +15,7 @@ NYSEG upgrade all, $M                   111.0      340.5
 Overloaded % by limit: 1.00: 30.0/60.0; 1.10: 17.2/43.2; 1.20: 9.7/29.9; 1.40: 2.4/13.9
 Peak cut, 2,733 priority homes x 2 units: export fleet 9.05 MW off the yearly peak (mean over the top 50 hours 6.40 MW); behind the meter 7.11 MW (mean over those hours)
 
-2.0 s, full meter data, aggregates only
+2.1 s, full meter data, aggregates only
 
 $ bin/ewu screen --profile cautious --scenario moderate --margin 1.15
 EWU screen: moderate 2030, rating = today's peak x 1.15

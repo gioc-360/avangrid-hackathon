@@ -53,8 +53,9 @@ traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/pyt
 The demo page shows deck v3's numbers only, all from the engine's deck profile (the cautious profile stays in the
 CLI, `--profile cautious`). It opens on Summary, one column per scenario; Network then draws one substation, 6
 illustrative feeders and every synthetic transformer of the deck profile, recolored by Today, 2030: Flag,
-+ Protect (batteries), + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
-Protect, Upgrade and Money switch scenario and overload limit. Each view keeps its assumptions in one closed
++ Place batteries, + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
+Place, Upgrade and Money switch scenario and overload limit. The page uses deck v3's terms: overloaded, fixed by
+batteries, upgrade, net cost, Upgrade all, saving. Each view keeps its assumptions in one closed
 "How this is computed".
 The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
 file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.
