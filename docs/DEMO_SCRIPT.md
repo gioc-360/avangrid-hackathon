@@ -11,8 +11,8 @@ says otherwise.
 
 - Run `bin/ewu demo` to build and open the page. It needs no network and no server. It opens on Network, Today.
 - Open a terminal in the repo with `bin/ewu screen --scenario moderate --margin 1.15` typed and not yet run.
-- On the other views, leave the case on Moderate, x 1.15, Random neighbors (the panel foot names it). Move
-  between views by clicking the left side panel, not by scrolling.
+- On the other views, leave the case on Moderate, x 1.15, Random (the pressed buttons name it; each view's
+  "How this is computed" spells it out). Move between views by clicking the left side panel, not by scrolling.
 - Every assumption, source and caveat sits in each view's closed "How this is computed"; an "est." tag or the
   "Synthetic network" tag opens it. Open one only if a judge asks.
 - Keep the page on this laptop. It shows synthetic transformers (8 homes summed) and Composite homes, never a real
@@ -32,7 +32,7 @@ says otherwise.
 | 1:15 | Terminal: run `bin/ewu screen --scenario moderate --margin 1.15` | "Same network, live on the full meter data in seconds: 780 flagged, 615 shifted, 149 protected, 18 to upgrade." | "Is this real or a cached chart?" |
 | 1:30 | Panel: Inventory; click EV home, then Electric heat | "Equipment is read from each home's hourly meter alone, and 69.07% of the 33,757 usable homes qualify for at least one program." | "Where is the appliance inventory and program list?" |
 | 1:45 | Panel: Overview, then Flag; click x 1.05, then x 1.50 | "Pooled over five seeds, 0.42% need an upgrade; transformer sizing is the input we know least, so flagged runs from 42.84% down to 3.74% and we report a range." | "Your headline depends on how big the transformers are." |
-| 2:05 | Overview: click Same-segment neighbors, then back | "If neighbors are alike, the upgrade share rises to 1.55%, but the order of fixes holds." | "Random grouping ignores that adoption clusters." |
+| 2:05 | Overview: click Same segment, then back | "If neighbors are alike, the upgrade share rises to 1.55%, but the order of fixes holds." | "Random grouping ignores that adoption clusters." |
 | 2:15 | Panel: Protect; click 1 host home, then 2 host homes | "Through Feb 7-8, coldest hour -5.0 F, one host home clears 89.88% of the transformers the cold snap pushes over and two clear 92.84%, with the battery's charge earned all year." | "A battery was never tested on a long cold night." |
 | 2:35 | Panel: Money | "The full ladder costs 51.92% of upgrading every flagged transformer, and a battery beats the upgrade only below $7,730 a unit, so shifting is where the money is." | "Are batteries worth it at all?" |
 | 2:55 | Back to Network | "Give us the meter-to-transformer map and the same command runs on it with `--map`, no other change." | "Your transformers are synthetic." |

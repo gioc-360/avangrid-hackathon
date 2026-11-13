@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 3.1,
+  "value": 3.0,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -14311,19 +14311,19 @@
   "method": "wc -l of tracked files under checks/"
  },
  "specs.code.deck.files": {
-  "value": 0,
+  "value": 3,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under deck/"
  },
  "specs.code.deck.lines": {
-  "value": 0,
+  "value": 462,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under deck/"
  },
  "specs.code.engine.files": {
-  "value": 21,
+  "value": 24,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under ewu/"
@@ -14335,19 +14335,19 @@
   "method": "longest tracked ewu module"
  },
  "specs.code.engine.lines": {
-  "value": 2799,
+  "value": 3262,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under ewu/"
  },
  "specs.code.tests.files": {
-  "value": 16,
+  "value": 17,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under tests/"
  },
  "specs.code.tests.lines": {
-  "value": 1626,
+  "value": 1750,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under tests/"
@@ -14544,6 +14544,18 @@
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/network.py"
  },
+ "specs.lines.ewu.plan": {
+  "value": 170,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/plan.py"
+ },
+ "specs.lines.ewu.plan_output": {
+  "value": 147,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/plan_output.py"
+ },
  "specs.lines.ewu.printouts": {
   "value": 71,
   "unit": "lines",
@@ -14573,6 +14585,12 @@
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/shift.py"
+ },
+ "specs.lines.ewu.showcase": {
+  "value": 146,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/showcase.py"
  },
  "specs.lines.ewu.stress": {
   "value": 171,
@@ -14803,7 +14821,7 @@
   "method": "peak memory footprint / 1e9; bin/ewu screen defaults, facts write off, load average 5.7"
  },
  "specs.tests_collected": {
-  "value": 132,
+  "value": 135,
   "unit": "tests",
   "script": "deck/engine_specs.py",
   "method": "pytest --collect-only -q tests/ | tail -1"

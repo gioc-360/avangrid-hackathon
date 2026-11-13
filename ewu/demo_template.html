@@ -29,21 +29,18 @@ body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.45 -app
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .app { display: grid; grid-template-columns: 272px minmax(0, 1fr); min-height: 100vh; }
 
-/* side panel: app name, the views in order, the case every number is shown for */
+/* side panel: app name and the views in order; the ladder views sit between two quiet rules */
 aside.side { background: var(--panel); border-right: 1px solid var(--line); position: sticky; top: 0; height: 100vh;
   display: flex; flex-direction: column; padding: 20px 14px 16px; }
 .appname { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; padding: 0 10px 14px; }
 aside.side ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-aside.side li.group { font-size: 13px; color: var(--faint); padding: 12px 10px 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+aside.side li.group { border-top: 1px solid var(--line); margin: 10px 10px 6px; }
 aside.side a.step-link { display: block; text-decoration: none; color: var(--ink); padding: 6px 10px 6px 12px; border-radius: 6px;
   border-left: 3px solid transparent; }
 aside.side a.step-link:hover { background: var(--chip); }
 aside.side a.step-link .name { display: block; font-weight: 500; font-size: 18px; }
-aside.side a.step-link .ask { display: block; font-size: 15px; color: var(--muted); line-height: 1.3; }
 aside.side a.step-link[aria-current="page"] { background: var(--card); border-left-color: var(--accent); box-shadow: var(--lift); }
 aside.side a.step-link[aria-current="page"] .name { font-weight: 700; }
-.foot { margin-top: auto; font-size: 15px; color: var(--muted); padding: 14px 10px 0; border-top: 1px solid var(--line); }
-.foot p { margin: 0; }
 
 main { padding: 24px 36px 48px; max-width: 1640px; min-width: 0; }
 .step { display: none; }
@@ -135,7 +132,7 @@ svg.net text.feeder { font-weight: 600; font-size: 17px; }
   aside.side { position: sticky; top: 0; z-index: 2; height: auto; padding: 8px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
   .appname { padding: 0 0 6px; font-size: 16px; }
   aside.side ol { flex-direction: row; overflow-x: auto; gap: 4px; }
-  aside.side li.group, aside.side a.step-link .ask, .foot { display: none; }
+  aside.side li.group { display: none; }
   aside.side a.step-link { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 4px 10px; }
   aside.side a.step-link[aria-current="page"] { border-bottom-color: var(--accent); }
   main { padding: 18px 16px 40px; }
@@ -151,19 +148,18 @@ svg.net text.feeder { font-weight: 600; font-size: 17px; }
   <a class="appname" href="#step=network">Electrify Without Upgrade</a>
   <nav aria-label="Views">
     <ol>
-      <li><a class="step-link" href="#step=network" data-step="network"><span class="name">Network</span><span class="ask">Where does each fix land?</span></a></li>
-      <li><a class="step-link" href="#step=overview" data-step="overview"><span class="name">Overview</span><span class="ask">What is the answer?</span></a></li>
-      <li><a class="step-link" href="#step=inventory" data-step="inventory"><span class="name">Inventory</span><span class="ask">What do homes have?</span></a></li>
-      <li class="group" aria-hidden="true">Cheapest fix first</li>
-      <li><a class="step-link" href="#step=flag" data-step="flag"><span class="name">Flag</span><span class="ask">Which go over in 2030?</span></a></li>
-      <li><a class="step-link" href="#step=shift" data-step="shift"><span class="name">Shift</span><span class="ask">Which does staggering fix?</span></a></li>
-      <li><a class="step-link" href="#step=protect" data-step="protect"><span class="name">Protect</span><span class="ask">Which do batteries clear?</span></a></li>
-      <li><a class="step-link" href="#step=upgrade" data-step="upgrade"><span class="name">Upgrade</span><span class="ask">Which need a new one?</span></a></li>
-      <li class="group" aria-hidden="true">Decide</li>
-      <li><a class="step-link" href="#step=money" data-step="money"><span class="name">Money</span><span class="ask">What does the plan cost?</span></a></li>
+      <li><a class="step-link" href="#step=network" data-step="network"><span class="name">Network</span></a></li>
+      <li><a class="step-link" href="#step=overview" data-step="overview"><span class="name">Overview</span></a></li>
+      <li><a class="step-link" href="#step=inventory" data-step="inventory"><span class="name">Inventory</span></a></li>
+      <li class="group" aria-hidden="true"></li>
+      <li><a class="step-link" href="#step=flag" data-step="flag"><span class="name">Flag</span></a></li>
+      <li><a class="step-link" href="#step=shift" data-step="shift"><span class="name">Shift</span></a></li>
+      <li><a class="step-link" href="#step=protect" data-step="protect"><span class="name">Protect</span></a></li>
+      <li><a class="step-link" href="#step=upgrade" data-step="upgrade"><span class="name">Upgrade</span></a></li>
+      <li class="group" aria-hidden="true"></li>
+      <li><a class="step-link" href="#step=money" data-step="money"><span class="name">Money</span></a></li>
     </ol>
   </nav>
-  <div class="foot"><p id="case"></p></div>
 </aside>
 <main>
   <section class="step" id="network" aria-labelledby="h-network"><div class="body"></div></section>
@@ -358,7 +354,7 @@ function dayChart(i) {
 }
 function detailPanel(i) {
   const k = "private:ewu.network.t.", s = T("state")[i], lk = look(i, S.net), hour = String(T("peak_hour_of_day")[i]).padStart(2, "0") + ":00";
-  const fix = [`<b>No fix needed.</b> Within its limit all year with EV charging unmanaged.`,
+  const fix = [`<b>No fix needed.</b>`,
     `<b>Staggered EV charging.</b> Peak after: ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })}.`,
     `<b>Staggered charging plus home batteries.</b> Battery units: ${N(k + "batteries", 0, { index: i })}; host homes: ${N(k + "hosts", 0, { index: i })}. Peak after: ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })}.`,
     `<b>New transformer.</b> Still ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })} after staggering; no battery option clears it.`][s];
@@ -392,7 +388,7 @@ function stepNetwork() {
   const first = lk => { for (let i = 0; i < T("state").length; i++) if (look(i, v) === lk) return i; return -1; };
   const chips = order.map(w => `<button type="button" onclick="go({t:${first(w)}})" aria-label="${LOOK_WORD[w]}: open the first one">${glyph(w)}${LOOK_WORD[w]} ${N(`${NF}${v}.${w}`, 0)}</button>`).join("");
   const ladder = NET_VIEWS.map(([id, name]) => btn(S.net === id, { net: id }, name)).join("");
-  return `<p class="eyebrow"><b>Network</b> ${esc(word(V["config:demo.scenario"]))} 2030, rating x ${N("config:demo.margin", 2)}
+  return `<p class="eyebrow"><b>Network</b>
     <button type="button" class="tag" onclick="openHow('network')" aria-label="Synthetic network: open How this is computed">Synthetic network</button></p>
   <h2 class="headline" id="h-network">${headline}</h2>
   <div class="netbar"><div class="ladder" role="group" aria-label="Ladder step">${ladder}</div><div class="counts" aria-label="Transformers in each state">${chips}</div></div>
@@ -403,26 +399,28 @@ function stepNetwork() {
     <li><b>Your real network.</b> Load your meter-to-transformer map with <code>bin/ewu screen --map your_map.csv</code> (meter id, transformer id, kVA); the same ladder runs on your transformers.</li>
     <li><b>The case.</b> ${esc(word(V["config:demo.scenario"]))} 2030 adoption; rating = today's group peak x ${N("config:demo.margin", 2)}; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. These are the counts <code>bin/ewu screen</code> prints for the same seed.</li>
     <li><b>The ladder.</b> Flag: over with EV charging unmanaged. Shift: fixed by staggered EV charging (staggering can push a transformer over that was not; it joins Protect). Protect: cleared by the fewest home batteries, hosts picked by fit score, run all year. Upgrade: still over.</li>
-    <li><b>Detail panel.</b> One transformer's ${N("config:transformer.homes_per_transformer", 0)} homes summed, on its worst 2030 day; never a single home.</li></ul>`)}
+    <li><b>Detail panel.</b> One transformer's ${N("config:transformer.homes_per_transformer", 0)} homes summed, on its worst 2030 day; never a single home. No fix needed means within its limit all year with EV charging unmanaged.</li></ul>`)}
   `;
 }
 
 // ---------- the other views: headline, numbers, controls on the face; everything else in the disclosure
 function caseControls(extra = "") {
-  const sc = ["moderate", "high"].map(s => btn(S.scenario === s, { scenario: s },
-    `${word(s)}: ${N(`config:scenarios.${s}.ev_share`, 0, { scale: 100, post: "% EVs" })}, ${N(`config:scenarios.${s}.hp_share`, 0, { scale: 100, post: "% heat pumps" })}`)).join("");
+  const sc = ["moderate", "high"].map(s => btn(S.scenario === s, { scenario: s }, word(s))).join("");
   const mg = margins().map((m, i) => btn(S.margin === i, { margin: i }, "x " + N("config:transformer.sizing_margins", 2, { index: i }))).join("");
-  const gp = ["random", "same_segment"].map(g => btn(S.grouping === g, { grouping: g }, word(g))).join("");
-  return `<div class="controls"><div class="grp"><span class="label">2030 scenario</span>${sc}</div>
-    <div class="grp"><span class="label">Rating = today's peak</span>${mg}</div>
+  const gp = ["random", "same_segment"].map(g => btn(S.grouping === g, { grouping: g }, { random: "Random", same_segment: "Same segment" }[g])).join("");
+  return `<div class="controls"><div class="grp"><span class="label">2030</span>${sc}</div>
+    <div class="grp"><span class="label">Rating</span>${mg}</div>
     <div class="grp"><span class="label">Grouping</span>${gp}</div>${extra}</div>`;
 }
+// what the controls mean, said once inside each disclosure that sits under them
+const caseNote = () => `<p>Controls: ${["moderate", "high"].map(s => `${word(s)} is ${N(`config:scenarios.${s}.ev_share`, 0, { scale: 100, post: "% EVs" })} and ${N(`config:scenarios.${s}.hp_share`, 0, { scale: 100, post: "% heat pumps" })} in 2030`).join("; ")}.
+    Rating sets each transformer's size: today's group peak x the factor picked. Grouping puts ${N("config:transformer.homes_per_transformer", 0)} neighbors on a transformer at random, or from the same segment.</p>`;
 const RUNGS = [["shift_fixed_pct", "var(--shift)", "Shift"], ["protected_pct", "var(--protect)", "Protect"], ["upgrade_left_pct", "var(--upgrade)", "Upgrade"]];
-function ladder(focus) {
+function ladder(focus, legend = true) {
   const c = C(), total = RUNGS.reduce((a, [f]) => a + V[c + f], 0);
   const parts = RUNGS.map(([f, col]) => [V[c + f], col, !focus || f === focus ? 1 : 0.3]);
-  const legend = RUNGS.map(([f, col, name]) => `<span class="${focus && f !== focus ? "dim" : ""}"><span class="key" style="background:${col}"></span>${name} ${N(c + f, 2, { post: "%" })}</span>`).join("");
-  return `${hbar(parts, total, 26)}<div class="legend">${legend}</div>`;
+  const keys = RUNGS.map(([f, col, name]) => `<span class="${focus && f !== focus ? "dim" : ""}"><span class="key" style="background:${col}"></span>${name} ${N(c + f, 2, { post: "%" })}</span>`).join("");
+  return `${hbar(parts, total, 26)}${legend ? `<div class="legend">${keys}</div>` : ""}`;
 }
 function bySizing(field) {
   const vals = margins().map((m, i) => V[sizeKey(i, field)]), top = Math.max(...vals) || 1;
@@ -437,23 +435,24 @@ function sizeRange(field) {
 }
 const head = (id, name, headline) => `<p class="eyebrow"><b>${name}</b></p><h2 class="headline" id="h-${id}">${headline}</h2>`;
 const big = html => `<span class="big">${html}</span>`;
-const synthetic = () => `<p>${N("config:transformer.count", 0)} synthetic transformers of ${N("config:transformer.homes_per_transformer", 0)} homes, real meter data grouped by the Grouping control, ${N("config:checks.seeds", 0)} seeds pooled; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. A real meter-to-transformer map replaces the synthetic groups with no other change.</p>`;
+const synthetic = () => `${caseNote()}<p>${N("config:transformer.count", 0)} synthetic transformers of ${N("config:transformer.homes_per_transformer", 0)} homes, real meter data grouped by the Grouping control, ${N("config:checks.seeds", 0)} seeds pooled; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. A real meter-to-transformer map replaces the synthetic groups with no other change.</p>`;
 
 function stepOverview() {
   const c = C(), m = `fact:ewu.economics.${cell()}.mid.discounted.`, h = "fact:ewu.economics.headline.";
   const tile = (id, col, name, num, sub) => `<a class="tile" href="#step=${id}" style="border-top-color:${col}"><span class="tname">${name}</span><span class="tnum">${num}</span><span class="tsub">${sub}</span></a>`;
   return `${head("overview", "Overview", `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers need a new one in 2030${est("overview")}`)}
   ${caseControls()}
-  <div class="card">${ladder()}</div>
+  <div class="card">${ladder(null, false)}</div>
   <div class="tiles">
-    ${tile("flag", "var(--ink)", "Flag", N(c + "flagged_pct", 2, { post: "%" }), "go over their limit")}
-    ${tile("shift", "var(--shift)", "Shift", N(c + "shift_fixed_pct", 2, { post: "%" }), "fixed by staggered charging")}
-    ${tile("protect", "var(--protect)", "Protect", N(c + "protected_pct", 2, { post: "%" }), "cleared by home batteries")}
+    ${tile("flag", "var(--ink)", "Flag", N(c + "flagged_pct", 2, { post: "%" }), "over the limit")}
+    ${tile("shift", "var(--shift)", "Shift", N(c + "shift_fixed_pct", 2, { post: "%" }), "staggered charging")}
+    ${tile("protect", "var(--protect)", "Protect", N(c + "protected_pct", 2, { post: "%" }), "home batteries")}
     ${tile("upgrade", "var(--upgrade)", "Upgrade", N(c + "upgrade_left_pct", 2, { post: "%" }), "need a new transformer")}
-    ${tile("money", "var(--accent)", "Money", N(m + "ladder_share_pct", 2, { post: "%" }) + est("overview"), "of upgrading every flagged one")}
+    ${tile("money", "var(--accent)", "Money", N(m + "ladder_share_pct", 2, { post: "%" }) + est("overview"), "of upgrading all")}
   </div>
   ${how("overview", `<p>For Avangrid distribution planners at NYSEG and RG&amp;E deciding which neighborhood transformers need what before 2030, and for the customer programs team choosing who to enroll in managed charging or offer a home battery. Homeowners benefit; they do not use this page.</p>
-    <p>Shares are of all transformers. Upgrade is ${sizeRange("upgrade_left_pct")} across today's transformer sizing; cheaper fixes cover the rest.</p>
+    <p>The ladder, cheapest fix first: Flag finds the transformers over their limit in 2030; Shift staggers their EV charging; Protect adds the fewest home batteries; Upgrade is what is still over. The bar and tiles are shares of all transformers; Money is the plan's cost against upgrading every flagged one.</p>
+    <p>Upgrade is ${sizeRange("upgrade_left_pct")} across today's transformer sizing; cheaper fixes cover the rest.</p>
     <p>Money: the plan's cost as a share of upgrading every flagged transformer, ${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} over every case. Prices are placeholders flagged in config/ewu.yaml.</p>${synthetic()}`)}`;
 }
 
@@ -462,24 +461,25 @@ function stepInventory() {
   let picker = "";
   for (let i = 0; i < count; i++) picker += btn(S.home === i, { home: i }, esc(word(V[k + i + ".segment"])));
   const h = k + S.home, flags = V[h + ".flags"], conf = V[h + ".confidence"], programs = V[h + ".programs"];
-  const rows = flags.map((f, i) => `<tr><td>${esc(word(f))}</td><td class="num">${N(h + ".flag_share_pct", 2, { index: i, post: "%" })}</td><td>${esc(conf[i])}</td></tr>`).join("");
+  const rows = flags.map((f, i) => `<tr><td>${esc(word(f))}</td><td class="num">${N(h + ".flag_share_pct", 2, { index: i, post: "%" })}</td></tr>`).join("");
   const win = V[h + ".winter_day_kw"], sum = V[h + ".summer_day_kw"], hi = Math.max(...win, ...sum) * 1.1;
   const chips = programs.map((p, i) => `<span class="chip">${esc(word(p))} ${N(h + ".program_share_pct", 2, { index: i, post: "%" })}</span>`).join("");
-  return `${head("inventory", "Inventory", `${big(N("fact:ewu.inventory.any_program_pct", 2, { post: "%" }))} of ${N("fact:ewu.inventory.homes", 0)} homes qualify for at least one program`)}
+  return `${head("inventory", "Inventory", `${big(N("fact:ewu.inventory.any_program_pct", 2, { post: "%" }))} of ${N("fact:ewu.inventory.homes", 0)} homes qualify for a program`)}
   <div class="controls"><div class="grp"><span class="label">Segment</span>${picker}</div></div>
   <div class="card"><div class="row"><div class="col">
-    <p style="margin:0 0 8px"><b>Composite home, ${esc(word(V[h + ".segment"]))}</b>${est("inventory")}: ${N(h + ".annual_kwh", 0, { post: " kWh a year" })}, highest hour ${N(h + ".peak_kw", 2, { post: " kW" })}</p>
-    <table><tr><th>Equipment found</th><th style="text-align:right">Segment homes</th><th>Confidence</th></tr>${rows}</table>
-    <p style="margin:14px 0 2px">Eligible programs, segment homes</p>
+    <p style="margin:0 0 8px"><b>Composite home, ${esc(word(V[h + ".segment"]))}</b>${est("inventory")}: ${N(h + ".annual_kwh", 0, { post: " kWh a year" })}, peak ${N(h + ".peak_kw", 2, { post: " kW" })}</p>
+    <table><tr><th>Equipment</th><th style="text-align:right">Segment homes</th></tr>${rows}</table>
+    <p style="margin:14px 0 2px">Programs</p>
     <div class="chips">${programs.length ? chips : '<span class="sub">none</span>'}</div>
   </div><div class="col">
-    <div class="legend"><span><span class="key" style="background:var(--ev)"></span>Winter day, top ${N(h + ".winter_day_peak_kw", 2, { post: " kW" })}</span>
-      <span><span class="key" style="background:var(--summer)"></span>Summer day, top ${N(h + ".summer_day_peak_kw", 2, { post: " kW" })}</span></div>
+    <div class="legend"><span><span class="key" style="background:var(--ev)"></span>Winter ${N(h + ".winter_day_peak_kw", 2, { post: " kW" })}</span>
+      <span><span class="key" style="background:var(--summer)"></span>Summer ${N(h + ".summer_day_peak_kw", 2, { post: " kW" })}</span></div>
     <svg viewBox="0 0 480 170" role="img" aria-label="Average winter and summer day load by hour"><line x1="0" y1="150" x2="480" y2="150" stroke="var(--line)"/>
       <g transform="translate(0,10)">${line(win, 480, 140, 0, hi, "var(--ev)")}${line(sum, 480, 140, 0, hi, "var(--summer)")}</g>
       <text x="0" y="166">00:00</text><text x="240" y="166" text-anchor="middle">12:00</text><text x="480" y="166" text-anchor="end">23:00</text></svg>
   </div></div></div>
-  ${how("inventory", `<p>Equipment is read from each home's hourly meter data alone. The Composite home is the average of ${N(h + ".homes", 0, { post: " homes" })} in the segment, not a real customer; shares are of the segment's homes, and the day curves are average winter and summer days.</p>
+  ${how("inventory", `<p>Equipment is read from each home's hourly meter data alone. The Composite home is the average of ${N(h + ".homes", 0, { post: " homes" })} in the segment, not a real customer; Qualify for a program means eligible for at least one. Shares are of the segment's homes (equipment and eligible programs alike), the day curves are average winter and summer days, and the kW beside each day is its highest hour.</p>
+    <p>How sure each equipment read is, in this segment: ${flags.map((f, i) => `${esc(word(f))} ${esc(conf[i])}`).join(", ")}.</p>
     <p>Average owner scores in this segment: EV ${N(h + ".p_ev", 0, { scale: 100, post: "%" })}, heat pump ${N(h + ".p_heat_pump", 0, { scale: 100, post: "%" })}. Program rules are this team's reading of the segment actions.</p>`)}`;
 }
 
@@ -487,7 +487,7 @@ function stepFlag() {
   const c = C();
   return `${head("flag", "Flag", `${big(N(c + "flagged_pct", 2, { post: "%" }))} of transformers go over their limit in 2030${est("flag")}`)}
   ${caseControls()}
-  <div class="card"><p class="sub">Flagged, every sizing</p>${bySizing("flagged_pct")}</div>
+  <div class="card"><p class="sub">By rating</p>${bySizing("flagged_pct")}</div>
   ${how("flag", `<p>EV charging unmanaged. ${sizeRange("flagged_pct")} depending on how big today's transformers are (the rating control).</p>${synthetic()}`)}`;
 }
 
@@ -496,7 +496,7 @@ function stepShift() {
   return `${head("shift", "Shift", `${big(N(c + "shift_fixed_pct", 2, { post: "%" }))} of transformers are fixed by staggering EV charging${est("shift")}`)}
   ${caseControls()}
   <div class="card">${ladder("shift_fixed_pct")}</div>
-  <div class="card"><p class="sub">Fixed by Shift, every sizing</p>${bySizing("shift_fixed_pct")}</div>
+  <div class="card"><p class="sub">By rating</p>${bySizing("shift_fixed_pct")}</div>
   ${how("shift", `<p>${V[c + "shift_fixed_pct"] * 2 > V[c + "flagged_pct"] ? "Most" : "Less than half"} of the ${N(c + "flagged_pct", 2, { post: "%" })} flagged; the rest go on to Protect or Upgrade. Staggering newly overloads ${N(c + "new_from_stagger_pct", 2, { post: "%" })}, which join them.</p>${synthetic()}`)}`;
 }
 
@@ -507,10 +507,10 @@ function stepProtect() {
   const limit = V[e + "limit_kw"], hi = Math.max(...load, limit) * 1.08, ly = (220 - limit / hi * 220).toFixed(1);
   const pick = hosts.map((x, i) => btn(S.hosts === i, { hosts: i }, N("config:battery.coldsnap_hosts_per_transformer", 0, { index: i }) + (x === 1 ? " host home" : " host homes"))).join("");
   return `${head("protect", "Protect", `${big(N(c + "protected_pct", 2, { post: "%" }))} of transformers are cleared by home batteries, ${N(c + "batteries_per_protected", 2)} per transformer${est("protect")}`)}
-  ${caseControls(`<div class="grp"><span class="label">Cold snap hosts</span>${pick}</div>`)}
+  ${caseControls(`<div class="grp"><span class="label">Hosts</span>${pick}</div>`)}
   <div class="chips"><span class="chip">Cold snap over ${N(agg + "flagged_pct", 2, { post: "%" })}</span><span class="chip">${N("config:battery.coldsnap_hosts_per_transformer", 0, { index: 0 })} host clears ${N(agg + "hosts_1.cleared_pct", 2, { post: "%" })}</span><span class="chip">${N("config:battery.coldsnap_hosts_per_transformer", 0, { index: 1 })} hosts clear ${N(agg + "hosts_2.cleared_pct", 2, { post: "%" })}</span></div>
   <div class="card">
-    <p class="sub">Cold snap, one flagged transformer, ${N("config:transformer.homes_per_transformer", 0, { post: " homes summed" })}${est("protect")}</p>
+    <p class="sub">One transformer, ${N("config:transformer.homes_per_transformer", 0, { post: " homes summed" })}${est("protect")}</p>
     <div class="legend"><span><span class="key" style="background:var(--base)"></span>Without batteries</span>
       <span><span class="key" style="background:var(--ev)"></span>With batteries</span>
       <span><span class="key" style="background:var(--limit)"></span>Limit ${N(e + "limit_kw", 2, { post: " kW" })}</span></div>
@@ -518,23 +518,23 @@ function stepProtect() {
       <line x1="0" x2="1100" y1="${ly}" y2="${ly}" stroke="var(--limit)" stroke-dasharray="6 4"/>
       ${line(load, 1100, 220, 0, hi, "var(--base)")}${line(net, 1100, 220, 0, hi, "var(--ev)")}</g>
       <text x="0" y="246">2026-02-07</text><text x="550" y="246">2026-02-08</text></svg>
-    <p class="sub" style="margin-top:14px">Battery charge, % of full:
-      <span class="key" style="background:var(--soc)"></span>median, lowest ${N(agg + `hosts_${n}.soc_median_pct_by_hour`, 1, { index: med.indexOf(Math.min(...med)), post: "%" })}
-      &nbsp; <span class="key" style="background:var(--soc);opacity:.5"></span>bottom tenth, lowest ${N(agg + `hosts_${n}.soc_p10_pct_by_hour`, 1, { index: p10.indexOf(Math.min(...p10)), post: "%" })}</p>
+    <p class="sub" style="margin-top:14px">Battery charge, lowest:
+      <span class="key" style="background:var(--soc)"></span>median ${N(agg + `hosts_${n}.soc_median_pct_by_hour`, 1, { index: med.indexOf(Math.min(...med)), post: "%" })}
+      &nbsp; <span class="key" style="background:var(--soc);opacity:.5"></span>bottom tenth ${N(agg + `hosts_${n}.soc_p10_pct_by_hour`, 1, { index: p10.indexOf(Math.min(...p10)), post: "%" })}</p>
     <svg class="chart" viewBox="0 0 1100 110" role="img" aria-label="Fleet battery charge through the cold snap"><line x1="0" x2="1100" y1="104" y2="104" stroke="var(--line)"/><line x1="0" x2="1100" y1="4" y2="4" stroke="var(--line)"/>
       <g transform="translate(0,4)">${line(med, 1100, 100, 0, 100, "var(--soc)")}${line(p10, 1100, 100, 0, 100, "var(--soc)", true)}</g></svg>
   </div>
-  ${how("protect", `<p>Cold snap case: ${esc(word(V["config:demo.scenario"]).toLowerCase())} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}, coldest hour ${N("fact:ewu.coldsnap.window_min_temp_f", 1, { post: " F" })}. Each host: ${N("config:battery.units_per_host_max", 0)} battery units, ${N("config:battery.energy_kwh_two_units", 2, { post: " kWh" })}. Chips are shares of transformers over in the two coldest days; battery charge is across every flagged transformer, the bottom tenth dashed.</p>
+  ${how("protect", `<p>Cold snap case: ${esc(word(V["config:demo.scenario"]).toLowerCase())} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}, coldest hour ${N("fact:ewu.coldsnap.window_min_temp_f", 1, { post: " F" })}. Each host: ${N("config:battery.units_per_host_max", 0)} battery units, ${N("config:battery.energy_kwh_two_units", 2, { post: " kWh" })}. Chips are shares of transformers over in the two coldest days. The chart is one flagged transformer through the cold snap; Hosts is how many of its homes carry batteries. Battery charge is % of full across every flagged transformer, its lowest hour shown, the bottom tenth dashed.</p>
     <p>With no battery this transformer spends ${N(e + "kwh_over", 2, { post: " kWh" })} over the limit across the two days. Host homes are picked by fit score. The battery runs all year, so its charge on the first cold night is earned, not assumed, and it charges only when the transformer has room under the limit. The cold snap test is run for the case named here; the share cleared in the headline follows the case picked.</p>${synthetic()}`)}`;
 }
 
 function stepUpgrade() {
   const c = C();
-  return `${head("upgrade", "Upgrade", `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers are still over after shifting and batteries: replace these${est("upgrade")}`)}
+  return `${head("upgrade", "Upgrade", `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers are still over: replace these${est("upgrade")}`)}
   ${caseControls()}
   <div class="card">${ladder("upgrade_left_pct")}</div>
-  <div class="card"><p class="sub">Left for Upgrade, every sizing</p>${bySizing("upgrade_left_pct")}</div>
-  ${how("upgrade", `<p>${sizeRange("upgrade_left_pct")} across today's transformer sizing.</p>${synthetic()}`)}`;
+  <div class="card"><p class="sub">By rating</p>${bySizing("upgrade_left_pct")}</div>
+  ${how("upgrade", `<p>Still over after staggered EV charging and home batteries. ${sizeRange("upgrade_left_pct")} across today's transformer sizing.</p>${synthetic()}`)}`;
 }
 
 function stepMoney() {
@@ -544,12 +544,12 @@ function stepMoney() {
   return `${head("money", "Money", `The plan costs ${big(N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" }))} of upgrading every flagged transformer${est("money")}`)}
   ${caseControls()}
   <div class="row"><div class="col"><div class="card">
-    <p style="margin:0">Upgrade every flagged transformer</p>${bar(100, "var(--upgrade)")}
-    <p style="margin:0">Shift, then upgrade the rest: ${N(c + "mid.discounted.shift_then_upgrade_share_pct", 2, { post: "%" })}</p>${bar(stu, "var(--shift)")}
-    <p style="margin:0">Full plan, shift, protect, upgrade: ${N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" })}</p>${bar(lad, "var(--protect)")}
+    <p style="margin:0">Upgrade all</p>${bar(100, "var(--upgrade)")}
+    <p style="margin:0">Shift + upgrade: ${N(c + "mid.discounted.shift_then_upgrade_share_pct", 2, { post: "%" })}</p>${bar(stu, "var(--shift)")}
+    <p style="margin:0">Full plan: ${N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" })}</p>${bar(lad, "var(--protect)")}
   </div></div><div class="col">
-    <p style="margin-top:0"><b>${V[b + "battery_yearly_usd"] > V[b + "upgrade_yearly_usd"] ? "Batteries alone cost more than the upgrade." : "Batteries alone cost less than the upgrade."}</b>${est("money")}</p>
-    <table><tr><td>Batteries per transformer cleared</td><td class="num">${N(b + "batteries_per_cleared", 2)}</td></tr>
+    <p style="margin-top:0"><b>${V[b + "battery_yearly_usd"] > V[b + "upgrade_yearly_usd"] ? "Batteries cost more than upgrading." : "Batteries cost less than upgrading."}</b>${est("money")}</p>
+    <table><tr><td>Batteries needed</td><td class="num">${N(b + "batteries_per_cleared", 2)}</td></tr>
       <tr><td>Their cost</td><td class="num">${N(b + "battery_yearly_usd", 0, { pre: "$", post: " a year" })}</td></tr>
       <tr><td>Upgrade instead</td><td class="num">${N(b + "upgrade_yearly_usd", 0, { pre: "$", post: " a year" })}</td></tr>
       <tr><td>Tie, per battery unit</td><td class="num">${N(b + "tie_unit_usd_equal_life", 0, { pre: "$" })}</td></tr></table>
@@ -557,9 +557,9 @@ function stepMoney() {
   ${how("money", `<p>${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} across all ${N("fact:ewu.sensitivity.cells", 0)} grid cells and every price case. ${V[h + "shift_then_upgrade_share_pct.base"] < V[h + "ladder_share_pct.base"] ? "In the base case, shifting is what saves the money; batteries add cost." : "In the base case, batteries add savings on top of shifting."}</p>
     <p>Mid prices. Low prices ${N(c + "low.discounted.ladder_share_pct", 2, { post: "%" })}, high prices ${N(c + "high.discounted.ladder_share_pct", 2, { post: "%" })}; at a zero discount rate ${N(c + "mid.zero_rate.ladder_share_pct", 2, { post: "%" })}.</p>
     <p>Assumptions: prices are placeholders flagged in config/ewu.yaml; battery life ${N("config:battery.life_years", 0, { post: " years" })}, transformer life ${N("config:prices.transformer_life_years", 0, { post: " years" })}, discount rate ${N("config:prices.discount_rate", 0, { scale: 100, post: "%" })}, a placeholder.</p>
-    <p>Equal-life cost: a battery wears out before a transformer does, so it is bought again within the transformer's life. Shares are present values against upgrading every flagged transformer, for the case picked.</p>
+    <p>Upgrade all: upgrade every flagged transformer. Shift + upgrade: stagger EV charging, then upgrade what is still over. Full plan: shift, then protect, then upgrade what is still over. The right column sets batteries alone on one transformer they clear against upgrading it: Batteries needed is per transformer cleared, and Tie is the price per battery unit at which the two cost the same. Equal-life cost: a battery wears out before a transformer does, so it is bought again within the transformer's life. Shares are present values against upgrading every flagged transformer, for the case picked.</p>
     <p>Labeled scaling, assumption: if NYSEG's ${N("config:prices.nyseg_electric_customers", 0)} customers were all homes like ours, ${N("fact:ewu.economics.nyseg_transformers", 0)} transformers, the base case is
-      ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_upgrade_all_musd", 1, { pre: "$", post: "M" })} to upgrade every flagged one against ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_ladder_musd", 1, { pre: "$", post: "M" })} for the plan, present value.</p>`)}`;
+      ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_upgrade_all_musd", 1, { pre: "$", post: "M" })} to upgrade every flagged one against ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_ladder_musd", 1, { pre: "$", post: "M" })} for the plan, present value.</p>${caseNote()}`)}`;
 }
 
 function render() {
@@ -572,9 +572,6 @@ function render() {
       : s.fn() + (STEPS[i + 1] ? `<a class="next" href="#step=${STEPS[i + 1].id}">Next: ${STEPS[i + 1].name} &rarr;</a>` : "");
   });
   document.querySelectorAll("a.step-link").forEach(a => a.dataset.step === S.step ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
-  document.getElementById("case").innerHTML = S.step === "network" && D.built.network
-    ? `Case shown: ${esc(word(V["config:demo.scenario"]))} 2030, rating x ${N("config:demo.margin", 2)}, random neighbors.`
-    : D.built.screen ? `Case shown: ${esc(word(S.scenario))} 2030, rating x ${N("config:transformer.sizing_margins", 2, { index: S.margin })}, ${esc(word(S.grouping).toLowerCase())}.` : "";
   document.title = `${STEPS[at].name}: EWU Demo`;
 }
 let shown = null;

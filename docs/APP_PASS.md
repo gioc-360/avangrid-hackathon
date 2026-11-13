@@ -188,3 +188,109 @@ script that still uses the old selectors fails loudly (a null element), never si
 | `make check` | exit 0 |
 | `checks/qa_refs.py docs/CODE_QA.md` | 75 references, 0 problems (`ewu/cli.py:138 "--map"` moved) |
 | `checks/trace_numbers.py docs/DEMO_SCRIPT.md` | 0 untraced |
+
+## Labeling pass
+
+Gio, 2026-11-13: "the labeling of the app is way too much text. if its assumptions, make it into a drop down like
+'How this is computed'". The rule now on every view, the Network view included: the face shows only the
+headline, the numbers with units, control labels and state names. Every assumption, method note, source,
+caveat, placeholder explanation and range sits in one closed `details.how` per view, titled "How this is
+computed" (native `details`/`summary`, so Tab reaches it and Enter or Space opens it). A number that rests on
+an assumption keeps one marker on its face, the small `est.` button (one style app-wide), which opens its own
+view's disclosure; the Network view's marker is the short "Synthetic network" tag, with the full sentence
+inside. Nothing honest was deleted: each caveat moved, and `checks/demo_check.py` still binds every number in
+the disclosures to its fact.
+
+The pass ran in two commits: 89c8177 (with the Network view) folded the long notes; this one cut the face to
+headline, numbers and controls. Measured by `checks/label_inventory.py` on the rendered page in headless
+Chrome: a word is a whitespace token with a letter or digit, the side panel is counted on every view because it
+is on screen, and folded words are those inside a closed disclosure. Original is the template at f81421c (before
+any labeling pass; no Network view yet), start is 0178252 (this run's start). These are counts of page text,
+not data, so they are not facts.
+
+| View | Original, visible words | Start, visible words | After, visible words | Down from original | Down from start | After, folded words |
+|---|---|---|---|---|---|---|
+| Network | none | 105 | 51 | none | 51% | 204 |
+| Overview | 229 | 145 | 69 | 70% | 52% | 233 |
+| Inventory | 209 | 162 | 96 | 54% | 41% | 129 |
+| Flag | 181 | 122 | 58 | 68% | 52% | 119 |
+| Shift | 165 | 130 | 64 | 61% | 51% | 123 |
+| Protect | 210 | 159 | 88 | 58% | 45% | 244 |
+| Upgrade | 155 | 133 | 63 | 59% | 53% | 119 |
+| Money | 267 | 149 | 74 | 72% | 50% | 249 |
+
+Every view is down by at least half from before the labeling pass. Three views are down by less than half from
+this run's start: Inventory (its segment buttons, equipment table and program chips are the programs team's
+answer, all numbers or state names), Protect (the cold snap chips and the two-line legend carry numbers) and
+Money (exactly half). On every view more words sit one click away than on the face. `tests/test_labels.py`
+holds the cap at 100 visible words per view.
+
+### Every block: kept, moved, cut
+
+| Block (start) | Views | Action | Where now, and why |
+|---|---|---|---|
+| Panel question under each view name ("Where does each fix land?" and 7 more) | all | cut | redundant: each view's headline answers its question; names stay as the nav labels |
+| Panel group heading "Cheapest fix first" | all | moved | Overview's disclosure ("The ladder, cheapest fix first: ..."); a method note. A wordless rule keeps the four rungs grouped |
+| Panel group heading "Decide" | all | cut | a divider word; the rule above Money does the grouping |
+| Panel foot "Case shown: Moderate 2030, rating x 1.15, random neighbors." | all | cut | redundant: the pressed control buttons name the case; Network's case is in its disclosure ("The case.") |
+| App name "Electrify Without Upgrade" | all | kept | site ID (page-hierarchy Trunk Test) |
+| View name (eyebrow) | all | kept | page name matches the clicked link (Trunk Test) |
+| Network eyebrow case "Moderate 2030, rating x 1.15" | Network | moved | Network disclosure, "The case." (a scenario and sizing assumption) |
+| "Synthetic network" tag | Network | kept | the marker for every number on the diagram; the full sentence is the first item of the disclosure |
+| Headline per view | all | kept | the one point of the view; first look (big number, heaviest type) |
+| Ladder buttons, state count chips, Feeder A to F, Substation | Network | kept | control labels and state names; the diagram's structure |
+| Detail panel "Within its limit all year with EV charging unmanaged." | Network | moved | Network disclosure, "Detail panel."; the face keeps "No fix needed." |
+| Detail panel "Feeder A, 8 homes summed" | Network | kept | privacy label (never a single home, audit MUST_FIX 1) |
+| Control label "2030 scenario" and buttons "Moderate: 20% EVs, 15% heat pumps", "High: 35% EVs, 30% heat pumps" | 6 views | moved | buttons now read Moderate and High under the label "2030"; the shares are scenario assumptions, in every disclosure's "Controls:" line |
+| Control label "Rating = today's peak" | 6 views | moved | label now "Rating"; "today's group peak x the factor picked" in the "Controls:" line |
+| Grouping buttons "Random neighbors", "Same-segment neighbors" | 6 views | moved | buttons now "Random", "Same segment"; what grouping does is in the "Controls:" line |
+| Ladder legend under the Overview bar (Shift, Protect, Upgrade with %) | Overview | cut | redundant: the five tiles below show the same numbers in the same colours |
+| Tile captions "go over their limit", "fixed by staggered charging", "cleared by home batteries", "of upgrading every flagged one" | Overview | reworded | "over the limit", "staggered charging", "home batteries", "of upgrading all"; the full definitions are in the disclosure |
+| Inventory headline "... qualify for at least one program" | Inventory | reworded | "... qualify for a program"; "means eligible for at least one" moved to the disclosure |
+| Equipment table "Confidence" column | Inventory | moved | Inventory disclosure, "How sure each equipment read is, in this segment: ..." (a caveat on the read) |
+| "highest hour" on the Composite caption, "top" on the day legend | Inventory | moved | caption says "peak"; "the kW beside each day is its highest hour" in the disclosure |
+| "Composite home, <segment>" caption with est. | Inventory | kept | the Composite label is never removed (audit MUST_FIX 1) |
+| "Eligible programs, segment homes" | Inventory | moved | heading now "Programs"; "shares are of the segment's homes" in the disclosure |
+| "Flagged, every sizing", "Fixed by Shift, every sizing", "Left for Upgrade, every sizing" | Flag, Shift, Upgrade | reworded | "By rating", under the Rating control it mirrors |
+| Upgrade headline "... after shifting and batteries: replace these" | Upgrade | moved | "after staggered EV charging and home batteries" in the disclosure; the ladder bar shows it |
+| Control label "Cold snap hosts" | Protect | reworded | "Hosts"; "Hosts is how many of its homes carry batteries" in the disclosure. Buttons keep "1 host home", "2 host homes" |
+| Chart caption "Cold snap, one flagged transformer, 8 homes summed" | Protect | moved | "One transformer, 8 homes summed" stays (privacy label); "flagged, through the cold snap" in the disclosure |
+| "Battery charge, % of full: median, lowest ..., bottom tenth, lowest ..." | Protect | reworded | "Battery charge, lowest: median ..., bottom tenth ..."; "% of full across every flagged transformer" in the disclosure |
+| Bar labels "Upgrade every flagged transformer", "Shift, then upgrade the rest", "Full plan, shift, protect, upgrade" | Money | moved | "Upgrade all", "Shift + upgrade", "Full plan"; each definition in the disclosure |
+| "Batteries alone cost more than the upgrade." | Money | reworded | "Batteries cost more than upgrading." with est.; what "alone" compares is in the disclosure |
+| "Batteries per transformer cleared" | Money | moved | "Batteries needed"; "per transformer cleared" in the disclosure |
+| Placeholder prices, lives, discount rate, NYSEG scaling, range across 16 cells | Money | kept in disclosure | already folded in 89c8177; the est. marker on the headline and the battery line opens it |
+| "Next: <view>" link | all | kept | one mindless click to the next view (Krug law 2) |
+| Summary "How this is computed" | all | kept | the one door to every assumption |
+
+### First look, checked on the screenshots
+
+Screenshots, start and after, one per view plus one with the disclosure open: `outputs/video/labels/before/`
+and `outputs/video/labels/after/` (gitignored, local only); the original pass's screenshots stay in
+`outputs/video/app_pass/`. On every after shot the first look is the headline (the big number on every view but
+Network, whose headline sits above the diagram), the second is the primary visual, and the third is the
+disclosure's summary line; with the panel questions and the foot gone the side panel reads as names only.
+
+Skills: page-hierarchy (one point per view, Krug law 3 "omit half the words", summaries above details, Trunk
+Test kept: app name, view name, nav, current view marked by bold plus the accent bar) and ui-distinctiveness
+(floor gate). Facts came from the code: every count above is from `checks/label_inventory.py` on the rendered
+page.
+
+### Gates
+
+| Gate | Result |
+|---|---|
+| `checks/label_inventory.py` | 8 views, one closed disclosure each, every marker opens its own view's, 0 problems |
+| floor_check on `ewu` and `outputs/demo` | exit 0, 0 blocking; 1 warning (the network diagram is an `svg` with `role`, `tabindex` and a key handler, kept from the Network build: it is one focusable composite with Enter, arrows and Escape) |
+| `checks/demo_check.py` | 16 states, 3,239 bound numbers checked (disclosure contents included), 0 problems |
+| `tests/test_labels.py` | new: one disclosure per view, markers open their own view, assumption wording inside the disclosure and not on the face, rendered cap 100 visible words |
+| pytest, `make check`, `checks/qa_refs.py docs/CODE_QA.md` | 135 passed; exit 0; 0 problems (two Q16 line numbers moved) |
+
+CLI: the screen printout prints each caveat once ("EV charging unmanaged", "equal life", "full meter data,
+aggregates only") and repeats none, and a terminal has no fold, so its lines are unchanged and
+`docs/demo/cli_output.txt` keeps its filmed text.
+
+For the next film take: `video/path.py` still targets the start page in four places: the scenario share hover
+(`config:scenarios.moderate.ev_share` is now inside Flag's disclosure), the "Cheapest fix first" marker (the
+`li.group` is now a wordless rule), and the `p.so` and `p.note` selectors, already gone since 89c8177. The
+delivered v5 film is not affected.
