@@ -21,7 +21,7 @@ LINES = [
      "eight real homes, built from the hourly meter data Avangrid already collects."),
     ("0:25-0:36", "Network view, Synthetic network tag", "The data came without a transformer map, so the network is simulated from "
      "real homes. Load Avangrid's map, and the same engine runs on the real grid."),
-    ("0:36-0:52", "Click 2030: Flag", "Now add 2030, with homes adding EVs and heat pumps. In the moderate case, 292 of 3,000 "
+    ("0:36-0:55", "Click 2030: Flag", "Now jump to 2030, when 20% of homes have added an EV and 15% a heat pump. In the moderate case, 292 of 3,000 "
      "transformers go over their limit, most of them on winter nights when heat pumps run hardest."),
     ("0:52-1:07", "Click Place (batteries)", "The cheapest fix comes first. For each overloaded transformer, the engine sizes one to "
      "four leased battery units, placed in priority homes behind it."),
