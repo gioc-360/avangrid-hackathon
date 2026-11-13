@@ -1,0 +1,75 @@
+{
+ "seeds": 5,
+ "rows": [
+  {
+   "fact": "ewu.sensitivity.moderate.random.margin_115.protected_pct",
+   "fact_value": 5.23,
+   "recomputed": 5.23,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.sensitivity.high.random.margin_115.protected_pct",
+   "fact_value": 18.24,
+   "recomputed": 18.24,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.coldsnap.moderate.staggered.margin_115.flagged_pct",
+   "fact_value": 2.7,
+   "recomputed": 2.7,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.coldsnap.moderate.staggered.margin_115.hosts_1.cleared_pct",
+   "fact_value": 89.88,
+   "recomputed": 89.88,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.coldsnap.moderate.staggered.margin_115.hosts_2.cleared_pct",
+   "fact_value": 92.84,
+   "recomputed": 92.84,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.coldsnap.moderate.staggered.margin_115.hosts_1.ran_empty_pct",
+   "fact_value": 9.63,
+   "recomputed": 9.63,
+   "tolerance": 1.0,
+   "match": true
+  },
+  {
+   "fact": "ewu.tophours.moderate.staggered.margin_115.fit_score.units_1.top_20.kw_per_battery",
+   "fact_value": 1.71,
+   "recomputed": 1.71,
+   "tolerance": 0.0855,
+   "match": true
+  },
+  {
+   "fact": "ewu.tophours.moderate.staggered.margin_115.random.units_1.top_20.kw_per_battery",
+   "fact_value": 1.17,
+   "recomputed": 1.17,
+   "tolerance": 0.0585,
+   "match": true
+  },
+  {
+   "fact": "ewu.sensitivity.moderate.random.margin_115.batteries_per_protected",
+   "fact_value": 1.42,
+   "recomputed": 1.42,
+   "tolerance": 0.071,
+   "match": true
+  },
+  {
+   "fact": "ewu.economics.battery_vs_upgrade.mid.batteries_per_cleared",
+   "fact_value": 1.42,
+   "recomputed": 1.42,
+   "tolerance": 0.071,
+   "match": true
+  }
+ ]
+}

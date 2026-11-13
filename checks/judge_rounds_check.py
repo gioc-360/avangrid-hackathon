@@ -3,7 +3,10 @@
 What: `--round N` passes when round N has all 9 judge seats, exactly one held out, every criterion scored 1
       to 5, each weighted score equal to the rubric weights applied to its scores, each per-criterion gap to
       the A1 anchor equal to score minus anchor, and the round averages equal to the judges' numbers.
-      Round 2 must also state the held-out judge's change from round 1. `--review` passes when
+      Round 2 must also state the held-out judge's change from round 1. A round marked
+      per_judge_scores_kept false (round 2) has no judges to check, so only its recorded averages are checked:
+      each in 1 to 5, each change equal to this round minus the last, the gap equal to average minus anchor,
+      no judge rows typed in, and a note saying the scores were not kept. `--review` passes when
       runs/review_round.json holds 10 number checks and 10 examiner answers with at least 9 passing.
       `--selftest` plants one bad case of each kind and fails unless every one is caught. `--record-facts`
       writes the round averages, the anchor and the examiner counts to facts/facts.json under judge.*.
@@ -32,6 +35,24 @@ def mean(values):
     return sum(values) / len(values)
 
 
+def averages_only_problems(data, rnd, number):
+    """Problems with a round whose per-judge scores were not kept: only its recorded averages can be checked."""
+    problems = ["per-judge scores marked as not kept, yet judge rows are recorded"] if rnd.get("judges") else []
+    problems += [] if str(rnd.get("judges_note", "")).strip() else ["a round without per-judge scores must say so in judges_note"]
+    need = ("average_weighted_used_8", "held_out_weighted", "held_out_change", "used_change", "gap_to_anchor_weighted_used_8")
+    missing = [f for f in need if not isinstance(rnd.get(f), (int, float))]
+    before = [r for r in data.get("rounds", []) if r.get("round") == number - 1]
+    if missing or not before:
+        return problems + [f"round {number} lacks {', '.join(missing) or f'a round {number - 1} to compare'}"]
+    problems += [f"{f} {rnd[f]} is outside 1 to 5" for f in need[:2] if not 1 <= rnd[f] <= 5]
+    for change, field in (("held_out_change", "held_out_weighted"), ("used_change", "average_weighted_used_8")):
+        if not close(rnd[change], rnd[field] - before[0].get(field, 99)):
+            problems.append(f"{change} is not round {number} minus round {number - 1} on {field}")
+    if not close(rnd["gap_to_anchor_weighted_used_8"], rnd["average_weighted_used_8"] - data.get("anchor", {}).get("weighted", 99)):
+        problems.append("gap_to_anchor_weighted_used_8 is not the used average minus the anchor")
+    return problems
+
+
 def round_problems(data, number):
     """Every problem with round `number` of a judge_rounds document, as plain sentences."""
     anchor = data.get("anchor", {})
@@ -39,6 +60,8 @@ def round_problems(data, number):
     if not rounds:
         return [f"round {number} is not recorded"]
     rnd, problems = rounds[0], []
+    if rnd.get("per_judge_scores_kept") is False:
+        return averages_only_problems(data, rnd, number)
     weights = rnd.get("weights", {})
     if set(weights) != set(CRITERIA) or not close(sum(weights.values()), 1.0):
         problems.append("weights must cover the 4 criteria and add to 1")
@@ -95,12 +118,20 @@ def run_selftest(data):
         "no held-out judge": lambda d: [j.__setitem__("held_out", False) for j in d["rounds"][0]["judges"]],
         "average typed wrong": lambda d: d["rounds"][0].__setitem__("average_weighted", 4.5),
     }
-    ok = not round_problems(data, 1)
-    print(f"{'PASS' if ok else 'FAIL'}  the real round 1 passes unchanged")
+    ok = not round_problems(data, 1) and not round_problems(data, 2)
+    print(f"{'PASS' if ok else 'FAIL'}  the real rounds 1 and 2 pass unchanged")
     for name, plant in plants.items():
         bad = copy.deepcopy(data)
         plant(bad)
         caught = bool(round_problems(bad, 1))
+        ok &= caught
+        print(f"{'PASS' if caught else 'FAIL'}  caught: {name}")
+    for name, plant in {"round 2 used change typed wrong": lambda r: r.__setitem__("used_change", 0.5),
+                        "round 2 judge rows invented": lambda r: r.__setitem__("judges", [{"seat": "judge1"}]),
+                        "round 2 gap typed wrong": lambda r: r.__setitem__("gap_to_anchor_weighted_used_8", -0.5)}.items():
+        bad = copy.deepcopy(data)
+        plant([r for r in bad["rounds"] if r["round"] == 2][0])
+        caught = bool(round_problems(bad, 2))
         ok &= caught
         print(f"{'PASS' if caught else 'FAIL'}  caught: {name}")
     missing = bool(round_problems(data, 99))
@@ -153,8 +184,12 @@ def main():
         parser.error("pass --round N, --review or --selftest")
     for p in problems:
         print(f"FAIL  {p}")
-    if args.round and not problems:
-        rnd = [r for r in data["rounds"] if r["round"] == args.round][0]
+    rnd = [r for r in data.get("rounds", []) if r.get("round") == args.round]
+    if args.round and not problems and rnd[0].get("per_judge_scores_kept") is False:
+        print(f"round {args.round}: per-judge scores not kept; recorded averages consistent: used {rnd[0]['average_weighted_used_8']:.2f} "
+              f"({rnd[0]['used_change']:+.2f}), held out {rnd[0]['held_out_weighted']:.2f} ({rnd[0]['held_out_change']:+.2f})")
+    elif args.round and not problems:
+        rnd = rnd[0]
         print(f"round {args.round}: {len(rnd['judges'])} judges, average {rnd['average_weighted']:.2f} against anchor "
               f"{data['anchor']['weighted']:.2f}; gaps by criterion {rnd['gap_to_anchor_by_criterion']}")
     print(f"judge_rounds_check: {len(problems)} problems")

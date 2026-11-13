@@ -10,7 +10,7 @@ ranks and sizes behind-the-meter batteries (Enphase IQ 10C). The repo also check
 ```
 make env                      # Python 3.12 venv from requirements.txt
 make all                      # zips -> matrix -> features -> classes -> segments -> batteries -> readout (~4 min)
-make check                    # problem coverage + source checks
+make check                    # problem coverage + source checks + battery recompute (about 70 s)
 make check DECK=deck.pptx     # also trace every number and quote on every slide
 ```
 

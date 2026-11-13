@@ -87,8 +87,9 @@ portable number is kW per battery.
 
 Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt headline numbers
 its own way, among them the flagged share and its duration, the heat pump and EV shares of overload hours, the
-3 kVA pass shares and the pricing arithmetic behind the 51.92% ladder share. It did not rerun the battery dispatch or the fit-score host choice, so the battery
-counts (1.42 per protected transformer) have not been recomputed independently; that rerun is still open.
+3 kVA pass shares and the pricing arithmetic behind the 51.92% ladder share. The battery numbers were then rebuilt by
+separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.json, part of `make check`): the cold snap clear rates, the
+fit-score kW in the top 20 hours and the 1.42 batteries per protected transformer all reproduce.
 
 **The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
 $1,720 a year against $1,209 for the upgrade they put off (equal life, 7% rate). A battery beats

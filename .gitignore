@@ -21,3 +21,10 @@ sources/qa/
 outputs/private/
 outputs/demo/*.html
 runs/**/*.npy
+
+# video and deck media stay out of git
+outputs/video/
+outputs/**/*.mp4
+outputs/**/*.wav
+outputs/**/*.m4a
+outputs/**/*.pptx

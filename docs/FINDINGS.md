@@ -188,9 +188,10 @@ units that clears every hour of the year), and each flagged transformer has 2.7 
 
 Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt the
 flagged share and its duration, the heat pump and EV shares of overload hours, the 3 kVA pass shares and the
-pricing arithmetic behind the 51.92% ladder share, each its own way. It did not rerun the battery dispatch or the
-fit-score host choice, so the battery counts behind the 1.42 batteries per protected transformer have not
-been recomputed independently. That rerun is still open.
+pricing arithmetic behind the 51.92% ladder share, each its own way. The battery numbers were then rebuilt by
+separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.json, part of `make check`):
+the share cleared by batteries (5.23% moderate, 18.24% high), the cold snap flagged share and clear rates, the
+fit-score and random kW in the top 20 hours and the 1.42 batteries per protected transformer all reproduce.
 
 ### One cleared transformer: batteries against the upgrade
 

@@ -165,7 +165,7 @@ outputs/private/, which git ignores, and a test checks git really ignores it. Co
 a test checks the inventory printout holds no customer number. The demo page is built locally and is gitignored.
 
 Code: `analysis/facts.py:18 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
-`ewu/inventory.py:110 private=True`, `tests/test_house_rules.py:81 def test_private_outputs_are_ignored_by_git`,
+`ewu/inventory.py:110 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
 `tests/test_inventory.py:79 def test_printed_table_holds_aggregates_only`.
 
 ### Q14. Does it run fast enough to use live, and does it scale?
@@ -186,4 +186,4 @@ the widest gap in any cell is 1.37 points. `make prototype`
 rebuilds every output and the demo page from the processed data.
 
 Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:177 seeds:`,
-`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:33 prototype:`.
+`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:35 prototype:`.

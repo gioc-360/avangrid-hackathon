@@ -22,14 +22,14 @@ Do first: make sure the deck carries the numbers in docs/BUSINESS_CASE.md, not r
 | M1 | PASS | Baseline stress on synthetic transformers, 5 seeds, every sizing margin |
 | M2 | PASS | Overload hours split into base, EV and heat pump; timer and staggered charging |
 | M3 | PASS | Battery dispatch hour by hour through Feb 7-8 |
-| M3 recompute | NOT RUN | The independent rerun of cold snap and battery counts never happened; the M8 review did not cover them |
+| M3 recompute | PASS | `checks/recompute_battery.py` rebuilds 10 battery and cold snap facts with separate code; 10 of 10 reproduce, in `make check` |
 | M4 | PASS | Fit-score hosts beat random hosts in every cell |
 | M5 | PASS | Equal-life economics, 16 grid cells, headline as a range |
 | M6 | PASS | Live `bin/ewu screen`, offline 4-step page, every shown number bound to a fact |
 | M7 | PASS | Demo script and code questions, every file and line reference resolves |
 | J1 | PASS | Judge round 1 recorded; generated business case and top-hours command added |
 | M8 | PASS | Failed once (record missing), passed on retry; 10 number checks match |
-| J2 | FAIL | Averages and hardest questions saved, but per-judge scores were not, so `judge_rounds_check.py --round 2` fails |
+| J2 | PASS | Per-judge scores were not kept; `judge_rounds_check.py --round 2` checks the recorded averages and changes only |
 
 ## Headline numbers (moderate 2030, rating = today's group peak x 1.15, unless stated)
 

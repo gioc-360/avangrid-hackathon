@@ -24,8 +24,10 @@ model:           ## classify, segment, size batteries -> facts/facts.json + outp
 	$(PY) checks/compare.py
 	$(PY) analysis/report.py
 
-check:           ## are we solving their problem, and is every number traced?
+check:           ## are we solving their problem, and is every number traced? (+ battery recompute, about 70 s)
 	$(PY) checks/check_all.py $(if $(DECK),--deck "$(DECK)")
+	$(PY) checks/recompute_battery.py --selftest
+	$(PY) checks/recompute_battery.py
 
 test:            ## EWU prototype tests (config, house rules, then one file per milestone)
 	$(PY) -m pytest -q tests/
