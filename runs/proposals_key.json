@@ -1,0 +1,182 @@
+{
+ "Q01": {
+  "team": "load-research",
+  "title": "End-Use Census With Error Bars",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 3.5,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q02": {
+  "team": "storage-policy",
+  "title": "Battery Eligibility Rulebook Simulator",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 2.7,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q03": {
+  "team": "customer-programs",
+  "title": "Next-Best-Offer Program Router",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 3.03,
+  "old_feas": 3,
+  "old_judge_bet": "incremental"
+ },
+ "Q04": {
+  "team": "load-forecasting",
+  "title": "Winter Flip Forecaster",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.55,
+  "old_feas": 4,
+  "old_judge_bet": "big"
+ },
+ "Q05": {
+  "team": "data-engineer",
+  "title": "Monthly New-Load Watch Feed",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 2.57,
+  "old_feas": 3,
+  "old_judge_bet": "big"
+ },
+ "Q06": {
+  "team": "reliability",
+  "title": "Hidden Load Register",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 2.52,
+  "old_feas": 3.33,
+  "old_judge_bet": "big"
+ },
+ "Q07": {
+  "team": "innovation",
+  "title": "Headroom Ladder: cheapest fix per home",
+  "skills": true,
+  "team_bet": "big",
+  "old_rubric": 3.28,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q08": {
+  "team": "ny-regulatory",
+  "title": "Filing-Ready Least-Cost Flex Portfolio",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.43,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q09": {
+  "team": "plain",
+  "title": "Least-Cost Headroom Ladder",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 3.67,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q10": {
+  "team": "contrarian",
+  "title": "Winter Flip Electrification Stress Test",
+  "skills": false,
+  "team_bet": "big",
+  "old_rubric": 3.6,
+  "old_feas": 3,
+  "old_judge_bet": "big"
+ },
+ "Q11": {
+  "team": "ml-maximalist",
+  "title": "Calibrated Appliance Inventory Engine",
+  "skills": true,
+  "team_bet": "big",
+  "old_rubric": 3.8,
+  "old_feas": 2.67,
+  "old_judge_bet": "big"
+ },
+ "Q12": {
+  "team": "physics-first",
+  "title": "Per-Home Heat Pump Load Forecast",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.83,
+  "old_feas": 3.33,
+  "old_judge_bet": "big"
+ },
+ "Q13": {
+  "team": "planner-product",
+  "title": "MW Target to Enrollment List",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 2.95,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q14": {
+  "team": "vpp-aggregator",
+  "title": "Firm-MW VPP Portfolio Builder",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.85,
+  "old_feas": 2.67,
+  "old_judge_bet": "incremental"
+ },
+ "Q15": {
+  "team": "ev-first",
+  "title": "Charger Watch: meter-found EV enablement",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 3.85,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q16": {
+  "team": "heat-electrification",
+  "title": "Winter Flip Planner",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.15,
+  "old_feas": 3.33,
+  "old_judge_bet": "big"
+ },
+ "Q17": {
+  "team": "affordability-equity",
+  "title": "Who Pays, Who Benefits Lens",
+  "skills": true,
+  "team_bet": "incremental",
+  "old_rubric": 2.82,
+  "old_feas": 2.67,
+  "old_judge_bet": "big"
+ },
+ "Q18": {
+  "team": "distribution-planner",
+  "title": "Upgrade-Avoidance Ladder for Electrification",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.42,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ },
+ "Q19": {
+  "team": "startup-founder",
+  "title": "Headroom: meter-based load-add screening",
+  "skills": true,
+  "team_bet": "big",
+  "old_rubric": 3.72,
+  "old_feas": 4.33,
+  "old_judge_bet": "incremental"
+ },
+ "Q20": {
+  "team": "rubric-maximizer",
+  "title": "Least-Cost Flex Offer Ranker",
+  "skills": false,
+  "team_bet": "incremental",
+  "old_rubric": 3.27,
+  "old_feas": 4,
+  "old_judge_bet": "incremental"
+ }
+}

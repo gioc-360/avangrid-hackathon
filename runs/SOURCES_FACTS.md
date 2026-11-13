@@ -1,0 +1,15 @@
+# Page-cited facts from research/sources (extracted 2026-11-12 by a read-only agent; PDF page numbers)
+Key ones for the report:
+- Avangrid Networks: "eight regulated electric and natural gas utilities across New York, Maine, Connecticut, and Massachusetts, serving over 3 million customers" (PitchBook company profile 2026-11, p.1)
+- Cash used in investing $2,548M FY2022 -> $3,099M FY2023 -> $4,157M TTM Sep-2024; total debt $9,384M FY2022 -> $14,917M Sep-2024 (PitchBook co., p.4)
+- Residential customers cutting use "primarily because of higher utility bills" (IBISWorld 22112 T&D Aug 2026, p.11)
+- Rate-hike requests/approvals > $34.0bn in Q1-Q3 2025, more than double 2024 (IBISWorld 22111a Nov 2025, p.12)
+- EPRI via IBISWorld: bills "only spike 50.0% by 2050 if smart grids are fully implemented", otherwise may exceed 400% (forecast; IBIS T&D p.12)
+- Peak load forces operators to "invest in excess capacity, slack" (IBIS T&D p.45)
+- EVs "will add enough load to require targeted network and transmission upgrades" (IBIS T&D p.13)
+- In colder areas residential demand "peaks during the winter due to the high demand for heating" (IBIS 22111a p.14); gas "remains a primary choice for residential heating" (IBIS 22121 p.10)
+- EISA 1304 requires "advanced techniques for measuring peak load reductions ... from smart metering, demand response, distributed generation, and electricity storage" (House Rpt 116-474, p.21)
+- EV integration "while limiting infrastructure upgrades", incentives "to shift charging off-peak" (House Rpt 116-474, p.7)
+- DOE goal "at least 10% active devices to provide grid flexibility by 2035"; models cover home batteries, EVs, HVAC, water heaters (NREL 72745, p.3, p.7)
+- Dated: 2.2M customers; NYSEG ~890k, RG&E ~375k, CMP >619k, UI 332k electric customers (MarketLine Jan 2018, p.4-5)
+No source gives Avangrid rate base, capex plan, AMI rollout, SAIDI/SAIFI.

@@ -1,0 +1,131 @@
+# Every outside fact the deck may use. check_all.py opens the file, reads the cited page,
+# and fails the citation unless `quote` appears there (whitespace and quote marks normalized).
+# `numbers` lists the figures the deck may quote from this source; the number check accepts them.
+# Web sources: `file` points at a saved text snapshot under sources/web/ (page: 0).
+
+root: "/Users/giocaballero/Library/CloudStorage/OneDrive-CornellUniversity/Avangrid Hackathon/research/sources/"
+
+citations:
+  - id: avangrid-scale
+    file: pitchbook-avangrid-company-profile-2026-11.pdf
+    page: 1
+    quote: "serving over 3 million customers"
+    numbers: [3]
+  - id: avangrid-investing-cash
+    file: pitchbook-avangrid-company-profile-2026-11.pdf
+    page: 4
+    quote: "4,157"
+    numbers: [2548, 3099, 4157]
+  - id: bills-cut-use
+    file: ibisworld-22112-power-transmission-distribution-us-2026-08-industry.pdf
+    page: 11
+    quote: "primarily because of higher utility bills"
+  - id: rate-hikes-34bn
+    file: ibisworld-22111a-coal-gas-generation-us-2025-11-industry.pdf
+    page: 12
+    quote: "34.0"
+    numbers: [34]
+  - id: smart-grid-bills-epri
+    file: ibisworld-22112-power-transmission-distribution-us-2026-08-industry.pdf
+    page: 12
+    quote: "if smart grids are fully implemented"
+    numbers: [50, 400, 2050]
+  - id: peak-forces-slack
+    file: ibisworld-22112-power-transmission-distribution-us-2026-08-industry.pdf
+    page: 45
+    quote: "must invest in excess capacity"
+  - id: ev-upgrades
+    file: ibisworld-22112-power-transmission-distribution-us-2026-08-industry.pdf
+    page: 13
+    quote: "targeted network and transmission upgrades"
+  - id: winter-peak-heating
+    file: ibisworld-22111a-coal-gas-generation-us-2025-11-industry.pdf
+    page: 14
+    quote: "high demand for heating"
+  - id: gas-heating-primary
+    file: ibisworld-22121-natural-gas-distribution-us-2026-05-industry.pdf
+    page: 10
+    quote: "primary choice for residential heating"
+  - id: eisa-peak-measurement
+    file: us-house-rpt-116-474-grid-modernization-rd-act-2020.pdf
+    page: 21
+    quote: "measuring peak load reductions"
+  - id: ev-offpeak-mandate
+    file: us-house-rpt-116-474-grid-modernization-rd-act-2020.pdf
+    page: 7
+    quote: "shift charging"
+  - id: doe-10pct-flex
+    file: nrel-72745-grid-modernization-coops-munis-2018.pdf
+    page: 3
+    quote: "10%"
+    numbers: [10, 2035]
+  - id: avangrid-utilities-2018
+    file: marketline-avangrid-company-profile-2018-01.pdf
+    page: 5
+    quote: "890,000"
+    numbers: [890000, 375000, 619000, 332000]
+
+  # ---- organizer reading list (web snapshots in sources/web/, saved 2026-11-12) ----
+  - id: aceee-hourly-disagg
+    file: sources/web/aceee-u2001-2020.txt
+    page: 0
+    quote: "Hourly data can identify loads that correlate with outdoor temperature"
+  - id: aceee-tvp-peak-cut
+    file: sources/web/aceee-u2001-2020.txt
+    page: 0
+    quote: "23%"
+    numbers: [23, 18, 7, 16]
+  - id: aceee-targeting
+    file: sources/web/aceee-u2001-2020.txt
+    page: 0
+    quote: "3.5 times"
+    numbers: [3.5, 53, 76]
+  - id: doe-pge-loadshapes
+    file: sources/web/doe-voe-ami-2019.txt
+    page: 0
+    quote: "320,000"
+    numbers: [320000, 8760, 576]
+  - id: doe-tesla-transformer
+    file: sources/web/doe-voe-ami-2019.txt
+    page: 0
+    quote: "three customers buy a Tesla"
+  - id: doe-smud-17pct
+    file: sources/web/doe-voe-ami-2019.txt
+    page: 0
+    quote: "17%"
+    numbers: [17]
+  - id: doe-sce-thermostat
+    file: sources/web/doe-voe-ami-2019.txt
+    page: 0
+    quote: "37 MW"
+    numbers: [51000, 37, 750]
+  - id: rmi-forecast-up-20
+    file: sources/web/rmi-rewiring-2025.txt
+    page: 0
+    quote: "have risen sharply — by over 20 percen"
+    numbers: [20, 2035]
+  - id: rmi-overbuild-2bn
+    file: sources/web/rmi-rewiring-2025.txt
+    page: 0
+    quote: "almost $2 billion"
+    numbers: [2]
+  - id: heatmap-ngrid-sense
+    file: sources/web/utilitydive-heatmap-2024.txt
+    page: 0
+    quote: "1.7 million"
+    numbers: [5000, 1.7]
+  - id: nrel-ami-classifier
+    file: sources/web/osti-nrel-90443.txt
+    page: 0
+    quote: "16.6%"
+    numbers: [16.6, 7.7, 8.3]
+  - id: eia-small-batteries
+    file: sources/web/eia-storage-2023.txt
+    page: 0
+    quote: "1,094"
+    numbers: [1094, 740, 71]
+  - id: vermont-gmp-vpp
+    file: sources/web/cooldown-vermont-2026.txt
+    page: 0
+    quote: "5,500"
+    numbers: [5500, 110, 55, 11]

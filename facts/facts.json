@@ -1,0 +1,1454 @@
+{
+ "assumption.capacity_value_usd_kw_yr": {
+  "value": 100.0,
+  "unit": "$/kW-yr",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION: replace with NY avoided T&D + ICAP values"
+ },
+ "assumption.thermostat_shed_pct": {
+  "value": 33,
+  "unit": "%",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION: share of cooling load a setback event sheds"
+ },
+ "assumption.tou_off_peak_usd_kwh": {
+  "value": 0.18,
+  "unit": "$/kWh",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION"
+ },
+ "assumption.tou_on_peak_usd_kwh": {
+  "value": 0.3,
+  "unit": "$/kWh",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION: replace with NYSEG/RG&E TOU tariff"
+ },
+ "assumption.unit_cost_high_usd": {
+  "value": 13000,
+  "unit": "$ per IQ 10C installed",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION"
+ },
+ "assumption.unit_cost_low_usd": {
+  "value": 9000,
+  "unit": "$ per IQ 10C installed",
+  "script": "analysis/bess.py",
+  "method": "ASSUMPTION"
+ },
+ "bess.bill_savings_per_home_usd_yr": {
+  "value": 359,
+  "unit": "$/yr",
+  "script": "analysis/bess.py",
+  "method": "median candidate (ASSUMED rates)"
+ },
+ "bess.bill_savings_usd_yr": {
+  "value": 1960000,
+  "unit": "$/yr",
+  "script": "analysis/bess.py",
+  "method": "TOU arbitrage on shifted kWh (ASSUMED rates)"
+ },
+ "bess.candidates.count": {
+  "value": 5341,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": "event-window load >=3.5 kW and loaded on >=9 of 10 event days, not seasonal/inactive"
+ },
+ "bess.candidates.share_pct": {
+  "value": 15.8,
+  "unit": "% of homes",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.capacity_relief_mw": {
+  "value": 19.39,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "summer event hours, every candidate at its own size"
+ },
+ "bess.capacity_relief_pct_of_event_load": {
+  "value": 28.8,
+  "unit": "% of summer event-hour system load",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.capacity_relief_winter_mw": {
+  "value": 14.83,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "winter event hours"
+ },
+ "bess.capacity_value_usd_yr": {
+  "value": 2225000,
+  "unit": "$/yr",
+  "script": "analysis/bess.py",
+  "method": "relief x ASSUMED $/kW-yr"
+ },
+ "bess.capex_high_usd_m": {
+  "value": 138.9,
+  "unit": "$M",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.capex_low_usd_m": {
+  "value": 96.1,
+  "unit": "$M",
+  "script": "analysis/bess.py",
+  "method": "ASSUMED unit cost"
+ },
+ "bess.electrification_enabled.count": {
+  "value": 29581,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": "Level 2 EV enabled without a service study"
+ },
+ "bess.electrification_enabled.ev_homes": {
+  "value": 29581,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": "fail the 3 kVA rule alone, pass with the program battery"
+ },
+ "bess.electrification_enabled.hp_homes": {
+  "value": 523,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": "fail the 3 kVA rule alone, pass with the program battery"
+ },
+ "bess.event_window_summer_hours": {
+  "value": "16:00-20:00 on the top day",
+  "unit": "",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.event_window_winter_hours": {
+  "value": "17:00-21:00 on the top day",
+  "unit": "",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.ev_fail_pct_none": {
+  "value": 99.3,
+  "unit": "% of homes without an EV",
+  "script": "analysis/report.py",
+  "method": "unmanaged Level 2 breaks the 3 kVA rule"
+ },
+ "bess.headroom_rule.ev_pass_pct_none": {
+  "value": 0.7,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.ev_pass_pct_one_unit": {
+  "value": 57.2,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.ev_pass_pct_two_units": {
+  "value": 100.0,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.hp_kw_at_0f": {
+  "value": 2.98,
+  "unit": "kW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.hp_kw_per_degf": {
+  "value": 0.05,
+  "unit": "kW per F below 60F",
+  "script": "analysis/bess.py",
+  "method": "electric-heat minus other homes at the 200 coldest hours"
+ },
+ "bess.headroom_rule.hp_pass_pct_none": {
+  "value": 98.1,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.hp_pass_pct_one_unit": {
+  "value": 100.0,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.headroom_rule.hp_pass_pct_two_units": {
+  "value": 100.0,
+  "unit": "% of homes without it today",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.load_shift_kwh_per_home": {
+  "value": 3643,
+  "unit": "kWh/yr",
+  "script": "analysis/bess.py",
+  "method": "median candidate"
+ },
+ "bess.load_shift_mwh_yr": {
+  "value": 19872.0,
+  "unit": "MWh/yr",
+  "script": "analysis/bess.py",
+  "method": "16-21h energy moved to off-peak, all candidates"
+ },
+ "bess.peak_reduction_kw": {
+  "value": 4.21,
+  "unit": "kW",
+  "script": "analysis/bess.py",
+  "method": "median candidate: annual peak cut while holding every day (perfect foresight)"
+ },
+ "bess.peak_reduction_pct": {
+  "value": 48.5,
+  "unit": "% of own annual peak",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.ranking.method": {
+  "value": "score = best-season coincident relief (kW, program setup) x event-day persistence + 0.5 if EV or electric heat",
+  "unit": "",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.relief_per_home_kw": {
+  "value": 4.15,
+  "unit": "kW",
+  "script": "analysis/bess.py",
+  "method": "median candidate, best season"
+ },
+ "bess.simple_payback_high_yr": {
+  "value": 33.0,
+  "unit": "years",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.simple_payback_low_yr": {
+  "value": 23.0,
+  "unit": "years",
+  "script": "analysis/bess.py",
+  "method": "capex / (bill + capacity value); warranty is 15 years"
+ },
+ "bess.size.median_second_unit_gain_kw": {
+  "value": 1.78,
+  "unit": "kW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.size.one_unit": {
+  "value": 0,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": "one IQ 10C already gives >=85% of the setup's coincident relief"
+ },
+ "bess.size.two_units": {
+  "value": 5341,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.solar_charge_days": {
+  "value": 127,
+  "unit": "days/yr",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.solar_charge_share": {
+  "value": 0.348,
+  "unit": "share of days",
+  "script": "analysis/bess.py",
+  "method": "median solar home: days with >=3 midday export hours (surplus to charge from)"
+ },
+ "bess.supply_curve.top1000_summer_mw": {
+  "value": 2.77,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "best 1000 homes by score"
+ },
+ "bess.supply_curve.top1000_winter_mw": {
+  "value": 4.47,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.supply_curve.top2000_summer_mw": {
+  "value": 6.24,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "best 2000 homes by score"
+ },
+ "bess.supply_curve.top2000_winter_mw": {
+  "value": 7.97,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.supply_curve.top500_summer_mw": {
+  "value": 1.44,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "best 500 homes by score"
+ },
+ "bess.supply_curve.top500_winter_mw": {
+  "value": 2.26,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T1_electrified_peaker.count": {
+  "value": 1987,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T1_electrified_peaker.summer_mw": {
+  "value": 5.9,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T1_electrified_peaker.winter_mw": {
+  "value": 7.93,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T2_solar_storage.count": {
+  "value": 8,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T2_solar_storage.summer_mw": {
+  "value": 0.03,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T2_solar_storage.winter_mw": {
+  "value": 0.02,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T3_grid_peaker.count": {
+  "value": 3346,
+  "unit": "homes",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T3_grid_peaker.summer_mw": {
+  "value": 13.46,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.tier.T3_grid_peaker.winter_mw": {
+  "value": 6.87,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "bess.units_total": {
+  "value": 10682,
+  "unit": "IQ 10C units",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "class.ac.confidence": {
+  "value": "high",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ac.count": {
+  "value": 23314,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "cooling slope >=0.5 kWh per cooling degree-day and >=0.5 kW lift at the 100 hottest hours"
+ },
+ "class.ac.method": {
+  "value": "cooling slope >=0.5 kWh per cooling degree-day and >=0.5 kW lift at the 100 hottest hours",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ac.share_pct": {
+  "value": 69.1,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ac_central.confidence": {
+  "value": "medium",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ac_central.count": {
+  "value": 10961,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "cooling slope >=1 kWh/CDD and >=1.5 kW hot-hour lift"
+ },
+ "class.ac_central.method": {
+  "value": "cooling slope >=1 kWh/CDD and >=1.5 kW hot-hour lift",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ac_central.share_pct": {
+  "value": 32.5,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.electric_heat.confidence": {
+  "value": "high that heat is electric",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.electric_heat.count": {
+  "value": 3793,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": ">=3,000 kWh/yr of weather-driven heating (daily-kWh vs HDD regression) and >=1.5 kW more at the 100 coldest hours than mild nights"
+ },
+ "class.electric_heat.labeled_hits": {
+  "value": 37,
+  "unit": "labeled homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.electric_heat.method": {
+  "value": ">=3,000 kWh/yr of weather-driven heating (daily-kWh vs HDD regression) and >=1.5 kW more at the 100 coldest hours than mild nights",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.electric_heat.recall_pct": {
+  "value": 43.0,
+  "unit": "% of labeled",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.electric_heat.sensitivity_high": {
+  "value": 5496,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "thresholds 2,000 kWh & 1.0 kW"
+ },
+ "class.electric_heat.sensitivity_low": {
+  "value": 3793,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "thresholds 3,000 kWh & 1.5 kW"
+ },
+ "class.electric_heat.share_pct": {
+  "value": 11.2,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev.implied_total": {
+  "value": 724,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "labeled EVs present / 0.25 sample rate"
+ },
+ "class.ev.l2_listed_owners_found": {
+  "value": 212,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "labeled L2 hits / 0.25"
+ },
+ "class.ev.l2_precision_floor_pct": {
+  "value": 28.9,
+  "unit": "%",
+  "script": "analysis/classify.py",
+  "method": "lower bound: counts only listed owners as true"
+ },
+ "class.ev.l2_unlisted": {
+  "value": 522,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "L2 flags minus implied listed owners: chargers the utility does not know about"
+ },
+ "class.ev.labeled_no_home_l2_pct": {
+  "value": 50.8,
+  "unit": "% of labeled EVs",
+  "script": "analysis/classify.py",
+  "method": "zero Level 2 days at home"
+ },
+ "class.ev.pu_auc": {
+  "value": 0.806,
+  "unit": "AUC",
+  "script": "analysis/classify.py",
+  "method": "out-of-fold, labeled vs unlabeled, 5-fold x 2 seeds"
+ },
+ "class.ev.recall_heldout": {
+  "value": 29.3,
+  "unit": "% of labeled EVs",
+  "script": "analysis/classify.py",
+  "method": "share of listed EV homes showing home Level 2 charging"
+ },
+ "class.ev_l1.confidence": {
+  "value": "low: dehumidifiers and well pumps look alike",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l1.count": {
+  "value": 2146,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": ">=30 weather-neutral nights with a 1.0-2.5 kW lift held 4+ hours, no Level 2 blocks"
+ },
+ "class.ev_l1.labeled_hits": {
+  "value": 24,
+  "unit": "labeled homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l1.method": {
+  "value": ">=30 weather-neutral nights with a 1.0-2.5 kW lift held 4+ hours, no Level 2 blocks",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l1.recall_pct": {
+  "value": 13.3,
+  "unit": "% of labeled",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l1.share_pct": {
+  "value": 6.4,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l2.confidence": {
+  "value": "high",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l2.count": {
+  "value": 734,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": ">=8 weather-neutral days with a 2+ hour block >=5 kW above the day's 25th percentile, most starting 16:00-03:59"
+ },
+ "class.ev_l2.labeled_hits": {
+  "value": 53,
+  "unit": "labeled homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l2.method": {
+  "value": ">=8 weather-neutral days with a 2+ hour block >=5 kW above the day's 25th percentile, most starting 16:00-03:59",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l2.recall_pct": {
+  "value": 29.3,
+  "unit": "% of labeled",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.ev_l2.share_pct": {
+  "value": 2.2,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.confidence": {
+  "value": "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.count": {
+  "value": 1710,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "electric heat AND a cooling signature (heat pumps heat and cool) AND top half of the heat-pump model score"
+ },
+ "class.heat_pump.labeled_hits": {
+  "value": 20,
+  "unit": "labeled homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.labeled_little_heat_pct": {
+  "value": 46.5,
+  "unit": "% of labeled HPs",
+  "script": "analysis/classify.py",
+  "method": "<1,500 kWh/yr weather-driven heat: supplemental mini-splits, not whole-home heat"
+ },
+ "class.heat_pump.method": {
+  "value": "electric heat AND a cooling signature (heat pumps heat and cool) AND top half of the heat-pump model score",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.pu_auc": {
+  "value": 0.762,
+  "unit": "AUC",
+  "script": "analysis/classify.py",
+  "method": "out-of-fold, labeled vs unlabeled, 5-fold x 2 seeds"
+ },
+ "class.heat_pump.recall_heldout": {
+  "value": 23.3,
+  "unit": "% of labeled HPs",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.recall_pct": {
+  "value": 23.3,
+  "unit": "% of labeled",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.heat_pump.share_pct": {
+  "value": 5.1,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.hot_tub.confidence": {
+  "value": "low, no labels",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.hot_tub.count": {
+  "value": 226,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": ">=30 isolated 1-hour spikes >=2.5 kWh between 0-4h, a quarter or more in winter (heater cycling)"
+ },
+ "class.hot_tub.method": {
+  "value": ">=30 isolated 1-hour spikes >=2.5 kWh between 0-4h, a quarter or more in winter (heater cycling)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.hot_tub.share_pct": {
+  "value": 0.7,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_flat_large.confidence": {
+  "value": "medium",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_flat_large.count": {
+  "value": 5,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "flat 24x7 load >=1.5 kW base, >=15,000 kWh/yr (business, grow room or crypto miner)"
+ },
+ "class.other_flat_large.method": {
+  "value": "flat 24x7 load >=1.5 kW base, >=15,000 kWh/yr (business, grow room or crypto miner)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_flat_large.share_pct": {
+  "value": 0.0,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_inactive.confidence": {
+  "value": "high",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_inactive.count": {
+  "value": 201,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "<300 kWh in the whole year"
+ },
+ "class.other_inactive.method": {
+  "value": "<300 kWh in the whole year",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_inactive.share_pct": {
+  "value": 0.6,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_seasonal.confidence": {
+  "value": "high (shape)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_seasonal.count": {
+  "value": 3064,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "lowest month <15% of highest month (camps, snowbirds, part-year homes)"
+ },
+ "class.other_seasonal.method": {
+  "value": "lowest month <15% of highest month (camps, snowbirds, part-year homes)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.other_seasonal.share_pct": {
+  "value": 9.1,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.pool.confidence": {
+  "value": "medium",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.pool.count": {
+  "value": 1980,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "on days of equal mild temperature, summer uses >=8 kWh/day more than spring/fall and the 9-17h floor rises >=0.6 kW (a pump on a timer)"
+ },
+ "class.pool.method": {
+  "value": "on days of equal mild temperature, summer uses >=8 kWh/day more than spring/fall and the 9-17h floor rises >=0.6 kW (a pump on a timer)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.pool.share_pct": {
+  "value": 5.9,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.resistance_heat.confidence": {
+  "value": "low (the remainder of electric heat)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.resistance_heat.count": {
+  "value": 2083,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "electric heat without the heat-pump evidence"
+ },
+ "class.resistance_heat.method": {
+  "value": "electric heat without the heat-pump evidence",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.resistance_heat.share_pct": {
+  "value": 6.2,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.confidence": {
+  "value": "high",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.count": {
+  "value": 421,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "summer 10-14h meter reads exactly 0 in >=5% of hours (export nets to zero), nights do not"
+ },
+ "class.solar.labeled_hits": {
+  "value": 364,
+  "unit": "labeled homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.method": {
+  "value": "summer 10-14h meter reads exactly 0 in >=5% of hours (export nets to zero), nights do not",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.precision_pct": {
+  "value": 86.5,
+  "unit": "%",
+  "script": "analysis/classify.py",
+  "method": "PV list is complete, so this is true precision"
+ },
+ "class.solar.recall_heldout": {
+  "value": 92.2,
+  "unit": "% of known PV",
+  "script": "analysis/classify.py",
+  "method": "PV list is complete, so this is true recall"
+ },
+ "class.solar.recall_pct": {
+  "value": 92.2,
+  "unit": "% of labeled",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.share_pct": {
+  "value": 1.2,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar.undisclosed": {
+  "value": 57,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "solar-shaped homes not on the 'all known PV' list"
+ },
+ "class.solar_battery.confidence": {
+  "value": "low (tiny n)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar_battery.count": {
+  "value": 0,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": "solar home whose zeros continue to 20-23h in summer (a battery covering the evening)"
+ },
+ "class.solar_battery.method": {
+  "value": "solar home whose zeros continue to 20-23h in summer (a battery covering the evening)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.solar_battery.share_pct": {
+  "value": 0.0,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.water_heater.confidence": {
+  "value": "low, no labels",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.water_heater.count": {
+  "value": 614,
+  "unit": "homes",
+  "script": "analysis/classify.py",
+  "method": ">=40 isolated 1-hour morning spikes >=2.5 kWh (a 4.5 kW element after showers)"
+ },
+ "class.water_heater.method": {
+  "value": ">=40 isolated 1-hour morning spikes >=2.5 kWh (a 4.5 kW element after showers)",
+  "unit": "",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.water_heater.share_pct": {
+  "value": 1.8,
+  "unit": "% of homes",
+  "script": "analysis/classify.py",
+  "method": ""
+ },
+ "class.weather_gain.ev_auc_points": {
+  "value": 1.1,
+  "unit": "AUC points",
+  "script": "analysis/classify.py",
+  "method": "with minus without weather"
+ },
+ "class.weather_gain.ev_auc_without_weather": {
+  "value": 0.795,
+  "unit": "AUC",
+  "script": "analysis/classify.py",
+  "method": "same model, weather-response features removed"
+ },
+ "class.weather_gain.heat_pump_auc_points": {
+  "value": 3.3,
+  "unit": "AUC points",
+  "script": "analysis/classify.py",
+  "method": "with minus without weather"
+ },
+ "class.weather_gain.heat_pump_auc_without_weather": {
+  "value": 0.729,
+  "unit": "AUC",
+  "script": "analysis/classify.py",
+  "method": "same model, weather-response features removed"
+ },
+ "data.customers_missing": {
+  "value": 1487,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "IDs with no reading in any source"
+ },
+ "data.customers_partial_excluded": {
+  "value": 481,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "homes with some data but under 90% of hours"
+ },
+ "data.customers_present": {
+  "value": 34238,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "rows of load.npy with any reading"
+ },
+ "data.customers_promised": {
+  "value": 35725,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "Data Dictionary customer count"
+ },
+ "data.customers_usable": {
+  "value": 33757,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "homes with at least 90% of hours present; all later steps use these"
+ },
+ "data.rows_read": {
+  "value": 298032553,
+  "unit": "hourly readings",
+  "script": "analysis/ingest.py",
+  "method": "non-missing cells"
+ },
+ "data.source.10001_20000.missing_in_range": {
+  "value": 1415,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "IDs in the promised range with no rows"
+ },
+ "data.source.10001_20000.name": {
+  "value": "2026 Avangrid Hackathon Data_10001_20000_v2",
+  "unit": "",
+  "script": "analysis/ingest.py",
+  "method": "file or folder ingested for this customer range"
+ },
+ "data.source.1_10000.missing_in_range": {
+  "value": 16,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "IDs in the promised range with no rows"
+ },
+ "data.source.1_10000.name": {
+  "value": "2026 Avangrid Hackathon Data_1_10000.zip",
+  "unit": "",
+  "script": "analysis/ingest.py",
+  "method": "file or folder ingested for this customer range"
+ },
+ "data.source.20001_30000.missing_in_range": {
+  "value": 35,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "IDs in the promised range with no rows"
+ },
+ "data.source.20001_30000.name": {
+  "value": "2026 Avangrid Hackathon Data_20001_30000.zip",
+  "unit": "",
+  "script": "analysis/ingest.py",
+  "method": "file or folder ingested for this customer range"
+ },
+ "data.source.30001_35725.missing_in_range": {
+  "value": 21,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "IDs in the promised range with no rows"
+ },
+ "data.source.30001_35725.name": {
+  "value": "2026 Avangrid Hackathon Data_30001_35725.zip",
+  "unit": "",
+  "script": "analysis/ingest.py",
+  "method": "file or folder ingested for this customer range"
+ },
+ "data.zip.10001_20000.customers_in_named_range": {
+  "value": 8585,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "customers in 2026 Avangrid Hackathon Data_10001_20000_v2 whose ID lies in the range its name promises"
+ },
+ "data.zip.1_10000.customers_in_named_range": {
+  "value": 9984,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "customers in 2026 Avangrid Hackathon Data_1_10000.zip whose ID lies in the range its name promises"
+ },
+ "data.zip.20001_30000.customers_in_named_range": {
+  "value": 9965,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "customers in 2026 Avangrid Hackathon Data_20001_30000.zip whose ID lies in the range its name promises"
+ },
+ "data.zip.30001_35725.customers_in_named_range": {
+  "value": 5704,
+  "unit": "customers",
+  "script": "analysis/ingest.py",
+  "method": "customers in 2026 Avangrid Hackathon Data_30001_35725.zip whose ID lies in the range its name promises"
+ },
+ "flex.ac_weather_load_mw": {
+  "value": 39.7,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": "AC homes' event-hour load above mild-day load"
+ },
+ "flex.reduction_kw": {
+  "value": 0.5,
+  "unit": "kW per AC home",
+  "script": "analysis/bess.py",
+  "method": "median home x 33% shed"
+ },
+ "flex.thermostat_mw": {
+  "value": 13.1,
+  "unit": "MW",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "insight.electric_heat_home_share_pct": {
+  "value": 11.2,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.electric_heat_winter_peak_share_pct": {
+  "value": 31.4,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.heat_conversion_added_kw_at_winter_peak": {
+  "value": 3.02,
+  "unit": "kW per home",
+  "script": "analysis/segment.py",
+  "method": "median electric-heat home minus median other home at the winter peak hour"
+ },
+ "insight.homes_to_flip_winter_peaking": {
+  "value": 7250,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": "summer-winter gap / added kW per conversion"
+ },
+ "insight.kmeans_silhouette_k3": {
+  "value": 0.125,
+  "unit": "silhouette",
+  "script": "analysis/segment.py",
+  "method": "normalized 24h x 3-season shapes + log size; <0.25 means no strong natural clusters"
+ },
+ "insight.kmeans_silhouette_k6": {
+  "value": 0.069,
+  "unit": "silhouette",
+  "script": "analysis/segment.py",
+  "method": "normalized 24h x 3-season shapes + log size; <0.25 means no strong natural clusters"
+ },
+ "insight.seasonal_winter_peak_share_pct": {
+  "value": 11.5,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.share_to_flip_winter_peaking_pct": {
+  "value": 21.5,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.summer_minus_winter_mw": {
+  "value": 21.9,
+  "unit": "MW",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.system_peak_mw": {
+  "value": 78.5,
+  "unit": "MW",
+  "script": "analysis/segment.py",
+  "method": "sum of all usable homes, annual max hour"
+ },
+ "insight.system_peak_temp_f": {
+  "value": 92.0,
+  "unit": "F",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.system_peak_when": {
+  "value": "2026-07-02 17:00:00",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.winter_peak_mw": {
+  "value": 56.6,
+  "unit": "MW",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.winter_peak_temp_f": {
+  "value": 7.1,
+  "unit": "F",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "insight.winter_peak_when": {
+  "value": "2026-01-25 17:00:00",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "scale.bess_seconds": {
+  "value": 25.7,
+  "unit": "s",
+  "script": "analysis/bess.py",
+  "method": ""
+ },
+ "scale.ingest_seconds": {
+  "value": 16.8,
+  "unit": "s",
+  "script": "analysis/ingest.py",
+  "method": "199 CSVs from 4 sources in parallel, nothing unzipped to disk"
+ },
+ "scale.matrix_gb": {
+  "value": 1.25,
+  "unit": "GB",
+  "script": "analysis/ingest.py",
+  "method": "float32 customers x 8760 hours"
+ },
+ "scale.segment_seconds": {
+  "value": 1.7,
+  "unit": "s",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.action": {
+  "value": "Mass-market, low-cost channels only",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.count": {
+  "value": 15335,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.median_kwh": {
+  "value": 4435,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.share_pct": {
+  "value": 45.4,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.summer_peak_share_pct": {
+  "value": 28.3,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.baseline.winter_peak_share_pct": {
+  "value": 24.3,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.action": {
+  "value": "First battery and service-upgrade watch list",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.count": {
+  "value": 105,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.median_kwh": {
+  "value": 23403,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.share_pct": {
+  "value": 0.3,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.summer_peak_share_pct": {
+  "value": 0.6,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.dual_electrified.winter_peak_share_pct": {
+  "value": 1.1,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.action": {
+  "value": "Winter DR, weatherization, resistance-to-heat-pump conversion",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.count": {
+  "value": 2605,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.median_kwh": {
+  "value": 14855,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.share_pct": {
+  "value": 7.7,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.summer_peak_share_pct": {
+  "value": 9.1,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.electric_heat.winter_peak_share_pct": {
+  "value": 21.1,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.action": {
+  "value": "Market heat pumps: they already own cooling, a heat pump replaces it",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.count": {
+  "value": 4776,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.median_kwh": {
+  "value": 8429,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.share_pct": {
+  "value": 14.1,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.summer_peak_share_pct": {
+  "value": 15.0,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.emerging.winter_peak_share_pct": {
+  "value": 14.9,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.action": {
+  "value": "Managed charging and an EV time-of-use rate",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.count": {
+  "value": 533,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.median_kwh": {
+  "value": 15767,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.share_pct": {
+  "value": 1.6,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.summer_peak_share_pct": {
+  "value": 3.5,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.ev_home.winter_peak_share_pct": {
+  "value": 2.7,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.action": {
+  "value": "Field check the meter; drop from forecasts",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.count": {
+  "value": 201,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.median_kwh": {
+  "value": 61,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.share_pct": {
+  "value": 0.6,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.summer_peak_share_pct": {
+  "value": 0.0,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.inactive.winter_peak_share_pct": {
+  "value": 0.0,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.action": {
+  "value": "Forecast as its own class; skip for batteries and DR",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.count": {
+  "value": 3064,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.median_kwh": {
+  "value": 5526,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.share_pct": {
+  "value": 9.1,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.summer_peak_share_pct": {
+  "value": 5.0,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.seasonal.winter_peak_share_pct": {
+  "value": 11.5,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.action": {
+  "value": "Offer solar + storage: charge from midday surplus, discharge into the evening peak",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.count": {
+  "value": 337,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.median_kwh": {
+  "value": 7331,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.share_pct": {
+  "value": 1.0,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.summer_peak_share_pct": {
+  "value": 0.7,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.solar.winter_peak_share_pct": {
+  "value": 1.4,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.action": {
+  "value": "Smart-thermostat DR, pool-pump timers, battery tier for grid relief",
+  "unit": "",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.count": {
+  "value": 6801,
+  "unit": "homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.median_kwh": {
+  "value": 10320,
+  "unit": "kWh/yr",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.share_pct": {
+  "value": 20.1,
+  "unit": "% of homes",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.summer_peak_share_pct": {
+  "value": 37.7,
+  "unit": "% of summer top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ },
+ "seg.summer_peaker.winter_peak_share_pct": {
+  "value": 23.0,
+  "unit": "% of winter top-100h load",
+  "script": "analysis/segment.py",
+  "method": ""
+ }
+}

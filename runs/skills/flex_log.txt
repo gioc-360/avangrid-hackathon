@@ -1,0 +1,11 @@
+weather-driven kW at system peak (mean over 20 top hours), all 25,653 homes:
+  summer: total 31.4 MW; 50% flex share = 15.7 MW; median home 1.08 kW
+  winter: total 19.9 MW; 50% flex share = 10.0 MW; median home 0.32 kW
+  central AC     n= 8287: summer flex 9.10 MW, winter flex 2.71 MW
+  electric heat  n= 2873: summer flex 1.55 MW, winter flex 4.91 MW
+  T3 tier        n= 4663: summer flex 5.67 MW, winter flex 1.26 MW
+  T1 tier        n=  840: summer flex 0.87 MW, winter flex 1.31 MW
+cost $9000/unit T1 electrified peaker: capex $14.1M, value $0.53M/yr, simple payback 26 y vs 15 y warranty
+cost $9000/unit T3 summer peaker (DR first): capex $68.7M, value $2.23M/yr, simple payback 31 y vs 15 y warranty
+cost $13000/unit T1 electrified peaker: capex $20.4M, value $0.53M/yr, simple payback 38 y vs 15 y warranty
+cost $13000/unit T3 summer peaker (DR first): capex $99.2M, value $2.23M/yr, simple payback 45 y vs 15 y warranty

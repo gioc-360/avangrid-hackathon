@@ -6,3 +6,18 @@ __pycache__/
 .DS_Store
 .ipynb_checkpoints/
 *.duckdb
+# customer-level derived data stays local (event-confidential)
+outputs/*.csv
+outputs/report_data.json
+outputs/readout.html
+runs/**/out/
+runs/**/*.parquet
+runs/**/*.csv
+
+# event Q&A recordings stay local
+sources/qa/
+
+# per-home / per-transformer prototype outputs stay local
+outputs/private/
+outputs/demo/*.html
+runs/**/*.npy

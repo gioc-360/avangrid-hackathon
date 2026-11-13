@@ -1,0 +1,60 @@
+Avangrid AMI Hackathon  |  Business case for the team  |  November 12, 2026
+Electrify Without Upgrade: grow EVs and heat pumps on wires already built.
+The grid is sized for its 78.5 MW peak but averages 30.8 MW, a 39% load factor. The street transformer, not the system, is what stops electrification. Flag transformers at risk from meter data, default EV homes to smart staggered charging, add 1 or 2 leased batteries only where needed, and upgrade the rest. Every battery avoids an upgrade, then cuts the peak.
+WHAT  By 2030, electrification overloads 10% to 30% of neighborhood transformers
+Stress test: 3,000 transformers, 8 real homes each
+Moderate 2030 (20% EV, 15% HP)
+High 2030 (35% EV, 30% HP)
+Transformers overloaded with no action
+9.8%
+29.8%
+Share of overloads driven by winter heat pump nights
+73%
+89%
+Fixed by smart staggered EV charging
+8.7%
+19.5%
+Fixed by 1 or 2 home batteries (1.7 units on average)
+1.1%
+9.6%
+Still need an upgrade
+under 0.1%
+0.9%
+Home batteries needed across NYSEG
+about 2,100
+about 17,700
+Cost across NYSEG: upgrade every overloaded transformer
+$164M
+$498M
+Cost across NYSEG: Electrify Without Upgrade
+$27M
+$135M
+WHY  Batteries earn their place by avoiding capital, not by trading capacity
+A battery fleet for the peak alone does not pay. Two units at 2,610 priority homes cost $36.5M; over 15 years lease, capacity and NYSERDA return $31M (0.85 of cost, 0.56 without NYSERDA). It breaks even only at about $129 per kW a year, against about $60 today.
+Placed on an overloaded transformer, the same battery beats the upgrade. About 1.7 units (about $11,500 before NYSERDA) replace a $15,000 upgrade. In the home, only 0.7% can add a Level 2 EV within 3 kVA today; one unit raises that to 57%, two to 100%.
+Simple timers backfire; smart staggered charging works. If every managed EV starts at 11pm, overloads rise from 9.8% to 16% as cars switch on together on cold nights. Spreading charging from 11pm to 3am at half power fixes most overloads at almost no cost.
+The local problem is a winter problem. Electric heating homes are 11% of homes but 27% of the winter peak, and thermostat events are not acceptable on cold nights; the battery fills that gap.
+HOW  Four steps, cheapest first
+Step
+What Avangrid does
+Room measured or simulated
+Value
+1. Flag
+Use the AMI classification and segments to find transformers likely to overload
+5,190 primary electric heat homes; 1,331 likely EV homes
+Plan upgrades ahead, not after failures
+2. Shift
+Default EV homes on flagged transformers to smart staggered charging ($150 plus $86 a year, as OptimizEV)
+Fixes 8.7 of 9.8 points (moderate), 19.5 of 29.8 (high)
+Cheapest kW; almost no hardware
+3. Protect
+Lease 1 or 2 Enphase IQ 10C units (about $55 a month for 2), third party owned via RFP as at Stillwater; run winter nights and summer peaks
+1.1% to 9.6% of transformers; about 2,100 to 17,700 batteries
+Avoided $15,000 upgrades plus about $60 per kW a year capacity
+4. Upgrade
+Upgrade only what charging and batteries cannot fix
+Under 0.1% to 0.9% of transformers
+Capital goes only where nothing else works
+What each stakeholder gains. Customers electrify without waiting for an upgrade, hosts get backup power, and everyone gets lower rates as NYSEG’s Rate Decoupling Mechanism returns the value of 23% to 44% more delivered energy to customers. Avangrid needs $137M to $363M less upgrade capital while capital spending runs at 3.4 times operating cash flow, connects customers faster toward New York’s 2030 targets, and can seek a return on avoided capital. The grid gets winter and summer relief from the same batteries.
+How it holds up. Strong: segments, classification, peaks, EV start times (about 20,800 sessions) and heat pump load come from 33,757 real homes. Simulated: transformers are synthetic (8 random homes, sized to today’s peak plus 15%, overloaded above 120%); costs are market estimates; NYSEG scaling assumes our sample is typical. Ask Avangrid: transformer to meter mapping, real loading limits, NYSERDA eligibility for leased batteries, avoided capacity cost per kW.
+Data: hourly AMI for 33,757 NYSEG homes (at least 90% of hours, corrected 10,001 to 20,000 upload). Market inputs: upgrade $10,000 to $20,000 (Eversource); NYISO rest of state capacity about $60 per kW a year; NYSERDA $200 per kWh; New York 2030 heat pump and ZEV targets; scaled to about 890,000 NYSEG homes. Aggregates only; hackathon use only.

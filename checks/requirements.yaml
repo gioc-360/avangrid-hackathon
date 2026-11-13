@@ -1,0 +1,190 @@
+# The problem, as the organizers wrote it. Every line quotes its source document and page,
+# and names the evidence that proves we answered it. checks/check_all.py verifies:
+#   - the quote really appears on that page (so this file cannot drift from the brief)
+#   - every `facts` key exists in facts/facts.json (produced by code, never typed by hand)
+#   - every `deck` pattern appears in the deck text once a deck exists
+# Keys ending in * match any key with that prefix.
+#
+# Weights are the rubric's. A requirement with no weight is a hard deliverable.
+
+sources:
+  challenge: "/Users/giocaballero/Downloads/00_Hackathon Materials/Challenge Statement.pdf"
+  rubric: "/Users/giocaballero/Downloads/00_Hackathon Materials/Scoring Rubric.pdf"
+  dictionary: "/Users/giocaballero/Downloads/00_Hackathon Materials/Data Dictionary.pdf"
+  kickoff: "/Users/giocaballero/Downloads/00_Hackathon Materials/Hackathon Kickoff 2026.pdf"
+
+requirements:
+  # ---------- Part 1: classification ----------
+  - id: P1-EV
+    quote: "Electric vehicle charging"
+    doc: challenge
+    page: 1
+    facts: [class.ev_l2.count, class.ev_l1.count, class.ev.recall_heldout, class.ev.implied_total]
+  - id: P1-AC
+    quote: "Air conditioning"
+    doc: challenge
+    page: 1
+    facts: [class.ac.count]
+  - id: P1-HEAT
+    quote: "Resistance heating"
+    doc: challenge
+    page: 1
+    facts: [class.resistance_heat.count, class.heat_pump.count, class.heat_pump.recall_heldout]
+  - id: P1-WATER
+    quote: "Water heaters"
+    doc: challenge
+    page: 1
+    facts: [class.water_heater.count]
+  - id: P1-POOL
+    quote: "Swimming pools"
+    doc: challenge
+    page: 1
+    facts: [class.pool.count]
+  - id: P1-HOTTUB
+    quote: "Hot tubs"
+    doc: challenge
+    page: 2
+    facts: [class.hot_tub.count]
+  - id: P1-PVBATT
+    quote: "Solar and battery combinations"
+    doc: challenge
+    page: 2
+    facts: [class.solar.count, class.solar_battery.count, class.solar.undisclosed]
+  - id: P1-OTHER
+    quote: "Any other customer segments or appliance signatures discovered"
+    doc: challenge
+    page: 2
+    facts: [class.other_*]
+  - id: P1-EVIDENCE
+    quote: "For each classification, explain the evidence and methodology"
+    doc: challenge
+    page: 2
+    facts: [class.*.method]
+  - id: D-CONFIDENCE
+    quote: "Confidence scores or probabilities"
+    doc: challenge
+    page: 3
+    facts: [class.*.confidence]
+
+  # ---------- Part 2: segmentation ----------
+  - id: P2-SEGMENTS
+    quote: "develop customer segments based on load behavior and energy usage patterns"
+    doc: challenge
+    page: 2
+    facts: [seg.*.count, seg.*.action]
+  - id: P2-INSIGHTS
+    quote: "additional insights that could help utility planning, forecasting, demand response"
+    doc: challenge
+    page: 2
+    facts: [insight.*]
+
+  # ---------- Part 3: flexibility and BTM battery ----------
+  - id: P3-CANDIDATES
+    quote: "Identify candidate customers or locations"
+    doc: challenge
+    page: 2
+    facts: [bess.candidates.count, bess.ranking.method]
+  - id: P3-SIZE
+    quote: "battery size for each"
+    doc: challenge
+    page: 2
+    facts: [bess.size.one_unit, bess.size.two_units, flex.reduction_kw]
+  - id: P3-PEAK
+    quote: "Peak demand reduction"
+    doc: challenge
+    page: 2
+    facts: [bess.peak_reduction_kw]
+  - id: P3-SHIFT
+    quote: "Load shifting"
+    doc: challenge
+    page: 2
+    facts: [bess.load_shift_mwh_yr]
+  - id: P3-CAPACITY
+    quote: "Capacity relief"
+    doc: challenge
+    page: 2
+    facts: [bess.capacity_relief_mw]
+  - id: P3-BILL
+    quote: "Bill savings"
+    doc: challenge
+    page: 2
+    facts: [bess.bill_savings_usd_yr]
+  - id: P3-ELECTRIFY
+    quote: "Electrification enablement"
+    doc: challenge
+    page: 2
+    facts: [bess.electrification_enabled.count]
+  - id: P3-SOLAR
+    quote: "Solar charging/discharging"
+    doc: challenge
+    page: 2
+    facts: [bess.solar_charge_share]
+  - id: P3-3KVA
+    quote: "should not exceed approximately 3 kVA of additional incremental"
+    doc: challenge
+    page: 3
+    facts: [bess.headroom_rule.*]
+
+  # ---------- Deliverables ----------
+  - id: D-README
+    quote: "README.md explaining methodology, setup, and execution steps"
+    doc: challenge
+    page: 4
+    files: [README.md]
+  - id: D-ENV
+    quote: "Environment file (requirements.txt or environment.yml)"
+    doc: challenge
+    page: 4
+    files: [requirements.txt]
+  - id: D-TOOL
+    quote: "estimate inventory of heating and cooling appliances"
+    doc: challenge
+    page: 4
+    files: [analysis/classify.py]
+  - id: D-SCALE
+    quote: "How would your approach scale to millions of customers?"
+    doc: challenge
+    page: 5
+    facts: [scale.*]
+  - id: D-MOREDATA
+    quote: "What additional data would improve your analysis?"
+    doc: challenge
+    page: 5
+    deck: ["(?i)additional data|more data"]
+  - id: D-WEATHER
+    quote: "How does weather improve classification accuracy?"
+    doc: challenge
+    page: 5
+    facts: [class.weather_gain.*]
+
+  # ---------- Rubric ----------
+  - id: R-VALUE
+    quote: "Proposed Solution & Business Value (40%)"
+    doc: rubric
+    page: 1
+    weight: 40
+    facts: [bess.capacity_relief_mw, bess.bill_savings_usd_yr]
+  - id: R-ANALYTICS
+    quote: "Analytics & Modeling (35%)"
+    doc: rubric
+    page: 1
+    weight: 35
+    facts: [class.ev.recall_heldout, class.heat_pump.recall_heldout]
+  - id: R-REPRO
+    quote: "Transparency & Reproducibility"
+    doc: rubric
+    page: 1
+    files: [Makefile]
+  - id: R-SCALE
+    quote: "Scalability: Demonstrates how the solution could be deployed"
+    doc: rubric
+    page: 2
+    weight: 10
+    facts: [scale.*]
+
+# Things we were told before the prompt that the prompt does NOT ask for.
+# check_all.py fails if the deck spends a slide on them without tying them back.
+off_problem:
+  - text: "Which upgrades will prevent the most outages"
+    origin: "intro session 11-10 (brief/intro-session-transcript.md), not in the Challenge Statement"
+    pattern: "(?i)outage|SAIDI|SAIFI"

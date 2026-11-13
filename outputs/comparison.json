@@ -1,0 +1,360 @@
+[
+ {
+  "finding": "The system peaks in summer, on AC",
+  "plain": "The annual peak was 59.4 MW on 2026-07-02",
+  "skills": "Weather-driven load is 31.4 MW of the 55.9 MW summer system peak (56%)",
+  "facts": [
+   "insight.system_peak_mw",
+   "insight.system_peak_when",
+   "insight.winter_peak_mw"
+  ],
+  "verdict": "agree",
+  "note": "Skills read the January 25 midday block as a storm or holiday; it was a 5F Sunday. Winter peak was Feb 8, 2.1F.",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "insight.system_peak_mw": {
+    "value": 78.5,
+    "unit": "MW",
+    "script": "analysis/segment.py",
+    "method": "sum of all usable homes, annual max hour"
+   },
+   "insight.system_peak_when": {
+    "value": "2026-07-02 17:00:00",
+    "unit": "",
+    "script": "analysis/segment.py",
+    "method": ""
+   },
+   "insight.winter_peak_mw": {
+    "value": 56.6,
+    "unit": "MW",
+    "script": "analysis/segment.py",
+    "method": ""
+   }
+  }
+ },
+ {
+  "finding": "Most of the EV list shows no home Level 2 charging",
+  "plain": "Only 41 of 140 labeled EV homes (29%) show the high-confidence L2 signature",
+  "skills": "The best rule finds 28% of listed EVs (95% CI 21-36%)",
+  "facts": [
+   "class.ev.recall_heldout",
+   "class.ev.labeled_no_home_l2_pct"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.ev.recall_heldout": {
+    "value": 29.3,
+    "unit": "% of labeled EVs",
+    "script": "analysis/classify.py",
+    "method": "share of listed EV homes showing home Level 2 charging"
+   },
+   "class.ev.labeled_no_home_l2_pct": {
+    "value": 50.8,
+    "unit": "% of labeled EVs",
+    "script": "analysis/classify.py",
+    "method": "zero Level 2 days at home"
+   }
+  }
+ },
+ {
+  "finding": "Hundreds of homes charge at Level 2 but are not on the EV list",
+  "plain": "About 290 homes charge like EV owners but are not on the utility's list",
+  "skills": "431 homes that are not on the list show the same night-time Level 2 signature",
+  "facts": [
+   "class.ev_l2.count",
+   "class.ev.l2_unlisted"
+  ],
+  "verdict": "agree",
+  "note": "The count depends on the rule; all three find hundreds of unlisted chargers.",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.ev_l2.count": {
+    "value": 734,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": ">=8 weather-neutral days with a 2+ hour block >=5 kW above the day's 25th percentile, most starting 16:00-03:59"
+   },
+   "class.ev.l2_unlisted": {
+    "value": 522,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": "L2 flags minus implied listed owners: chargers the utility does not know about"
+   }
+  }
+ },
+ {
+  "finding": "Solar is the one class load data finds well",
+  "plain": "Detection catches 288 of 316 labeled PV homes (91%) and finds 50 unlisted ones",
+  "skills": "91.8% recall (CI 88-94%) and 88.4% precision",
+  "facts": [
+   "class.solar.recall_heldout",
+   "class.solar.precision_pct",
+   "class.solar.undisclosed"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.solar.recall_heldout": {
+    "value": 92.2,
+    "unit": "% of known PV",
+    "script": "analysis/classify.py",
+    "method": "PV list is complete, so this is true recall"
+   },
+   "class.solar.precision_pct": {
+    "value": 86.5,
+    "unit": "%",
+    "script": "analysis/classify.py",
+    "method": "PV list is complete, so this is true precision"
+   },
+   "class.solar.undisclosed": {
+    "value": 57,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": "solar-shaped homes not on the 'all known PV' list"
+   }
+  }
+ },
+ {
+  "finding": "Almost no solar home has a battery",
+  "plain": "Only 1 home shows meter zeros that last after dark",
+  "skills": "Only 3 homes show an evening zero",
+  "facts": [
+   "class.solar_battery.count"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.solar_battery.count": {
+    "value": 0,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": "solar home whose zeros continue to 20-23h in summer (a battery covering the evening)"
+   }
+  }
+ },
+ {
+  "finding": "Electric heat is about 1 in 9 homes, mostly not on any list",
+  "plain": "16.2% (4,143) show a clear electric-heating response to cold",
+  "skills": "2,873 homes (11.2%) use at least 3,000 kWh a year of weather-driven heating",
+  "facts": [
+   "class.electric_heat.count",
+   "class.electric_heat.sensitivity_high"
+  ],
+  "verdict": "differ",
+  "note": "Pure threshold choice (2,000 kWh & 1.0 kW vs 3,000 kWh & 1.5 kW). Pipeline reports both as a range.",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.electric_heat.count": {
+    "value": 3793,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": ">=3,000 kWh/yr of weather-driven heating (daily-kWh vs HDD regression) and >=1.5 kW more at the 100 coldest hours than mild nights"
+   },
+   "class.electric_heat.sensitivity_high": {
+    "value": 5496,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": "thresholds 2,000 kWh & 1.0 kW"
+   }
+  }
+ },
+ {
+  "finding": "Heat pump vs resistance cannot be split reliably",
+  "plain": "labeled HP homes and other electric-heat homes have the same kW-vs-temperature shape",
+  "skills": "Fig 2 shows the heat-pump and resistance curves nearly overlapping",
+  "facts": [
+   "class.heat_pump.pu_auc",
+   "class.heat_pump.labeled_little_heat_pct"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.heat_pump.pu_auc": {
+    "value": 0.762,
+    "unit": "AUC",
+    "script": "analysis/classify.py",
+    "method": "out-of-fold, labeled vs unlabeled, 5-fold x 2 seeds"
+   },
+   "class.heat_pump.labeled_little_heat_pct": {
+    "value": 46.5,
+    "unit": "% of labeled HPs",
+    "script": "analysis/classify.py",
+    "method": "<1,500 kWh/yr weather-driven heat: supplemental mini-splits, not whole-home heat"
+   }
+  }
+ },
+ {
+  "finding": "Load shapes are a continuum, so segments come from rules, not clusters",
+  "plain": "Load shapes form a continuum rather than natural clusters",
+  "skills": "so load shapes form a continuum and only 3 groups are well supported",
+  "facts": [
+   "insight.kmeans_silhouette_k3",
+   "insight.kmeans_silhouette_k6"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "insight.kmeans_silhouette_k3": {
+    "value": 0.125,
+    "unit": "silhouette",
+    "script": "analysis/segment.py",
+    "method": "normalized 24h x 3-season shapes + log size; <0.25 means no strong natural clusters"
+   },
+   "insight.kmeans_silhouette_k6": {
+    "value": 0.069,
+    "unit": "silhouette",
+    "script": "analysis/segment.py",
+    "method": "normalized 24h x 3-season shapes + log size; <0.25 means no strong natural clusters"
+   }
+  }
+ },
+ {
+  "finding": "About 1 in 10 meters is seasonal and should be kept out of targeting",
+  "plain": "About 1 in 10 meters (2,493) is seasonal or part-year",
+  "skills": "| Seasonal home | lowest month < 15% of highest month | 2,455 (9.6%)",
+  "facts": [
+   "class.other_seasonal.count",
+   "insight.seasonal_winter_peak_share_pct"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "class.other_seasonal.count": {
+    "value": 3064,
+    "unit": "homes",
+    "script": "analysis/classify.py",
+    "method": "lowest month <15% of highest month (camps, snowbirds, part-year homes)"
+   },
+   "insight.seasonal_winter_peak_share_pct": {
+    "value": 11.5,
+    "unit": "% of winter top-100h load",
+    "script": "analysis/segment.py",
+    "method": ""
+   }
+  }
+ },
+ {
+  "finding": "The program battery is what lets a home add a Level 2 charger under the 3 kVA rule",
+  "plain": "The same unit keeps an unmanaged Level 2 EV within the 3 kVA rule at 99.5% of homes",
+  "skills": "One battery unit brings 57% of homes within the rule, and two units bring 100%",
+  "facts": [
+   "bess.headroom_rule.ev_pass_pct_none",
+   "bess.headroom_rule.ev_pass_pct_one_unit",
+   "bess.headroom_rule.ev_pass_pct_two_units"
+  ],
+  "verdict": "agree",
+  "note": "Plain's 'unit' is the 2-battery setup; skills' 'unit' is one IQ 10C. Same result once aligned: my brief was ambiguous here.",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "bess.headroom_rule.ev_pass_pct_none": {
+    "value": 0.7,
+    "unit": "% of homes without it today",
+    "script": "analysis/bess.py",
+    "method": ""
+   },
+   "bess.headroom_rule.ev_pass_pct_one_unit": {
+    "value": 57.2,
+    "unit": "% of homes without it today",
+    "script": "analysis/bess.py",
+    "method": ""
+   },
+   "bess.headroom_rule.ev_pass_pct_two_units": {
+    "value": 100.0,
+    "unit": "% of homes without it today",
+    "script": "analysis/bess.py",
+    "method": ""
+   }
+  }
+ },
+ {
+  "finding": "Batteries do not pay back on capacity and TOU value alone",
+  "plain": "Both prices are illustrative",
+  "skills": "a 26-38 year payback against a 15-year warranty",
+  "facts": [
+   "bess.simple_payback_low_yr",
+   "bess.simple_payback_high_yr"
+  ],
+  "verdict": "differ",
+  "note": "Only the skills run (via the hackathon skill's [NET] rule) put capital against value. Plain never compared.",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "bess.simple_payback_low_yr": {
+    "value": 23.0,
+    "unit": "years",
+    "script": "analysis/bess.py",
+    "method": "capex / (bill + capacity value); warranty is 15 years"
+   },
+   "bess.simple_payback_high_yr": {
+    "value": 33.0,
+    "unit": "years",
+    "script": "analysis/bess.py",
+    "method": ""
+   }
+  }
+ },
+ {
+  "finding": "Thermostats deliver peak relief cheaper than batteries",
+  "plain": "A 33% thermostat setback (an assumption) would remove about 8.0 MW",
+  "skills": "Weather drives the summer peak, so thermostats should come before batteries",
+  "facts": [
+   "flex.thermostat_mw",
+   "bess.capacity_relief_mw"
+  ],
+  "verdict": "agree",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "flex.thermostat_mw": {
+    "value": 13.1,
+    "unit": "MW",
+    "script": "analysis/bess.py",
+    "method": ""
+   },
+   "bess.capacity_relief_mw": {
+    "value": 19.39,
+    "unit": "MW",
+    "script": "analysis/bess.py",
+    "method": "summer event hours, every candidate at its own size"
+   }
+  }
+ },
+ {
+  "finding": "Electrified heat could make the system winter-peaking",
+  "plain": "Electric heat drives the winter peak and future growth",
+  "skills": "Electric heat is the hidden winter load",
+  "facts": [
+   "insight.homes_to_flip_winter_peaking",
+   "insight.share_to_flip_winter_peaking_pct"
+  ],
+  "verdict": "differ",
+  "note": "Neither analyst computed the flip point; the pipeline did (gap / added kW per conversion).",
+  "plain_verified": true,
+  "skills_verified": true,
+  "pipeline": {
+   "insight.homes_to_flip_winter_peaking": {
+    "value": 7250,
+    "unit": "homes",
+    "script": "analysis/segment.py",
+    "method": "summer-winter gap / added kW per conversion"
+   },
+   "insight.share_to_flip_winter_peaking_pct": {
+    "value": 21.5,
+    "unit": "% of homes",
+    "script": "analysis/segment.py",
+    "method": ""
+   }
+  }
+ }
+]
