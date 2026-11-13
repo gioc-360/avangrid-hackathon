@@ -4275,6 +4275,1686 @@
   "script": "ewu/coldsnap.py",
   "method": "hourly weather in the window"
  },
+ "ewu.deck.arrays.ev_start_pmf": {
+  "value": "derived",
+  "unit": "",
+  "script": "ewu/deck_screen.py",
+  "method": "teammate = their file in data/processed; derived = built from our data"
+ },
+ "ewu.deck.arrays.hp_increment": {
+  "value": "derived",
+  "unit": "",
+  "script": "ewu/deck_screen.py",
+  "method": "teammate = their file in data/processed; derived = built from our data"
+ },
+ "ewu.deck.high.limit_100.avangrid_share_of_upgrade_all_pct": {
+  "value": 47.5,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.average_units": {
+  "value": 2.08,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.batteries": {
+  "value": 3369,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.fixed": {
+  "value": 1618,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.fixed_of_overloaded_pct": {
+  "value": 87.79,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 332.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.nyseg_batteries": {
+  "value": 124934,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.nyseg_gross_musd": {
+  "value": 960.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 584.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.nyseg_upgrade_all_musd": {
+  "value": 700.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.overloaded": {
+  "value": 1843,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.overloaded_pct": {
+  "value": 61.43,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.upgrades": {
+  "value": 225,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_100.winter_of_overloaded_pct": {
+  "value": 77.59,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.avangrid_share_of_upgrade_all_pct": {
+  "value": 43.4,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.average_units": {
+  "value": 2.02,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.batteries": {
+  "value": 2433,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.fixed": {
+  "value": 1206,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.fixed_of_overloaded_pct": {
+  "value": 92.77,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 214.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.nyseg_batteries": {
+  "value": 90224,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.nyseg_gross_musd": {
+  "value": 667.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 396.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.nyseg_upgrade_all_musd": {
+  "value": 494.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.overloaded": {
+  "value": 1300,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.overloaded_pct": {
+  "value": 43.33,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.upgrades": {
+  "value": 94,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_110.winter_of_overloaded_pct": {
+  "value": 79.69,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.avangrid_share_of_upgrade_all_pct": {
+  "value": 39.6,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.average_units": {
+  "value": 1.88,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.batteries": {
+  "value": 1630,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.fixed": {
+  "value": 869,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.fixed_of_overloaded_pct": {
+  "value": 94.77,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 137.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.nyseg_batteries": {
+  "value": 60446,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.nyseg_gross_musd": {
+  "value": 441.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 259.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.nyseg_upgrade_all_musd": {
+  "value": 348.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.overloaded": {
+  "value": 917,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.overloaded_pct": {
+  "value": 30.57,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.upgrades": {
+  "value": 48,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_120.winter_of_overloaded_pct": {
+  "value": 79.93,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.avangrid_share_of_upgrade_all_pct": {
+  "value": 32.6,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.average_units": {
+  "value": 1.61,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.batteries": {
+  "value": 635,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.fixed": {
+  "value": 395,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.fixed_of_overloaded_pct": {
+  "value": 97.77,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 50.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.nyseg_batteries": {
+  "value": 23548,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.nyseg_gross_musd": {
+  "value": 168.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 97.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.nyseg_upgrade_all_musd": {
+  "value": 153.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.overloaded": {
+  "value": 404,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.overloaded_pct": {
+  "value": 13.47,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.upgrades": {
+  "value": 9,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.high.limit_140.winter_of_overloaded_pct": {
+  "value": 85.89,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.avangrid_share_of_upgrade_all_pct": {
+  "value": 44.2,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.average_units": {
+  "value": 1.76,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.batteries": {
+  "value": 1127,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.fixed": {
+  "value": 641,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.fixed_of_overloaded_pct": {
+  "value": 84.45,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 127.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.nyseg_batteries": {
+  "value": 41793,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.nyseg_gross_musd": {
+  "value": 337.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 211.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.nyseg_upgrade_all_musd": {
+  "value": 288.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.overloaded": {
+  "value": 759,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.overloaded_pct": {
+  "value": 25.3,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.upgrades": {
+  "value": 118,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_100.winter_of_overloaded_pct": {
+  "value": 98.29,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.avangrid_share_of_upgrade_all_pct": {
+  "value": 40.5,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.average_units": {
+  "value": 1.65,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.batteries": {
+  "value": 618,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.fixed": {
+  "value": 375,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.fixed_of_overloaded_pct": {
+  "value": 87.21,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 66.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.nyseg_batteries": {
+  "value": 22918,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.nyseg_gross_musd": {
+  "value": 181.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 112.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.nyseg_upgrade_all_musd": {
+  "value": 163.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.overloaded": {
+  "value": 430,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.overloaded_pct": {
+  "value": 14.33,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.upgrades": {
+  "value": 55,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_110.winter_of_overloaded_pct": {
+  "value": 98.6,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.avangrid_share_of_upgrade_all_pct": {
+  "value": 37.1,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.average_units": {
+  "value": 1.57,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.batteries": {
+  "value": 340,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.fixed": {
+  "value": 216,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.fixed_of_overloaded_pct": {
+  "value": 90.38,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 33.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.nyseg_batteries": {
+  "value": 12608,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.nyseg_gross_musd": {
+  "value": 97.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 59.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.nyseg_upgrade_all_musd": {
+  "value": 90.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.overloaded": {
+  "value": 239,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.overloaded_pct": {
+  "value": 7.97,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.upgrades": {
+  "value": 23,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_120.winter_of_overloaded_pct": {
+  "value": 99.58,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.avangrid_share_of_upgrade_all_pct": {
+  "value": 30.0,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.average_units": {
+  "value": 1.49,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.batteries": {
+  "value": 85,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.ev_homes": {
+  "value": 8400,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.fixed": {
+  "value": 57,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.fixed_of_overloaded_pct": {
+  "value": 98.28,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.hp_homes": {
+  "value": 7200,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 6.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.nyseg_batteries": {
+  "value": 3152,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.nyseg_gross_musd": {
+  "value": 22.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 13.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.nyseg_upgrade_all_musd": {
+  "value": 22.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.overloaded": {
+  "value": 58,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.overloaded_pct": {
+  "value": 1.93,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.upgrades": {
+  "value": 1,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.high.limit_140.winter_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
+  "value": 32.1,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.average_units": {
+  "value": 1.46,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.batteries": {
+  "value": 229,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.fixed": {
+  "value": 157,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.fixed_of_overloaded_pct": {
+  "value": 94.58,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 20.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_batteries": {
+  "value": 8492,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_gross_musd": {
+  "value": 62.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 37.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_upgrade_all_musd": {
+  "value": 63.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.overloaded": {
+  "value": 166,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.overloaded_pct": {
+  "value": 5.53,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.upgrades": {
+  "value": 9,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_100.winter_of_overloaded_pct": {
+  "value": 96.99,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.avangrid_share_of_upgrade_all_pct": {
+  "value": 29.7,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.average_units": {
+  "value": 1.39,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.batteries": {
+  "value": 100,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.fixed": {
+  "value": 72,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.fixed_of_overloaded_pct": {
+  "value": 96.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 8.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_batteries": {
+  "value": 3708,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_gross_musd": {
+  "value": 27.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 16.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_upgrade_all_musd": {
+  "value": 28.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.overloaded": {
+  "value": 75,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.overloaded_pct": {
+  "value": 2.5,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.upgrades": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_110.winter_of_overloaded_pct": {
+  "value": 98.67,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.avangrid_share_of_upgrade_all_pct": {
+  "value": 26.7,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.average_units": {
+  "value": 1.38,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.batteries": {
+  "value": 36,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.fixed": {
+  "value": 26,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.fixed_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 2.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_batteries": {
+  "value": 1335,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_gross_musd": {
+  "value": 9.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 5.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_upgrade_all_musd": {
+  "value": 9.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.overloaded": {
+  "value": 26,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.overloaded_pct": {
+  "value": 0.87,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.upgrades": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_120.winter_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.avangrid_share_of_upgrade_all_pct": {
+  "value": 19.3,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.average_units": {
+  "value": 1.0,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.batteries": {
+  "value": 3,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.fixed": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.fixed_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 0.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.nyseg_batteries": {
+  "value": 111,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.nyseg_gross_musd": {
+  "value": 0.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 0.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.nyseg_upgrade_all_musd": {
+  "value": 1.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.overloaded": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.overloaded_pct": {
+  "value": 0.1,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.upgrades": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.managed.moderate.limit_140.winter_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
+  "value": 34.9,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.average_units": {
+  "value": 1.71,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.batteries": {
+  "value": 1516,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.fixed": {
+  "value": 886,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.fixed_of_overloaded_pct": {
+  "value": 97.26,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 120.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.nyseg_batteries": {
+  "value": 56218,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.nyseg_gross_musd": {
+  "value": 403.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 234.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.nyseg_upgrade_all_musd": {
+  "value": 346.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.overloaded": {
+  "value": 911,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.overloaded_pct": {
+  "value": 30.37,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.upgrades": {
+  "value": 25,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_100.winter_of_overloaded_pct": {
+  "value": 64.87,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.avangrid_share_of_upgrade_all_pct": {
+  "value": 31.9,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.average_units": {
+  "value": 1.59,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.batteries": {
+  "value": 856,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.fixed": {
+  "value": 540,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.fixed_of_overloaded_pct": {
+  "value": 98.18,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 66.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.nyseg_batteries": {
+  "value": 31743,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.nyseg_gross_musd": {
+  "value": 226.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 130.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.nyseg_upgrade_all_musd": {
+  "value": 209.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.overloaded": {
+  "value": 550,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.overloaded_pct": {
+  "value": 18.33,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.upgrades": {
+  "value": 10,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_110.winter_of_overloaded_pct": {
+  "value": 67.82,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.avangrid_share_of_upgrade_all_pct": {
+  "value": 30.2,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.average_units": {
+  "value": 1.53,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.batteries": {
+  "value": 472,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.fixed": {
+  "value": 309,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.fixed_of_overloaded_pct": {
+  "value": 99.04,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 35.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.nyseg_batteries": {
+  "value": 17503,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.nyseg_gross_musd": {
+  "value": 123.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 71.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.nyseg_upgrade_all_musd": {
+  "value": 118.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.overloaded": {
+  "value": 312,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.overloaded_pct": {
+  "value": 10.4,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.upgrades": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_120.winter_of_overloaded_pct": {
+  "value": 65.71,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.avangrid_share_of_upgrade_all_pct": {
+  "value": 26.8,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.average_units": {
+  "value": 1.34,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.batteries": {
+  "value": 110,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.ev_homes": {
+  "value": 4800,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.fixed": {
+  "value": 82,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.fixed_of_overloaded_pct": {
+  "value": 98.8,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.hp_homes": {
+  "value": 3600,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 8.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.nyseg_batteries": {
+  "value": 4079,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.nyseg_gross_musd": {
+  "value": 28.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 16.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.nyseg_upgrade_all_musd": {
+  "value": 31.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.overloaded": {
+  "value": 83,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.overloaded_pct": {
+  "value": 2.77,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.upgrades": {
+  "value": 1,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.moderate.limit_140.winter_of_overloaded_pct": {
+  "value": 77.11,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.nyseg_transformers": {
+  "value": 111250,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "NYSEG electric customers / 8 homes per transformer"
+ },
+ "ewu.deck.peakcut.behind_meter_mw": {
+  "value": 7.11,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.behind_meter_power_cap_mw": {
+  "value": 13.55,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.days": {
+  "value": 10,
+  "unit": "days",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.export_mw": {
+  "value": 6.4,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.export_peak_hour_mw": {
+  "value": 9.05,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.hosts": {
+  "value": 2733,
+  "unit": "hosts",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.hours": {
+  "value": 50,
+  "unit": "hours",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.top_hours_load_mw": {
+  "value": 68.8,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.peakcut.units": {
+  "value": 5466,
+  "unit": "units",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.prices.factor": {
+  "value": 9.108,
+  "unit": "present value factor",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/deck_money.py"
+ },
+ "ewu.deck.prices.lease_pv_usd": {
+  "value": 3005.612,
+  "unit": "$",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/deck_money.py"
+ },
+ "ewu.deck.prices.life_factor": {
+  "value": 13.332,
+  "unit": "present value factor",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/deck_money.py"
+ },
+ "ewu.deck.prices.upgrade_counted_usd": {
+  "value": 10247.652,
+  "unit": "$",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/deck_money.py"
+ },
+ "ewu.deck.rating.above_largest": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "groups needing more than 167 kVA; given multiple units"
+ },
+ "ewu.deck.rating.kva_100_0": {
+  "value": 1,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.rating.kva_167_0": {
+  "value": 1,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.rating.kva_25_0": {
+  "value": 978,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.rating.kva_37_5": {
+  "value": 1834,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.rating.kva_50_0": {
+  "value": 174,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.rating.kva_75_0": {
+  "value": 12,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+ },
+ "ewu.deck.seconds": {
+  "value": 2.1,
+  "unit": "s",
+  "script": "ewu/deck_screen.py",
+  "method": "whole deck screen, data load included"
+ },
  "ewu.demo.composite_0.annual_kwh": {
   "value": 17134,
   "unit": "kWh, segment mean",
@@ -10508,7 +12188,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.2,
+  "value": 2.3,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

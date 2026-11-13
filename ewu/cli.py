@@ -1,7 +1,8 @@
 """EWU command line: one subcommand per milestone, run as `bin/ewu <subcommand>`.
 
 What: `inventory` lists every home's equipment, segment and eligible programs (aggregate table on screen,
-      rows in outputs/private); `screen --scenario moderate --margin 1.15` runs Flag, Shift, Protect, Upgrade
+      rows in outputs/private); `screen` runs the deck profile (both scenarios, battery-only fix, money, peak
+      cut; `--profile cautious --scenario moderate --margin 1.15` runs the earlier Flag, Shift, Protect, Upgrade)
       live on the full data; `coldsnap --date 2026-02-07` runs the battery duration test through the cold
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
       `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
@@ -86,6 +87,10 @@ def run_inventory_command(args):
 
 
 def run_screen_command(args):
+    if args.profile == "deck":
+        from ewu import deck_screen
+        deck_screen.main(args.limit, True if args.managed else None)
+        return 0
     from ewu import screen
     config = read_config()
     started = time.time()
@@ -133,6 +138,15 @@ def run_demo_command(args):
     return 0
 
 
+def add_profile_options(command):
+    """--profile (deck by default, cautious = the earlier method), --limit and --managed for the deck profile."""
+    command.add_argument("--profile", default=config_value("profiles.default"), choices=("deck", "cautious"),
+                         help="deck = the final deck's method (default); cautious = the earlier Flag, Shift, Protect, Upgrade")
+    command.add_argument("--limit", type=float, default=config_value("profiles.deck.overload_limit"),
+                         choices=config_value("profiles.deck.overload_limit_options"), help="deck: overloaded above this x rating")
+    command.add_argument("--managed", action="store_true", help="deck: optional managed charging scenario")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="ewu", description="Electrify Without Upgrade prototype")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -142,7 +156,8 @@ def main(argv=None):
     scr.add_argument("--scenario", default=config_value("demo.scenario"), choices=("moderate", "high"))
     scr.add_argument("--margin", type=float, default=config_value("demo.margin"), help="rating = today's peak x this")
     scr.add_argument("--grouping", default="random", choices=("random", "same_segment"))
-    scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic groups")
+    scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic groups (cautious)")
+    add_profile_options(scr)
     scr.set_defaults(run=run_screen_command)
     net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
     net.set_defaults(run=run_network_command)
