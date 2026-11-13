@@ -65,13 +65,14 @@ class Resolver:
         return eval(e["expr"], {"__builtins__": SAFE}, names)   # expressions come from our own fact_map.yaml
 
     def money(self, col, s, L, U):
-        """Same formula as build_fact_map.money: NYSEG $M on the deck's basis from our counts."""
+        """Same formula as build_fact_map.money: NYSEG $M on our engine's basis (upgrade counted 15 of 40 years)."""
         sc = {"m": "moderate", "h": "high"}[s]
         g = lambda name: self.ref(f"ewu.deck.{sc}.limit_{L}.{name}")
         over, bat, upg = g("overloaded"), g("batteries"), g("upgrades")
         scale = self.ref("ewu.deck.nyseg_transformers") / self.ref("cfg:profiles.deck.transformer_count") / 1e6
         unit, lease, nys = (self.ref("cfg:profiles.deck.battery_unit_usd"), self.ref("ewu.deck.prices.lease_pv_usd"),
                             self.ref("cfg:profiles.deck.nyserda_usd_unit"))
+        U = U * self.ref("ewu.deck.prices.factor") / self.ref("ewu.deck.prices.life_factor")
         return {"upall": over * U, "gross": bat * unit + upg * U, "net": bat * (unit - lease - nys) + upg * U}[col] * scale
 
     def claim(self, c):

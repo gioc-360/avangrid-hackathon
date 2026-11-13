@@ -10,10 +10,10 @@ What: one entry per number id (text, table, notes, chart category, series name, 
         no-source      a model number nothing in the repo computes; flagged for a person to decide
 Why:  v3 must make every model number come from our engine (Gio, 2026-11-13: "just use our calculations"); the map
       is the reviewable record of which number comes from where, and apply.py refuses to guess.
-How:  rules below, most specific first (explicit ids), then per-slide defaults. Money in the deck is on the deck's
-      own basis (the upgrade at its full $15,000; batteries net of lease PV and NYSERDA), rebuilt from our engine's
-      counts with the same formula the audit verified (docs/TEAMMATE_AUDIT.md section 1), so it moves when the
-      counts move. One switch, aliases.peak_source, picks whose fleet supplies the peak cut and host count.
+How:  rules below, most specific first (explicit ids), then per-slide defaults. Money is on our engine's basis
+      (ewu/deck_money.py: 15 years at 7%, the upgrade counted for 15 of its 40 years, $15,000 -> $10,248; batteries
+      net of lease PV and NYSERDA), rebuilt from our counts so it equals the ewu.deck.*.nyseg_*_musd facts and
+      moves when the counts move (Gio, 2026-11-13: "just use our calculations"). One switch, aliases.peak_source, picks whose fleet supplies the peak cut and host count.
     .venv/bin/python -I deck/v3/build_fact_map.py outputs/deck/v3/numbers.csv deck/v3/fact_map.yaml
 """
 import csv
@@ -40,13 +40,15 @@ PRICE = {"unit": "cfg:profiles.deck.battery_unit_usd", "lease": "ewu.deck.prices
 
 
 def money(s, col, L=120, U="cfg:profiles.deck.upgrade_usd"):
-    """NYSEG $M on the deck's basis from our counts. U = $ per upgrade (full price, as the deck shows it)."""
-    k = dict(COMMON, **PRICE, over=f"{S(s, L)}.overloaded", bat=f"{S(s, L)}.batteries", upg=f"{S(s, L)}.upgrades")
-    u = "U"
+    """NYSEG $M on our engine's basis (ewu/deck_money.py): U = $ per upgrade, counted for the 15 of its 40 years the
+    battery program runs (U * factor / life_factor; $15,000 counts as $10,248). Equals ewu.deck.*.nyseg_*_musd."""
+    k = dict(COMMON, **PRICE, over=f"{S(s, L)}.overloaded", bat=f"{S(s, L)}.batteries", upg=f"{S(s, L)}.upgrades",
+             f="ewu.deck.prices.factor", life="ewu.deck.prices.life_factor")
     if isinstance(U, str):
         k["U"] = U
+        u = "(U * f / life)"
     else:
-        u = str(U)
+        u = f"({U} * f / life)"
     sc = "nyt / n / 1e6"
     cols = {
         "upall": f"over * {u} * {sc}",
@@ -105,7 +107,7 @@ FIX = lambda s: m(f"{S(SC[s])}.fixed_of_overloaded_pct", PCT0)
 OVER0 = lambda s: m(f"{S(SC[s])}.overloaded_pct", PCT0)
 WINTER = lambda s: m(f"{S(SC[s])}.winter_of_overloaded_pct", PCT0,
                      note="majority-of-over-hours rule (profiles.deck.winter_rule), the teammate's definition")
-SAVE0 = lambda s: money_entry(s, "saving_pct", PCT0, note="1 - net / upgrade-all, deck basis (upgrade at full $15,000)")
+SAVE0 = lambda s: money_entry(s, "saving_pct", PCT0, note="1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)")
 UPALL0 = lambda s: money_entry(s, "upall", USDM0)
 NET0 = lambda s: money_entry(s, "net", USDM0)
 PEAK = m(keys={"mw": "@peak_mw"}, expr="mw", fmt=MW1, note="export fleet, drop in the single highest hour (aliases.peak_source)")
@@ -278,8 +280,8 @@ for r, (s, L, U) in enumerate(A13, 1):
 
 # Chart entries. Series ids cover every point unless a point id is listed.
 for i, s in enumerate("mh"):
-    E[f"s12/22/chart/ser0/pt{i}"] = money_entry(s, "upall", "{:.1f}")
-    E[f"s12/22/chart/ser1/pt{i}"] = money_entry(s, "net", "{:.1f}")
+    E[f"s12/22/chart/ser0/pt{i}"] = money_entry(s, "upall", "{:.3f}")
+    E[f"s12/22/chart/ser1/pt{i}"] = money_entry(s, "net", "{:.3f}")
     E[f"s12/21/chart/ser2/pt{i}"] = m(keys={"u": f"{S(SC[s])}.upgrades", "n": COMMON["n"]}, expr="100 * u / n",
                                       fmt="{:.1f}", note="still needs an upgrade, % of all transformers")
     for j, band in ((0, "1_2"), (1, "3_4")):
@@ -395,10 +397,10 @@ ALIASES = {"peak_source": {
 }}
 
 CLAIMS = [
-    {"where": "s29/5 A13 footer", "says": "battery path cheaper before offsets at $15,000 or more per upgrade",
-     "keys": None, "expr": "gross('m', 120, 15000) < upall('m', 120, 15000) and gross('h', 120, 15000) < upall('h', 120, 15000)"},
-    {"where": "s29/5 A13 footer", "says": "costlier before offsets in the high case at $10,000",
-     "keys": None, "expr": "gross('h', 120, 10000) > upall('h', 120, 10000)"},
+    {"where": "s29/5 A13 footer", "says": "before lease and NYSERDA the battery path costs more than upgrading (engine basis, $15,000)",
+     "keys": None, "expr": "gross('m', 120, 15000) > upall('m', 120, 15000) and gross('h', 120, 15000) > upall('h', 120, 15000)"},
+    {"where": "s29 A13 title", "says": "net of lease and NYSERDA the battery path stays cheaper, even at $10,000 per upgrade",
+     "keys": None, "expr": "net('m', 120, 10000) < upall('m', 120, 10000) and net('h', 120, 10000) < upall('h', 120, 10000)"},
     {"where": "s11 verdict", "says": "peak-only fleet does not pay on its own (benefit to cost below 1)",
      "keys": FLEET, "expr": f"({LEASE} + {CAP} + {NYS}) / ({COST}) < 1"},
     {"where": "s12 title, s2", "says": "1 or 2 batteries fix most overloaded transformers",
@@ -414,8 +416,8 @@ if __name__ == "__main__":
     out = Path(sys.argv[2])
     doc = {"about": ("Where each number of the D4G deck comes from in v3. Built by deck/v3/build_fact_map.py from "
                      "outputs/deck/v3/numbers.csv; read by deck/v3/apply.py. Keys: facts/facts.json; cfg:path = "
-                     "config/ewu.yaml value; @name = aliases.peak_source.<selected>.name. Money is on the deck's basis "
-                     "(upgrade at its full price), rebuilt from our counts."),
+                     "config/ewu.yaml value; @name = aliases.peak_source.<selected>.name. Money is on our engine's basis "
+                     "(upgrade counted 15 of its 40 years), rebuilt from our counts; equals the ewu.deck nyseg facts."),
            "aliases": ALIASES, "claims": CLAIMS, "entries": entries}
     class NoAlias(yaml.SafeDumper):
         def ignore_aliases(self, data):

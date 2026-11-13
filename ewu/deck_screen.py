@@ -17,7 +17,8 @@ FIELDS = {"overloaded_pct": "% of transformers", "fixed_of_overloaded_pct": "% o
           "average_units": "IQ 10C units per battery-fixed transformer", "winter_of_overloaded_pct": "% of overloaded transformers",
           "winter_worst_hour_pct": "% of overloaded transformers", "winter_majority_hours_pct": "% of overloaded transformers",
           "overloaded": "transformers", "fixed": "transformers", "upgrades": "transformers", "batteries": "IQ 10C units",
-          "ev_homes": "homes", "hp_homes": "homes"}
+          "ev_homes": "homes", "hp_homes": "homes",
+          "fixed_units_1_2": "transformers fixed by 1 or 2 IQ 10C units", "fixed_units_3_4": "transformers fixed by 3 or 4 IQ 10C units"}
 
 
 def limit_label(limit):

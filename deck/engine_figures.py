@@ -164,7 +164,8 @@ def spec_rows():
                         f"none over {fact('specs.code.engine.largest_module_lines')}"),
         ("Pipeline, checks", f"analysis {fact('specs.code.analysis.lines')} lines; checks {fact('specs.code.checks.lines')}; "
                              f"tests {fact('specs.code.tests.lines')}"),
-        ("Command line", f"bin/ewu, {fact('specs.cli_commands')} commands: " + ", ".join(facts()["specs.cli_command_names"]["value"])),
+        ("Command line", f"bin/ewu, {fact('specs.cli_commands')} commands: " + ", ".join(facts()["specs.cli_command_names"]["value"][:9])
+         + (f" and {len(facts()['specs.cli_command_names']['value']) - 9} more" if len(facts()["specs.cli_command_names"]["value"]) > 9 else "")),
         ("Input matrix", f"{fact('specs.matrix.homes')} homes x {fact('specs.matrix.hours')} hours, "
                          f"{fact('specs.matrix.dtype', '{}')}, {fact('specs.matrix.gb', '{}')} GB; full read "
                          f"{fact('specs.matrix.full_load_seconds', '{}')} s"),

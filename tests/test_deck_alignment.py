@@ -147,3 +147,11 @@ def test_money_formula_reproduces_the_deck_on_the_teammates_own_counts():
     for column, name in (("avangrid_cost", "avangrid_cost_musd"), ("upgrade_all", "upgrade_all_musd"), ("gross", "gross_musd")):
         assert abs(money[column] - target(name)[0]) <= 1.0     # the targets are rounded shares, so within $1M
     assert round(deck_money.deck_prices(CONFIG)["upgrade_counted_usd"], -1) == 10250
+
+
+@pytest.mark.parametrize("i", [0, 1])
+def test_unit_bands_add_up_to_fixed(result, i):
+    """Slide 12's stacked bar: fixed by 1 or 2 units + fixed by 3 or 4 units = fixed; with upgrades = overloaded."""
+    c = cell(result, i)
+    assert c["fixed_units_1_2"] + c["fixed_units_3_4"] == c["fixed"]
+    assert c["fixed"] + c["upgrades"] == c["overloaded"]

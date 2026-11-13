@@ -5,19 +5,19 @@
  ],
  [
   "Engine code",
-  "3,262 lines in 24 ewu modules, none over 200"
+  "4,399 lines in 33 ewu modules, none over 200"
  ],
  [
   "Pipeline, checks",
-  "analysis 1,013 lines; checks 1,539; tests 1,750"
+  "analysis 1,015 lines; checks 2,035; tests 1,992"
  ],
  [
   "Command line",
-  "bin/ewu, 10 commands: inventory, screen, network, coldsnap, sensitivity, tophours, robustness, case, demo, plan"
+  "bin/ewu, 12 commands: inventory, screen, network, coldsnap, sensitivity, tophours, robustness, case, demo and 3 more"
  ],
  [
   "Input matrix",
-  "33,757 homes x 8,760 hours, float32, 1.18 GB; full read 0.7 s"
+  "33,757 homes x 8,760 hours, float32, 1.18 GB; full read 0.19 s"
  ],
  [
   "Live screen",
@@ -29,7 +29,7 @@
  ],
  [
   "Trust",
-  "135 tests, 9 check scripts, make check exit 0 in 21 s"
+  "162 tests, 12 check scripts, make check exit 0 in 21 s"
  ],
  [
   "Runs on",

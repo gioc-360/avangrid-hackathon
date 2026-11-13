@@ -183,6 +183,7 @@ def run_deck(inputs, config, scenario, setup=None, managed=None, limits=None):
             "fixed": int(fixed.sum()), "fixed_of_overloaded_pct": percent_of(int(fixed.sum()), n_over),
             "upgrades": int((over & ~fixed).sum()), "batteries": int(units[fixed].sum()),
             "average_units": round(float(units[fixed].mean()), 2) if fixed.any() else 0.0,
+            "fixed_units_1_2": int((fixed & (units <= 2)).sum()), "fixed_units_3_4": int((fixed & (units >= 3)).sum()),
             "winter_of_overloaded_pct": percent_of(int((over & winter).sum()), n_over),
             "winter_worst_hour_pct": percent_of(int((over & winter_worst).sum()), n_over),
             "winter_majority_hours_pct": percent_of(int((over & winter_major).sum()), n_over),

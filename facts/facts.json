@@ -4323,6 +4323,18 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_100.fixed_units_1_2": {
+  "value": 1028,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.fixed_units_3_4": {
+  "value": 482,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_100.hp_homes": {
   "value": 6348,
   "unit": "homes",
@@ -4428,6 +4440,18 @@
  "ewu.deck.high.limit_110.fixed_of_overloaded_pct": {
   "value": 88.26,
   "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.fixed_units_1_2": {
+  "value": 815,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.fixed_units_3_4": {
+  "value": 328,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4539,6 +4563,18 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_120.fixed_units_1_2": {
+  "value": 607,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.fixed_units_3_4": {
+  "value": 214,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_120.hp_homes": {
   "value": 6348,
   "unit": "homes",
@@ -4644,6 +4680,18 @@
  "ewu.deck.high.limit_140.fixed_of_overloaded_pct": {
   "value": 96.63,
   "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.fixed_units_1_2": {
+  "value": 337,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.fixed_units_3_4": {
+  "value": 65,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5685,6 +5733,18 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_100.fixed_units_1_2": {
+  "value": 709,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.fixed_units_3_4": {
+  "value": 154,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_100.hp_homes": {
   "value": 3174,
   "unit": "homes",
@@ -5790,6 +5850,18 @@
  "ewu.deck.moderate.limit_110.fixed_of_overloaded_pct": {
   "value": 96.91,
   "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.fixed_units_1_2": {
+  "value": 430,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.fixed_units_3_4": {
+  "value": 71,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5901,6 +5973,18 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_120.fixed_units_1_2": {
+  "value": 251,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.fixed_units_3_4": {
+  "value": 36,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_120.hp_homes": {
   "value": 3174,
   "unit": "homes",
@@ -6006,6 +6090,18 @@
  "ewu.deck.moderate.limit_140.fixed_of_overloaded_pct": {
   "value": 98.63,
   "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.fixed_units_1_2": {
+  "value": 69,
+  "unit": "transformers fixed by 1 or 2 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.fixed_units_3_4": {
+  "value": 3,
+  "unit": "transformers fixed by 3 or 4 IQ 10C units",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -17515,6 +17611,18 @@
   "script": "analysis/segment.py",
   "method": ""
  },
+ "insight.system_load_factor_pct": {
+  "value": 39.3,
+  "unit": "%",
+  "script": "deck/v3/record_system_mean.py",
+  "method": "mean / annual max hour of the summed load"
+ },
+ "insight.system_mean_mw": {
+  "value": 30.8,
+  "unit": "MW",
+  "script": "deck/v3/record_system_mean.py",
+  "method": "sum of all usable homes, mean of the 8,760 hours"
+ },
  "insight.system_peak_mw": {
   "value": 78.5,
   "unit": "MW",
@@ -17978,7 +18086,7 @@
   "method": ""
  },
  "specs.check_scripts": {
-  "value": 9,
+  "value": 12,
   "unit": "scripts",
   "script": "deck/engine_specs.py",
   "method": "tracked checks/*.py, less the battery_model helper"
@@ -17994,14 +18102,16 @@
    "robustness",
    "case",
    "demo",
-   "plan"
+   "plan",
+   "arrays",
+   "recharge"
   ],
   "unit": "",
   "script": "deck/engine_specs.py",
   "method": "bin/ewu --help"
  },
  "specs.cli_commands": {
-  "value": 10,
+  "value": 12,
   "unit": "subcommands",
   "script": "deck/engine_specs.py",
   "method": "bin/ewu --help"
@@ -18013,37 +18123,37 @@
   "method": "tracked files under analysis/"
  },
  "specs.code.analysis.lines": {
-  "value": 1013,
+  "value": 1015,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under analysis/"
  },
  "specs.code.checks.files": {
-  "value": 10,
+  "value": 13,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under checks/"
  },
  "specs.code.checks.lines": {
-  "value": 1539,
+  "value": 2035,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under checks/"
  },
  "specs.code.deck.files": {
-  "value": 3,
+  "value": 8,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under deck/"
  },
  "specs.code.deck.lines": {
-  "value": 462,
+  "value": 1570,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under deck/"
  },
  "specs.code.engine.files": {
-  "value": 24,
+  "value": 33,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under ewu/"
@@ -18055,19 +18165,19 @@
   "method": "longest tracked ewu module"
  },
  "specs.code.engine.lines": {
-  "value": 3262,
+  "value": 4399,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under ewu/"
  },
  "specs.code.tests.files": {
-  "value": 17,
+  "value": 19,
   "unit": "Python files",
   "script": "deck/engine_specs.py",
   "method": "tracked files under tests/"
  },
  "specs.code.tests.lines": {
-  "value": 1750,
+  "value": 1992,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l of tracked files under tests/"
@@ -18115,7 +18225,7 @@
   "method": "wc -l analysis/report_data.py"
  },
  "specs.lines.analysis.segment": {
-  "value": 100,
+  "value": 102,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l analysis/segment.py"
@@ -18145,7 +18255,7 @@
   "method": "wc -l checks/config_check.py"
  },
  "specs.lines.checks.demo_check": {
-  "value": 200,
+  "value": 217,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l checks/demo_check.py"
@@ -18155,6 +18265,12 @@
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l checks/judge_rounds_check.py"
+ },
+ "specs.lines.checks.label_inventory": {
+  "value": 133,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/label_inventory.py"
  },
  "specs.lines.checks.qa_refs": {
   "value": 123,
@@ -18173,6 +18289,18 @@
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l checks/review_numbers.py"
+ },
+ "specs.lines.checks.teammate_audit": {
+  "value": 197,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/teammate_audit.py"
+ },
+ "specs.lines.checks.teammate_rerun": {
+  "value": 149,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/teammate_rerun.py"
  },
  "specs.lines.checks.trace_numbers": {
   "value": 131,
@@ -18205,7 +18333,7 @@
   "method": "wc -l ewu/business_case.py"
  },
  "specs.lines.ewu.cli": {
-  "value": 170,
+  "value": 199,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/cli.py"
@@ -18216,8 +18344,56 @@
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/coldsnap.py"
  },
+ "specs.lines.ewu.deck": {
+  "value": 192,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck.py"
+ },
+ "specs.lines.ewu.deck_arrays": {
+  "value": 103,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_arrays.py"
+ },
+ "specs.lines.ewu.deck_money": {
+  "value": 55,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_money.py"
+ },
+ "specs.lines.ewu.deck_recharge": {
+  "value": 87,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_recharge.py"
+ },
+ "specs.lines.ewu.deck_replica": {
+  "value": 147,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_replica.py"
+ },
+ "specs.lines.ewu.deck_replica_run": {
+  "value": 164,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_replica_run.py"
+ },
+ "specs.lines.ewu.deck_screen": {
+  "value": 102,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_screen.py"
+ },
+ "specs.lines.ewu.deck_views": {
+  "value": 161,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/deck_views.py"
+ },
  "specs.lines.ewu.demo_page": {
-  "value": 85,
+  "value": 89,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/demo_page.py"
@@ -18259,10 +18435,16 @@
   "method": "wc -l ewu/inventory.py"
  },
  "specs.lines.ewu.network": {
-  "value": 167,
+  "value": 168,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/network.py"
+ },
+ "specs.lines.ewu.peakcut": {
+  "value": 86,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/peakcut.py"
  },
  "specs.lines.ewu.plan": {
   "value": 170,
@@ -18271,7 +18453,7 @@
   "method": "wc -l ewu/plan.py"
  },
  "specs.lines.ewu.plan_output": {
-  "value": 147,
+  "value": 153,
   "unit": "lines",
   "script": "deck/engine_specs.py",
   "method": "wc -l ewu/plan_output.py"
@@ -18379,7 +18561,7 @@
   "method": "load_present.npy on disk, header included"
  },
  "specs.matrix.full_load_seconds": {
-  "value": 0.7,
+  "value": 0.19,
   "unit": "s",
   "script": "deck/engine_specs.py",
   "method": "np.load of the whole matrix plus one sum, warm disk cache"
@@ -18409,7 +18591,7 @@
   "method": "rows of outputs/bess_candidates.csv"
  },
  "specs.output.demo_page_bytes": {
-  "value": 2000335,
+  "value": 5217528,
   "unit": "bytes",
   "script": "deck/engine_specs.py",
   "method": "outputs/demo/ewu_demo.html, one offline file"
@@ -18541,7 +18723,7 @@
   "method": "peak memory footprint / 1e9; bin/ewu screen defaults, facts write off, load average 5.7"
  },
  "specs.tests_collected": {
-  "value": 135,
+  "value": 162,
   "unit": "tests",
   "script": "deck/engine_specs.py",
   "method": "pytest --collect-only -q tests/ | tail -1"

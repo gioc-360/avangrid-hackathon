@@ -74,6 +74,8 @@ for k in (3, 6):
 pk = int(np.argmax(sysl))
 record("insight.system_peak_mw", round(sysl.max() / 1000, 1), "MW", "sum of all usable homes, annual max hour")
 record("insight.system_peak_temp_f", float(temp[pk]), "F", "")
+record("insight.system_mean_mw", round(sysl.mean() / 1000, 1), "MW", "sum of all usable homes, mean of the 8,760 hours")
+record("insight.system_load_factor_pct", round(100 * sysl.mean() / sysl.max(), 1), "%", "mean / annual max hour of the summed load")
 record("insight.system_peak_when", str(hours[pk]), "", "")
 wpk = top_w[np.argmax(sysl[top_w])]
 record("insight.winter_peak_mw", round(sysl[wpk] / 1000, 1), "MW", "")

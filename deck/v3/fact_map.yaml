@@ -1,6 +1,6 @@
 about: 'Where each number of the D4G deck comes from in v3. Built by deck/v3/build_fact_map.py from outputs/deck/v3/numbers.csv; read by deck/v3/apply.py.
-  Keys: facts/facts.json; cfg:path = config/ewu.yaml value; @name = aliases.peak_source.<selected>.name. Money is on the deck''s basis (upgrade
-  at its full price), rebuilt from our counts.'
+  Keys: facts/facts.json; cfg:path = config/ewu.yaml value; @name = aliases.peak_source.<selected>.name. Money is on our engine''s basis (upgrade
+  counted 15 of its 40 years), rebuilt from our counts; equals the ewu.deck nyseg facts.'
 aliases:
   peak_source:
     selected: teammate_rerun
@@ -16,13 +16,13 @@ aliases:
       hosts: ewu.deck.peakcut.hosts
 claims:
 - where: s29/5 A13 footer
-  says: battery path cheaper before offsets at $15,000 or more per upgrade
+  says: before lease and NYSERDA the battery path costs more than upgrading (engine basis, $15,000)
   keys: null
-  expr: gross('m', 120, 15000) < upall('m', 120, 15000) and gross('h', 120, 15000) < upall('h', 120, 15000)
-- where: s29/5 A13 footer
-  says: costlier before offsets in the high case at $10,000
+  expr: gross('m', 120, 15000) > upall('m', 120, 15000) and gross('h', 120, 15000) > upall('h', 120, 15000)
+- where: s29 A13 title
+  says: net of lease and NYSERDA the battery path stays cheaper, even at $10,000 per upgrade
   keys: null
-  expr: gross('h', 120, 10000) > upall('h', 120, 10000)
+  expr: net('m', 120, 10000) < upall('m', 120, 10000) and net('h', 120, 10000) < upall('h', 120, 10000)
 - where: s11 verdict
   says: peak-only fleet does not pay on its own (benefit to cost below 1)
   keys:
@@ -140,10 +140,12 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s02/3/p0/m2:
     slide: 2
     kind: text
@@ -159,10 +161,12 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s02/7/p0/m0:
     slide: 2
     kind: text
@@ -268,8 +272,10 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
+    expr: over * (U * f / life) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/9/p2/m3:
     slide: 2
@@ -286,8 +292,10 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
+    expr: over * (U * f / life) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/12/p0/m0:
     slide: 2
@@ -410,8 +418,10 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6
+    expr: (bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/19/p1/m1:
     slide: 2
@@ -428,8 +438,10 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
+    expr: over * (U * f / life) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/19/p1/m2:
     slide: 2
@@ -453,8 +465,10 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6
+    expr: (bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/19/p1/m4:
     slide: 2
@@ -471,8 +485,10 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
+    expr: over * (U * f / life) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s02/19/p1/m5:
     slide: 2
@@ -2443,10 +2459,12 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s11/28/p0/m1:
     slide: 11
     kind: text
@@ -2462,10 +2480,12 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s11/notes/p0/m0:
     slide: 11
     kind: notes
@@ -2730,9 +2750,11 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
-    fmt: '{:.1f}'
+    expr: over * (U * f / life) * nyt / n / 1e6
+    fmt: '{:.3f}'
   s12/22/chart/ser0/pt1:
     slide: 12
     kind: chart_value
@@ -2748,9 +2770,11 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: over * U * nyt / n / 1e6
-    fmt: '{:.1f}'
+    expr: over * (U * f / life) * nyt / n / 1e6
+    fmt: '{:.3f}'
   s12/22/chart/ser1/pt0:
     slide: 12
     kind: chart_value
@@ -2766,9 +2790,11 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6
-    fmt: '{:.1f}'
+    expr: (bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6
+    fmt: '{:.3f}'
   s12/22/chart/ser1/pt1:
     slide: 12
     kind: chart_value
@@ -2784,9 +2810,11 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6
-    fmt: '{:.1f}'
+    expr: (bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6
+    fmt: '{:.3f}'
   s12/24/p0/m0:
     slide: 12
     kind: text
@@ -2867,8 +2895,10 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (bat * (unit - lease) + upg * U) * nyt / n / 1e6
+    expr: (bat * (unit - lease) + upg * (U * f / life)) * nyt / n / 1e6
     fmt: ${:,.0f}M
   s12/notes/p0/m0:
     slide: 12
@@ -2938,8 +2968,10 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (over * U * nyt / n / 1e6) - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6)
+    expr: (over * (U * f / life) * nyt / n / 1e6) - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6)
     fmt: ${:,.0f}M
   s13/10/p0/m1:
     slide: 13
@@ -2956,8 +2988,10 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: (over * U * nyt / n / 1e6) - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6)
+    expr: (over * (U * f / life) * nyt / n / 1e6) - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6)
     fmt: ${:,.0f}M
   s13/10/p1/m0:
     slide: 13
@@ -3173,10 +3207,12 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s15/9/p0/m1:
     slide: 15
     kind: text
@@ -3192,10 +3228,12 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
       U: cfg:profiles.deck.upgrade_usd
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * U) * nyt / n / 1e6) / (over * U * nyt / n / 1e6))
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (U * f / life)) * nyt / n / 1e6) / (over * (U * f / life) * nyt / n / 1e6))
     fmt: '{:.0f}%'
-    note: 1 - net / upgrade-all, deck basis (upgrade at full $15,000)
+    note: 1 - net / upgrade-all, engine basis (upgrade counted 15 of 40 years)
   s15/12/p0/m0:
     slide: 15
     kind: text
@@ -6096,7 +6134,9 @@ entries:
       over: ewu.deck.moderate.limit_110.overloaded
       bat: ewu.deck.moderate.limit_110.batteries
       upg: ewu.deck.moderate.limit_110.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r1c6/p0/m0:
     slide: 29
@@ -6113,7 +6153,9 @@ entries:
       over: ewu.deck.moderate.limit_110.overloaded
       bat: ewu.deck.moderate.limit_110.batteries
       upg: ewu.deck.moderate.limit_110.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r1c7/p0/m0:
     slide: 29
@@ -6130,7 +6172,9 @@ entries:
       over: ewu.deck.moderate.limit_110.overloaded
       bat: ewu.deck.moderate.limit_110.batteries
       upg: ewu.deck.moderate.limit_110.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r1c8/p0/m0:
     slide: 29
@@ -6147,7 +6191,9 @@ entries:
       over: ewu.deck.moderate.limit_110.overloaded
       bat: ewu.deck.moderate.limit_110.batteries
       upg: ewu.deck.moderate.limit_110.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r1c9/p0/m0:
     slide: 29
@@ -6164,7 +6210,9 @@ entries:
       over: ewu.deck.moderate.limit_110.overloaded
       bat: ewu.deck.moderate.limit_110.batteries
       upg: ewu.deck.moderate.limit_110.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r2c0/p0/m0:
     slide: 29
@@ -6218,7 +6266,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: over * 10000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (10000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r2c6/p0/m0:
     slide: 29
@@ -6235,7 +6285,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r2c7/p0/m0:
     slide: 29
@@ -6252,7 +6304,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r2c8/p0/m0:
     slide: 29
@@ -6269,7 +6323,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * unit + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r2c9/p0/m0:
     slide: 29
@@ -6286,7 +6342,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 10000) * nyt / n / 1e6) / (over * 10000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (10000 * f / life)) * nyt / n / 1e6) / (over * (10000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r3c0/p0/m0:
     slide: 29
@@ -6340,7 +6398,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r3c6/p0/m0:
     slide: 29
@@ -6357,7 +6417,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r3c7/p0/m0:
     slide: 29
@@ -6374,7 +6436,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r3c8/p0/m0:
     slide: 29
@@ -6391,7 +6455,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r3c9/p0/m0:
     slide: 29
@@ -6408,7 +6474,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r4c0/p0/m0:
     slide: 29
@@ -6462,7 +6530,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: over * 20000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (20000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r4c6/p0/m0:
     slide: 29
@@ -6479,7 +6549,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r4c7/p0/m0:
     slide: 29
@@ -6496,7 +6568,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r4c8/p0/m0:
     slide: 29
@@ -6513,7 +6587,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: (bat * unit + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r4c9/p0/m0:
     slide: 29
@@ -6530,7 +6606,9 @@ entries:
       over: ewu.deck.moderate.limit_120.overloaded
       bat: ewu.deck.moderate.limit_120.batteries
       upg: ewu.deck.moderate.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 20000) * nyt / n / 1e6) / (over * 20000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (20000 * f / life)) * nyt / n / 1e6) / (over * (20000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r5c0/p0/m0:
     slide: 29
@@ -6584,7 +6662,9 @@ entries:
       over: ewu.deck.moderate.limit_140.overloaded
       bat: ewu.deck.moderate.limit_140.batteries
       upg: ewu.deck.moderate.limit_140.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r5c6/p0/m0:
     slide: 29
@@ -6601,7 +6681,9 @@ entries:
       over: ewu.deck.moderate.limit_140.overloaded
       bat: ewu.deck.moderate.limit_140.batteries
       upg: ewu.deck.moderate.limit_140.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r5c7/p0/m0:
     slide: 29
@@ -6618,7 +6700,9 @@ entries:
       over: ewu.deck.moderate.limit_140.overloaded
       bat: ewu.deck.moderate.limit_140.batteries
       upg: ewu.deck.moderate.limit_140.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r5c8/p0/m0:
     slide: 29
@@ -6635,7 +6719,9 @@ entries:
       over: ewu.deck.moderate.limit_140.overloaded
       bat: ewu.deck.moderate.limit_140.batteries
       upg: ewu.deck.moderate.limit_140.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r5c9/p0/m0:
     slide: 29
@@ -6652,7 +6738,9 @@ entries:
       over: ewu.deck.moderate.limit_140.overloaded
       bat: ewu.deck.moderate.limit_140.batteries
       upg: ewu.deck.moderate.limit_140.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r6c0/p0/m0:
     slide: 29
@@ -6706,7 +6794,9 @@ entries:
       over: ewu.deck.high.limit_110.overloaded
       bat: ewu.deck.high.limit_110.batteries
       upg: ewu.deck.high.limit_110.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r6c6/p0/m0:
     slide: 29
@@ -6723,7 +6813,9 @@ entries:
       over: ewu.deck.high.limit_110.overloaded
       bat: ewu.deck.high.limit_110.batteries
       upg: ewu.deck.high.limit_110.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r6c7/p0/m0:
     slide: 29
@@ -6740,7 +6832,9 @@ entries:
       over: ewu.deck.high.limit_110.overloaded
       bat: ewu.deck.high.limit_110.batteries
       upg: ewu.deck.high.limit_110.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r6c8/p0/m0:
     slide: 29
@@ -6757,7 +6851,9 @@ entries:
       over: ewu.deck.high.limit_110.overloaded
       bat: ewu.deck.high.limit_110.batteries
       upg: ewu.deck.high.limit_110.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r6c9/p0/m0:
     slide: 29
@@ -6774,7 +6870,9 @@ entries:
       over: ewu.deck.high.limit_110.overloaded
       bat: ewu.deck.high.limit_110.batteries
       upg: ewu.deck.high.limit_110.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r7c0/p0/m0:
     slide: 29
@@ -6828,7 +6926,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: over * 10000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (10000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r7c6/p0/m0:
     slide: 29
@@ -6845,7 +6945,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r7c7/p0/m0:
     slide: 29
@@ -6862,7 +6964,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r7c8/p0/m0:
     slide: 29
@@ -6879,7 +6983,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * unit + upg * 10000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (10000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r7c9/p0/m0:
     slide: 29
@@ -6896,7 +7002,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 10000) * nyt / n / 1e6) / (over * 10000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (10000 * f / life)) * nyt / n / 1e6) / (over * (10000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r8c0/p0/m0:
     slide: 29
@@ -6950,7 +7058,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r8c6/p0/m0:
     slide: 29
@@ -6967,7 +7077,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r8c7/p0/m0:
     slide: 29
@@ -6984,7 +7096,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r8c8/p0/m0:
     slide: 29
@@ -7001,7 +7115,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r8c9/p0/m0:
     slide: 29
@@ -7018,7 +7134,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r9c0/p0/m0:
     slide: 29
@@ -7072,7 +7190,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: over * 20000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (20000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r9c6/p0/m0:
     slide: 29
@@ -7089,7 +7209,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r9c7/p0/m0:
     slide: 29
@@ -7106,7 +7228,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * (unit - lease) + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r9c8/p0/m0:
     slide: 29
@@ -7123,7 +7247,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: (bat * unit + upg * 20000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (20000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r9c9/p0/m0:
     slide: 29
@@ -7140,7 +7266,9 @@ entries:
       over: ewu.deck.high.limit_120.overloaded
       bat: ewu.deck.high.limit_120.batteries
       upg: ewu.deck.high.limit_120.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 20000) * nyt / n / 1e6) / (over * 20000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (20000 * f / life)) * nyt / n / 1e6) / (over * (20000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/30/r10c0/p0/m0:
     slide: 29
@@ -7194,7 +7322,9 @@ entries:
       over: ewu.deck.high.limit_140.overloaded
       bat: ewu.deck.high.limit_140.batteries
       upg: ewu.deck.high.limit_140.upgrades
-    expr: over * 15000 * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: over * (15000 * f / life) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r10c6/p0/m0:
     slide: 29
@@ -7211,7 +7341,9 @@ entries:
       over: ewu.deck.high.limit_140.overloaded
       bat: ewu.deck.high.limit_140.batteries
       upg: ewu.deck.high.limit_140.upgrades
-    expr: (bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r10c7/p0/m0:
     slide: 29
@@ -7228,7 +7360,9 @@ entries:
       over: ewu.deck.high.limit_140.overloaded
       bat: ewu.deck.high.limit_140.batteries
       upg: ewu.deck.high.limit_140.upgrades
-    expr: (bat * (unit - lease) + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * (unit - lease) + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r10c8/p0/m0:
     slide: 29
@@ -7245,7 +7379,9 @@ entries:
       over: ewu.deck.high.limit_140.overloaded
       bat: ewu.deck.high.limit_140.batteries
       upg: ewu.deck.high.limit_140.upgrades
-    expr: (bat * unit + upg * 15000) * nyt / n / 1e6
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: (bat * unit + upg * (15000 * f / life)) * nyt / n / 1e6
     fmt: ${:,.1f}M
   s29/30/r10c9/p0/m0:
     slide: 29
@@ -7262,7 +7398,9 @@ entries:
       over: ewu.deck.high.limit_140.overloaded
       bat: ewu.deck.high.limit_140.batteries
       upg: ewu.deck.high.limit_140.upgrades
-    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * 15000) * nyt / n / 1e6) / (over * 15000 * nyt / n / 1e6))
+      f: ewu.deck.prices.factor
+      life: ewu.deck.prices.life_factor
+    expr: 100 * (1 - ((bat * (unit - lease - nyserda) + upg * (15000 * f / life)) * nyt / n / 1e6) / (over * (15000 * f / life) * nyt / n / 1e6))
     fmt: '{:.1f}%'
   s29/5/p0/m0:
     slide: 29
