@@ -63,6 +63,13 @@ battery:
                         basis: "a home battery covers only its own home's load, so a host cuts transformer load by at most what it draws"}
   coldsnap_hosts_per_transformer: {value: [1, 2], unit: host homes per flagged transformer, each with units_per_host_max,
                                    assumption: true, basis: "one or two hosts tested in M3; M4 picks hosts by fit score"}
+  units_per_host_options: {value: [1, 2], unit: IQ 10C units per host home, source: "repo:docs/PROTOTYPE_PLAN.md:46",
+                           quote: "1 or 2 units per host", assumption: true,
+                           basis: "plan scope; the challenge program installs 2 units, 1 unit is tested as the cheaper size"}
+  top_hours_per_season: {value: 20, unit: highest system hours per season, source: "repo:analysis/features.py:112",
+                         basis: "same top-hour rule the existing pipeline uses for coincident peak"}
+  winter_months: {value: [11, 12, 1, 2, 3], unit: months, source: "repo:analysis/features.py:111"}
+  summer_months: {value: [6, 7, 8], unit: months, source: "repo:analysis/features.py:111"}
 
 shift:
   timer_start_hour: {value: 23, unit: hour of day (24 h), source: "repo:runs/business_case_team_v2.txt:35",

@@ -35,3 +35,4 @@ prototype:       ## EWU prototype: check the config, then rebuild every EWU outp
 	$(PY) ewu/stress.py
 	$(PY) ewu/attribution.py
 	bin/ewu coldsnap
+	$(PY) ewu/fitscore.py

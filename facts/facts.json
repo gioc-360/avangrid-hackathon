@@ -4065,6 +4065,562 @@
   "script": "ewu/attribution.py",
   "method": "teammate fixed-by-staggering points over overloaded points"
  },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.cheapest.batteries_per_cleared": {
+  "value": 1.59,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.cheapest.cleared_pct": {
+  "value": 81.62,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_1.cleared_pct": {
+  "value": 52.03,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 52.03,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.92,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_2.cleared_pct": {
+  "value": 65.69,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 32.85,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_1.units_2.host_fit_kw_median": {
+  "value": 3.12,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_1.cleared_pct": {
+  "value": 70.38,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 35.19,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.86,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_2.cleared_pct": {
+  "value": 81.56,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 20.39,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.fit_score.hosts_2.units_2.host_fit_kw_median": {
+  "value": 2.94,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.flagged_pct": {
+  "value": 22.35,
+  "unit": "% of transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging"
+ },
+ "ewu.fitscore.high.staggered.margin_115.flagged_per_seed": {
+  "value": 670.4,
+  "unit": "transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.cheapest.batteries_per_cleared": {
+  "value": 1.67,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.cheapest.cleared_pct": {
+  "value": 69.21,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_1.cleared_pct": {
+  "value": 37.62,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 37.62,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.48,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_2.cleared_pct": {
+  "value": 44.3,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 22.15,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_1.units_2.host_fit_kw_median": {
+  "value": 2.02,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_1.cleared_pct": {
+  "value": 59.52,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 29.76,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.48,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_2.cleared_pct": {
+  "value": 69.21,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 17.3,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.random.hosts_2.units_2.host_fit_kw_median": {
+  "value": 2.02,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.cheapest.batteries_per_cleared": {
+  "value": 1.58,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.cheapest.cleared_pct": {
+  "value": 82.94,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_1.cleared_pct": {
+  "value": 54.06,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 54.06,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.76,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_2.cleared_pct": {
+  "value": 70.55,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 35.28,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_1.units_2.host_fit_kw_median": {
+  "value": 2.7,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_1.cleared_pct": {
+  "value": 71.18,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 35.59,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.74,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_2.cleared_pct": {
+  "value": 82.94,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 20.73,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.high.staggered.margin_115.worst_hour.hosts_2.units_2.host_fit_kw_median": {
+  "value": 2.61,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.cheapest.batteries_per_cleared": {
+  "value": 1.42,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.cheapest.cleared_pct": {
+  "value": 92.57,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_1.cleared_pct": {
+  "value": 66.75,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 66.75,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.89,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_2.cleared_pct": {
+  "value": 79.83,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 39.92,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_1.units_2.host_fit_kw_median": {
+  "value": 3.01,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_1.cleared_pct": {
+  "value": 83.84,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 41.92,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.82,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_2.cleared_pct": {
+  "value": 92.57,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 23.14,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.fit_score.hosts_2.units_2.host_fit_kw_median": {
+  "value": 2.83,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.flagged_pct": {
+  "value": 5.65,
+  "unit": "% of transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.flagged_per_seed": {
+  "value": 169.6,
+  "unit": "transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.cheapest.batteries_per_cleared": {
+  "value": 1.55,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.cheapest.cleared_pct": {
+  "value": 76.42,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_1.cleared_pct": {
+  "value": 43.75,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 43.75,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.36,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_2.cleared_pct": {
+  "value": 49.76,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 24.88,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_1.units_2.host_fit_kw_median": {
+  "value": 1.81,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_1.cleared_pct": {
+  "value": 68.87,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 34.43,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.34,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_2.cleared_pct": {
+  "value": 76.42,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 19.1,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.random.hosts_2.units_2.host_fit_kw_median": {
+  "value": 1.79,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.cheapest.batteries_per_cleared": {
+  "value": 1.41,
+  "unit": "batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.cheapest.cleared_pct": {
+  "value": 93.75,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_1.cleared_pct": {
+  "value": 69.46,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_1.cleared_per_100_batteries": {
+  "value": 69.46,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_1.host_fit_kw_median": {
+  "value": 1.72,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_2.cleared_pct": {
+  "value": 84.91,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_2.cleared_per_100_batteries": {
+  "value": 42.45,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_1.units_2.host_fit_kw_median": {
+  "value": 2.61,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_1.cleared_pct": {
+  "value": 84.91,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_1.cleared_per_100_batteries": {
+  "value": 42.45,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_1.host_fit_kw_median": {
+  "value": 1.7,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_2.cleared_pct": {
+  "value": 93.75,
+  "unit": "% of flagged transformers",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_2.cleared_per_100_batteries": {
+  "value": 23.44,
+  "unit": "transformers cleared per 100 batteries",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.moderate.staggered.margin_115.worst_hour.hosts_2.units_2.host_fit_kw_median": {
+  "value": 2.47,
+  "unit": "kW",
+  "script": "ewu/fitscore.py",
+  "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
+ },
+ "ewu.fitscore.seconds": {
+  "value": 36.5,
+  "unit": "s",
+  "script": "ewu/fitscore.py",
+  "method": "whole fit score run"
+ },
+ "ewu.fitscore.top_hours.count": {
+  "value": 40,
+  "unit": "hours",
+  "script": "ewu/fitscore.py",
+  "method": "winter plus summer top system hours, metered load"
+ },
+ "ewu.fitscore.top_hours.dates": {
+  "value": [
+   "2025-12-14",
+   "2026-01-25",
+   "2026-02-01",
+   "2026-02-07",
+   "2026-02-08",
+   "2026-07-01",
+   "2026-07-02",
+   "2026-07-03",
+   "2026-07-14"
+  ],
+  "unit": "date",
+  "script": "ewu/fitscore.py",
+  "method": "days holding at least one top hour"
+ },
  "ewu.shift.high.random.margin_105.staggered.fixed_pct": {
   "value": 49.36,
   "unit": "% of transformers overloaded unmanaged",
