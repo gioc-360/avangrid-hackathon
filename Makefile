@@ -30,9 +30,13 @@ check:           ## are we solving their problem, and is every number traced?
 test:            ## EWU prototype tests (config, house rules, then one file per milestone)
 	$(PY) -m pytest -q tests/
 
-prototype:       ## EWU prototype: check the config, then rebuild every EWU output from data/processed
+prototype:       ## EWU prototype: check the config, then rebuild every EWU output and the demo page from data/processed
 	$(PY) checks/config_check.py
+	bin/ewu inventory
 	$(PY) ewu/stress.py
 	$(PY) ewu/attribution.py
 	bin/ewu coldsnap
 	$(PY) ewu/fitscore.py
+	bin/ewu sensitivity
+	bin/ewu screen
+	bin/ewu demo --no-open

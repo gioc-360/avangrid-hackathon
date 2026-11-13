@@ -77,7 +77,7 @@ def flagged_setup(inputs, groups, base, parts, config, margin=None):
     homes = groups.homes.reshape(groups.count, -1)[flagged]
     home_kw = dispatch.own_loading(inputs, parts, homes.ravel(), owner, EV_MODE, config).astype(np.float32)
     return {"total": total[flagged], "ceiling": ceiling[flagged], "homes": homes, "transformers": groups.count,
-            "flagged": flagged, "home_kw": home_kw.reshape(len(flagged), homes.shape[1], -1), "worst_hour": above[flagged].argmax(1)}
+            "flagged": flagged, "home_kw": home_kw.reshape(len(flagged), homes.shape[1], home_kw.shape[-1]), "worst_hour": above[flagged].argmax(1)}
 
 
 def place_and_dispatch(setup, top, top_day, seed, scenario_index, config):

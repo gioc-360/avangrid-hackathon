@@ -1050,7 +1050,7 @@
   "method": "share x grouped homes"
  },
  "ewu.attribution.grid_seconds": {
-  "value": 31.0,
+  "value": 35.3,
   "unit": "s",
   "script": "ewu/attribution.py",
   "method": "whole attribution and shift grid"
@@ -2062,6 +2062,12 @@
   "unit": "%",
   "script": "ewu/attribution.py",
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.cli.screen_seconds": {
+  "value": 3.3,
+  "unit": "s",
+  "script": "checks/demo_check.py",
+  "method": "wall clock of bin/ewu screen on the full data, from demo_check"
  },
  "ewu.coldsnap.high.staggered.margin_115.flagged_pct": {
   "value": 13.66,
@@ -4036,7 +4042,7 @@
   "method": "pooled 5 seeds, random grouping, Feb 7-8 window, battery dispatched all year; no battery"
  },
  "ewu.coldsnap.seconds": {
-  "value": 20.8,
+  "value": 23.6,
   "unit": "s",
   "script": "ewu/coldsnap.py",
   "method": "whole cold snap run"
@@ -4052,6 +4058,12 @@
   "unit": "F",
   "script": "ewu/coldsnap.py",
   "method": "hourly weather in the window"
+ },
+ "ewu.demo.home_count": {
+  "value": 6,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "picker homes"
  },
  "ewu.economics.battery_vs_upgrade.high.batteries_per_cleared": {
   "value": 1.42,
@@ -6784,7 +6796,7 @@
   "method": "pooled 5 seeds, random grouping, flagged = any hour over the limit, staggered EV charging; cleared = no hour over all year"
  },
  "ewu.fitscore.seconds": {
-  "value": 36.5,
+  "value": 40.8,
   "unit": "s",
   "script": "ewu/fitscore.py",
   "method": "whole fit score run"
@@ -6811,6 +6823,522 @@
   "script": "ewu/fitscore.py",
   "method": "days holding at least one top hour"
  },
+ "ewu.inventory.any_program_pct": {
+  "value": 69.07,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": "eligible for at least one program"
+ },
+ "ewu.inventory.class.ac.count": {
+  "value": 23314,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.ac.share_pct": {
+  "value": 69.06,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.ac_central.count": {
+  "value": 10961,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.ac_central.share_pct": {
+  "value": 32.47,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.electric_heat.count": {
+  "value": 3793,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.electric_heat.share_pct": {
+  "value": 11.24,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.ev_l1.count": {
+  "value": 2146,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.ev_l1.share_pct": {
+  "value": 6.36,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.ev_l2.count": {
+  "value": 734,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.ev_l2.share_pct": {
+  "value": 2.17,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.heat_pump.count": {
+  "value": 1710,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.heat_pump.share_pct": {
+  "value": 5.07,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.hot_tub.count": {
+  "value": 226,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.hot_tub.share_pct": {
+  "value": 0.67,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.other_flat_large.count": {
+  "value": 5,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.other_flat_large.share_pct": {
+  "value": 0.01,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.other_inactive.count": {
+  "value": 201,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.other_inactive.share_pct": {
+  "value": 0.6,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.other_seasonal.count": {
+  "value": 3064,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.other_seasonal.share_pct": {
+  "value": 9.08,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.pool.count": {
+  "value": 1980,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.pool.share_pct": {
+  "value": 5.87,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.resistance_heat.count": {
+  "value": 2083,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.resistance_heat.share_pct": {
+  "value": 6.17,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.solar.count": {
+  "value": 421,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.solar.share_pct": {
+  "value": 1.25,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.solar_battery.count": {
+  "value": 0,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.solar_battery.share_pct": {
+  "value": 0.0,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.class.water_heater.count": {
+  "value": 614,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "flag from analysis/classify.py"
+ },
+ "ewu.inventory.class.water_heater.share_pct": {
+  "value": 1.82,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.homes": {
+  "value": 33757,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "one row per usable home"
+ },
+ "ewu.inventory.program.heat_pump_conversion.count": {
+  "value": 1292,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.heat_pump_conversion.share_pct": {
+  "value": 3.83,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.home_battery.count": {
+  "value": 5341,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.home_battery.share_pct": {
+  "value": 15.82,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.managed_charging.count": {
+  "value": 699,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.managed_charging.share_pct": {
+  "value": 2.07,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.pool_pump_timer.count": {
+  "value": 1980,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.pool_pump_timer.share_pct": {
+  "value": 5.87,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.service_upgrade_watch.count": {
+  "value": 122,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.service_upgrade_watch.share_pct": {
+  "value": 0.36,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.smart_thermostat.count": {
+  "value": 22160,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.smart_thermostat.share_pct": {
+  "value": 65.65,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.solar_plus_storage.count": {
+  "value": 337,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.solar_plus_storage.share_pct": {
+  "value": 1.0,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.program.winter_demand_response.count": {
+  "value": 2767,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "every flag in the config rule, none excluded"
+ },
+ "ewu.inventory.program.winter_demand_response.share_pct": {
+  "value": 8.2,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.baseline.count": {
+  "value": 15335,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.baseline.share_pct": {
+  "value": 45.43,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.dual_electrified.count": {
+  "value": 105,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.dual_electrified.share_pct": {
+  "value": 0.31,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.electric_heat.count": {
+  "value": 2605,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.electric_heat.share_pct": {
+  "value": 7.72,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.emerging.count": {
+  "value": 4776,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.emerging.share_pct": {
+  "value": 14.15,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.ev_home.count": {
+  "value": 533,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.ev_home.share_pct": {
+  "value": 1.58,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.inactive.count": {
+  "value": 201,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.inactive.share_pct": {
+  "value": 0.6,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.seasonal.count": {
+  "value": 3064,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.seasonal.share_pct": {
+  "value": 9.08,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.solar.count": {
+  "value": 337,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.solar.share_pct": {
+  "value": 1.0,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.inventory.segment.summer_peaker.count": {
+  "value": 6801,
+  "unit": "homes",
+  "script": "ewu/inventory.py",
+  "method": "segment from analysis/segment.py"
+ },
+ "ewu.inventory.segment.summer_peaker.share_pct": {
+  "value": 20.15,
+  "unit": "% of homes",
+  "script": "ewu/inventory.py",
+  "method": ""
+ },
+ "ewu.screen.moderate.random.margin_115.batteries": {
+  "value": 213,
+  "unit": "batteries",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.batteries_per_protected": {
+  "value": 1.43,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.ev_homes_per_flagged": {
+  "value": 2.74,
+  "unit": "ratio",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.flagged": {
+  "value": 780,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.flagged_pct": {
+  "value": 26.0,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.high.ladder_share_pct": {
+  "value": 43.14,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.low.ladder_share_pct": {
+  "value": 69.09,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.mid.ladder_share_pct": {
+  "value": 51.79,
+  "unit": "% of upgrading every flagged transformer",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.new_from_stagger_pct": {
+  "value": 0.07,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.protect_set_pct": {
+  "value": 5.57,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.protected": {
+  "value": 149,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.protected_of_set_pct": {
+  "value": 89.22,
+  "unit": "% of transformers still over with staggered charging",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.protected_pct": {
+  "value": 4.97,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.seconds": {
+  "value": 2.6,
+  "unit": "s",
+  "script": "ewu/screen.py",
+  "method": "whole live screen, data load included"
+ },
+ "ewu.screen.moderate.random.margin_115.shift_fixed": {
+  "value": 615,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.shift_fixed_pct": {
+  "value": 20.5,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.transformers": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.upgrade_left": {
+  "value": 18,
+  "unit": "transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.screen.moderate.random.margin_115.upgrade_left_pct": {
+  "value": 0.6,
+  "unit": "% of all transformers",
+  "script": "ewu/screen.py",
+  "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
  "ewu.sensitivity.cells": {
   "value": 16,
   "unit": "grid cells",
@@ -6831,6 +7359,12 @@
  },
  "ewu.sensitivity.high.random.margin_105.flagged_pct": {
   "value": 71.71,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.high.random.margin_105.new_from_stagger_pct": {
+  "value": 0.15,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -6883,6 +7417,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.high.random.margin_115.new_from_stagger_pct": {
+  "value": 0.13,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.high.random.margin_115.protect_set_pct": {
   "value": 22.35,
   "unit": "% of all transformers",
@@ -6927,6 +7467,12 @@
  },
  "ewu.sensitivity.high.random.margin_130.flagged_pct": {
   "value": 33.05,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.high.random.margin_130.new_from_stagger_pct": {
+  "value": 0.07,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -6979,6 +7525,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.high.random.margin_150.new_from_stagger_pct": {
+  "value": 0.03,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.high.random.margin_150.protect_set_pct": {
   "value": 3.12,
   "unit": "% of all transformers",
@@ -7023,6 +7575,12 @@
  },
  "ewu.sensitivity.high.same_segment.margin_105.flagged_pct": {
   "value": 62.85,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.high.same_segment.margin_105.new_from_stagger_pct": {
+  "value": 0.09,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7075,6 +7633,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.high.same_segment.margin_115.new_from_stagger_pct": {
+  "value": 0.09,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.high.same_segment.margin_115.protect_set_pct": {
   "value": 29.76,
   "unit": "% of all transformers",
@@ -7119,6 +7683,12 @@
  },
  "ewu.sensitivity.high.same_segment.margin_130.flagged_pct": {
   "value": 41.1,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.high.same_segment.margin_130.new_from_stagger_pct": {
+  "value": 0.01,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7171,6 +7741,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.high.same_segment.margin_150.new_from_stagger_pct": {
+  "value": 0.02,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.high.same_segment.margin_150.protect_set_pct": {
   "value": 9.54,
   "unit": "% of all transformers",
@@ -7215,6 +7791,12 @@
  },
  "ewu.sensitivity.moderate.random.margin_105.flagged_pct": {
   "value": 42.84,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.moderate.random.margin_105.new_from_stagger_pct": {
+  "value": 0.14,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7267,6 +7849,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.moderate.random.margin_115.new_from_stagger_pct": {
+  "value": 0.04,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.moderate.random.margin_115.protect_set_pct": {
   "value": 5.65,
   "unit": "% of all transformers",
@@ -7311,6 +7899,12 @@
  },
  "ewu.sensitivity.moderate.random.margin_130.flagged_pct": {
   "value": 11.87,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.moderate.random.margin_130.new_from_stagger_pct": {
+  "value": 0.01,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7363,6 +7957,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.moderate.random.margin_150.new_from_stagger_pct": {
+  "value": 0.0,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.moderate.random.margin_150.protect_set_pct": {
   "value": 0.3,
   "unit": "% of all transformers",
@@ -7407,6 +8007,12 @@
  },
  "ewu.sensitivity.moderate.same_segment.margin_105.flagged_pct": {
   "value": 43.81,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.moderate.same_segment.margin_105.new_from_stagger_pct": {
+  "value": 0.06,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.05; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7459,6 +8065,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.moderate.same_segment.margin_115.new_from_stagger_pct": {
+  "value": 0.02,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.15; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.moderate.same_segment.margin_115.protect_set_pct": {
   "value": 10.24,
   "unit": "% of all transformers",
@@ -7503,6 +8115,12 @@
  },
  "ewu.sensitivity.moderate.same_segment.margin_130.flagged_pct": {
   "value": 20.11,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
+ "ewu.sensitivity.moderate.same_segment.margin_130.new_from_stagger_pct": {
+  "value": 0.05,
   "unit": "% of all transformers",
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.3; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
@@ -7555,6 +8173,12 @@
   "script": "ewu/sensitivity.py",
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
+ "ewu.sensitivity.moderate.same_segment.margin_150.new_from_stagger_pct": {
+  "value": 0.01,
+  "unit": "% of all transformers",
+  "script": "ewu/sensitivity.py",
+  "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
+ },
  "ewu.sensitivity.moderate.same_segment.margin_150.protect_set_pct": {
   "value": 1.84,
   "unit": "% of all transformers",
@@ -7586,7 +8210,7 @@
   "method": "pooled 5 seeds, 15000 transformer runs, rating = today's peak x 1.5; flag unmanaged, shift staggered, protect with fit-score hosts, fewest batteries that clear"
  },
  "ewu.sensitivity.seconds": {
-  "value": 76.3,
+  "value": 73.2,
   "unit": "s",
   "script": "ewu/cli.py",
   "method": "whole sensitivity grid and pricing"
@@ -8264,7 +8888,7 @@
   "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.5"
  },
  "ewu.stress.grid_seconds": {
-  "value": 20.1,
+  "value": 19.2,
   "unit": "s",
   "script": "ewu/stress.py",
   "method": "whole baseline grid"

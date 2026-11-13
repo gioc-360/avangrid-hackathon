@@ -122,6 +122,38 @@ demo:
                      quote: "February 7th"}
   cold_snap_start: {value: "2026-02-07", unit: date, source: "repo:docs/PROTOTYPE_PLAN.md:45", quote: "Feb 7-8"}
   cold_snap_end: {value: "2026-02-08", unit: date, source: "repo:docs/PROTOTYPE_PLAN.md:45", quote: "Feb 7-8"}
+  picker_segments: {value: [ev_home, electric_heat, dual_electrified, summer_peaker, solar, baseline],
+                    unit: segment names shown in the step 1 home picker, assumption: true,
+                    basis: "one home per segment a program serves; in each, the home with the median annual kWh"}
+  screen_seed: {value: 0, unit: random seed for the live screen command, assumption: true,
+                basis: "seed 0 is the first of the seeds every milestone pools, so the live run is one of them"}
+
+# Program eligibility for `ewu inventory`: a home qualifies when it has every flag in the rule and none of
+# the excluded flags. Rules are this team's reading of the segment actions in analysis/segment.py.
+programs:
+  excluded_flags: {value: [is_other_inactive, is_other_seasonal], unit: flags that rule a home out of every program,
+                   source: "repo:analysis/bess.py:93"}
+  rules:
+    managed_charging: {value: [is_ev_l2], unit: flags a home must all have, source: "repo:analysis/segment.py:39",
+                       assumption: true, basis: "segment action: managed charging and an EV time-of-use rate"}
+    service_upgrade_watch: {value: [is_ev_l2, is_electric_heat], unit: flags a home must all have,
+                            source: "repo:analysis/segment.py:38", assumption: true,
+                            basis: "segment action: first battery and service-upgrade watch list"}
+    winter_demand_response: {value: [is_electric_heat], unit: flags a home must all have,
+                             source: "repo:analysis/segment.py:40", assumption: true,
+                             basis: "segment action: winter DR and weatherization"}
+    heat_pump_conversion: {value: [is_resistance_heat], unit: flags a home must all have,
+                           source: "repo:analysis/segment.py:40", quote: "resistance-to-heat-pump conversion",
+                           assumption: true, basis: "the conversion the segment action names, offered to resistance-heat homes"}
+    smart_thermostat: {value: [is_ac], unit: flags a home must all have, source: "repo:analysis/segment.py:41",
+                       assumption: true, basis: "segment action: smart-thermostat DR"}
+    pool_pump_timer: {value: [is_pool], unit: flags a home must all have, source: "repo:analysis/segment.py:41",
+                      assumption: true, basis: "segment action: pool-pump timers"}
+    solar_plus_storage: {value: [is_solar], unit: flags a home must all have, source: "repo:analysis/segment.py:37",
+                         assumption: true, basis: "segment action: offer solar plus storage"}
+    home_battery: {value: [is_bess_candidate], unit: flags a home must all have, source: "repo:analysis/bess.py:106",
+                   quote: "event-window load >=3.5 kW", assumption: true,
+                   basis: "the existing battery candidate rule; is_bess_candidate = a battery tier was assigned"}
 
 checks:
   seeds: {value: 5, unit: random seeds, source: "repo:docs/PROTOTYPE_PLAN.md:198"}

@@ -120,6 +120,7 @@ def summarize_ladder(runs):
         cell["shares"] = {
             "flagged_pct": percent_of(cell["flagged"], whole), "shift_fixed_pct": percent_of(cell["shift_fixed"], whole),
             "protect_set_pct": percent_of(cell["protect_set"], whole),
+            "new_from_stagger_pct": percent_of(cell["new_from_stagger"], whole),
             "protected_pct": percent_of(cell["protected"], whole), "upgrade_left_pct": percent_of(cell["upgrade_left"], whole),
             "protected_of_set_pct": percent_of(cell["protected"], cell["protect_set"]),
             "batteries_per_protected": round(cell["batteries"] / cell["protected"], 2) if cell["protected"] else 0.0,
