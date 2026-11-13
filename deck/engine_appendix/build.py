@@ -278,19 +278,19 @@ def slide_top(prs, a18, n):
             dash=dash, paras=[[(label, 14, True, DARK, None)], [(sub, MIN_PT, False, INK, None)]], anchor=MSO_ANCHOR.MIDDLE, inset=0.14)
     top, bot = rows[0] - bh / 2, rows[-1] + bh / 2
     box(s, 3.95, top, 2.85, bot - top, fill=GREEN, line=None, radius=0.1,
-        paras=[[("EWU engine", 22, True, WHITE, None)],
+        paras=[[("Electrify Without Upgrade engine", 20, True, WHITE, None)],
                [("One batch run on Avangrid's own machines", 14, False, WHITE, None)],
                [("Customer data never leaves", 14, False, WHITE, None)],
                [("bin/ewu", 14, False, WHITE, MONO)]],
         anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER, inset=0.18, space=10)
     for cy in rows:
         arrow(s, 3.35, cy, 3.95, cy)
-    outs = [("Transformer action list", "transformer_actions.csv"), ("Priority homes list", "program_targets.csv"),
-            ("Capital plan", "capital_plan.csv")]
+    outs = [("Transformer action list", "transformer_actions.csv", MONO), ("Priority homes list", "Part 3 ranking, slide 9", None),
+            ("Capital plan", "capital_plan.csv", MONO)]
     out_shapes = []
-    for (label, f), cy in zip(outs, rows):
+    for (label, f, font), cy in zip(outs, rows):
         out_shapes.append(box(s, 7.35, cy - bh / 2, 2.5, bh, fill=WHITE, line=BLUE_D, line_pt=1.5,
-                              paras=[[(label, 14, True, BLUE_D, None)], [(f, MIN_PT, False, INK, MONO)]],
+                              paras=[[(label, 14, True, BLUE_D, None)], [(f, MIN_PT, False, INK, font)]],
                               anchor=MSO_ANCHOR.MIDDLE, inset=0.14))
         arrow(s, 6.8, cy, 7.35, cy)
     teams = [("Distribution planner", n["overloaded"], "of transformers overloaded by 2030, each with its fix"),
@@ -309,7 +309,7 @@ def slide_top(prs, a18, n):
         "It writes transformer_actions.csv and capital_plan.csv (ewu/plan_output.py); the program list of real homes goes only to "
         "outputs/private. Headlines: the planner's list flags "
         f"{n['overloaded']} of transformers overloaded by 2030, {n['fixed']} of them fixed by batteries; the {n['priority']} priority homes "
-        f"are the Part 3 ranking (slide 9), rerun on our load matrix by checks/teammate_rerun.py; the saving is net cost "
+        f"are the Part 3 ranking (slide 9), not a bin/ewu file: checks/teammate_rerun.py reruns that ranking on our load matrix and checks/teammate_audit.py records the count; the saving is net cost "
         f"{n['net_m']} vs {n['upall_m']} Upgrade all (Moderate 2030) and {n['net_h']} vs {n['upall_h']} (High 2030), from ewu/deck_money.py.")
     return s
 
@@ -323,7 +323,7 @@ def slide_mid(prs, a18, n):
         ("Build the network", ["SIMULATED"], ["ewu/", "feeders.py", "deck.py"],
          f"{n['transformers']} transformers of {n['homes_per']} real homes; rating = peak / {n['divisor']}"),
         ("Add 2030 load", ["SIMULATED", "ASSUMED"], ["ewu/", "deck.py"], "new EVs and heat pumps, Moderate and High"),
-        ("Flag", ["SIMULATED"], ["ewu/", "deck.py"], f"overloaded: any hour above {n['limit']} of rating"),
+        ("Flag", ["SIMULATED", "ASSUMED"], ["ewu/", "deck.py"], f"overloaded: any hour above {n['limit']} of rating"),
         ("Place battery units", ["SIMULATED"], ["ewu/", "deck.py"], f"{n['units_min']} to {n['units_max']} units per transformer"),
         ("Upgrade", ["SIMULATED"], ["ewu/", "deck.py"], f"only where more than {n['units_max']} units"),
         ("Price both paths", ["ASSUMED"], ["ewu/", "deck_money.py"], "net cost vs Upgrade all, scaled to NYSEG"),
@@ -334,13 +334,14 @@ def slide_mid(prs, a18, n):
         x = 0.6 + i * (w + gap)
         last = i == len(stages) - 1
         shapes.append(box(s, x, y0, w, h, fill=WHITE if last else LIGHT, line=BLUE_D if last else RULE, line_pt=1.5 if last else 0.75))
+        # read order: step name, what it gives (plain line), its tags, then the code in small grey type at the foot
         text(s, x, y0 + 0.06, w, 0.58, [[(label, 14, True, BLUE_D if last else DARK, None)]], anchor=MSO_ANCHOR.TOP)
-        py = y0 + 0.66
+        text(s, x, y0 + 0.62, w, 0.86, [[(detail, MIN_PT, False, INK, None)]], anchor=MSO_ANCHOR.TOP)
+        py = y0 + 1.5
         for tag in tags:
             pill(s, x + 0.1, py, tag)
             py += 0.31
-        text(s, x, y0 + 1.3, w, 1.1, [[(f, MIN_PT, False, INK, MONO)] for f in files], space=0)
-        text(s, x, y0 + 2.42, w, 0.75, [[(detail, MIN_PT, False, INK, None)]], anchor=MSO_ANCHOR.TOP)
+        text(s, x, y0 + 2.15, w, h - 2.17, [[(f, MIN_PT, False, GREY, MONO)] for f in files], anchor=MSO_ANCHOR.BOTTOM, space=0)
         if i:
             arrow(s, x - gap, y0 + h / 2, x, y0 + h / 2, a=shapes[i - 1], b=shapes[i])
     by, bh = 5.04, 0.92
@@ -381,7 +382,7 @@ def slide_low(prs, a18, n):
         [("Hourly load", 14, True, DARK, None)],
         [(f"load(h) = its {n['homes_per']} homes' metered kW", MIN_PT, True, INK, None)],
         [("+ new EV charging: ", MIN_PT, True, INK, None),
-         (f"{n['ev_kw']} for {n['ev_hours']}, {n['ev_week']}, start hour drawn from {n['ev_sessions']} measured sessions", MIN_PT, False, INK, None)],
+         (f"{n['ev_kw']} for {n['ev_hours']}, {n['ev_week']}, start hour drawn from {n['ev_sessions']} observed sessions", MIN_PT, False, INK, None)],
         [("+ new heat pump: ", MIN_PT, True, INK, None),
          (f"hourly table, about {n['hp_kwh']} a year", MIN_PT, False, INK, None)],
         [(f"every hour h of the year, {n['hours']} in all", MIN_PT, False, GREY, None)]], inset=0.14, space=7)
@@ -407,7 +408,7 @@ def slide_low(prs, a18, n):
     b5 = box(s, 10.0, y0 + oh + 0.25, 2.7, oh, fill=WHITE, line=ORANGE_D, line_pt=1.5, paras=[
         [("Upgrade", 14, True, ORANGE_D, None)],
         [(f"more than {n['units_max']} units", MIN_PT, True, INK, None)],
-        [(f"{n['upgrade']}, counted for {n['years']} of its {n['life']} = {n['counted']}", MIN_PT, False, INK, None)]],
+        [(f"{n['upgrade']}, counted in present value for {n['years']} of its {n['life']} = {n['counted']}", MIN_PT, False, INK, None)]],
         inset=0.14, space=5)
     arrow(s, 3.65, mid, 4.0, mid, a=b1, b=b2)
     arrow(s, 6.55, mid, 6.9, mid, a=b2, b=b3)
@@ -418,8 +419,8 @@ def slide_low(prs, a18, n):
                       "or loading limit from Avangrid drops into the same test. Simulated on synthetic transformers of real homes; no single home shown."])
     s.notes_slide.notes_text_frame.text = (
         "One transformer, as ewu/deck.py computes it for all of them at once with numpy. ev_loading() gives each new EV home a "
-        f"{n['ev_kw']} charge for {n['ev_hours']} on {cfg('profiles.deck.ev_day_share'):.0%} of days, its start hour drawn from the "
-        "measured start-hour table (data/processed/ev_start_pmf.npy); hp_increment() adds the hourly heat pump table "
+        f"{n['ev_kw']} charge for {n['ev_hours']}, {n['ev_week']}, its start hour drawn from the "
+        f"start-hour table of {n['ev_sessions']} observed sessions (data/processed/ev_start_pmf.npy); hp_increment() adds the hourly heat pump table "
         "(data/processed/hp_increment.npy); both files are checked by sha256 against config/ewu.yaml. run_deck() flags any hour above "
         f"{n['limit']} of the rating from standard_rating(), and battery_units() takes, for each day, the larger of the rounded-up peak "
         f"excess over {n['unit_kw']} and excess energy over {n['unit_kwh']}, then the largest day, at least {n['units_min']}; above "
