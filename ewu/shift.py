@@ -4,7 +4,8 @@ What: delivered_hours() is how many full-power hours each session charges inside
       timer_loading() starts every session at `shift.timer_start_hour` on its plug-in day at full power;
       staggered_loading() starts each EV on a transformer in its own slot of the window
       `shift.stagger_start_hour` to `shift.stagger_end_hour` and charges at `shift.stagger_power_share` of the
-      charger rating until the same energy is in the car. ev_loading_by_mode() picks one of the three.
+      charger rating until the same energy is in the car. ev_loading_by_mode() picks one of the three by
+      transformer; ev_rows_by_mode() gives the same charging as (home, hour, kW) rows for one home's view.
 Why:  the teammate's case says a timer raises overloads and staggering fixes most of them, while also saying
       most overloads are heat pump nights. Moving the same EV energy to new hours and rerunning the stress
       test is the direct way to see which claim holds.
@@ -15,7 +16,7 @@ How:  every session keeps the kWh it delivered unmanaged (the M1 loading), so sh
 """
 import numpy as np
 from ewu import config_value
-from ewu.adoption import HOURS
+from ewu.adoption import HOURS, session_hours
 
 EV_MODES = ("unmanaged", "timer", "staggered")
 
@@ -43,12 +44,17 @@ def bin_by_transformer(home, hour, kw, owner, count):
     return np.bincount(cell, weights=kw, minlength=count * HOURS).reshape(count, HOURS)
 
 
-def timer_loading(ev_sessions, owner, count, charger_kw, config):
-    """Every session starts at the timer hour of its plug-in day, full power, same energy."""
+def timer_rows(ev_sessions, charger_kw, config):
+    """(home, hour, kW) rows when every session starts at the timer hour of its plug-in day, full power."""
     start_hour = config_value("shift.timer_start_hour", config)
     first = (np.asarray(ev_sessions["start"]) // 24) * 24 + start_hour
     energy = delivered_hours(ev_sessions) * charger_kw
-    return bin_by_transformer(*spread_energy(ev_sessions["home"], first, energy, charger_kw), owner, count)
+    return spread_energy(ev_sessions["home"], first, energy, charger_kw)
+
+
+def timer_loading(ev_sessions, owner, count, charger_kw, config):
+    """Every session starts at the timer hour of its plug-in day, full power, same energy."""
+    return bin_by_transformer(*timer_rows(ev_sessions, charger_kw, config), owner, count)
 
 
 def stagger_slots(ev_homes, owner, window_hours):
@@ -63,8 +69,8 @@ def stagger_slots(ev_homes, owner, window_hours):
     return dict(zip(homes.tolist(), slots.tolist()))
 
 
-def staggered_loading(ev_sessions, ev_homes, owner, count, charger_kw, config):
-    """Each EV starts in its own slot of the stagger window at reduced power until the same energy is in."""
+def staggered_rows(ev_sessions, ev_homes, owner, charger_kw, config):
+    """(home, hour, kW) rows when each EV starts in its own slot of the stagger window at reduced power."""
     start_hour = config_value("shift.stagger_start_hour", config)
     window = (config_value("shift.stagger_end_hour", config) - start_hour) % 24
     power = config_value("shift.stagger_power_share", config) * charger_kw
@@ -72,7 +78,25 @@ def staggered_loading(ev_sessions, ev_homes, owner, count, charger_kw, config):
     slot = np.array([slot_of[h] for h in np.asarray(ev_sessions["home"]).tolist()], dtype=np.int64)
     first = (np.asarray(ev_sessions["start"]) // 24) * 24 + start_hour + slot
     energy = delivered_hours(ev_sessions) * charger_kw
-    return bin_by_transformer(*spread_energy(ev_sessions["home"], first, energy, power), owner, count)
+    return spread_energy(ev_sessions["home"], first, energy, power)
+
+
+def staggered_loading(ev_sessions, ev_homes, owner, count, charger_kw, config):
+    """Each EV starts in its own slot of the stagger window at reduced power until the same energy is in."""
+    return bin_by_transformer(*staggered_rows(ev_sessions, ev_homes, owner, charger_kw, config), owner, count)
+
+
+def ev_rows_by_mode(mode, parts, owner, config):
+    """(home, hour, kW) rows of new EV charging for one mode, so a single home's EV kW can be read."""
+    charger_kw = config_value("scenarios.loads.ev_l2_kw", config)
+    if mode == "unmanaged":
+        home, hour = session_hours(parts["ev_sessions"])
+        return home, hour, np.full(len(home), charger_kw, dtype=np.float64)
+    if mode == "timer":
+        return timer_rows(parts["ev_sessions"], charger_kw, config)
+    if mode == "staggered":
+        return staggered_rows(parts["ev_sessions"], parts["ev_homes"], owner, charger_kw, config)
+    raise ValueError(f"mode must be one of {EV_MODES}, not {mode}")
 
 
 def ev_loading_by_mode(mode, parts, owner, count, config):

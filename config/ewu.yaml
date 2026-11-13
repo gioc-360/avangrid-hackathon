@@ -55,6 +55,14 @@ battery:
   round_trip_efficiency: {value: 0.894, unit: share of energy returned, source: "pdf:challenge:3"}
   life_years: {value: 15, unit: years of program warranty, source: "pdf:challenge:3"}
   units_per_host_max: {value: 2, unit: IQ 10C units per home, source: "pdf:challenge:3", quote: "(2 Units)"}
+  start_soc_share: {value: 1.0, unit: share of capacity on the first hour of the data year, assumption: true,
+                    basis: "the dispatch runs all year, so by February the state of charge comes from the run, not this start"}
+  reserve_share: {value: 0.0, unit: share of capacity kept for the homeowner, assumption: true,
+                  basis: "the utility may use full depth in an event; a homeowner backup reserve would cut usable energy"}
+  export_to_neighbors: {value: false, unit: true or false, assumption: true,
+                        basis: "a home battery covers only its own home's load, so a host cuts transformer load by at most what it draws"}
+  coldsnap_hosts_per_transformer: {value: [1, 2], unit: host homes per flagged transformer, each with units_per_host_max,
+                                   assumption: true, basis: "one or two hosts tested in M3; M4 picks hosts by fit score"}
 
 shift:
   timer_start_hour: {value: 23, unit: hour of day (24 h), source: "repo:runs/business_case_team_v2.txt:35",
