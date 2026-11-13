@@ -110,3 +110,20 @@ A scheduled batch job on Avangrid's own data platform; the cadence is our propos
 4. `make check` and `pytest tests/`: the job fails loudly if any number stops tracing.
 
 It runs offline: no web service, no cloud, no customer data leaves the machine it runs on. What changes with their transformer map is one flag, `--map map.csv`, which `bin/ewu screen` takes today through ewu/feeders.py `load_map()`. Two gaps before production: `bin/ewu plan` does not take `--map` yet, and weather.parquet is built by a step that is not in the repo (no tracked script writes it).
+
+## What is given, derived, simulated or assumed
+
+| Data | Status | What it means |
+|---|---|---|
+| Hourly meter data, 33,757 usable homes x 8,760 hours | GIVEN | In the hackathon data (35,725 meters supplied) |
+| Hourly weather | GIVEN | In the hackathon data |
+| Labeled EV, heat pump and solar homes | GIVEN | In the hackathon data (samples, used to check detection) |
+| Equipment inventory, segments, program eligibility | DERIVED | Computed from the given meter and weather data |
+| Level 2 EV charging sessions | DERIVED | Measured from the given meter data, then reused for 2030 EVs |
+| Transformers (3,000 of 8 homes) and feeders | SIMULATED | No meter-to-transformer map was given; real homes are grouped at random until Avangrid's map is loaded with --map |
+| 2030 EV and heat pump adopters | SIMULATED | Scenario draws (moderate 20% EV, 15% heat pump; high 35%, 30%) |
+| Overloads, Shift, Protect, Upgrade results | SIMULATED | Model output on the simulated transformers and 2030 load |
+| transformer_actions.csv | SIMULATED | Model output per simulated transformer |
+| battery_hosts.csv, program_targets.csv (showcase) | SIMULATED | Simulated homes (SIM- ids) drawn from segment statistics; real lists only with --private, never shared |
+| Transformer ratings, 120% limit, prices, discount rate | ASSUMED | Placeholders in config/ewu.yaml, each with its source or "assumption"; to confirm with Avangrid |
+| capital_plan.csv | ASSUMED | Model output priced at placeholder costs |

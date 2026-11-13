@@ -24,7 +24,9 @@ from checks.demo_check import CHROME
 from ewu import config_value
 
 OUT = ROOT / "outputs" / "deck"
-TRUST_TOP = 740
+TRUST_TOP = 800
+TAGS = {"GIVEN": "in the hackathon data", "DERIVED": "computed from given data",
+        "SIMULATED": "modeled, not observed", "ASSUMED": "placeholder, to confirm"}
 INK, GREY, RULE, ACCENT = "#1b1b1b", "#555555", "#9a9a9a", "#0a6e8a"
 SANS, MONO = "Helvetica Neue, Helvetica, Arial, sans-serif", "Menlo, Monaco, monospace"
 
@@ -62,32 +64,32 @@ def flow_boxes():
     """(label, x, width, rows); a row is (words, style) with style bold, grey, mono, accent or rule."""
     homes, hours = fact("specs.matrix.homes"), fact("specs.matrix.hours")
     return [
-        ("Read inputs", 60, 330, [("Hourly meter data", "bold"), (f"{homes} homes x {hours} h", "grey"),
-                                  ("Hourly weather", "bold"), ("temp F, humidity, wind", "grey"),
-                                  ("Transformer map", "bold"), ("optional, one flag: --map", "grey"),
-                                  ("Prices, scenarios", "bold"), ("config/ewu.yaml", "mono")]),
-        ("Profile every home", 436, 300, [("analysis/", "grey"), ("ingest.py", "mono"), ("features.py", "mono"),
+        ("Read inputs", 60, 330, [("Hourly meter data", "bold"), ("GIVEN", "tag"), (f"{homes} homes x {hours} h", "grey"),
+                                  ("Hourly weather", "bold"), ("GIVEN", "tag"),
+                                  ("Transformer map", "bold"), ("SIMULATED", "tag"), ("synthetic until --map", "grey"),
+                                  ("Prices, scenarios", "bold"), ("ASSUMED", "tag"), ("config/ewu.yaml", "mono")]),
+        ("Profile every home", 436, 300, [("DERIVED", "tag"), ("analysis/", "grey"), ("ingest.py", "mono"), ("features.py", "mono"),
                                           ("classify.py", "mono"), ("segment.py", "mono"), ("bess.py", "mono"),
                                           ("ewu/inventory.py", "mono"), ("", "rule"),
                                           (f"load matrix {fact('specs.matrix.gb', '{}')} GB", "grey")]),
-        ("Add 2030 load", 782, 290, [("ewu/", "grey"), ("feeders.py", "mono"), ("adoption.py", "mono"),
+        ("Add 2030 load", 782, 290, [("SIMULATED", "tag"), ("ewu/", "grey"), ("feeders.py", "mono"), ("adoption.py", "mono"),
                                      ("stress.py", "mono"), ("", "rule"), (f"{config_value('transformer.count'):,} transformers", "grey"),
                                      (f"of {config_value('transformer.homes_per_transformer')} homes each", "grey"), ("or the real map", "grey"),
-                                     ("EVs, heat pumps", "grey"), ("by scenario", "grey")]),
-        ("Run the ladder", 1118, 290, [("Flag, Shift,", "bold"), ("Protect, Upgrade", "bold"), ("ewu/", "grey"),
+                                     ("EVs, heat pumps", "grey"), ("by scenario", "grey"), ("EV sessions from", "grey"), ("given meter data", "grey")]),
+        ("Run the ladder", 1118, 290, [("SIMULATED", "tag"), ("Flag, Shift,", "bold"), ("Protect, Upgrade", "bold"), ("ewu/", "grey"),
                                        ("shift.py", "mono"), ("fitscore.py", "mono"), ("dispatch.py", "mono"),
                                        ("coldsnap.py", "mono"), ("economics.py", "mono"), ("sensitivity.py", "mono"),
                                        ("screen.py", "mono")]),
-        ("Ship action lists", 1454, 400, [("Transformer actions", "accent"), ("transformer_actions.csv", "mono"),
-                                          ("Battery hosts", "accent"), ("battery_hosts.csv", "mono"),
-                                          ("Program targets", "accent"), ("program_targets.csv", "mono"),
-                                          ("Capital plan", "accent"), ("capital_plan.csv", "mono"), ("", "rule"),
+        ("Ship action lists", 1454, 400, [("Transformer actions", "accent"), ("SIMULATED", "tag"), ("transformer_actions.csv", "mono"),
+                                          ("Battery hosts", "accent"), ("SIMULATED", "tag"), ("battery_hosts.csv", "mono"),
+                                          ("Program targets", "accent"), ("SIMULATED", "tag"), ("program_targets.csv", "mono"),
+                                          ("Capital plan", "accent"), ("ASSUMED", "tag"), ("capital_plan.csv", "mono"), ("", "rule"),
                                           ("Viewer page, business case", "bold")]),
     ]
 
 
 def architecture_svg():
-    top, height = 180, 480
+    top, height = 166, 560
     parts = [text(60, 84, "One offline engine turns meter data into action lists and checks every number", 40, 700),
              text(60, 132, "The ewu Python package and bin/ewu CLI, run as a batch job on Avangrid's own machines",
                   26, 400, GREY)]
@@ -105,15 +107,39 @@ def architecture_svg():
                 parts.append(f'<line x1="{x + 20}" y1="{y - 18}" x2="{x + w - 20}" y2="{y - 18}" stroke="{RULE}"/>')
                 y += 14
                 continue
+            if style == "tag":
+                parts += tag(x + 20, y - 22, words)
+                y += 36
+                continue
             size, weight, fill, family = styles[style]
             parts.append(text(x + 20, y, words, size, weight, fill, family))
-            y += 38 if style in ("mono", "grey") else 34
+            y += 36 if style in ("mono", "grey") else 33
         if not last:
             parts.append(arrow(x + w + 6, top + height / 2, boxes[i + 1][1] - 8, top + height / 2))
         if i:
-            parts += [arrow(x + w / 2, top + height + 4, x + w / 2, TRUST_TOP - 4), text(x + w / 2 + 16, top + height + 50, "facts", 24, 400, GREY)]
+            parts += [arrow(x + w / 2, top + height + 4, x + w / 2, TRUST_TOP - 4), text(x + w / 2 + 12, top + height + 44, "facts", 20, 400, GREY)]
     parts += trust_layer()
     return svg_page(parts)
+
+
+def tag(x, y, word):
+    """Provenance pill; the word itself carries the meaning, so it reads without colour."""
+    w = 24 + 13 * len(word)
+    solid = word == "GIVEN"
+    dash = "" if word in ("GIVEN", "DERIVED") else ' stroke-dasharray="6 4"'
+    return [f'<rect x="{x}" y="{y}" width="{w}" height="28" rx="14" fill="{INK if solid else '#ffffff'}" '
+            f'stroke="{INK}" stroke-width="2"{dash}/>',
+            text(x + w / 2, y + 20, word, 18, 700, "#ffffff" if solid else INK, SANS, "middle")]
+
+
+def legend(y):
+    parts, x = [], 60
+    for word, meaning in TAGS.items():
+        parts += tag(x, y - 21, word)
+        x += 24 + 13 * len(word) + 12
+        parts.append(text(x, y, meaning, 22, 400, GREY))
+        x += 13 * len(meaning) + 40
+    return parts
 
 
 def trust_layer():
@@ -122,11 +148,11 @@ def trust_layer():
              ("pytest", f"{fact('specs.tests_collected')} tests"),
              ("make check", f"exit {fact('specs.make_check.exit_code')} in {fact('specs.make_check.seconds')} s")]
     top = TRUST_TOP
-    parts = [draw_box(60, top, 1794, 190), text(90, top + 48, "Check every number", 30, 700),
+    parts = [draw_box(60, top, 1794, 170), text(90, top + 44, "Check every number", 30, 700),
              f'<line x1="60" y1="{top + 70}" x2="1854" y2="{top + 70}" stroke="{RULE}" stroke-width="1.5"/>']
     for x, (name, what) in zip((90, 385, 665, 945, 1320, 1580), items):
-        parts += [text(x, top + 118, name, 24, 400, INK, MONO), text(x, top + 158, what, 24, 400, GREY)]
-    return parts + [text(60, 1000, "Figure 1  EWU engine, inputs to action lists, offline", 24, 400, GREY)]
+        parts += [text(x, top + 108, name, 24, 400, INK, MONO), text(x, top + 146, what, 24, 400, GREY)]
+    return parts + legend(1030) + [text(1854, 1066, "Figure 1  EWU engine; tags show what is given, derived, simulated or assumed", 20, 400, GREY, SANS, "end")]
 
 
 def spec_rows():
