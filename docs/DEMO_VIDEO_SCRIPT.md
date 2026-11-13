@@ -1,6 +1,6 @@
 # Demo video script (for the teammate's voice)
 
-About 2:18, 304 words, about 140 words a minute. Numbers and terms are deck v3's.
+About two and a half minutes at an easy reading pace. Numbers and terms are deck v3's.
 
 | # | Time | On screen | Say |
 |---|---|---|---|

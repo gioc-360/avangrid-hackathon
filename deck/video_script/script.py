@@ -52,7 +52,7 @@ def words(text):
 def write_md():
     total = sum(words(w) for *_, w in LINES)
     rows = "\n".join(f"| {i} | {t} | {s} | {w} |" for i, (t, s, w) in enumerate(LINES, 1))
-    md = (f"# Demo video script (for the teammate's voice)\n\nAbout 2:18, {total} words, about 140 words a minute. "
+    md = (f"# Demo video script (for the teammate's voice)\n\nAbout two and a half minutes at an easy reading pace. "
           "Numbers and terms are deck v3's.\n\n| # | Time | On screen | Say |\n|---|---|---|---|\n" + rows + "\n")
     (ROOT / "docs" / "DEMO_VIDEO_SCRIPT.md").write_text(md)
     return total
