@@ -31,3 +31,4 @@ outputs/**/*.pptx
 
 # bench figures: some draw single real homes (fig2_signatures, fig6_dispatch_example); new ones stay local
 runs/**/*.png
+video/rec/mouse
