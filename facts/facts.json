@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 3.2,
+  "value": 3.1,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -8670,6 +8670,120 @@
   "unit": "% of homes",
   "script": "ewu/inventory.py",
   "method": ""
+ },
+ "ewu.network.feeders": {
+  "value": 6,
+  "unit": "feeders",
+  "script": "ewu/network.py",
+  "method": "illustrative split, equal blocks by id"
+ },
+ "ewu.network.flag.over": {
+  "value": 780,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.flag.within": {
+  "value": 2220,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.homes": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/network.py",
+  "method": "homes in the drawn transformers, 8 each"
+ },
+ "ewu.network.protect.over": {
+  "value": 18,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.protect.protected": {
+  "value": 149,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.protect.shifted": {
+  "value": 615,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.protect.within": {
+  "value": 2218,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.seconds": {
+  "value": 5.7,
+  "unit": "s",
+  "script": "ewu/network.py",
+  "method": "whole network run, data load included"
+ },
+ "ewu.network.shift.over": {
+  "value": 167,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.shift.shifted": {
+  "value": 615,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.shift.within": {
+  "value": 2218,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.today.within": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.today_over": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "over the limit with today's metered load"
+ },
+ "ewu.network.transformers_drawn": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.upgrade.protected": {
+  "value": 149,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.upgrade.shifted": {
+  "value": 615,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.upgrade.upgrade": {
+  "value": 18,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
+ },
+ "ewu.network.upgrade.within": {
+  "value": 2218,
+  "unit": "transformers",
+  "script": "ewu/network.py",
+  "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
  },
  "ewu.robustness.adoption_one_order.high.margin_115.flagged_min_hours_pct": {
   "value": 41.27,

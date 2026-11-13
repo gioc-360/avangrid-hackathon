@@ -133,6 +133,11 @@ demo:
   screen_seed: {value: 0, unit: random seed for the live screen command, assumption: true,
                 basis: "seed 0 is the first of the seeds every milestone pools, so the live run is one of them"}
 
+# The Network view draws the demo screen's synthetic transformers on feeders. No feeder map exists in the data.
+network:
+  feeders: {value: 6, unit: synthetic feeders drawn on the Network view, assumption: true,
+            basis: "illustrative split for the drawing only: transformer ids cut into equal blocks; a real meter-to-transformer and feeder map replaces it"}
+
 # Program eligibility for `ewu inventory`: a home qualifies when it has every flag in the rule and none of
 # the excluded flags. Rules are this team's reading of the segment actions in analysis/segment.py.
 programs:

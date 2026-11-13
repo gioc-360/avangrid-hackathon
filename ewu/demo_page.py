@@ -2,15 +2,15 @@
 numbers the code already wrote.
 
 What: collect_values() gathers every fact, private fact and config input the page may show, each under a
-      prefixed key (fact:, private:, config:); steps_built() says which data group (inventory, screen, cold
-      snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
+      prefixed key (fact:, private:, config:); steps_built() says which data group (network, inventory, screen,
+      cold snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
       outputs/demo/ewu_demo.html.
 Why:  the live demo must work with no network and no server, and every number on it must trace to code. The
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
       which checks/demo_check.py compares with the stored value.
 How:  the values travel inside the page as one JSON block; the template's script draws the steps from them.
-      The page shows no real home: Inventory draws a Composite home per segment (segment averages,
-      public facts), and Protect draws one 8-home transformer's cold snap load from
+      The page shows no real home: Network draws the demo screen's synthetic transformers (8 homes summed
+      each, ewu/network.py), Inventory draws a Composite home per segment (segment averages, public facts), and Protect draws one 8-home transformer's cold snap load from
       outputs/private/facts_private.json with battery charge from the fleet facts, never a host's own charge.
       The page stays gitignored. A step whose inputs are missing shows "not built" and the keys it lacks,
       instead of failing quietly.
@@ -20,10 +20,12 @@ from ewu import ROOT
 
 TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
-FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.")
-PRIVATE_PREFIXES = ("ewu.coldsnap.example.",)
+FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.")
+PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.")
 NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
 NEEDS = {
+    "network": ["fact:ewu.network.transformers_drawn", "fact:ewu.network.upgrade.upgrade", "private:ewu.network.t.state",
+                "private:ewu.network.t.feeder", "private:ewu.network.t.base_kw", "private:ewu.network.t.over_today"],
     "inventory": ["fact:ewu.inventory.homes", "fact:ewu.inventory.any_program_pct", "fact:ewu.demo.home_count",
                   "fact:ewu.demo.composite_0.flags", "fact:ewu.demo.composite_0.winter_day_kw"],
     "screen": ["fact:ewu.sensitivity.moderate.random.margin_115.flagged_pct",

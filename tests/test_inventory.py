@@ -98,7 +98,7 @@ def test_demo_page_carries_no_single_home_and_no_host_charge():
     from ewu import demo_page
     values = demo_page.collect_values(CONFIG)
     private = [k for k in values if k.startswith("private:")]
-    assert all(k.startswith("private:ewu.coldsnap.example.") for k in private), private
+    assert all(k.startswith(("private:ewu.coldsnap.example.", "private:ewu.network.t.")) for k in private), private
     assert [k for k in private if "soc_kwh" in k or "ewu.demo." in k] == []
     assert "fact:ewu.demo.composite_0.flags" in values
     page = demo_page.TEMPLATE.read_text()

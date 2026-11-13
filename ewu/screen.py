@@ -39,8 +39,8 @@ def groups_by_size(feeders):
     return batches
 
 
-def run_screen(inputs, config, scenario, margin, grouping="random", seed=None, map_path=None):
-    """Pooled ladder counts and shares for one scenario, margin and grouping (or a real map)."""
+def screen_setup(inputs, config, scenario, margin, grouping="random", seed=None, map_path=None):
+    """What one live screen runs on: the one-margin config, measured sessions, top hours and the batches."""
     one = config_for_margin(config, margin)
     seed = config_value("demo.screen_seed", config) if seed is None else seed
     sessions = adoption.measure_ev_sessions(inputs["load"], inputs["homes"]["is_ev_l2"], inputs["temp"], config)
@@ -51,16 +51,28 @@ def run_screen(inputs, config, scenario, margin, grouping="random", seed=None, m
         k = config_value("transformer.homes_per_transformer", config)
         batches = [feeder_groups.build_transformers(inputs["homes"]["segment"].to_numpy(), k,
                                                     config_value("transformer.count", config), grouping, seed)]
+    return {"config": one, "seed": seed, "sessions": sessions, "top": top, "top_day": top_day, "batches": batches}
+
+
+def batch_loading(inputs, run, groups, scenario):
+    """Today's base and the 2030 parts (EV, heat pump, adopters) for one batch of transformers."""
+    base = stress.base_loading(inputs["load"], groups)
+    return base, stress.loading_parts(inputs, groups, scenario, run["seed"], run["config"], run["sessions"], base)
+
+
+def run_screen(inputs, config, scenario, margin, grouping="random", seed=None, map_path=None):
+    """Pooled ladder counts and shares for one scenario, margin and grouping (or a real map)."""
+    run = screen_setup(inputs, config, scenario, margin, grouping, seed, map_path)
     total = {}
-    for groups in batches:
-        base = stress.base_loading(inputs["load"], groups)
-        parts = stress.loading_parts(inputs, groups, scenario, seed, one, sessions, base)
-        counts = sensitivity.ladder_for_one_run(inputs, groups, base, parts, one, top, top_day)[float(margin)]
+    for groups in run["batches"]:
+        base, parts = batch_loading(inputs, run, groups, scenario)
+        counts = sensitivity.ladder_for_one_run(inputs, groups, base, parts, run["config"], run["top"],
+                                                run["top_day"])[float(margin)]
         for name, value in counts.items():
             total[name] = total.get(name, 0) + value
-    cell = sensitivity.summarize_ladder({(scenario, grouping, float(margin), seed): total})
-    return next(iter(cell.values())) | {"homes": int(sum(len(g.homes) for g in batches)),
-                                        "map": bool(map_path), "seed": seed}
+    cell = sensitivity.summarize_ladder({(scenario, grouping, float(margin), run["seed"]): total})
+    return next(iter(cell.values())) | {"homes": int(sum(len(g.homes) for g in run["batches"])),
+                                        "map": bool(map_path), "seed": run["seed"]}
 
 
 def price_screen(cell, config):

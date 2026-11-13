@@ -24,7 +24,7 @@ program's rule from config: the home must have every flag the rule names and non
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
 Across all 33,757 usable homes, 69.07% qualify for at least one program.
 
-Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:142 managed_charging:`,
+Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:147 managed_charging:`,
 `tests/test_inventory.py:51 def test_every_program_is_exactly_its_config_rule`,
 `tests/test_inventory.py:62 def test_changing_a_config_rule_changes_eligibility`.
 
@@ -37,7 +37,7 @@ meter listed under two transformers; `bin/ewu screen --map file.csv` runs the sa
 group sizes handled in batches.
 
 Code: `ewu/feeders.py:26 def build_transformers`, `ewu/feeders.py:41 def load_map`,
-`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:138 "--map"`,
+`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:145 "--map"`,
 `tests/test_screen.py:60 def test_a_real_map_with_uneven_transformers_runs`,
 `tests/test_stress.py:76 def test_no_home_sits_in_two_transformers`.
 
@@ -156,14 +156,15 @@ precision shown. `demo_check.py` renders the demo page in headless Chrome, binds
 and compares it with the stored value. `config_check.py` opens the source of every config input.
 
 Code: `analysis/facts.py:18 def record(key, value`, `checks/trace_numbers.py:59 def matching_key`,
-`checks/demo_check.py:102 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
+`checks/demo_check.py:100 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
 
 ### Q13. Where does customer data go?
 
 Nowhere off this machine. Per-home and per-transformer values go through `record(..., private=True)` into
 outputs/private/, which git ignores, and a test checks git really ignores it. Commands print aggregates only, and
-a test checks the inventory printout holds no customer number. The demo page shows no real home: step 1 draws
-Composite homes (segment averages) and the cold snap step draws fleet battery charge, never a host's own; a test
+a test checks the inventory printout holds no customer number. The demo page shows no real home: the Network view draws
+synthetic transformers (8 homes summed each), Inventory draws Composite homes (segment averages) and the cold
+snap step draws fleet battery charge, never a host's own; a test
 checks the page carries neither. The page is built locally and is gitignored.
 
 Code: `analysis/facts.py:19 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
@@ -178,7 +179,7 @@ time as `ewu.cli.screen_seconds` in facts, and fails at 60 s. Loading is
 summed per transformer with one sparse matrix product per chunk of homes, and every later step works on arrays
 of transformers by hours, so cost grows with the number of transformers, not with loops over homes.
 
-Code: `checks/demo_check.py:132 def time_live_screen`, `checks/demo_check.py:187-188 checks.screen_seconds_max`,
+Code: `checks/demo_check.py:135 def time_live_screen`, `checks/demo_check.py:187-188 checks.screen_seconds_max`,
 `ewu/stress.py:35-44 out += pick @ rows`.
 
 ### Q15. Random groups change with the seed. How stable are the results?
@@ -188,5 +189,24 @@ runs one of them). A test requires the seeds to agree on the overloaded share wi
 the widest gap in any cell is 1.37 points. `make prototype`
 rebuilds every output and the demo page from the processed data.
 
-Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:177 seeds:`,
+Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:182 seeds:`,
 `tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:35 prototype:`.
+
+### Q16. How is the network built and what changes with our real map?
+
+The Network view draws the live screen's own network, not a picture of one. `run_network` calls the same setup
+and the same ladder states as `bin/ewu screen` for the demo case (moderate 2030, rating x 1.15, random grouping,
+seed 0), so its 3,000 transformers and 24,000 homes split into 2,218 within limit, 615 shifted, 149 protected by
+batteries and 18 for a new transformer, which are the screen's counts; a test holds them equal. Feeders are an
+illustrative split: transformer ids are cut into 6 equal blocks, a config input marked as an assumption, because
+the data has no feeder map. The page draws one substation, a trunk per feeder and every transformer on a
+lateral, and its `look` rule is the same as `looks` in Python; `demo_check.py` counts the drawn transformers in
+each state at every ladder step and fails when they differ from the facts. With your meter-to-transformer map,
+`bin/ewu screen --map` replaces the random groups through `load_map`; the feeders would then come from your map
+instead of the equal-block split.
+
+Code: `ewu/network.py:94 def run_network`, `ewu/network.py:97 screen.screen_setup`,
+`ewu/network.py:101 sensitivity.ladder_states_for_one_run`, `ewu/network.py:30 def feeder_of`,
+`ewu/network.py:42 def looks`, `config/ewu.yaml:138 feeders:`, `ewu/demo_template.html:275 function look`,
+`ewu/demo_template.html:299 function networkSvg`, `checks/demo_check.py:104 net_view and`,
+`tests/test_network.py:28 def test_state_counts_equal_the_screen_for_the_demo_seed`, `ewu/feeders.py:41 def load_map`.

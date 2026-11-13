@@ -1,13 +1,12 @@
-"""Demo check: the offline demo page renders all 7 steps, every number on it is a stored number, and the live
+"""Demo check: the offline demo page renders all 8 views, every number on it is a stored number, and the live
 screen command answers on the full data in under a minute.
 
-What: confirms outputs/demo/ewu_demo.html exists and loads nothing from outside; renders it in headless Chrome in
-      every scenario x grouping x sizing state (cycling homes and host counts) and requires each of the 7 steps
-      filled, no NaN or undefined, every shown number inside an element that names its key, and each equal to
-      that fact, private fact or config input at the shown precision; saves one 1920x1080 screenshot per step,
-      chosen by its side panel link (#step=<id>), to outputs/private/demo_shots/; times `bin/ewu screen` on the full data, fails at the config limit, records
-      ewu.cli.screen_seconds and writes its aggregate output to docs/demo/cli_output.txt, where every number
-      must trace. `--selftest` plants seven bad pages and must catch each while passing a clean one.
+What: confirms outputs/demo/ewu_demo.html loads nothing from outside; renders it in headless Chrome in every
+      scenario x grouping x sizing (cycling homes, hosts, Network ladder steps, an opened transformer); requires
+      all 8 views filled, Network states drawn equal to facts, no NaN, every shown number bound to its key and
+      equal to it at the shown precision; screenshots each view to outputs/private/demo_shots/; times `bin/ewu
+      screen` (fails at the config limit), records ewu.cli.screen_seconds, writes docs/demo/cli_output.txt,
+      where every number must trace. `--selftest` plants seven bad pages and must catch each.
 Why:  the demo is what judges see. A number typed into the page, a stale page after a rerun, a step that fails
       to draw or a link that needs the network would each break the promise that everything traces to code.
 How:  html.parser reads the DOM Chrome dumps after the page's script runs; numbers outside bound elements are
@@ -26,9 +25,9 @@ from ewu.demo_page import PAGE, collect_values, config_inputs, read_json
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SHOTS, CLI_OUTPUT = ROOT / "outputs" / "private" / "demo_shots", ROOT / "docs" / "demo" / "cli_output.txt"
-OUTSIDE = re.compile(r"https?://|<link\b|@import|\bsrc\s*=|url\(", re.I)
-BROKEN = re.compile(r"\b(NaN|undefined|Infinity)\b")
-STEPS = ("overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
+OUTSIDE, BROKEN = re.compile(r"https?://|<link\b|@import|\bsrc\s*=|url\(", re.I), re.compile(r"\b(NaN|undefined|Infinity)\b")
+STEPS = ("network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
+NET_VIEWS, MARKS = ("today", "flag", "shift", "protect", "upgrade"), ("polyline", "rect", "path", "circle", "line")
 
 
 class RenderedPage(HTMLParser):
@@ -37,7 +36,7 @@ class RenderedPage(HTMLParser):
     def __init__(self):
         super().__init__()
         self.bound, self.free, self.skip, self.open = [], [], 0, None
-        self.section, self.steps = None, {s: {"bound": 0, "marks": 0, "not_built": False} for s in STEPS}
+        self.section, self.steps, self.looks = None, {s: {"bound": 0, "marks": 0, "not_built": False} for s in STEPS}, {}
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -45,8 +44,10 @@ class RenderedPage(HTMLParser):
             self.skip += 1
         if tag == "section" and a.get("id") in self.steps:
             self.section = a["id"]
-        if self.section and tag in ("polyline", "rect"):
+        if self.section and tag in MARKS:
             self.steps[self.section]["marks"] += 1
+        if self.section == "network" and tag == "g" and "data-look" in a:
+            self.looks[a["data-look"]] = self.looks.get(a["data-look"], 0) + 1
         if self.section and "notbuilt" in (a.get("class") or ""):
             self.steps[self.section]["not_built"] = True
         if "data-key" in a:
@@ -66,17 +67,14 @@ class RenderedPage(HTMLParser):
             self.open = None
 
     def handle_data(self, data):
-        if self.skip:
-            return
-        if self.open:
+        if not self.skip and self.open:
             self.open[2] += data
-        else:
+        elif not self.skip:
             self.free.append(data)
 
 
 def read_sources(root=ROOT):
-    facts = read_json(root / "facts" / "facts.json")
-    private = read_json(root / "outputs" / "private" / "facts_private.json")
+    facts, private = (read_json(root / p) for p in ("facts/facts.json", "outputs/private/facts_private.json"))
     return ({f"fact:{k}": v["value"] for k, v in facts.items()} | {f"private:{k}": v["value"] for k, v in private.items()}
             | {f"config:{k}": v for k, v in config_inputs(read_config()).items()})
 
@@ -99,11 +97,13 @@ def audit_raw(raw, sources):
     return problems
 
 
-def audit_dom(dom, sources):
-    """Problems in one rendered state: unfilled steps, broken values, unbound or mismatched numbers."""
+def audit_dom(dom, sources, net_view=None):
+    """Problems in one rendered state: unfilled views, broken or unbound numbers, Network states unequal to facts."""
     page = RenderedPage()
     page.feed(dom)
-    problems = [f"{s}: not built" if v["not_built"] else f"{s}: not filled ({v['bound']} numbers, {v['marks']} chart marks)"
+    stored = {k.rsplit(".", 1)[1]: v for k, v in sources.items() if net_view and k.startswith(f"fact:ewu.network.{net_view}.") and v}
+    problems = [] if page.looks == stored else [f"network {net_view}: drawn {page.looks} vs facts {stored}"]
+    problems += [f"{s}: not built" if v["not_built"] else f"{s}: not filled ({v['bound']} numbers, {v['marks']} chart marks)"
                 for s, v in page.steps.items() if v["not_built"] or not v["bound"] or not v["marks"]]
     text = "\n".join(page.free) + "\n" + "\n".join(t for _, _, t in page.bound)
     problems += [f"shows '{m.group(0)}'" for m in BROKEN.finditer(text)]
@@ -124,17 +124,19 @@ def run_chrome(url, profile, *extra):
 
 
 def page_states(sources):
-    homes = int(sources.get("fact:ewu.demo.home_count") or 1)
+    """Every scenario x grouping x sizing, cycling homes, hosts, Network ladder steps and one transformer per state."""
+    homes, state = int(sources.get("fact:ewu.demo.home_count") or 1), sources.get("private:ewu.network.t.state") or []
+    firsts = [state.index(k) for k in range(4) if k in state] or [-1]
     cells = itertools.product(("moderate", "high"), ("random", "same_segment"), range(len(config_value("transformer.sizing_margins"))))
-    return [f"home={i % homes}&scenario={s}&grouping={g}&margin={m}&hosts={i % 2}" for i, (s, g, m) in enumerate(cells)]
+    return [f"home={i % homes}&scenario={s}&grouping={g}&margin={m}&hosts={i % 2}&net={NET_VIEWS[i % len(NET_VIEWS)]}"
+            f"&t={firsts[i % len(firsts)]}" for i, (s, g, m) in enumerate(cells)]
 
 
 def time_live_screen():
     """Run the live screen on the full data; return seconds and its printed output."""
     args = ["--scenario", config_value("demo.scenario"), "--margin", str(config_value("demo.margin"))]
     started = time.time()
-    run = subprocess.run([str(ROOT / "bin" / "ewu"), "screen", *args], capture_output=True, text=True, timeout=600)
-    seconds = time.time() - started
+    run, seconds = subprocess.run([str(ROOT / "bin/ewu"), "screen", *args], capture_output=True, text=True, timeout=600), time.time() - started
     if run.returncode:
         raise SystemExit(f"FAIL  bin/ewu screen exited {run.returncode}: {run.stderr[-400:]}")
     return seconds, f"$ bin/ewu screen {' '.join(args)}\n{run.stdout}"
@@ -152,8 +154,7 @@ def run_selftest():
               "empty step": clean.replace(step("money"), '<section id="money"></section>'),
               "stale stored value": clean.replace('{"fact:x.share_pct": 51.92}', '{"fact:x.share_pct": 50.0}'),
               "step not built": clean.replace(step("protect"), '<section id="protect"><p class="notbuilt">not built</p></section>')}
-    found = audit_raw(clean, sources) + audit_dom(clean, sources)[0]
-    ok = not found
+    ok = not (found := audit_raw(clean, sources) + audit_dom(clean, sources)[0])
     print(f"{'PASS' if ok else 'FAIL'}  clean planted page has no problems {found}")
     for label, page in plants.items():
         caught = audit_raw(page, sources) + audit_dom(page, sources)[0]
@@ -168,12 +169,12 @@ def main():
     if not PAGE.exists():
         sys.exit(f"FAIL  {PAGE.relative_to(ROOT)} not found; run bin/ewu demo --no-open")
     sources = read_sources()
-    raw = PAGE.read_text()
-    problems = [f"page: {p}" for p in audit_raw(raw, sources)]
+    problems = [f"page: {p}" for p in audit_raw(PAGE.read_text(), sources)]
     states, numbers = page_states(sources), 0
     with tempfile.TemporaryDirectory(dir=ROOT / "outputs" / "private") as profile:
         for state in states:
-            found, count = audit_dom(run_chrome(f"{PAGE.as_uri()}#{state}", profile, "--dump-dom"), sources)
+            found, count = audit_dom(run_chrome(f"{PAGE.as_uri()}#{state}", profile, "--dump-dom"), sources,
+                                     re.search(r"net=(\w+)", state).group(1))
             problems += [f"{state}: {p}" for p in found]
             numbers += count
         SHOTS.mkdir(parents=True, exist_ok=True)
@@ -186,7 +187,6 @@ def main():
     record("ewu.cli.screen_seconds", round(seconds, 1), "s", "wall clock of bin/ewu screen on the full data, from demo_check")
     limit = config_value("checks.screen_seconds_max")
     problems += [] if seconds < limit else [f"bin/ewu screen took {seconds:.1f} s, limit {limit} s"]
-    CLI_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     CLI_OUTPUT.write_text(output)
     _, untraced = trace_numbers.trace_document(CLI_OUTPUT, trace_numbers.numeric_sources())
     problems += [f"cli output: {shown} at {where} traces to nothing" for where, shown, _ in untraced]

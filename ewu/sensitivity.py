@@ -42,8 +42,8 @@ def options_from_config(config):
             for units in config_value("battery.units_per_host_options", config)]
 
 
-def batteries_that_clear(setup, rows_by_margin, ceilings_by_margin, top, top_day, config):
-    """Per margin: the fewest batteries that clear each Protect transformer (0 = none clears), fit-score hosts."""
+def placements_by_margin(setup, rows_by_margin, ceilings_by_margin, top, top_day, config):
+    """Per margin: {(hosts, units): cleared or not per Protect transformer}, fit-score hosts dispatched all year."""
     rows = np.concatenate(rows_by_margin)
     ceiling = np.concatenate(ceilings_by_margin)
     edges = np.cumsum([0] + [len(r) for r in rows_by_margin])
@@ -56,19 +56,23 @@ def batteries_that_clear(setup, rows_by_margin, ceilings_by_margin, top, top_day
         cleared = dispatch.run_batteries(setup["total"][rows], ceiling, host_kw, spec)["hours_over"] == 0
         for i in range(len(rows_by_margin)):
             placed[i][(hosts, units)] = cleared[edges[i]:edges[i + 1]]
+    return placed
+
+
+def batteries_that_clear(placed, rows_by_margin, config):
+    """Per margin: the fewest batteries that clear each Protect transformer (0 = none clears)."""
     return [fitscore.cheapest_clear(p, options_from_config(config)) if len(r) else np.zeros(0, dtype=np.int64)
             for p, r in zip(placed, rows_by_margin)]
 
 
-def ladder_for_one_run(inputs, groups, base, parts, config, top, top_day):
-    """{margin: counts} for one seed, scenario and grouping."""
+def ladder_states_for_one_run(inputs, groups, base, parts, config, top, top_day):
+    """{margin: per-transformer arrays} for one seed, scenario and grouping: flagged (unmanaged over), in the
+    Protect set (still over with staggering), fewest batteries that clear it, plus the shared setup."""
     margins = sorted(config_value("transformer.sizing_margins", config))
     limit = config_value("transformer.overload_limit", config)
-    owner = stress.transformer_of_each_home(groups, len(inputs["homes"]))
     unmanaged = base + parts["ev"] + parts["hp"]
     setup = fitscore.flagged_setup(inputs, groups, base, parts, config, margin=margins[0])
-    ev_per_transformer = np.bincount(owner[parts["ev_homes"]], minlength=groups.count)
-    rows_by_margin, ceilings_by_margin, flags = [], [], []
+    rows_by_margin, ceilings_by_margin, flags, ceilings = [], [], [], []
     for margin in margins:
         ceiling = limit * feeder_groups.rate(base.max(1), margin)
         flag = (unmanaged > ceiling[:, None]).any(1)
@@ -77,11 +81,27 @@ def ladder_for_one_run(inputs, groups, base, parts, config, top, top_day):
         rows_by_margin.append(rows)
         ceilings_by_margin.append(ceiling[setup["flagged"][rows]])
         flags.append(flag)
-    needs = batteries_that_clear(setup, rows_by_margin, ceilings_by_margin, top, top_day, config)
+        ceilings.append(ceiling)
+    placed = placements_by_margin(setup, rows_by_margin, ceilings_by_margin, top, top_day, config)
+    needs = batteries_that_clear(placed, rows_by_margin, config)
     out = {}
-    for margin, rows, flag, need in zip(margins, rows_by_margin, flags, needs):
+    for margin, rows, flag, need, ceiling, place in zip(margins, rows_by_margin, flags, needs, ceilings, placed):
         protect = np.zeros(groups.count, dtype=bool)
         protect[setup["flagged"][rows]] = True
+        batteries = np.zeros(groups.count, dtype=np.int64)
+        batteries[setup["flagged"][rows]] = need
+        out[margin] = {"flag": flag, "protect": protect, "batteries": batteries, "ceiling": ceiling,
+                       "rows": rows, "need": need, "placed": place, "setup": setup}
+    return out
+
+
+def ladder_for_one_run(inputs, groups, base, parts, config, top, top_day):
+    """{margin: counts} for one seed, scenario and grouping."""
+    owner = stress.transformer_of_each_home(groups, len(inputs["homes"]))
+    ev_per_transformer = np.bincount(owner[parts["ev_homes"]], minlength=groups.count)
+    out = {}
+    for margin, st in ladder_states_for_one_run(inputs, groups, base, parts, config, top, top_day).items():
+        flag, protect, need = st["flag"], st["protect"], st["need"]
         out[margin] = {"transformers": groups.count, "flagged": int(flag.sum()),
                        "shift_fixed": int((flag & ~protect).sum()), "protect_set": int(protect.sum()),
                        "new_from_stagger": int((protect & ~flag).sum()), "protected": int((need > 0).sum()),

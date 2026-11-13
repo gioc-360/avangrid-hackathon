@@ -28,12 +28,13 @@ bin/ewu --help                                     # list the commands
 bin/ewu inventory                                  # Parts 1 and 2: equipment, segment, eligible programs per home
 bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Protect, Upgrade on the full data, live
 bin/ewu screen --map meters.csv                    # same, on a real map: meter_id, transformer_id, kva
+bin/ewu network                                    # the screen's synthetic network, transformer by transformer, for the page
 bin/ewu coldsnap --date 2026-02-07                 # battery hour by hour through the Feb 7-8 cold snap
 bin/ewu tophours                                   # MW the battery hosts cut in the system's top 20 and 50 hours
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
 bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
 bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
-bin/ewu demo                                       # the offline demo page, steps in a side panel
+bin/ewu demo                                       # the offline demo page; opens on the Network view
 make prototype                                     # rebuild all of the above from data/processed
 ```
 
@@ -49,6 +50,9 @@ make prototype                                     # rebuild all of the above fr
 Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
 one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
 traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
+The demo page opens on Network: one substation, 6 illustrative feeders and every synthetic transformer of the
+live screen, recolored by Today, 2030: Flag, + Shift, + Protect, + Upgrade; click a transformer for its 8 homes
+summed on its worst 2030 day. Each view keeps its assumptions in one closed "How this is computed".
 The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
 file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.
 

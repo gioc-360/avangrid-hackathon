@@ -5,9 +5,10 @@ What: `inventory` lists every home's equipment, segment and eligible programs (a
       live on the full data; `coldsnap --date 2026-02-07` runs the battery duration test through the cold
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
       `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
-      the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `case` writes
-      the one-page business case from facts; `demo` builds the offline demo page (side panel: Overview, Inventory,
-      Flag, Shift, Protect, Upgrade, Money) and opens it.
+      the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `network` writes
+      the screen's synthetic network state by state for the page; `case` writes the one-page business case from
+      facts; `demo` builds the offline demo page (side panel: Network, Overview, Inventory, Flag, Shift, Protect,
+      Upgrade, Money) and opens it.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
       never a customer or a single transformer.
 How:  argparse subcommands; each calls one module's run, summarize and record functions and ewu/printouts.py
@@ -97,6 +98,12 @@ def run_screen_command(args):
     return 0
 
 
+def run_network_command(args):
+    from ewu import network
+    network.main()
+    return 0
+
+
 def run_top_hours_command(args):
     from ewu import tophours
     tophours.main()
@@ -137,6 +144,8 @@ def main(argv=None):
     scr.add_argument("--grouping", default="random", choices=("random", "same_segment"))
     scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic groups")
     scr.set_defaults(run=run_screen_command)
+    net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
+    net.set_defaults(run=run_network_command)
     cold = commands.add_parser("coldsnap", help="battery duration test through the cold snap")
     cold.add_argument("--date", default=config_value("demo.cold_snap_start"), help="first day of the window")
     cold.set_defaults(run=run_coldsnap_command)

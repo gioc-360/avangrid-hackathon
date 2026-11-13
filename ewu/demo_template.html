@@ -5,130 +5,168 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EWU Demo</title>
 <style>
+/* state colors validated with the dataviz palette script, light and dark (2026-11-13): over/upgrade, shifted,
+   protected pass CVD and normal-vision floors; every state also has its own shape and word */
 :root {
-  --bg: #f6f5f1; --panel: #ecebe5; --card: #fdfcfa; --ink: #1d232b; --muted: #535c66; --faint: #5f676f; --line: #d9d6cf;
-  --base: #8a96a3; --ev: #2f6db5; --shift: #3d8f6a; --protect: #b07a12; --upgrade: #b5452f; --limit: #b5452f;
+  --bg: #f6f5f1; --panel: #ecebe5; --card: #fdfcfa; --ink: #1d232b; --muted: #4f5862; --faint: #5f676f; --line: #d9d6cf;
+  --wire: #9aa1a9; --node: #a3abb4;
+  --base: #8a96a3; --ev: #2f6db5; --hp: #b07a12; --summer: #b07a12; --shift: #1b8a5a; --protect: #a33a8a; --upgrade: #c4452b; --limit: #c4452b;
   --soc: #6b4fa3; --chip: #e7e9ec; --accent: #2f6db5; --focus: #2f6db5; --ctl: #7d838c;
   --lift: 0 1px 2px rgba(29, 35, 43, .06), 0 4px 14px rgba(29, 35, 43, .06);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #15181c; --panel: #1a1e23; --card: #1f242a; --ink: #e8eaed; --muted: #a9b2bc; --faint: #98a1ab; --line: #343b44;
-    --base: #8995a2; --ev: #6aa2e6; --shift: #5cbf92; --protect: #e2a83c; --upgrade: #e2775f; --limit: #e2775f;
+    --bg: #15181c; --panel: #1a1e23; --card: #1f242a; --ink: #e8eaed; --muted: #b0b8c1; --faint: #98a1ab; --line: #343b44;
+    --wire: #5d6670; --node: #6f7882;
+    --base: #8995a2; --ev: #6aa2e6; --hp: #e2a83c; --summer: #e2a83c; --shift: #2c9a68; --protect: #c05cb0; --upgrade: #e0623e; --limit: #e0623e;
     --soc: #a68be0; --chip: #2a3038; --accent: #6aa2e6; --focus: #8bb8ee; --ctl: #6f7882;
     --lift: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
   }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: auto; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.45 -apple-system, "Helvetica Neue", Arial, sans-serif; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .app { display: grid; grid-template-columns: 272px minmax(0, 1fr); min-height: 100vh; }
 
-/* side panel: app name, the steps in order, the case every number is shown for */
-aside { background: var(--panel); border-right: 1px solid var(--line); position: sticky; top: 0; height: 100vh;
+/* side panel: app name, the views in order, the case every number is shown for */
+aside.side { background: var(--panel); border-right: 1px solid var(--line); position: sticky; top: 0; height: 100vh;
   display: flex; flex-direction: column; padding: 20px 14px 16px; }
-.appname { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; padding: 0 10px 14px; }
-aside ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
-aside li.group { font-size: 12px; color: var(--faint); padding: 12px 10px 4px; letter-spacing: 0.04em; text-transform: uppercase; }
-aside a.step-link { display: block; text-decoration: none; color: var(--ink); padding: 7px 10px 7px 12px; border-radius: 6px;
+.appname { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; padding: 0 10px 14px; }
+aside.side ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+aside.side li.group { font-size: 13px; color: var(--faint); padding: 12px 10px 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+aside.side a.step-link { display: block; text-decoration: none; color: var(--ink); padding: 6px 10px 6px 12px; border-radius: 6px;
   border-left: 3px solid transparent; }
-aside a.step-link:hover { background: var(--chip); }
-aside a.step-link .name { display: block; font-weight: 500; }
-aside a.step-link .ask { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.3; }
-aside a.step-link[aria-current="page"] { background: var(--card); border-left-color: var(--accent); box-shadow: var(--lift); }
-aside a.step-link[aria-current="page"] .name { font-weight: 700; }
-.foot { margin-top: auto; font-size: 12.5px; color: var(--muted); padding: 14px 10px 0; border-top: 1px solid var(--line); }
-.foot p { margin: 0 0 6px; }
+aside.side a.step-link:hover { background: var(--chip); }
+aside.side a.step-link .name { display: block; font-weight: 500; font-size: 18px; }
+aside.side a.step-link .ask { display: block; font-size: 15px; color: var(--muted); line-height: 1.3; }
+aside.side a.step-link[aria-current="page"] { background: var(--card); border-left-color: var(--accent); box-shadow: var(--lift); }
+aside.side a.step-link[aria-current="page"] .name { font-weight: 700; }
+.foot { margin-top: auto; font-size: 15px; color: var(--muted); padding: 14px 10px 0; border-top: 1px solid var(--line); }
+.foot p { margin: 0; }
 
-main { padding: 28px 40px 48px; max-width: 1600px; min-width: 0; }
+main { padding: 24px 36px 48px; max-width: 1640px; min-width: 0; }
 .step { display: none; }
 .step.show { display: block; }
-.eyebrow { color: var(--muted); margin: 0 0 6px; font-size: 14px; }
+.eyebrow { color: var(--muted); margin: 0 0 6px; font-size: 18px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .eyebrow b { color: var(--ink); }
-.headline { font-size: 22px; font-weight: 600; line-height: 1.3; margin: 0 0 6px; max-width: 1100px; letter-spacing: -0.01em; }
-.big { font-size: 46px; font-weight: 750; letter-spacing: -0.02em; line-height: 1; margin-right: 4px; }
+.headline { font-size: 30px; font-weight: 650; line-height: 1.25; margin: 0 0 14px; max-width: 1200px; letter-spacing: -0.015em; }
+.big { font-size: 48px; font-weight: 750; letter-spacing: -0.02em; line-height: 1; margin-right: 4px; }
 .big .n { font-weight: 750; }
-.so { margin: 0 0 18px; color: var(--muted); max-width: 80ch; }
-.who { margin: 0 0 22px; max-width: 110ch; color: var(--muted); font-size: 14px; }
 .card { background: var(--card); border-radius: 10px; box-shadow: var(--lift); padding: 18px 20px; margin: 0 0 16px; }
 .row { display: flex; gap: 28px; flex-wrap: wrap; }
 .col { flex: 1 1 340px; min-width: 0; }
-.controls { display: flex; gap: 6px 18px; flex-wrap: wrap; margin: 0 0 14px; align-items: center; }
+.controls { display: flex; gap: 8px 20px; flex-wrap: wrap; margin: 0 0 14px; align-items: center; }
 .controls .grp { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-.controls .label { color: var(--muted); font-size: 13px; margin-right: 2px; }
-button { font: inherit; font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--ctl); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.controls .label { color: var(--muted); margin-right: 2px; }
+button { font: inherit; font-size: 18px; color: var(--ink); background: var(--card); border: 1px solid var(--ctl); border-radius: 6px; padding: 4px 12px; cursor: pointer; }
 button[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); font-weight: 600; }
 .n { font-variant-numeric: tabular-nums; font-weight: 600; }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 8px; }
-.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 13px; }
-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 12px; }
+table { border-collapse: collapse; width: 100%; }
 td, th { text-align: left; padding: 5px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-th { color: var(--muted); font-weight: 500; font-size: 12px; }
+th { color: var(--muted); font-weight: 500; font-size: 16px; }
 td.num { text-align: right; white-space: nowrap; }
 tr.on td { font-weight: 600; }
-.key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.key { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
 svg { width: 100%; height: auto; display: block; }
 svg.chart { max-width: 1100px; }
-svg text { fill: var(--muted); font-size: 11px; }
-.note { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
-.sub { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
-.legend { display: flex; gap: 6px 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+svg text { fill: var(--muted); font-size: 12px; }
+.sub { color: var(--muted); margin: 0 0 6px; }
+.legend { display: flex; gap: 6px 20px; flex-wrap: wrap; color: var(--muted); margin: 0 0 6px; }
 .legend .dim .key { opacity: .3; }
 .tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 0 0 16px; }
 a.tile { display: block; text-decoration: none; color: var(--ink); background: var(--card); border-radius: 10px; box-shadow: var(--lift);
   padding: 12px 14px; border-top: 3px solid var(--line); }
 a.tile:hover { background: var(--chip); }
-a.tile .tname { display: block; font-size: 13px; color: var(--muted); font-weight: 600; }
-a.tile .tnum { display: block; font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 2px 0; }
+a.tile .tname { display: block; color: var(--muted); font-weight: 600; }
+a.tile .tnum { display: block; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin: 2px 0; }
 a.tile .tnum .n { font-weight: 700; }
-a.tile .tsub { display: block; font-size: 13px; color: var(--muted); line-height: 1.3; }
-details { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
-details summary { cursor: pointer; color: var(--muted); width: fit-content; }
-details p { margin: 6px 0 0; max-width: 90ch; }
+a.tile .tsub { display: block; color: var(--muted); line-height: 1.3; }
+
+/* one disclosure per view holds every assumption, method, source and caveat; closed by default */
+details.how { margin: 18px 0 0; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+details.how summary { cursor: pointer; color: var(--ink); font-weight: 600; width: fit-content; }
+details.how p, details.how li { margin: 8px 0 0; max-width: 92ch; }
+details.how ul { margin: 0; padding-left: 22px; }
+details.how code { font-size: 16px; background: var(--chip); padding: 0 4px; border-radius: 4px; }
+/* the one marker app-wide for a number that rests on an assumption or placeholder: it opens the disclosure */
+button.est { font-size: 13px; font-weight: 600; vertical-align: super; line-height: 1; padding: 1px 5px; margin-left: 3px;
+  border: 1px solid var(--ctl); border-radius: 4px; background: transparent; color: var(--muted); letter-spacing: 0.02em; }
+button.tag { font-size: 15px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--chip); border: 1px dashed var(--ctl); color: var(--ink); }
 a.next { display: inline-block; margin-top: 18px; color: var(--accent); font-weight: 600; text-decoration: none; }
 a.next:hover { text-decoration: underline; }
 .notbuilt { color: var(--upgrade); font-weight: 600; }
-/* no motion: steps swap in place, nothing slides, bounces or counts up; this guard keeps it so */
+
+/* network view: the one-line diagram is the page */
+.ladder { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.ladder button { padding: 6px 14px; font-weight: 600; }
+.netbar { display: flex; gap: 10px 24px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 0 0 12px; }
+.counts { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.counts button { display: inline-flex; align-items: center; gap: 6px; border-color: var(--line); background: var(--card); }
+.counts svg { width: 16px; height: 16px; display: inline-block; }
+.netgrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
+.netgrid.open { grid-template-columns: minmax(0, 1fr) 430px; }
+.netcard { padding: 10px 12px; }
+svg.net { cursor: pointer; }
+svg.net text { fill: var(--ink); font-size: 18px; }
+svg.net text.feeder { font-weight: 600; font-size: 17px; }
+.g-within { fill: var(--node); }
+.g-over, .g-upgrade { fill: var(--upgrade); }
+.g-upgrade { stroke: var(--ink); stroke-width: 2.4; }
+.g-shifted { fill: var(--shift); }
+.g-protected { fill: var(--protect); }
+.detail h3 { margin: 0; font-size: 22px; }
+.detail .dhead { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.detail .state { display: flex; align-items: center; gap: 8px; font-weight: 600; margin: 8px 0 10px; }
+.detail .state svg { width: 18px; height: 18px; }
+.detail dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 8px 0 10px; }
+.detail dt { color: var(--muted); }
+.detail dd { margin: 0; text-align: right; }
+.detail .fix { margin: 10px 0 0; }
+.detail .nav { display: flex; gap: 8px; margin-top: 12px; }
+/* no motion: views swap in place, nothing slides, bounces or counts up; this guard keeps it so */
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
+@media (max-width: 1200px) { .netgrid.open { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 860px) {
   .app { display: block; }
-  aside { position: sticky; top: 0; z-index: 2; height: auto; padding: 8px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .appname { padding: 0 0 6px; font-size: 15px; }
-  aside ol { flex-direction: row; overflow-x: auto; gap: 4px; }
-  aside li.group, aside a.step-link .ask, .foot { display: none; }
-  aside a.step-link { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 4px 10px; }
-  aside a.step-link[aria-current="page"] { border-bottom-color: var(--accent); }
+  aside.side { position: sticky; top: 0; z-index: 2; height: auto; padding: 8px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .appname { padding: 0 0 6px; font-size: 16px; }
+  aside.side ol { flex-direction: row; overflow-x: auto; gap: 4px; }
+  aside.side li.group, aside.side a.step-link .ask, .foot { display: none; }
+  aside.side a.step-link { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 4px 10px; }
+  aside.side a.step-link[aria-current="page"] { border-bottom-color: var(--accent); }
   main { padding: 18px 16px 40px; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .big { font-size: 36px; }
+  .headline { font-size: 24px; }
 }
 </style>
 </head>
 <body>
 <div class="app">
-<aside>
-  <a class="appname" href="#step=overview">Electrify Without Upgrade</a>
-  <nav aria-label="Steps">
+<aside class="side">
+  <a class="appname" href="#step=network">Electrify Without Upgrade</a>
+  <nav aria-label="Views">
     <ol>
-      <li><a class="step-link" href="#step=overview" data-step="overview"><span class="name">Overview</span><span class="ask">What is the answer, and for whom?</span></a></li>
-      <li><a class="step-link" href="#step=inventory" data-step="inventory"><span class="name">Inventory</span><span class="ask">What do homes have, who qualifies?</span></a></li>
+      <li><a class="step-link" href="#step=network" data-step="network"><span class="name">Network</span><span class="ask">Where does each fix land?</span></a></li>
+      <li><a class="step-link" href="#step=overview" data-step="overview"><span class="name">Overview</span><span class="ask">What is the answer?</span></a></li>
+      <li><a class="step-link" href="#step=inventory" data-step="inventory"><span class="name">Inventory</span><span class="ask">What do homes have?</span></a></li>
       <li class="group" aria-hidden="true">Cheapest fix first</li>
-      <li><a class="step-link" href="#step=flag" data-step="flag"><span class="name">Flag</span><span class="ask">Which transformers go over in 2030?</span></a></li>
-      <li><a class="step-link" href="#step=shift" data-step="shift"><span class="name">Shift</span><span class="ask">How many does staggered EV charging fix?</span></a></li>
-      <li><a class="step-link" href="#step=protect" data-step="protect"><span class="name">Protect</span><span class="ask">Which do home batteries clear?</span></a></li>
-      <li><a class="step-link" href="#step=upgrade" data-step="upgrade"><span class="name">Upgrade</span><span class="ask">Which still need a new transformer?</span></a></li>
+      <li><a class="step-link" href="#step=flag" data-step="flag"><span class="name">Flag</span><span class="ask">Which go over in 2030?</span></a></li>
+      <li><a class="step-link" href="#step=shift" data-step="shift"><span class="name">Shift</span><span class="ask">Which does staggering fix?</span></a></li>
+      <li><a class="step-link" href="#step=protect" data-step="protect"><span class="name">Protect</span><span class="ask">Which do batteries clear?</span></a></li>
+      <li><a class="step-link" href="#step=upgrade" data-step="upgrade"><span class="name">Upgrade</span><span class="ask">Which need a new one?</span></a></li>
       <li class="group" aria-hidden="true">Decide</li>
       <li><a class="step-link" href="#step=money" data-step="money"><span class="name">Money</span><span class="ask">What does the plan cost?</span></a></li>
     </ol>
   </nav>
-  <div class="foot">
-    <p id="case"></p>
-    <p>Every number comes from a stored fact or config/ewu.yaml; hover it for the key.</p>
-  </div>
+  <div class="foot"><p id="case"></p></div>
 </aside>
 <main>
+  <section class="step" id="network" aria-labelledby="h-network"><div class="body"></div></section>
   <section class="step" id="overview" aria-labelledby="h-overview"><div class="body"></div></section>
   <section class="step" id="inventory" aria-labelledby="h-inventory"><div class="body"></div></section>
   <section class="step" id="flag" aria-labelledby="h-flag"><div class="body"></div></section>
@@ -142,7 +180,7 @@ a.next:hover { text-decoration: underline; }
 <script>
 const D = JSON.parse(document.getElementById("data").textContent);
 const V = D.values;
-const S = { step: "overview", home: 0, scenario: V["config:demo.scenario"], grouping: "random", margin: Math.max(0, V["config:transformer.sizing_margins"].indexOf(V["config:demo.margin"])), hosts: 0 };
+const S = { step: "network", net: "today", t: -1, home: 0, scenario: V["config:demo.scenario"], grouping: "random", margin: Math.max(0, V["config:transformer.sizing_margins"].indexOf(V["config:demo.margin"])), hosts: 0 };
 const WORDS = { ev_home: "EV home", electric_heat: "Electric heat", dual_electrified: "EV and electric heat",
   summer_peaker: "Summer peaker", solar: "Solar", baseline: "Baseline", ac: "Air conditioning", ac_central: "Central AC",
   heat_pump: "Heat pump", resistance_heat: "Resistance heat", ev_l2: "Fast home EV charger", ev_l1: "Slow EV charging from an outlet",
@@ -155,17 +193,19 @@ const WORDS = { ev_home: "EV home", electric_heat: "Electric heat", dual_electri
 const word = k => WORDS[k] || k.replace(/_/g, " ");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-// the steps in panel order; `needs` names the data groups (demo_page.NEEDS) a step draws from
+// the views in panel order; `needs` names the data groups (demo_page.NEEDS) a view draws from
 const STEPS = [
-  { id: "overview", name: "Overview", ask: "what is the answer, and for whom?", needs: ["screen", "money"], fn: stepOverview },
-  { id: "inventory", name: "Inventory", ask: "what do homes have, and who qualifies?", needs: ["inventory"], fn: stepInventory },
-  { id: "flag", name: "Flag", ask: "which transformers go over in 2030?", needs: ["screen"], fn: stepFlag },
-  { id: "shift", name: "Shift", ask: "how many does staggered EV charging fix?", needs: ["screen"], fn: stepShift },
-  { id: "protect", name: "Protect", ask: "which do home batteries clear, even in a cold snap?", needs: ["screen", "coldsnap"], fn: stepProtect },
-  { id: "upgrade", name: "Upgrade", ask: "which still need a new transformer?", needs: ["screen"], fn: stepUpgrade },
-  { id: "money", name: "Money", ask: "what does the plan cost against upgrading them all?", needs: ["money"], fn: stepMoney },
+  { id: "network", name: "Network", needs: ["network"], fn: stepNetwork },
+  { id: "overview", name: "Overview", needs: ["screen", "money"], fn: stepOverview },
+  { id: "inventory", name: "Inventory", needs: ["inventory"], fn: stepInventory },
+  { id: "flag", name: "Flag", needs: ["screen"], fn: stepFlag },
+  { id: "shift", name: "Shift", needs: ["screen"], fn: stepShift },
+  { id: "protect", name: "Protect", needs: ["screen", "coldsnap"], fn: stepProtect },
+  { id: "upgrade", name: "Upgrade", needs: ["screen"], fn: stepUpgrade },
+  { id: "money", name: "Money", needs: ["money"], fn: stepMoney },
 ];
 const LEGACY = { 1: "inventory", 2: "flag", 3: "protect", 4: "money" };   // old #step=N and #only=N links
+const NET_VIEWS = [["today", "Today"], ["flag", "2030: Flag"], ["shift", "+ Shift"], ["protect", "+ Protect"], ["upgrade", "+ Upgrade"]];
 
 function val(key, index) { const v = V[key]; return index == null ? v : (v == null ? undefined : v[index]); }
 function N(key, d = 2, o = {}) {
@@ -182,17 +222,31 @@ const C = () => `fact:ewu.sensitivity.${cell()}.`;
 const btn = (on, set, html) => `<button type="button" aria-pressed="${on}" onclick='go(${JSON.stringify(set)})'>${html}</button>`;
 const sizeKey = (i, field) => `fact:ewu.sensitivity.${S.scenario}.${S.grouping}.${mlabel(i)}.${field}`;
 
-function go(set) { Object.assign(S, set); writeHash(); render(); }
+function go(set) {
+  const keep = document.activeElement && document.activeElement.classList.contains("net");   // the diagram keeps focus for arrow keys
+  Object.assign(S, set); writeHash(); render();
+  if (keep) { const svg = document.querySelector("section.show svg.net"); if (svg) svg.focus(); }
+}
 function writeHash() {
-  history.replaceState(null, "", `#step=${S.step}&home=${S.home}&scenario=${S.scenario}&grouping=${S.grouping}&margin=${S.margin}&hosts=${S.hosts}`);
+  history.replaceState(null, "", `#step=${S.step}&net=${S.net}&t=${S.t}&home=${S.home}&scenario=${S.scenario}&grouping=${S.grouping}&margin=${S.margin}&hosts=${S.hosts}`);
 }
 function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
-  for (const k of ["home", "margin", "hosts"]) if (p.has(k)) S[k] = parseInt(p.get(k), 10) || 0;
+  for (const k of ["home", "margin", "hosts", "t"]) if (p.has(k)) S[k] = parseInt(p.get(k), 10);
+  for (const k of ["home", "margin", "hosts"]) if (!(S[k] >= 0)) S[k] = 0;
+  if (!(S.t >= 0)) S.t = -1;
   for (const k of ["scenario", "grouping"]) if (p.has(k)) S[k] = p.get(k);
+  if (p.has("net") && NET_VIEWS.some(([v]) => v === p.get("net"))) S.net = p.get("net");
   const step = p.get("step") || p.get("only");
-  if (step) S.step = LEGACY[step] || (STEPS.some(s => s.id === step) ? step : "overview");
+  if (step) S.step = LEGACY[step] || (STEPS.some(s => s.id === step) ? step : "network");
 }
+
+// "How this is computed": one closed disclosure per view; `est` marks a number that rests on it and opens it
+const OPEN = new Set();
+const how = (id, html) => `<details class="how" id="how-${id}"${OPEN.has(id) ? " open" : ""} ontoggle="this.open ? OPEN.add('${id}') : OPEN.delete('${id}')"><summary>How this is computed</summary>${html}
+  <p>Every number comes from a stored fact or config/ewu.yaml; hover a number for its key.</p></details>`;
+const est = id => `<button type="button" class="est" onclick="openHow('${id}')" aria-label="Estimate: open How this is computed">est.</button>`;
+function openHow(id) { const d = document.getElementById("how-" + id); if (d) { d.open = true; d.scrollIntoView({ block: "nearest" }); } }
 
 function line(series, w, h, lo, hi, color, dash) {
   const x = i => (i * w / (series.length - 1)).toFixed(1), y = v => (h - (v - lo) / (hi - lo) * h).toFixed(1);
@@ -205,7 +259,155 @@ function hbar(parts, total, height) {
   return `<svg viewBox="0 0 600 ${height}" preserveAspectRatio="none" role="img" aria-hidden="true" style="height:${height}px;margin:6px 0 8px;border-radius:5px;background:var(--chip)">${out}</svg>`;
 }
 
-// one row of controls: the 2030 scenario, how big today's transformers are, how neighbors are grouped
+// ---------- Network: the demo screen's own synthetic network, one substation, its feeders, every transformer
+const T = name => V["private:ewu.network.t." + name];
+const NF = "fact:ewu.network.";
+const LOOK_WORD = { within: "Within limit", over: "Over limit", shifted: "Shifted", protected: "Battery protected", upgrade: "New transformer" };
+const GLYPH = {
+  within: '<circle class="g-within" r="3.4"/>',
+  over: '<path class="g-over" d="M0,-6.2L5.6,4.2L-5.6,4.2Z"/>',
+  shifted: '<circle class="g-shifted" r="5"/>',
+  protected: '<path class="g-protected" d="M-6,-3.8h10.4v7.6h-10.4ZM4.4,-1.8h2v3.6h-2Z"/>',
+  upgrade: '<rect class="g-upgrade" x="-6.6" y="-6.6" width="13.2" height="13.2"/>',
+};
+const glyph = (look, size = 16) => `<svg viewBox="-8.5 -8.5 17 17" width="${size}" height="${size}" aria-hidden="true">${GLYPH[look]}</svg>`;
+// state word per transformer at one step of the ladder; ewu/network.py looks() is the same rule
+function look(i, view) {
+  const s = T("state")[i];
+  if (view === "today") return T("over_today")[i] ? "over" : "within";
+  if (view === "flag") return T("flag")[i] ? "over" : "within";
+  if (s === 0) return "within";
+  if (s === 1) return "shifted";
+  if (s === 2) return view === "shift" ? "over" : "protected";
+  return view === "upgrade" ? "upgrade" : "over";
+}
+// layout: substation left, a bus, one trunk per feeder, laterals of 4 transformers above and below the trunk
+const NW = 1500, NH = 780, X0 = 250, X1 = 1488, TOP = 16;
+let LAYOUT = null;
+function layout() {
+  if (LAYOUT) return LAYOUT;
+  const feeder = T("feeder"), nf = Math.max(...feeder) + 1, band = (NH - 2 * TOP) / nf, seen = new Array(nf).fill(0);
+  const per = new Array(nf).fill(0); feeder.forEach(f => per[f]++);
+  const laterals = Math.ceil(Math.max(...per) / 8), pitch = (X1 - X0) / Math.max(1, laterals - 1);
+  const pos = feeder.map(f => {
+    const j = seen[f]++, side = j % 8 < 4 ? -1 : 1, k = j % 4;
+    return [X0 + Math.floor(j / 8) * pitch, TOP + band * (f + 0.5) + side * (12 + k * 12)];
+  });
+  LAYOUT = { nf, band, pos, per, pitch };
+  return LAYOUT;
+}
+function networkSvg(view) {
+  const L = layout(), trunk = f => TOP + L.band * (f + 0.5);
+  let wires = "";
+  for (let f = 0; f < L.nf; f++) {
+    const y = trunk(f), lats = Math.ceil(L.per[f] / 8);
+    wires += `M150,${y}H${X0 + (lats - 1) * L.pitch}`;
+    for (let l = 0; l < lats; l++) wires += `M${(X0 + l * L.pitch).toFixed(1)},${y - 48}V${y + 48}`;
+  }
+  const labels = Array.from({ length: L.nf }, (_, f) => `<text class="feeder" x="160" y="${trunk(f) - 8}">Feeder ${String.fromCharCode(65 + f)}</text>`).join("");
+  const nodes = L.pos.map(([x, y], i) => { const lk = look(i, view);
+    return `<g data-t="${i}" data-look="${lk}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${GLYPH[lk]}</g>`; }).join("");
+  const sel = S.t >= 0 && S.t < L.pos.length ? `<circle cx="${L.pos[S.t][0].toFixed(1)}" cy="${L.pos[S.t][1].toFixed(1)}" r="10" fill="none" stroke="var(--ink)" stroke-width="2.4"/>` : "";
+  const sub = `<rect x="12" y="${NH / 2 - 40}" width="112" height="80" rx="8" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+    <circle cx="58" cy="${NH / 2 - 6}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="78" cy="${NH / 2 - 6}" r="15" fill="none" stroke="var(--ink)" stroke-width="2"/>
+    <text x="68" y="${NH / 2 + 30}" text-anchor="middle" style="font-size:15px">Substation</text>`;
+  return `<svg class="net" viewBox="0 0 ${NW} ${NH}" role="img" aria-label="One-line diagram of the synthetic network: a substation, its feeders and every transformer, marked by state; Enter opens the most urgent transformer, arrow keys step through those in the same state" tabindex="0" onclick="pickNode(event)" onkeydown="netKey(event)">
+    <path d="${wires}" fill="none" stroke="var(--wire)" stroke-width="1"/>
+    ${Array.from({ length: L.nf }, (_, f) => `<line x1="150" x2="${X0 + (Math.ceil(L.per[f] / 8) - 1) * L.pitch}" y1="${trunk(f)}" y2="${trunk(f)}" stroke="var(--ink)" stroke-width="2.4"/>`).join("")}
+    <line x1="124" x2="150" y1="${NH / 2}" y2="${NH / 2}" stroke="var(--ink)" stroke-width="3"/>
+    <line x1="150" x2="150" y1="${trunk(0)}" y2="${trunk(L.nf - 1)}" stroke="var(--ink)" stroke-width="5"/>
+    ${sub}${labels}<g>${nodes}</g>${sel}</svg>`;
+}
+function pickNode(ev) {
+  const svg = ev.currentTarget, pt = svg.createSVGPoint();
+  pt.x = ev.clientX; pt.y = ev.clientY;
+  const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+  let best = -1, dist = 14 * 14;
+  layout().pos.forEach(([x, y], i) => { const d = (x - p.x) ** 2 + (y - p.y) ** 2; if (d < dist) { dist = d; best = i; } });
+  if (best >= 0) go({ t: best });
+}
+function netKey(ev) {
+  const urgent = ["upgrade", "over", "protected", "shifted", "within"], n = T("state").length;
+  if (ev.key === "Enter" && S.t < 0) {
+    for (const lk of urgent) { const i = sameLook(lk, n - 1, 1); if (i >= 0) return go({ t: i }); }
+  }
+  if ((ev.key === "ArrowRight" || ev.key === "ArrowLeft") && S.t >= 0) {
+    ev.preventDefault();
+    go({ t: sameLook(look(S.t, S.net), S.t, ev.key === "ArrowRight" ? 1 : -1) });
+  }
+  if (ev.key === "Escape") go({ t: -1 });
+}
+// step through the transformers that share a state word in this view, for keyboard use and the demo
+function sameLook(lk, from, dir) {
+  const n = T("state").length;
+  for (let k = 1; k <= n; k++) { const i = ((from + dir * k) % n + n) % n; if (look(i, S.net) === lk) return i; }
+  return -1;
+}
+function dayChart(i) {
+  const late = T("state")[i] >= 2, base = T("base_kw")[i], ev = (late ? T("ev_staggered_kw") : T("ev_kw"))[i], hp = T("hp_kw")[i];
+  const after = T("after_kw")[i], limit = T("limit_kw")[i], w = 400, h = 170;
+  const s1 = base.map((b, k) => b + ev[k]), s2 = s1.map((v, k) => v + hp[k]);
+  const hi = Math.max(...s2, ...after, limit) * 1.08, x = k => (k * w / 23).toFixed(1), y = v => (h - v / hi * h).toFixed(1);
+  const band = (top, bottom, col) => `<path d="M${top.map((v, k) => x(k) + "," + y(v)).join("L")}L${bottom.map((v, k) => x(k) + "," + y(v)).reverse().join("L")}Z" fill="${col}" opacity="0.85"/>`;
+  const zero = base.map(() => 0);
+  const fix = T("state")[i] > 0 ? line(after, w, h, 0, hi, "var(--ink)") : "";
+  return `<svg viewBox="0 0 ${w} ${h + 22}" role="img" aria-label="Worst 2030 day by hour: base, EV and heat pump load against the limit">
+    ${band(base, zero, "var(--base)")}${band(s1, base, "var(--ev)")}${band(s2, s1, "var(--hp)")}
+    <line x1="0" x2="${w}" y1="${y(limit)}" y2="${y(limit)}" stroke="var(--limit)" stroke-width="2" stroke-dasharray="6 4"/>${fix}
+    <text x="0" y="${h + 18}">00:00</text><text x="${w / 2}" y="${h + 18}" text-anchor="middle">12:00</text><text x="${w}" y="${h + 18}" text-anchor="end">23:00</text></svg>`;
+}
+function detailPanel(i) {
+  const k = "private:ewu.network.t.", s = T("state")[i], lk = look(i, S.net), hour = String(T("peak_hour_of_day")[i]).padStart(2, "0") + ":00";
+  const fix = [`<b>No fix needed.</b> Within its limit all year with EV charging unmanaged.`,
+    `<b>Staggered EV charging.</b> Peak after: ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })}.`,
+    `<b>Staggered charging plus home batteries.</b> Battery units: ${N(k + "batteries", 0, { index: i })}; host homes: ${N(k + "hosts", 0, { index: i })}. Peak after: ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })}.`,
+    `<b>New transformer.</b> Still ${N(k + "peak_after_kw", 1, { index: i, post: " kW" })} after staggering; no battery option clears it.`][s];
+  const prev = sameLook(lk, i, -1), next = sameLook(lk, i, 1);
+  return `<div class="card detail" aria-live="polite">
+    <div class="dhead"><h3>Transformer T-${String(i).padStart(4, "0")}</h3><button type="button" onclick="go({t:-1})" aria-label="Close transformer detail">Close</button></div>
+    <p class="sub" style="margin:2px 0 0">Feeder ${String.fromCharCode(65 + T("feeder")[i])}, ${N("config:transformer.homes_per_transformer", 0, { post: " homes summed" })}</p>
+    <p class="state">${glyph(lk, 18)}${LOOK_WORD[lk]}</p>
+    <p class="sub" style="margin:0">Worst 2030 day, peak at ${hour}</p>
+    <dl><dt>Load</dt><dd>${N(k + "peak_kw", 1, { index: i, post: " kW" })}</dd><dt>Limit</dt><dd>${N(k + "limit_kw", 1, { index: i, post: " kW" })}</dd></dl>
+    <div class="legend"><span><span class="key" style="background:var(--base)"></span>Base ${N(k + "peak_base_kw", 1, { index: i, post: " kW" })}</span>
+      <span><span class="key" style="background:var(--ev)"></span>EV ${N(k + "peak_ev_kw", 1, { index: i, post: " kW" })}</span>
+      <span><span class="key" style="background:var(--hp)"></span>Heat pump ${N(k + "peak_hp_kw", 1, { index: i, post: " kW" })}</span></div>
+    ${dayChart(i)}
+    <div class="legend" style="margin-top:4px"><span><span class="key" style="background:var(--limit)"></span>Limit (dashed)</span>${s > 0 ? '<span><span class="key" style="background:var(--ink)"></span>After its fix</span>' : ""}</div>
+    <p class="fix">${fix}</p>
+    <div class="nav">${prev >= 0 && prev !== i ? `<button type="button" onclick="go({t:${prev}})">Previous ${esc(LOOK_WORD[lk].toLowerCase())}</button>` : ""}${next >= 0 && next !== i ? `<button type="button" onclick="go({t:${next}})">Next ${esc(LOOK_WORD[lk].toLowerCase())}</button>` : ""}</div>
+  </div>`;
+}
+function stepNetwork() {
+  const v = S.net, counts = Object.keys(V).filter(key => key.startsWith(`${NF}${v}.`)).map(key => key.split(".").pop());
+  const order = ["within", "shifted", "protected", "over", "upgrade"].filter(w => counts.includes(w));
+  const all = N(NF + "transformers_drawn", 0);
+  const headline = {
+    today: `${N(NF + "today.within", 0)} of ${all} transformers are within their limit today`,
+    flag: `${N(NF + "flag.over", 0)} of ${all} transformers go over their limit in 2030`,
+    shift: `Staggered EV charging fixes ${N(NF + "shift.shifted", 0)}; ${N(NF + "shift.over", 0)} are still over`,
+    protect: `Home batteries clear ${N(NF + "protect.protected", 0)} more; ${N(NF + "protect.over", 0)} are still over`,
+    upgrade: `Only ${N(NF + "upgrade.upgrade", 0)} of ${all} transformers need a new one`,
+  }[v];
+  const first = lk => { for (let i = 0; i < T("state").length; i++) if (look(i, v) === lk) return i; return -1; };
+  const chips = order.map(w => `<button type="button" onclick="go({t:${first(w)}})" aria-label="${LOOK_WORD[w]}: open the first one">${glyph(w)}${LOOK_WORD[w]} ${N(`${NF}${v}.${w}`, 0)}</button>`).join("");
+  const ladder = NET_VIEWS.map(([id, name]) => btn(S.net === id, { net: id }, name)).join("");
+  return `<p class="eyebrow"><b>Network</b> ${esc(word(V["config:demo.scenario"]))} 2030, rating x ${N("config:demo.margin", 2)}
+    <button type="button" class="tag" onclick="openHow('network')" aria-label="Synthetic network: open How this is computed">Synthetic network</button></p>
+  <h2 class="headline" id="h-network">${headline}</h2>
+  <div class="netbar"><div class="ladder" role="group" aria-label="Ladder step">${ladder}</div><div class="counts" aria-label="Transformers in each state">${chips}</div></div>
+  <div class="netgrid${S.t >= 0 ? " open" : ""}"><div class="card netcard">${networkSvg(v)}</div>${S.t >= 0 ? detailPanel(S.t) : ""}</div>
+  ${how("network", `<ul>
+    <li><b>Synthetic network.</b> Real homes' hourly meter data, grouped at random into ${N(NF + "transformers_drawn", 0)} transformers of ${N("config:transformer.homes_per_transformer", 0)} homes (${N(NF + "homes", 0)} homes, random seed ${N("config:demo.screen_seed", 0)}). No meter-to-transformer map came with the data.</li>
+    <li><b>Feeders are an illustrative split.</b> Transformer ids are cut into ${N(NF + "feeders", 0)} equal blocks to draw the one-line; no feeder data exists. There are no places, streets or towns on it.</li>
+    <li><b>Your real network.</b> Load your meter-to-transformer map with <code>bin/ewu screen --map your_map.csv</code> (meter id, transformer id, kVA); the same ladder runs on your transformers.</li>
+    <li><b>The case.</b> ${esc(word(V["config:demo.scenario"]))} 2030 adoption; rating = today's group peak x ${N("config:demo.margin", 2)}; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. These are the counts <code>bin/ewu screen</code> prints for the same seed.</li>
+    <li><b>The ladder.</b> Flag: over with EV charging unmanaged. Shift: fixed by staggered EV charging (staggering can push a transformer over that was not; it joins Protect). Protect: cleared by the fewest home batteries, hosts picked by fit score, run all year. Upgrade: still over.</li>
+    <li><b>Detail panel.</b> One transformer's ${N("config:transformer.homes_per_transformer", 0)} homes summed, on its worst 2030 day; never a single home.</li></ul>`)}
+  `;
+}
+
+// ---------- the other views: headline, numbers, controls on the face; everything else in the disclosure
 function caseControls(extra = "") {
   const sc = ["moderate", "high"].map(s => btn(S.scenario === s, { scenario: s },
     `${word(s)}: ${N(`config:scenarios.${s}.ev_share`, 0, { scale: 100, post: "% EVs" })}, ${N(`config:scenarios.${s}.hp_share`, 0, { scale: 100, post: "% heat pumps" })}`)).join("");
@@ -215,8 +417,6 @@ function caseControls(extra = "") {
     <div class="grp"><span class="label">Rating = today's peak</span>${mg}</div>
     <div class="grp"><span class="label">Grouping</span>${gp}</div>${extra}</div>`;
 }
-
-// the ladder: flagged transformers split into the rung that fixes each; `focus` dims the other rungs
 const RUNGS = [["shift_fixed_pct", "var(--shift)", "Shift"], ["protected_pct", "var(--protect)", "Protect"], ["upgrade_left_pct", "var(--upgrade)", "Upgrade"]];
 function ladder(focus) {
   const c = C(), total = RUNGS.reduce((a, [f]) => a + V[c + f], 0);
@@ -224,8 +424,6 @@ function ladder(focus) {
   const legend = RUNGS.map(([f, col, name]) => `<span class="${focus && f !== focus ? "dim" : ""}"><span class="key" style="background:${col}"></span>${name} ${N(c + f, 2, { post: "%" })}</span>`).join("");
   return `${hbar(parts, total, 26)}<div class="legend">${legend}</div>`;
 }
-
-// one rung's share of all transformers at every sizing, the picked sizing drawn dark
 function bySizing(field) {
   const vals = margins().map((m, i) => V[sizeKey(i, field)]), top = Math.max(...vals) || 1;
   return `<table>${margins().map((m, i) => `<tr class="${S.margin === i ? "on" : ""}"><td>x ${N("config:transformer.sizing_margins", 2, { index: i })}</td>
@@ -237,29 +435,26 @@ function sizeRange(field) {
   const lo = vals.indexOf(Math.min(...vals)), hi = vals.indexOf(Math.max(...vals));
   return `${N(sizeKey(lo, field), 2, { post: "%" })} to ${N(sizeKey(hi, field), 2, { post: "%" })}`;
 }
-const head = (id, name, ask, headline, so) => `<p class="eyebrow"><b>${name}</b></p>
-  <h2 class="headline" id="h-${id}">${headline}</h2>${so ? `<p class="so">${so}</p>` : ""}`;
-const how = text => `<details><summary>How this is computed</summary>${text}</details>`;
+const head = (id, name, headline) => `<p class="eyebrow"><b>${name}</b></p><h2 class="headline" id="h-${id}">${headline}</h2>`;
 const big = html => `<span class="big">${html}</span>`;
+const synthetic = () => `<p>${N("config:transformer.count", 0)} synthetic transformers of ${N("config:transformer.homes_per_transformer", 0)} homes, real meter data grouped by the Grouping control, ${N("config:checks.seeds", 0)} seeds pooled; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. A real meter-to-transformer map replaces the synthetic groups with no other change.</p>`;
 
 function stepOverview() {
   const c = C(), m = `fact:ewu.economics.${cell()}.mid.discounted.`, h = "fact:ewu.economics.headline.";
   const tile = (id, col, name, num, sub) => `<a class="tile" href="#step=${id}" style="border-top-color:${col}"><span class="tname">${name}</span><span class="tnum">${num}</span><span class="tsub">${sub}</span></a>`;
-  return `<p class="who">For Avangrid distribution planners at NYSEG and RG&amp;E deciding which neighborhood transformers need what before 2030,
-    and for the customer programs team choosing who to enroll in managed charging or offer a home battery. Homeowners benefit; they do not use this page.</p>
-  ${head("overview", "Overview", "what is the answer, and for whom?",
-    `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers need a new one in 2030`,
-    `${sizeRange("upgrade_left_pct")} across today's transformer sizing. Cheaper fixes cover the rest.`)}
+  return `${head("overview", "Overview", `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers need a new one in 2030${est("overview")}`)}
   ${caseControls()}
   <div class="card">${ladder()}</div>
   <div class="tiles">
-    ${tile("flag", "var(--ink)", "Flag", N(c + "flagged_pct", 2, { post: "%" }), "of transformers go over their limit")}
-    ${tile("shift", "var(--shift)", "Shift", N(c + "shift_fixed_pct", 2, { post: "%" }), "fixed by staggered EV charging")}
+    ${tile("flag", "var(--ink)", "Flag", N(c + "flagged_pct", 2, { post: "%" }), "go over their limit")}
+    ${tile("shift", "var(--shift)", "Shift", N(c + "shift_fixed_pct", 2, { post: "%" }), "fixed by staggered charging")}
     ${tile("protect", "var(--protect)", "Protect", N(c + "protected_pct", 2, { post: "%" }), "cleared by home batteries")}
-    ${tile("upgrade", "var(--upgrade)", "Upgrade", N(c + "upgrade_left_pct", 2, { post: "%" }), "still over: replace the transformer")}
-    ${tile("money", "var(--accent)", "Money", N(m + "ladder_share_pct", 2, { post: "%" }), `of the cost of upgrading every flagged one; ${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} over every case`)}
+    ${tile("upgrade", "var(--upgrade)", "Upgrade", N(c + "upgrade_left_pct", 2, { post: "%" }), "need a new transformer")}
+    ${tile("money", "var(--accent)", "Money", N(m + "ladder_share_pct", 2, { post: "%" }) + est("overview"), "of upgrading every flagged one")}
   </div>
-  <p class="note">Shares of all transformers.</p>`;
+  ${how("overview", `<p>For Avangrid distribution planners at NYSEG and RG&amp;E deciding which neighborhood transformers need what before 2030, and for the customer programs team choosing who to enroll in managed charging or offer a home battery. Homeowners benefit; they do not use this page.</p>
+    <p>Shares are of all transformers. Upgrade is ${sizeRange("upgrade_left_pct")} across today's transformer sizing; cheaper fixes cover the rest.</p>
+    <p>Money: the plan's cost as a share of upgrading every flagged transformer, ${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} over every case. Prices are placeholders flagged in config/ewu.yaml.</p>${synthetic()}`)}`;
 }
 
 function stepInventory() {
@@ -270,43 +465,39 @@ function stepInventory() {
   const rows = flags.map((f, i) => `<tr><td>${esc(word(f))}</td><td class="num">${N(h + ".flag_share_pct", 2, { index: i, post: "%" })}</td><td>${esc(conf[i])}</td></tr>`).join("");
   const win = V[h + ".winter_day_kw"], sum = V[h + ".summer_day_kw"], hi = Math.max(...win, ...sum) * 1.1;
   const chips = programs.map((p, i) => `<span class="chip">${esc(word(p))} ${N(h + ".program_share_pct", 2, { index: i, post: "%" })}</span>`).join("");
-  return `${head("inventory", "Inventory", "what do homes have, and who qualifies?",
-    `${big(N("fact:ewu.inventory.any_program_pct", 2, { post: "%" }))} of ${N("fact:ewu.inventory.homes", 0)} homes qualify for at least one program`,
-    "Equipment is read from each home's hourly meter data alone.")}
+  return `${head("inventory", "Inventory", `${big(N("fact:ewu.inventory.any_program_pct", 2, { post: "%" }))} of ${N("fact:ewu.inventory.homes", 0)} homes qualify for at least one program`)}
   <div class="controls"><div class="grp"><span class="label">Segment</span>${picker}</div></div>
   <div class="card"><div class="row"><div class="col">
-    <p style="margin:0 0 8px"><b>Composite home, ${esc(word(V[h + ".segment"]))}</b>: the average of ${N(h + ".homes", 0, { post: " homes" })} in the segment, not a real customer. ${N(h + ".annual_kwh", 0, { post: " kWh" })} a year; average highest hour ${N(h + ".peak_kw", 2, { post: " kW" })}.</p>
-    <table><tr><th>Equipment found</th><th style="text-align:right">Share of segment homes</th><th>Confidence</th></tr>${rows}</table>
-    <p style="margin:14px 0 2px">Programs, share of segment homes eligible</p>
-    <div class="chips">${programs.length ? chips : '<span class="note">none</span>'}</div>
+    <p style="margin:0 0 8px"><b>Composite home, ${esc(word(V[h + ".segment"]))}</b>${est("inventory")}: ${N(h + ".annual_kwh", 0, { post: " kWh a year" })}, highest hour ${N(h + ".peak_kw", 2, { post: " kW" })}</p>
+    <table><tr><th>Equipment found</th><th style="text-align:right">Segment homes</th><th>Confidence</th></tr>${rows}</table>
+    <p style="margin:14px 0 2px">Eligible programs, segment homes</p>
+    <div class="chips">${programs.length ? chips : '<span class="sub">none</span>'}</div>
   </div><div class="col">
-    <div class="legend"><span><span class="key" style="background:var(--ev)"></span>Average winter day, top ${N(h + ".winter_day_peak_kw", 2, { post: " kW" })}</span>
-      <span><span class="key" style="background:var(--protect)"></span>Average summer day, top ${N(h + ".summer_day_peak_kw", 2, { post: " kW" })}</span></div>
+    <div class="legend"><span><span class="key" style="background:var(--ev)"></span>Winter day, top ${N(h + ".winter_day_peak_kw", 2, { post: " kW" })}</span>
+      <span><span class="key" style="background:var(--summer)"></span>Summer day, top ${N(h + ".summer_day_peak_kw", 2, { post: " kW" })}</span></div>
     <svg viewBox="0 0 480 170" role="img" aria-label="Average winter and summer day load by hour"><line x1="0" y1="150" x2="480" y2="150" stroke="var(--line)"/>
-      <g transform="translate(0,10)">${line(win, 480, 140, 0, hi, "var(--ev)")}${line(sum, 480, 140, 0, hi, "var(--protect)")}</g>
+      <g transform="translate(0,10)">${line(win, 480, 140, 0, hi, "var(--ev)")}${line(sum, 480, 140, 0, hi, "var(--summer)")}</g>
       <text x="0" y="166">00:00</text><text x="240" y="166" text-anchor="middle">12:00</text><text x="480" y="166" text-anchor="end">23:00</text></svg>
   </div></div></div>
-  ${how(`<p>Average owner scores in this segment: EV ${N(h + ".p_ev", 0, { scale: 100, post: "%" })}, heat pump ${N(h + ".p_heat_pump", 0, { scale: 100, post: "%" })}.</p>`)}`;
+  ${how("inventory", `<p>Equipment is read from each home's hourly meter data alone. The Composite home is the average of ${N(h + ".homes", 0, { post: " homes" })} in the segment, not a real customer; shares are of the segment's homes, and the day curves are average winter and summer days.</p>
+    <p>Average owner scores in this segment: EV ${N(h + ".p_ev", 0, { scale: 100, post: "%" })}, heat pump ${N(h + ".p_heat_pump", 0, { scale: 100, post: "%" })}. Program rules are this team's reading of the segment actions.</p>`)}`;
 }
 
 function stepFlag() {
   const c = C();
-  return `${head("flag", "Flag", "which transformers go over in 2030?",
-    `${big(N(c + "flagged_pct", 2, { post: "%" }))} of transformers go over ${N("config:transformer.overload_limit", 2, { post: " x" })} their rating in some hour of the year`,
-    `With EV charging unmanaged; ${sizeRange("flagged_pct")} depending on how big today's transformers are.`)}
+  return `${head("flag", "Flag", `${big(N(c + "flagged_pct", 2, { post: "%" }))} of transformers go over their limit in 2030${est("flag")}`)}
   ${caseControls()}
-  <div class="card"><p class="sub">Flagged share at every sizing, ${esc(word(S.scenario).toLowerCase())} scenario</p>${bySizing("flagged_pct")}</div>
-  <p class="note">${N("config:transformer.count", 0)} synthetic transformers of ${N("config:transformer.homes_per_transformer", 0)} homes, ${N("config:checks.seeds", 0)} seeds pooled. A real meter-to-transformer map replaces the synthetic groups with no other change.</p>`;
+  <div class="card"><p class="sub">Flagged, every sizing</p>${bySizing("flagged_pct")}</div>
+  ${how("flag", `<p>EV charging unmanaged. ${sizeRange("flagged_pct")} depending on how big today's transformers are (the rating control).</p>${synthetic()}`)}`;
 }
 
 function stepShift() {
   const c = C();
-  return `${head("shift", "Shift", "how many does staggered EV charging fix?",
-    `${big(N(c + "shift_fixed_pct", 2, { post: "%" }))} of transformers are fixed by staggering EV charging`,
-    `${V[c + "shift_fixed_pct"] * 2 > V[c + "flagged_pct"] ? "Most" : "Less than half"} of the ${N(c + "flagged_pct", 2, { post: "%" })} flagged; the rest go on to Protect or Upgrade. Staggering newly overloads ${N(c + "new_from_stagger_pct", 2, { post: "%" })}, which join them.`)}
+  return `${head("shift", "Shift", `${big(N(c + "shift_fixed_pct", 2, { post: "%" }))} of transformers are fixed by staggering EV charging${est("shift")}`)}
   ${caseControls()}
   <div class="card">${ladder("shift_fixed_pct")}</div>
-  <div class="card"><p class="sub">Fixed by Shift at every sizing</p>${bySizing("shift_fixed_pct")}</div>`;
+  <div class="card"><p class="sub">Fixed by Shift, every sizing</p>${bySizing("shift_fixed_pct")}</div>
+  ${how("shift", `<p>${V[c + "shift_fixed_pct"] * 2 > V[c + "flagged_pct"] ? "Most" : "Less than half"} of the ${N(c + "flagged_pct", 2, { post: "%" })} flagged; the rest go on to Protect or Upgrade. Staggering newly overloads ${N(c + "new_from_stagger_pct", 2, { post: "%" })}, which join them.</p>${synthetic()}`)}`;
 }
 
 function stepProtect() {
@@ -315,62 +506,64 @@ function stepProtect() {
   const load = V[e + "load_kw"], net = V[e + `hosts_${n}.net_kw`], med = V[agg + `hosts_${n}.soc_median_pct_by_hour`], p10 = V[agg + `hosts_${n}.soc_p10_pct_by_hour`];
   const limit = V[e + "limit_kw"], hi = Math.max(...load, limit) * 1.08, ly = (220 - limit / hi * 220).toFixed(1);
   const pick = hosts.map((x, i) => btn(S.hosts === i, { hosts: i }, N("config:battery.coldsnap_hosts_per_transformer", 0, { index: i }) + (x === 1 ? " host home" : " host homes"))).join("");
-  return `${head("protect", "Protect", "which do home batteries clear, even in a cold snap?",
-    `${big(N(c + "protected_pct", 2, { post: "%" }))} of transformers are cleared by home batteries, ${N(c + "batteries_per_protected", 2)} per transformer`,
-    `In the coldest two days, ${N(agg + "flagged_pct", 2, { post: "%" })} of transformers go over; one host home clears ${N(agg + "hosts_1.cleared_pct", 2, { post: "%" })} of them, two clear ${N(agg + "hosts_2.cleared_pct", 2, { post: "%" })}.`)}
+  return `${head("protect", "Protect", `${big(N(c + "protected_pct", 2, { post: "%" }))} of transformers are cleared by home batteries, ${N(c + "batteries_per_protected", 2)} per transformer${est("protect")}`)}
   ${caseControls(`<div class="grp"><span class="label">Cold snap hosts</span>${pick}</div>`)}
+  <div class="chips"><span class="chip">Cold snap over ${N(agg + "flagged_pct", 2, { post: "%" })}</span><span class="chip">${N("config:battery.coldsnap_hosts_per_transformer", 0, { index: 0 })} host clears ${N(agg + "hosts_1.cleared_pct", 2, { post: "%" })}</span><span class="chip">${N("config:battery.coldsnap_hosts_per_transformer", 0, { index: 1 })} hosts clear ${N(agg + "hosts_2.cleared_pct", 2, { post: "%" })}</span></div>
   <div class="card">
-    <p class="sub">Cold snap, one flagged transformer (${N("config:transformer.homes_per_transformer", 0)} homes summed): ${esc(word(V["config:demo.scenario"]).toLowerCase())} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}, coldest hour ${N("fact:ewu.coldsnap.window_min_temp_f", 1, { post: " F" })}. Each host: ${N("config:battery.units_per_host_max", 0)} battery units, ${N("config:battery.energy_kwh_two_units", 2, { post: " kWh" })}.</p>
-    <div class="legend"><span><span class="key" style="background:var(--base)"></span>Load without batteries</span>
-      <span><span class="key" style="background:var(--ev)"></span>Load with batteries</span>
+    <p class="sub">Cold snap, one flagged transformer, ${N("config:transformer.homes_per_transformer", 0, { post: " homes summed" })}${est("protect")}</p>
+    <div class="legend"><span><span class="key" style="background:var(--base)"></span>Without batteries</span>
+      <span><span class="key" style="background:var(--ev)"></span>With batteries</span>
       <span><span class="key" style="background:var(--limit)"></span>Limit ${N(e + "limit_kw", 2, { post: " kW" })}</span></div>
     <svg class="chart" viewBox="0 0 1100 250" role="img" aria-label="Transformer load through the cold snap, with and without batteries, against its limit"><g transform="translate(0,6)">
       <line x1="0" x2="1100" y1="${ly}" y2="${ly}" stroke="var(--limit)" stroke-dasharray="6 4"/>
       ${line(load, 1100, 220, 0, hi, "var(--base)")}${line(net, 1100, 220, 0, hi, "var(--ev)")}</g>
       <text x="0" y="246">2026-02-07</text><text x="550" y="246">2026-02-08</text></svg>
-    <p class="sub" style="margin-top:14px">Battery charge, % of full, across every flagged transformer:
+    <p class="sub" style="margin-top:14px">Battery charge, % of full:
       <span class="key" style="background:var(--soc)"></span>median, lowest ${N(agg + `hosts_${n}.soc_median_pct_by_hour`, 1, { index: med.indexOf(Math.min(...med)), post: "%" })}
-      &nbsp; <span class="key" style="background:var(--soc);opacity:.5"></span>bottom tenth (dashed), lowest ${N(agg + `hosts_${n}.soc_p10_pct_by_hour`, 1, { index: p10.indexOf(Math.min(...p10)), post: "%" })}</p>
+      &nbsp; <span class="key" style="background:var(--soc);opacity:.5"></span>bottom tenth, lowest ${N(agg + `hosts_${n}.soc_p10_pct_by_hour`, 1, { index: p10.indexOf(Math.min(...p10)), post: "%" })}</p>
     <svg class="chart" viewBox="0 0 1100 110" role="img" aria-label="Fleet battery charge through the cold snap"><line x1="0" x2="1100" y1="104" y2="104" stroke="var(--line)"/><line x1="0" x2="1100" y1="4" y2="4" stroke="var(--line)"/>
       <g transform="translate(0,4)">${line(med, 1100, 100, 0, 100, "var(--soc)")}${line(p10, 1100, 100, 0, 100, "var(--soc)", true)}</g></svg>
   </div>
-  ${how(`<p>With no battery this transformer spends ${N(e + "kwh_over", 2, { post: " kWh" })} over the limit across the two days. Host homes are picked by fit score. The battery runs all year, so its charge on the first cold night is earned, not assumed, and it charges only when the transformer has room under the limit. The cold snap test is run for the case named above the chart; the share cleared in the headline follows the case picked.</p>`)}`;
+  ${how("protect", `<p>Cold snap case: ${esc(word(V["config:demo.scenario"]).toLowerCase())} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}, coldest hour ${N("fact:ewu.coldsnap.window_min_temp_f", 1, { post: " F" })}. Each host: ${N("config:battery.units_per_host_max", 0)} battery units, ${N("config:battery.energy_kwh_two_units", 2, { post: " kWh" })}. Chips are shares of transformers over in the two coldest days; battery charge is across every flagged transformer, the bottom tenth dashed.</p>
+    <p>With no battery this transformer spends ${N(e + "kwh_over", 2, { post: " kWh" })} over the limit across the two days. Host homes are picked by fit score. The battery runs all year, so its charge on the first cold night is earned, not assumed, and it charges only when the transformer has room under the limit. The cold snap test is run for the case named here; the share cleared in the headline follows the case picked.</p>${synthetic()}`)}`;
 }
 
 function stepUpgrade() {
   const c = C();
-  return `${head("upgrade", "Upgrade", "which still need a new transformer?",
-    `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers are still over after shifting and batteries: replace these`,
-    `${sizeRange("upgrade_left_pct")} across today's transformer sizing.`)}
+  return `${head("upgrade", "Upgrade", `${big(N(c + "upgrade_left_pct", 2, { post: "%" }))} of transformers are still over after shifting and batteries: replace these${est("upgrade")}`)}
   ${caseControls()}
   <div class="card">${ladder("upgrade_left_pct")}</div>
-  <div class="card"><p class="sub">Left for Upgrade at every sizing</p>${bySizing("upgrade_left_pct")}</div>`;
+  <div class="card"><p class="sub">Left for Upgrade, every sizing</p>${bySizing("upgrade_left_pct")}</div>
+  ${how("upgrade", `<p>${sizeRange("upgrade_left_pct")} across today's transformer sizing.</p>${synthetic()}`)}`;
 }
 
 function stepMoney() {
   const c = `fact:ewu.economics.${cell()}.`, h = "fact:ewu.economics.headline.", b = "fact:ewu.economics.battery_vs_upgrade.mid.";
   const lad = V[c + "mid.discounted.ladder_share_pct"], stu = V[c + "mid.discounted.shift_then_upgrade_share_pct"], top = Math.max(100, lad, stu);
   const bar = (v, col) => hbar([[v, col]], top, 16);
-  return `${head("money", "Money", "what does the plan cost against upgrading them all?",
-    `The plan costs ${big(N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" }))} of upgrading every flagged transformer`,
-    `${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} across all ${N("fact:ewu.sensitivity.cells", 0)} grid cells and every price case. ${V[h + "shift_then_upgrade_share_pct.base"] < V[h + "ladder_share_pct.base"] ? "In the base case, shifting is what saves the money; batteries add cost." : "In the base case, batteries add savings on top of shifting."}`)}
+  return `${head("money", "Money", `The plan costs ${big(N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" }))} of upgrading every flagged transformer${est("money")}`)}
   ${caseControls()}
   <div class="row"><div class="col"><div class="card">
     <p style="margin:0">Upgrade every flagged transformer</p>${bar(100, "var(--upgrade)")}
-    <p style="margin:0">Shift, then upgrade what is still over: ${N(c + "mid.discounted.shift_then_upgrade_share_pct", 2, { post: "%" })}</p>${bar(stu, "var(--shift)")}
+    <p style="margin:0">Shift, then upgrade the rest: ${N(c + "mid.discounted.shift_then_upgrade_share_pct", 2, { post: "%" })}</p>${bar(stu, "var(--shift)")}
     <p style="margin:0">Full plan, shift, protect, upgrade: ${N(c + "mid.discounted.ladder_share_pct", 2, { post: "%" })}</p>${bar(lad, "var(--protect)")}
-    <p class="note">Mid prices. Low prices ${N(c + "low.discounted.ladder_share_pct", 2, { post: "%" })}, high prices ${N(c + "high.discounted.ladder_share_pct", 2, { post: "%" })}; at a zero discount rate ${N(c + "mid.zero_rate.ladder_share_pct", 2, { post: "%" })}.</p>
   </div></div><div class="col">
-    <p style="margin-top:0"><b>${V[b + "battery_yearly_usd"] > V[b + "upgrade_yearly_usd"] ? "Batteries alone cost more than the upgrade at these prices." : "Batteries alone cost less than the upgrade at these prices."}</b> Per transformer they clear, ${N(b + "batteries_per_cleared", 2)} batteries cost ${N(b + "battery_yearly_usd", 0, { pre: "$", post: " a year" })} against ${N(b + "upgrade_yearly_usd", 0, { pre: "$", post: " a year" })} for the upgrade; they tie at ${N(b + "tie_unit_usd_equal_life", 0, { pre: "$" })} per battery unit.</p>
-    <p class="note">Assumptions: prices are placeholders flagged in config/ewu.yaml; battery life ${N("config:battery.life_years", 0, { post: " years" })}, transformer life ${N("config:prices.transformer_life_years", 0, { post: " years" })}, discount rate ${N("config:prices.discount_rate", 0, { scale: 100, post: "%" })}, a placeholder.</p>
-    <p class="note">Labeled scaling, assumption: if NYSEG's ${N("config:prices.nyseg_electric_customers", 0)} customers were all homes like ours, ${N("fact:ewu.economics.nyseg_transformers", 0)} transformers, the base case is
-      ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_upgrade_all_musd", 1, { pre: "$", post: "M" })} to upgrade every flagged one against ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_ladder_musd", 1, { pre: "$", post: "M" })} for the plan, present value.</p>
+    <p style="margin-top:0"><b>${V[b + "battery_yearly_usd"] > V[b + "upgrade_yearly_usd"] ? "Batteries alone cost more than the upgrade." : "Batteries alone cost less than the upgrade."}</b>${est("money")}</p>
+    <table><tr><td>Batteries per transformer cleared</td><td class="num">${N(b + "batteries_per_cleared", 2)}</td></tr>
+      <tr><td>Their cost</td><td class="num">${N(b + "battery_yearly_usd", 0, { pre: "$", post: " a year" })}</td></tr>
+      <tr><td>Upgrade instead</td><td class="num">${N(b + "upgrade_yearly_usd", 0, { pre: "$", post: " a year" })}</td></tr>
+      <tr><td>Tie, per battery unit</td><td class="num">${N(b + "tie_unit_usd_equal_life", 0, { pre: "$" })}</td></tr></table>
   </div></div>
-  ${how(`<p>Equal-life cost: a battery wears out before a transformer does, so it is bought again within the transformer's life. Shares are present values against upgrading every flagged transformer, for the case picked.</p>`)}`;
+  ${how("money", `<p>${N(h + "ladder_share_pct.low", 2, { post: "%" })} to ${N(h + "ladder_share_pct.high", 2, { post: "%" })} across all ${N("fact:ewu.sensitivity.cells", 0)} grid cells and every price case. ${V[h + "shift_then_upgrade_share_pct.base"] < V[h + "ladder_share_pct.base"] ? "In the base case, shifting is what saves the money; batteries add cost." : "In the base case, batteries add savings on top of shifting."}</p>
+    <p>Mid prices. Low prices ${N(c + "low.discounted.ladder_share_pct", 2, { post: "%" })}, high prices ${N(c + "high.discounted.ladder_share_pct", 2, { post: "%" })}; at a zero discount rate ${N(c + "mid.zero_rate.ladder_share_pct", 2, { post: "%" })}.</p>
+    <p>Assumptions: prices are placeholders flagged in config/ewu.yaml; battery life ${N("config:battery.life_years", 0, { post: " years" })}, transformer life ${N("config:prices.transformer_life_years", 0, { post: " years" })}, discount rate ${N("config:prices.discount_rate", 0, { scale: 100, post: "%" })}, a placeholder.</p>
+    <p>Equal-life cost: a battery wears out before a transformer does, so it is bought again within the transformer's life. Shares are present values against upgrading every flagged transformer, for the case picked.</p>
+    <p>Labeled scaling, assumption: if NYSEG's ${N("config:prices.nyseg_electric_customers", 0)} customers were all homes like ours, ${N("fact:ewu.economics.nyseg_transformers", 0)} transformers, the base case is
+      ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_upgrade_all_musd", 1, { pre: "$", post: "M" })} to upgrade every flagged one against ${N("fact:ewu.economics.moderate.random.margin_115.mid.nyseg_ladder_musd", 1, { pre: "$", post: "M" })} for the plan, present value.</p>`)}`;
 }
 
 function render() {
-  const at = STEPS.findIndex(s => s.id === S.step), next = STEPS[at + 1];
+  const at = STEPS.findIndex(s => s.id === S.step);
   STEPS.forEach((s, i) => {
     const el = document.getElementById(s.id), missing = s.needs.filter(n => !D.built[n]);
     el.classList.toggle("show", i === at);
@@ -379,7 +572,9 @@ function render() {
       : s.fn() + (STEPS[i + 1] ? `<a class="next" href="#step=${STEPS[i + 1].id}">Next: ${STEPS[i + 1].name} &rarr;</a>` : "");
   });
   document.querySelectorAll("a.step-link").forEach(a => a.dataset.step === S.step ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
-  document.getElementById("case").innerHTML = D.built.screen ? `Case shown: ${esc(word(S.scenario))} 2030, rating x ${N("config:transformer.sizing_margins", 2, { index: S.margin })}, ${esc(word(S.grouping).toLowerCase())}.` : "";
+  document.getElementById("case").innerHTML = S.step === "network" && D.built.network
+    ? `Case shown: ${esc(word(V["config:demo.scenario"]))} 2030, rating x ${N("config:demo.margin", 2)}, random neighbors.`
+    : D.built.screen ? `Case shown: ${esc(word(S.scenario))} 2030, rating x ${N("config:transformer.sizing_margins", 2, { index: S.margin })}, ${esc(word(S.grouping).toLowerCase())}.` : "";
   document.title = `${STEPS[at].name}: EWU Demo`;
 }
 let shown = null;
