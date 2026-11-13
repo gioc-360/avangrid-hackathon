@@ -25,6 +25,12 @@ scenarios:
     hp_kw_per_degf: {value: 0.05, unit: kW added per F below the balance point, source: "fact:bess.headroom_rule.hp_kw_per_degf"}
     hp_balance_temp_f: {value: 60, unit: F, source: "repo:analysis/bess.py:174",
                         assumption: true, basis: "balance point used when the heat pump slope was fit"}
+    ev_session_jump_kw: {value: 5.0, unit: kW above the day's 25th percentile that marks a charging hour,
+                         source: "repo:analysis/classify.py:36"}
+    ev_session_min_hours: {value: 2, unit: hours a charging block must be held, source: "repo:analysis/classify.py:37",
+                           quote: "held 2+ hours"}
+    ev_neutral_day_low_f: {value: 55, unit: F daily mean, source: "repo:analysis/classify.py:33"}
+    ev_neutral_day_high_f: {value: 70, unit: F daily mean, source: "repo:analysis/classify.py:33"}
 
 transformer:
   homes_per_transformer: {value: 8, unit: homes, source: "repo:docs/PROTOTYPE_PLAN.md:10",

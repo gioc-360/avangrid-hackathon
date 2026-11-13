@@ -995,6 +995,462 @@
   "script": "analysis/ingest.py",
   "method": "customers in 2026 Avangrid Hackathon Data_30001_35725.zip whose ID lies in the range its name promises"
  },
+ "ewu.adoption.ev_homes_measured": {
+  "value": 734,
+  "unit": "homes",
+  "script": "ewu/stress.py",
+  "method": "flagged Level 2 homes"
+ },
+ "ewu.adoption.ev_session_mean_hours": {
+  "value": 3.78,
+  "unit": "hours",
+  "script": "ewu/stress.py",
+  "method": ""
+ },
+ "ewu.adoption.ev_sessions_measured": {
+  "value": 20940,
+  "unit": "sessions",
+  "script": "ewu/stress.py",
+  "method": "Level 2 homes, weather-neutral days"
+ },
+ "ewu.adoption.ev_sessions_per_home_day": {
+  "value": 0.24,
+  "unit": "sessions per home per day",
+  "script": "ewu/stress.py",
+  "method": ""
+ },
+ "ewu.adoption.ev_start_16_to_22_pct": {
+  "value": 53.1,
+  "unit": "% of sessions",
+  "script": "ewu/stress.py",
+  "method": "start 16:00-22:59"
+ },
+ "ewu.adoption.high.ev_homes_added": {
+  "value": 8400,
+  "unit": "homes per seed",
+  "script": "ewu/stress.py",
+  "method": "share x grouped homes"
+ },
+ "ewu.adoption.high.hp_homes_added": {
+  "value": 7200,
+  "unit": "homes per seed",
+  "script": "ewu/stress.py",
+  "method": "share x grouped homes"
+ },
+ "ewu.adoption.moderate.ev_homes_added": {
+  "value": 4800,
+  "unit": "homes per seed",
+  "script": "ewu/stress.py",
+  "method": "share x grouped homes"
+ },
+ "ewu.adoption.moderate.hp_homes_added": {
+  "value": 3600,
+  "unit": "homes per seed",
+  "script": "ewu/stress.py",
+  "method": "share x grouped homes"
+ },
+ "ewu.stress.grid_seconds": {
+  "value": 20.1,
+  "unit": "s",
+  "script": "ewu/stress.py",
+  "method": "whole baseline grid"
+ },
+ "ewu.stress.high.random.margin_105.median_hours_over": {
+  "value": 13.6,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_105.median_kwh_over": {
+  "value": 29.5,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_105.overloaded_pct": {
+  "value": 71.71,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.05"
+ },
+ "ewu.stress.high.random.margin_105.seed_gap_pts": {
+  "value": 0.42,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.random.margin_115.median_hours_over": {
+  "value": 8.4,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_115.median_kwh_over": {
+  "value": 17.9,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_115.overloaded_pct": {
+  "value": 54.77,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.stress.high.random.margin_115.seed_gap_pts": {
+  "value": 1.3,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.random.margin_130.median_hours_over": {
+  "value": 5.0,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_130.median_kwh_over": {
+  "value": 10.6,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_130.overloaded_pct": {
+  "value": 33.05,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.3"
+ },
+ "ewu.stress.high.random.margin_130.seed_gap_pts": {
+  "value": 0.92,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.random.margin_150.median_hours_over": {
+  "value": 3.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_150.median_kwh_over": {
+  "value": 6.7,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.random.margin_150.overloaded_pct": {
+  "value": 14.38,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.5"
+ },
+ "ewu.stress.high.random.margin_150.seed_gap_pts": {
+  "value": 0.55,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.same_segment.margin_105.median_hours_over": {
+  "value": 38.6,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_105.median_kwh_over": {
+  "value": 88.8,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_105.overloaded_pct": {
+  "value": 62.85,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.05"
+ },
+ "ewu.stress.high.same_segment.margin_105.seed_gap_pts": {
+  "value": 0.85,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.same_segment.margin_115.median_hours_over": {
+  "value": 24.5,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_115.median_kwh_over": {
+  "value": 55.9,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_115.overloaded_pct": {
+  "value": 53.65,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.stress.high.same_segment.margin_115.seed_gap_pts": {
+  "value": 0.91,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.same_segment.margin_130.median_hours_over": {
+  "value": 14.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_130.median_kwh_over": {
+  "value": 31.1,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_130.overloaded_pct": {
+  "value": 41.1,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.3"
+ },
+ "ewu.stress.high.same_segment.margin_130.seed_gap_pts": {
+  "value": 0.97,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.high.same_segment.margin_150.median_hours_over": {
+  "value": 8.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_150.median_kwh_over": {
+  "value": 17.5,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.high.same_segment.margin_150.overloaded_pct": {
+  "value": 26.67,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.5"
+ },
+ "ewu.stress.high.same_segment.margin_150.seed_gap_pts": {
+  "value": 1.03,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.homes_grouped": {
+  "value": 24000,
+  "unit": "homes",
+  "script": "ewu/stress.py",
+  "method": "per seed, none in two transformers"
+ },
+ "ewu.stress.moderate.random.margin_105.median_hours_over": {
+  "value": 5.0,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_105.median_kwh_over": {
+  "value": 9.2,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_105.overloaded_pct": {
+  "value": 42.84,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.05"
+ },
+ "ewu.stress.moderate.random.margin_105.seed_gap_pts": {
+  "value": 0.63,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.random.margin_115.median_hours_over": {
+  "value": 4.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_115.median_kwh_over": {
+  "value": 7.2,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_115.overloaded_pct": {
+  "value": 26.18,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.stress.moderate.random.margin_115.seed_gap_pts": {
+  "value": 1.05,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.random.margin_130.median_hours_over": {
+  "value": 3.0,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_130.median_kwh_over": {
+  "value": 5.1,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_130.overloaded_pct": {
+  "value": 11.87,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.3"
+ },
+ "ewu.stress.moderate.random.margin_130.seed_gap_pts": {
+  "value": 0.63,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.random.margin_150.median_hours_over": {
+  "value": 2.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_150.median_kwh_over": {
+  "value": 3.4,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.random.margin_150.overloaded_pct": {
+  "value": 3.74,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.5"
+ },
+ "ewu.stress.moderate.random.margin_150.seed_gap_pts": {
+  "value": 0.37,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.same_segment.margin_105.median_hours_over": {
+  "value": 12.2,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_105.median_kwh_over": {
+  "value": 20.7,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_105.overloaded_pct": {
+  "value": 43.81,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.05"
+ },
+ "ewu.stress.moderate.same_segment.margin_105.seed_gap_pts": {
+  "value": 1.37,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.same_segment.margin_115.median_hours_over": {
+  "value": 8.8,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_115.median_kwh_over": {
+  "value": 15.2,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_115.overloaded_pct": {
+  "value": 32.65,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.15"
+ },
+ "ewu.stress.moderate.same_segment.margin_115.seed_gap_pts": {
+  "value": 0.72,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.same_segment.margin_130.median_hours_over": {
+  "value": 6.4,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_130.median_kwh_over": {
+  "value": 11.5,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_130.overloaded_pct": {
+  "value": 20.11,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.3"
+ },
+ "ewu.stress.moderate.same_segment.margin_130.seed_gap_pts": {
+  "value": 0.59,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.moderate.same_segment.margin_150.median_hours_over": {
+  "value": 4.0,
+  "unit": "hours per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_150.median_kwh_over": {
+  "value": 6.8,
+  "unit": "kWh per year",
+  "script": "ewu/stress.py",
+  "method": "median overloaded transformer"
+ },
+ "ewu.stress.moderate.same_segment.margin_150.overloaded_pct": {
+  "value": 10.5,
+  "unit": "% of transformers",
+  "script": "ewu/stress.py",
+  "method": "mean of 5 seeds, 3000 synthetic transformers, rating = today's peak x 1.5"
+ },
+ "ewu.stress.moderate.same_segment.margin_150.seed_gap_pts": {
+  "value": 0.7,
+  "unit": "percentage points",
+  "script": "ewu/stress.py",
+  "method": "largest gap between one seed and the mean"
+ },
+ "ewu.stress.transformers": {
+  "value": 3000,
+  "unit": "synthetic transformers",
+  "script": "ewu/stress.py",
+  "method": "per seed"
+ },
  "flex.ac_weather_load_mw": {
   "value": 39.7,
   "unit": "MW",
