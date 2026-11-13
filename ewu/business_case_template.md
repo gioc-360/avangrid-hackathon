@@ -2,6 +2,47 @@
 
 [[note]]
 
+## Deck profile, the default: the final deck's method, run by this tool on our data
+
+`bin/ewu screen` runs the team's final-deck method by default (the teammate's spec of 2026-11-13, saved at
+runs/teammate_deck_spec_2026-11-13.txt). [[config:profiles.deck.transformer_count|,.0f]] synthetic transformers of [[config:profiles.deck.homes_per_transformer]] random homes are each
+rated at the smallest standard size at or above today's group peak / [[config:profiles.deck.peak_to_rating_divisor]] (kW read as kVA). A transformer is
+overloaded above [[config:profiles.deck.overload_limit|.2f]] times its rating in any hour, and home batteries are the only fix: [[config:profiles.deck.units_min]] to
+[[config:profiles.deck.units_max]] battery units per transformer, sized to each day's peak excess and excess energy; more than [[config:profiles.deck.units_max]] means an upgrade.
+Money counts [[config:profiles.deck.years]] years at [[config:profiles.deck.discount_rate|.0%]]; an upgrade is counted for [[config:profiles.deck.years]] of its [[config:profiles.deck.upgrade_life_years]] years, $[[ewu.deck.prices.upgrade_counted_usd|,.0f]] each.
+The two input arrays are the teammate's own files, given by her ewu_inputs.py and built from the hackathon meter
+data, copied by `bin/ewu arrays` and checked by sha256 on every run: EV start hours ([[ewu.deck.inputs.ev_start_pmf.hour0_pct|.1f]]% at midnight)
+and one heat pump curve ([[ewu.deck.inputs.hp_increment.annual_kwh|,.0f]] kWh a year, highest hour [[ewu.deck.inputs.hp_increment.max_kw|.2f]] kW).
+
+The replica column is `bin/ewu screen --replica`: our code following her ewu_sim_bo2.py line for line, which equals
+her own run on all [[ewu.deck_replica.moderate.rows_equal_her_run|,.0f]] transformers in each case.
+
+| At a [[config:profiles.deck.overload_limit|.2f]] limit | Moderate, ours | Moderate, her code | Moderate, deck | High, ours | High, her code | High, deck |
+|---|---|---|---|---|---|---|
+| Overloaded, % of transformers | [[ewu.deck.moderate.limit_120.overloaded_pct|.1f]]% | [[ewu.deck_replica.moderate.limit_120.overloaded_pct|.1f]]% | [[config:profiles.deck.targets.overloaded_pct.0]]% | [[ewu.deck.high.limit_120.overloaded_pct|.1f]]% | [[ewu.deck_replica.high.limit_120.overloaded_pct|.1f]]% | [[config:profiles.deck.targets.overloaded_pct.1]]% |
+| Fixed without an upgrade, % of overloaded | [[ewu.deck.moderate.limit_120.fixed_of_overloaded_pct|.1f]]% | [[ewu.deck_replica.moderate.limit_120.fixed_of_overloaded_pct|.1f]]% | [[config:profiles.deck.targets.fixed_without_upgrade_pct.0]]% | [[ewu.deck.high.limit_120.fixed_of_overloaded_pct|.1f]]% | [[ewu.deck_replica.high.limit_120.fixed_of_overloaded_pct|.1f]]% | [[config:profiles.deck.targets.fixed_without_upgrade_pct.1]]% |
+| Average units per fixed transformer | [[ewu.deck.moderate.limit_120.average_units|.2f]] | [[ewu.deck_replica.moderate.limit_120.average_units|.2f]] | [[config:profiles.deck.targets.average_units.0]] | [[ewu.deck.high.limit_120.average_units|.2f]] | [[ewu.deck_replica.high.limit_120.average_units|.2f]] | [[config:profiles.deck.targets.average_units.1]] |
+| Winter driven, % of overloaded | [[ewu.deck.moderate.limit_120.winter_of_overloaded_pct|.1f]]% | [[ewu.deck_replica.moderate.limit_120.winter_of_overloaded_pct|.1f]]% | [[config:profiles.deck.targets.winter_share_pct.0]]% | [[ewu.deck.high.limit_120.winter_of_overloaded_pct|.1f]]% | [[ewu.deck_replica.high.limit_120.winter_of_overloaded_pct|.1f]]% | [[config:profiles.deck.targets.winter_share_pct.1]]% |
+| Gross cost across NYSEG, $M | [[ewu.deck.moderate.limit_120.nyseg_gross_musd|.1f]] | [[ewu.deck_replica.moderate.limit_120.nyseg_gross_musd|.1f]] | [[config:profiles.deck.targets.gross_musd.0]] | [[ewu.deck.high.limit_120.nyseg_gross_musd|.1f]] | [[ewu.deck_replica.high.limit_120.nyseg_gross_musd|.1f]] | [[config:profiles.deck.targets.gross_musd.1]] (her code gives [[ewu.deck_replica.high.limit_120.nyseg_gross_musd|.0f]]) |
+| Net without NYSERDA, $M | [[ewu.deck.moderate.limit_120.nyseg_net_without_nyserda_musd|.1f]] | [[ewu.deck_replica.moderate.limit_120.nyseg_net_without_nyserda_musd|.1f]] | not in the deck | [[ewu.deck.high.limit_120.nyseg_net_without_nyserda_musd|.1f]] | [[ewu.deck_replica.high.limit_120.nyseg_net_without_nyserda_musd|.1f]] | not in the deck |
+| Avangrid cost (net of lease and NYSERDA), $M | [[ewu.deck.moderate.limit_120.nyseg_avangrid_cost_musd|.1f]] | [[ewu.deck_replica.moderate.limit_120.nyseg_avangrid_cost_musd|.1f]] | [[config:profiles.deck.targets.avangrid_cost_musd.0]] | [[ewu.deck.high.limit_120.nyseg_avangrid_cost_musd|.1f]] | [[ewu.deck_replica.high.limit_120.nyseg_avangrid_cost_musd|.1f]] | [[config:profiles.deck.targets.avangrid_cost_musd.1]] |
+| Upgrade every overloaded transformer, $M | [[ewu.deck.moderate.limit_120.nyseg_upgrade_all_musd|.1f]] | [[ewu.deck_replica.moderate.limit_120.nyseg_upgrade_all_musd|.1f]] | [[config:profiles.deck.targets.upgrade_all_musd.0]] | [[ewu.deck.high.limit_120.nyseg_upgrade_all_musd|.1f]] | [[ewu.deck_replica.high.limit_120.nyseg_upgrade_all_musd|.1f]] | [[config:profiles.deck.targets.upgrade_all_musd.1]] |
+
+Avangrid cost is the saving's whole basis: at gross, the high case costs more than upgrading every overloaded
+transformer. Peak cut with export, [[ewu.deck.peakcut.hosts|,.0f]] priority homes with [[config:profiles.deck.units_per_host]] units each pooled as one fleet:
+[[ewu.deck.peakcut.export_peak_drop_mw|.2f]] MW off the yearly peak (deck [[config:profiles.deck.targets.peak_cut_export_mw]] MW, the same metric as the teammate's program.py;
+[[ewu.deck.peakcut.export_mw|.2f]] MW on average over the top [[config:profiles.deck.peak_hours]] hours). Behind the meter only, the conservative case:
+[[ewu.deck.peakcut.behind_meter_mw|.2f]] MW over the top hours (deck [[config:profiles.deck.targets.peak_cut_behind_meter_mw]] MW, our earlier number; the teammate's own behind-the-meter figure is
+[[teammate.audit.rerun.btm_mw|.2f]] MW, see docs/TEAMMATE_AUDIT.md).
+
+Two deck numbers miss on our tool's own run, and we report them rather than tune constants. High-case fixed
+without an upgrade is lower because our inventory flags which homes already have an EV or electric heat
+differently from the teammate's tiers: swapping only the tiers in her run moves it from
+[[ewu.deck_replica.ladder.a_her_run.high.fixed_of_overloaded_pct|.1f]]% to [[ewu.deck_replica.ladder.b_our_tiers.high.fixed_of_overloaded_pct|.1f]]%. Moderate winter driven share is higher on our seed: over seeds 1 to [[config:profiles.deck_replica.spread_seeds]] it
+runs from [[ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.min|.1f]]% to [[ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.max|.1f]]%. `bin/ewu screen --profile cautious` gives the earlier method below.
+
+## Cautious profile: the earlier method, kept as a named sensitivity
+
 **Find the street transformers that 2030 electrification will push over their limit, and give each one the
 cheapest fix: Flag, Shift, Protect, Upgrade.** In the moderate 2030 case, [[ewu.stress.moderate.random.margin_115.overloaded_pct]]% of
 neighborhood transformers go over the limit at least once a year ([[ewu.stress.high.random.margin_115.overloaded_pct]]% in the high case). Staggered

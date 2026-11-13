@@ -268,6 +268,66 @@ transformer, 3,000 transformers, sizing at today's peak times 1.15 and the limit
 | Batteries per protected transformer, moderate | 1.42 | 1.7 |
 | Measured EV charging sessions | 20,940 | about 20,800 |
 
+## Deck profile vs cautious profile
+
+The team settled the final deck's method on 2026-11-13 (runs/teammate_deck_spec_2026-11-13.txt). The tool runs it
+by default as the `deck` profile; the earlier method is kept, unchanged, as the `cautious` profile
+(`--profile cautious`). The `deck-replica` profile (`bin/ewu screen --replica`) follows the teammate's own
+ewu_sim_bo2.py line for line, read from a verbatim copy in runs/teammate_code_2026-11-13/, and equals her run on
+3,000 of 3,000 transformers in each case. The deck profile now loads her two arrays, ev_start_pmf.npy and
+hp_increment.npy: given by the teammate, built by her ewu_inputs.py from the hackathon meter data, copied by
+`bin/ewu arrays` into data/processed and checked by sha256 against config/ewu.yaml on every run.
+
+Where the spec is explicit, the deck profile follows the spec even where her code differs (groups seed 5 with our
+generator, 8.06 kWh per unit). Where the spec is silent, it follows her code and cites the line: the scenario
+shares apply to eligible homes (her line 31), winter driven means more than half the hours over the limit fall in
+November to March (her line 50), and the export peak cut is today's yearly peak minus the new one (her program.py
+line 30). Our earlier readings are still reported beside them.
+
+| At a 1.20 limit | Deck profile (default) | Deck replica (her code) | Deck | Cautious profile |
+|---|---|---|---|---|
+| Rating | smallest of 25 to 167 kVA at or above today's group peak / 0.85, kW read as kVA | the same, capped at 167 kVA | the same | today's group peak x 1.15 |
+| Groups | 3,000 of 8 homes, seed 5, no home twice | seed 11, a home may sit in two groups | seed 5 | seed 0 |
+| EV and heat pump tiers | our inventory (Level 2 EV, electric heat) | her customer_classification.csv, read in place | High or Medium EV, primary electric heat | our inventory |
+| New EV and heat pump load | her two arrays | her two arrays | her two arrays | measured sessions and slope |
+| Fix order | batteries only, 1 to 4 units | the same, sized with 8.064 kWh | the same | Flag, Shift, Protect, Upgrade |
+| Moderate 2030: overloaded | 9.73% | 9.83% | 9.8% | 26.0% |
+| High 2030: overloaded | 29.87% | 29.83% | 29.8% | 56.07% |
+| Moderate: fixed without an upgrade | 98.29% | 98.31% | 98% | |
+| High: fixed without an upgrade | 91.63% | 93.52% | 94% | |
+| Moderate: units per fixed transformer | 1.54 | 1.46 | 1.46 | 1.43 per protected |
+| High: units per fixed transformer | 1.91 | 1.93 | 1.93 | 1.54 per protected |
+| Moderate: winter driven | 79.79% | 72.88% | 73% | |
+| High: winter driven | 89.96% | 89.16% | 89% | |
+| Moderate: Avangrid cost against upgrade-all, NYSEG | $34.3M vs $111.0M | $32.9M vs $112.1M | $33M vs $112M | 51.79% (equal-life ladder, mid prices) |
+| High: Avangrid cost against upgrade-all, NYSEG | $143.8M vs $340.5M | $140.3M vs $340.1M | $140M vs $340M | 87.81% (equal-life ladder, mid prices) |
+| Gross, NYSEG | $116.6M and $436.3M | $111.7M and $440.5M | $112M and $441M | |
+| Peak cut with export, off the yearly peak | 9.05 MW (2,733 homes) | 8.80 MW (her 2,610 homes) | 8.8 MW | |
+
+Overloaded share by limit on the deck profile (moderate / high): 29.97 / 60.03 at 1.00, 17.23 / 43.17 at 1.10,
+2.43 / 13.87 at 1.40. The optional managed charging scenario cuts the overloaded share to 1.43% and 10.93%. The
+behind-the-meter peak cut is 7.11 MW over the top 50 hours; the deck's 7.0 MW is our earlier number, and the
+teammate's own behind-the-meter figure is 5.6 MW (docs/TEAMMATE_AUDIT.md).
+
+Two deck targets miss on the deck profile, and `tests/test_deck_alignment.py` marks each xfail with its measured
+cause instead of tuning. A ladder walks from her run to ours one change at a time (moderate / high, fixed without
+an upgrade and winter driven):
+
+| Step, each on top of the one before | Fixed, moderate | Fixed, high | Winter, moderate | Winter, high |
+|---|---|---|---|---|
+| A. her run: her tiers, her groups, home-mean fill, 8.064 kWh | 98.31% | 93.52% | 72.88% | 89.16% |
+| B. our inventory tiers | 98.64% | 91.55% | 76.27% | 90.45% |
+| C. our groups (seed 5), our filled load, 8.06 kWh | 99.07% | 91.26% | 76.16% | 90.61% |
+| D. our engine, shares of eligible homes (deck profile) | 98.29% | 91.63% | 79.79% | 89.96% |
+| E. shares of all grouped homes (the earlier reading) | 97.03% | 90.7% | 79.82% | 93.05% |
+
+High-case fixed (91.63% against 94%) is the tiers: step B alone moves her own run from 93.52% to 91.55%, and
+over seeds 1 to 20 the deck profile's high case never reaches 93.5% (90.7% to 93.2%). Moderate winter
+driven (79.79% against 73%) is the tiers (step B, 72.88% to 76.27%) plus the draw: over seeds 1 to 20 it runs
+from 72.07% to 81.0%, so 73% is inside our range but our seed 5 sits high. Step E shows what the earlier reading
+did: a share of all homes adds heat pumps beyond the deck's count (3,600 and 7,200 against her 3,053 and
+6,069) and lifts the high case to 34.07% overloaded.
+
 ## Limits
 
 Transformers are synthetic groups of homes because no meter-to-transformer map exists in the data; ratings

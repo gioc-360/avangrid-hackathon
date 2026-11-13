@@ -10,7 +10,7 @@ says otherwise.
 ## Before you go on
 
 - Run `bin/ewu demo` to build and open the page. It needs no network and no server. It opens on Network, Today.
-- Open a terminal in the repo with `bin/ewu screen --scenario moderate --margin 1.15` typed and not yet run.
+- Open a terminal in the repo with `bin/ewu screen --profile cautious --scenario moderate --margin 1.15` typed and not yet run.
 - On the other views, leave the case on Moderate, x 1.15, Random (the pressed buttons name it; each view's
   "How this is computed" spells it out). Move between views by clicking the left side panel, not by scrolling.
 - Every assumption, source and caveat sits in each view's closed "How this is computed"; an "est." tag or the
@@ -29,7 +29,7 @@ says otherwise.
 | 0:42 | Ladder: + Upgrade | "Only 18 of 3,000 transformers need a new one, and you can see exactly where they sit." | "How much of it needs a new transformer?" |
 | 0:52 | Click a red square, then Next new transformer | "Each transformer opens to its 8 homes summed on its worst 2030 day: base, EV and heat pump against its limit, and the fix it gets." | "Which loads drive it?" |
 | 1:05 | Point at the Synthetic network tag | "The transformers are real homes' meter data grouped 8 to a transformer, and the feeders are an illustrative split; load your map and it is your network." | "Your network is made up." |
-| 1:15 | Terminal: run `bin/ewu screen --scenario moderate --margin 1.15` | "Same network, live on the full meter data in seconds: 780 flagged, 615 shifted, 149 protected, 18 to upgrade." | "Is this real or a cached chart?" |
+| 1:15 | Terminal: run `bin/ewu screen --profile cautious --scenario moderate --margin 1.15` | "Same network, live on the full meter data in seconds: 780 flagged, 615 shifted, 149 protected, 18 to upgrade." | "Is this real or a cached chart?" |
 | 1:30 | Panel: Inventory; click EV home, then Electric heat | "Equipment is read from each home's hourly meter alone, and 69.07% of the 33,757 usable homes qualify for at least one program." | "Where is the appliance inventory and program list?" |
 | 1:45 | Panel: Overview, then Flag; click x 1.05, then x 1.50 | "Pooled over five seeds, 0.42% need an upgrade; transformer sizing is the input we know least, so flagged runs from 42.84% down to 3.74% and we report a range." | "Your headline depends on how big the transformers are." |
 | 2:05 | Overview: click Same segment, then back | "If neighbors are alike, the upgrade share rises to 1.55%, but the order of fixes holds." | "Random grouping ignores that adoption clusters." |

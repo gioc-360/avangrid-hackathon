@@ -62,7 +62,7 @@ def collect_values(config, root=ROOT):
     """Every value the page may show, under fact:, private: or config: keys."""
     facts = read_json(root / "facts" / "facts.json")
     private = read_json(root / "outputs" / "private" / "facts_private.json")
-    values = {f"fact:{k}": v["value"] for k, v in facts.items() if k.startswith(FACT_PREFIXES)}
+    values = {f"fact:{k}": v["value"] for k, v in facts.items() if k.startswith(FACT_PREFIXES) and not k.endswith(".seconds")}
     values |= {f"private:{k}": v["value"] for k, v in private.items()
                if k.startswith(PRIVATE_PREFIXES) and not any(word in k for word in NEVER_SHOWN)}
     values |= {f"config:{k}": v for k, v in config_inputs(config).items()}

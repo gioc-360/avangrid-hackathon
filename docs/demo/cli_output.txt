@@ -1,4 +1,23 @@
-$ bin/ewu screen --scenario moderate --margin 1.15
+$ bin/ewu screen
+EWU screen, deck profile: 3,000 synthetic transformers, 8 random homes, seed 5, standard kVA rating, overloaded above 1.20 x rating; managed charging off
+Arrays: ev_start_pmf from the teammate (data/processed, sha256 checked; ewu_inputs.py 2026-11-13, built from the meter data); hp_increment from the teammate (data/processed, sha256 checked; ewu_inputs.py 2026-11-13, built from the meter data)
+
+                                     moderate       high
+Overloaded, % of transformers             9.7       29.9
+Fixed without an upgrade, %              98.3       91.6
+Average units per fixed                  1.54       1.91
+Winter driven, % of overloaded           79.8       90.0
+NYSEG gross, $M                         116.6      436.3
+NYSEG net without nyserda, $M            67.4      261.2
+NYSEG avangrid cost, $M                  34.3      143.8
+NYSEG upgrade all, $M                   111.0      340.5
+
+Overloaded % by limit: 1.00: 30.0/60.0; 1.10: 17.2/43.2; 1.20: 9.7/29.9; 1.40: 2.4/13.9
+Peak cut, 2,733 priority homes x 2 units: export fleet 9.05 MW off the yearly peak (mean over the top 50 hours 6.40 MW); behind the meter 7.11 MW (mean over those hours)
+
+2.2 s, full meter data, aggregates only
+
+$ bin/ewu screen --profile cautious --scenario moderate --margin 1.15
 EWU screen: moderate 2030, rating = today's peak x 1.15
 3,000 transformers (random grouping, seed 0), 24,000 homes
 
@@ -13,4 +32,4 @@ Batteries: 213 units, 1.43 per protected transformer.
 Ladder cost as % of upgrading every flagged transformer (equal life):
 low prices 69.09%, mid prices 51.79%, high prices 43.14%
 
-2.2 s, full meter data, aggregates only
+2.3 s, full meter data, aggregates only

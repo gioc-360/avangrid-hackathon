@@ -5,13 +5,12 @@ What: confirms outputs/demo/ewu_demo.html loads nothing from outside; renders it
       scenario x grouping x sizing (cycling homes, hosts, Network ladder steps, an opened transformer); requires
       all 9 views filled, Network states drawn equal to facts, no NaN, every shown number bound to its key and
       equal to it at the shown precision; screenshots each view to outputs/private/demo_shots/; times `bin/ewu
-      screen` (fails at the config limit), records ewu.cli.screen_seconds, writes docs/demo/cli_output.txt,
-      where every number must trace. `--selftest` plants seven bad pages and must catch each.
+      screen` (fails at the config limit), records ewu.cli.screen_seconds, writes docs/demo/cli_output.txt (deck
+      run, then the cautious ladder), where every number must trace. `--selftest` plants seven bad pages.
 Why:  the demo is what judges see. A number typed into the page, a stale page after a rerun, a step that fails
       to draw or a link that needs the network would each break the promise that everything traces to code.
-How:  html.parser reads the DOM Chrome dumps after the page's script runs; numbers outside bound elements are
-      found with the same rule checks/trace_numbers.py uses for docs. Chrome runs with its own empty profile
-      in the scratch folder, so it never touches the user's browser and the page never leaves this machine.
+How:  html.parser reads the DOM Chrome dumps after the page's script runs; numbers outside bound elements are found
+      as checks/trace_numbers.py does; Chrome runs with its own empty profile, so the page never leaves this machine.
 """
 import itertools, json, re, subprocess, sys, tempfile, time
 from html.parser import HTMLParser
@@ -133,13 +132,14 @@ def page_states(sources):
 
 
 def time_live_screen():
-    """Run the live screen on the full data; return seconds and its printed output."""
-    args = ["--scenario", config_value("demo.scenario"), "--margin", str(config_value("demo.margin"))]
-    started = time.time()
-    run, seconds = subprocess.run([str(ROOT / "bin/ewu"), "screen", *args], capture_output=True, text=True, timeout=600), time.time() - started
-    if run.returncode:
-        raise SystemExit(f"FAIL  bin/ewu screen exited {run.returncode}: {run.stderr[-400:]}")
-    return seconds, f"$ bin/ewu screen {' '.join(args)}\n{run.stdout}"
+    """Run the default deck screen (timed), then the cautious ladder the video films; return seconds and both outputs."""
+    runs = []
+    for args in ([], ["--profile", "cautious", "--scenario", config_value("demo.scenario"), "--margin", str(config_value("demo.margin"))]):
+        started, run = time.time(), subprocess.run([str(ROOT / "bin/ewu"), "screen", *args], capture_output=True, text=True, timeout=600)
+        if run.returncode:
+            raise SystemExit(f"FAIL  bin/ewu screen exited {run.returncode}: {run.stderr[-400:]}")
+        runs.append((time.time() - started, f"$ bin/ewu screen {' '.join(args)}".rstrip() + f"\n{run.stdout}"))
+    return runs[0][0], "\n".join(text for _, text in runs)
 
 
 def run_selftest():

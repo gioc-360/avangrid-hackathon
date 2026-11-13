@@ -156,7 +156,7 @@ precision shown. `demo_check.py` renders the demo page in headless Chrome, binds
 and compares it with the stored value. `config_check.py` opens the source of every config input.
 
 Code: `analysis/facts.py:18 def record(key, value`, `checks/trace_numbers.py:59 def matching_key`,
-`checks/demo_check.py:100 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
+`checks/demo_check.py:99 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
 
 ### Q13. Where does customer data go?
 
@@ -179,7 +179,7 @@ time as `ewu.cli.screen_seconds` in facts, and fails at 60 s. Loading is
 summed per transformer with one sparse matrix product per chunk of homes, and every later step works on arrays
 of transformers by hours, so cost grows with the number of transformers, not with loops over homes.
 
-Code: `checks/demo_check.py:135 def time_live_screen`, `checks/demo_check.py:187-188 checks.screen_seconds_max`,
+Code: `checks/demo_check.py:134 def time_live_screen`, `checks/demo_check.py:187-188 checks.screen_seconds_max`,
 `ewu/stress.py:35-44 out += pick @ rows`.
 
 ### Q15. Random groups change with the seed. How stable are the results?
@@ -208,5 +208,5 @@ instead of the equal-block split.
 Code: `ewu/network.py:95 def run_network`, `ewu/network.py:98 screen.screen_setup`,
 `ewu/network.py:102 sensitivity.ladder_states_for_one_run`, `ewu/network.py:30 def feeder_of`,
 `ewu/network.py:42 def looks`, `config/ewu.yaml:138 feeders:`, `ewu/demo_template.html:277 function look`,
-`ewu/demo_template.html:302 function networkSvg`, `checks/demo_check.py:104 net_view and`,
+`ewu/demo_template.html:302 function networkSvg`, `checks/demo_check.py:103 net_view and`,
 `tests/test_network.py:28 def test_state_counts_equal_the_screen_for_the_demo_seed`, `ewu/feeders.py:41 def load_map`.
