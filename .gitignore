@@ -36,3 +36,4 @@ video/rec/mouse
 # bin/ewu plan: transformer-level CSVs come from metered load and showcase CSVs sit beside them; both stay local (README is tracked)
 outputs/plan/
 outputs/showcase/*.csv
+video/rec/ocr
