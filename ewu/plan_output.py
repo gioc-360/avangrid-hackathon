@@ -125,6 +125,10 @@ def print_plan(result):
 
 
 def run_command(args):
+    if args.profile == "deck":
+        from ewu import deck_views
+        deck_views.plan_main(args.scenario, args.limit, True if args.managed else None)
+        return 0
     result = execute(args.scenario, args.margin, args.grouping, args.seed, args.private, args.showcase)
     official = (args.scenario, args.margin, args.grouping, args.seed) == (
         config_value("demo.scenario"), config_value("demo.margin"), "random", None)
@@ -144,4 +148,6 @@ def add_command(commands):
     cmd.add_argument("--seed", type=int, default=None, help="grouping seed; default config demo.screen_seed")
     cmd.add_argument("--private", action="store_true", help="also write real home lists to outputs/private/plan")
     cmd.add_argument("--showcase", action="store_true", help="also write a simulated home-level set to outputs/showcase")
+    from ewu.cli import add_profile_options
+    add_profile_options(cmd)
     cmd.set_defaults(run=run_command)

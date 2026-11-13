@@ -5823,6 +5823,114 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
  },
+ "ewu.deck.network.high.flag.over": {
+  "value": 917,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.flag.within": {
+  "value": 2083,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.protect.over": {
+  "value": 48,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.protect.protected": {
+  "value": 869,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.protect.within": {
+  "value": 2083,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.today.within": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.upgrade.protected": {
+  "value": 869,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.upgrade.upgrade": {
+  "value": 48,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.high.upgrade.within": {
+  "value": 2083,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.flag.over": {
+  "value": 312,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.flag.within": {
+  "value": 2688,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.protect.over": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.protect.protected": {
+  "value": 309,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.protect.within": {
+  "value": 2688,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.today.within": {
+  "value": 3000,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.upgrade.protected": {
+  "value": 309,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.upgrade.upgrade": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
+ "ewu.deck.network.moderate.upgrade.within": {
+  "value": 2688,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating, seed 5; same run as bin/ewu screen"
+ },
  "ewu.deck.nyseg_transformers": {
   "value": 111250,
   "unit": "transformers",
@@ -5882,6 +5990,54 @@
   "unit": "units",
   "script": "ewu/deck_screen.py",
   "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
+ "ewu.deck.plan.high.actions.none": {
+  "value": 2083,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.high.actions.protect": {
+  "value": 869,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.high.actions.upgrade": {
+  "value": 48,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.high.avangrid_cost_total_usd": {
+  "value": 3716580,
+  "unit": "$ for the sample",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.moderate.actions.none": {
+  "value": 2688,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.moderate.actions.protect": {
+  "value": 309,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.moderate.actions.upgrade": {
+  "value": 3,
+  "unit": "transformers",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+ },
+ "ewu.deck.plan.moderate.avangrid_cost_total_usd": {
+  "value": 964488,
+  "unit": "$ for the sample",
+  "script": "ewu/deck_views.py",
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.prices.factor": {
   "value": 9.108,

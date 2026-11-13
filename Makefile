@@ -42,7 +42,11 @@ prototype:       ## EWU prototype: check the config, then rebuild every EWU outp
 	bin/ewu tophours
 	bin/ewu sensitivity
 	bin/ewu screen
+	bin/ewu screen --managed
+	bin/ewu screen --profile cautious
 	bin/ewu network
+	bin/ewu network --profile cautious
+	bin/ewu plan
 	bin/ewu robustness
 	bin/ewu case
 	bin/ewu demo --no-open

@@ -104,6 +104,10 @@ def run_screen_command(args):
 
 
 def run_network_command(args):
+    if args.profile == "deck":
+        from ewu import deck_views
+        deck_views.network_main(args.scenario, args.limit, True if args.managed else None)
+        return 0
     from ewu import network
     network.main()
     return 0
@@ -160,6 +164,8 @@ def main(argv=None):
     add_profile_options(scr)
     scr.set_defaults(run=run_screen_command)
     net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
+    net.add_argument("--scenario", default=None, choices=("moderate", "high"), help="deck: scenario (default demo.scenario)")
+    add_profile_options(net)
     net.set_defaults(run=run_network_command)
     cold = commands.add_parser("coldsnap", help="battery duration test through the cold snap")
     cold.add_argument("--date", default=config_value("demo.cold_snap_start"), help="first day of the window")

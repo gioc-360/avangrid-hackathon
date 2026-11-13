@@ -37,7 +37,7 @@ meter listed under two transformers; `bin/ewu screen --map file.csv` runs the sa
 group sizes handled in batches.
 
 Code: `ewu/feeders.py:26 def build_transformers`, `ewu/feeders.py:41 def load_map`,
-`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:159 "--map"`,
+`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:163 "--map"`,
 `tests/test_screen.py:60 def test_a_real_map_with_uneven_transformers_runs`,
 `tests/test_stress.py:76 def test_no_home_sits_in_two_transformers`.
 
