@@ -1049,6 +1049,1704 @@
   "script": "ewu/stress.py",
   "method": "share x grouped homes"
  },
+ "ewu.attribution.grid_seconds": {
+  "value": 31.0,
+  "unit": "s",
+  "script": "ewu/attribution.py",
+  "method": "whole attribution and shift grid"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_clear_without_ev_pct": {
+  "value": 70.85,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_lead_ev_pct": {
+  "value": 70.88,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_lead_hp_pct": {
+  "value": 29.12,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_over_per_transformer": {
+  "value": 8.97,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.hours_with_hp_running_pct": {
+  "value": 99.92,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.kwh_over_ev_pct": {
+  "value": 39.25,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.kwh_over_hp_pct": {
+  "value": 60.75,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.overloaded_without_ev_of_all_pct": {
+  "value": 11.73,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.overloaded_without_ev_pct": {
+  "value": 52.51,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.worst_hour_ev_led_pct": {
+  "value": 79.71,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.staggered.worst_hour_hp_led_pct": {
+  "value": 20.29,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_clear_without_ev_pct": {
+  "value": 90.76,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_lead_ev_pct": {
+  "value": 90.93,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_lead_hp_pct": {
+  "value": 9.07,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_over_per_transformer": {
+  "value": 28.31,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.hours_with_hp_running_pct": {
+  "value": 91.14,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.kwh_over_ev_pct": {
+  "value": 59.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.kwh_over_hp_pct": {
+  "value": 41.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.overloaded_without_ev_of_all_pct": {
+  "value": 11.73,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.overloaded_without_ev_pct": {
+  "value": 20.9,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.worst_hour_ev_led_pct": {
+  "value": 99.92,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.timer.worst_hour_hp_led_pct": {
+  "value": 0.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 86.22,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_lead_ev_pct": {
+  "value": 86.39,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 13.61,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_over_per_transformer": {
+  "value": 18.98,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 94.81,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.kwh_over_ev_pct": {
+  "value": 50.48,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.kwh_over_hp_pct": {
+  "value": 49.52,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 11.73,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.overloaded_without_ev_pct": {
+  "value": 21.42,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.worst_hour_ev_led_pct": {
+  "value": 98.15,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.random.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 1.85,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_clear_without_ev_pct": {
+  "value": 64.42,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_lead_ev_pct": {
+  "value": 64.47,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_lead_hp_pct": {
+  "value": 35.53,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_over_per_transformer": {
+  "value": 32.27,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.hours_with_hp_running_pct": {
+  "value": 99.66,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.kwh_over_ev_pct": {
+  "value": 36.84,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.kwh_over_hp_pct": {
+  "value": 63.16,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.overloaded_without_ev_of_all_pct": {
+  "value": 18.23,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.overloaded_without_ev_pct": {
+  "value": 61.25,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.worst_hour_ev_led_pct": {
+  "value": 78.65,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.staggered.worst_hour_hp_led_pct": {
+  "value": 21.35,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_clear_without_ev_pct": {
+  "value": 82.79,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_lead_ev_pct": {
+  "value": 83.16,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_lead_hp_pct": {
+  "value": 16.84,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_over_per_transformer": {
+  "value": 66.74,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.hours_with_hp_running_pct": {
+  "value": 89.8,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.kwh_over_ev_pct": {
+  "value": 58.91,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.kwh_over_hp_pct": {
+  "value": 41.09,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.overloaded_without_ev_of_all_pct": {
+  "value": 18.23,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.overloaded_without_ev_pct": {
+  "value": 34.55,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.worst_hour_ev_led_pct": {
+  "value": 99.96,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.timer.worst_hour_hp_led_pct": {
+  "value": 0.04,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 78.49,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_lead_ev_pct": {
+  "value": 78.75,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 21.25,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_over_per_transformer": {
+  "value": 53.38,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 93.78,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.kwh_over_ev_pct": {
+  "value": 48.74,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.kwh_over_hp_pct": {
+  "value": 51.26,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 18.23,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.overloaded_without_ev_pct": {
+  "value": 33.97,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.worst_hour_ev_led_pct": {
+  "value": 97.79,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.high.same_segment.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 2.21,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_clear_without_ev_pct": {
+  "value": 81.49,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_lead_ev_pct": {
+  "value": 81.49,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_lead_hp_pct": {
+  "value": 18.51,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_over_per_transformer": {
+  "value": 0.9,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.hours_with_hp_running_pct": {
+  "value": 99.87,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.kwh_over_ev_pct": {
+  "value": 43.92,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.kwh_over_hp_pct": {
+  "value": 56.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.overloaded_without_ev_of_all_pct": {
+  "value": 1.97,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.overloaded_without_ev_pct": {
+  "value": 34.91,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.worst_hour_ev_led_pct": {
+  "value": 86.67,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.staggered.worst_hour_hp_led_pct": {
+  "value": 13.33,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_clear_without_ev_pct": {
+  "value": 97.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_lead_ev_pct": {
+  "value": 97.11,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_lead_hp_pct": {
+  "value": 2.89,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_over_per_transformer": {
+  "value": 5.73,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.hours_with_hp_running_pct": {
+  "value": 88.96,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.kwh_over_ev_pct": {
+  "value": 62.36,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.kwh_over_hp_pct": {
+  "value": 37.64,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.overloaded_without_ev_of_all_pct": {
+  "value": 1.97,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.overloaded_without_ev_pct": {
+  "value": 8.13,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.worst_hour_ev_led_pct": {
+  "value": 100.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.timer.worst_hour_hp_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 95.38,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_ev_pct": {
+  "value": 95.43,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 4.57,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_over_per_transformer": {
+  "value": 3.62,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 90.52,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.kwh_over_ev_pct": {
+  "value": 56.77,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.kwh_over_hp_pct": {
+  "value": 43.23,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 1.97,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.overloaded_without_ev_pct": {
+  "value": 7.54,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.worst_hour_ev_led_pct": {
+  "value": 99.39,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.random.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 0.61,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_clear_without_ev_pct": {
+  "value": 77.59,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_lead_ev_pct": {
+  "value": 77.62,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_lead_hp_pct": {
+  "value": 22.38,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_over_per_transformer": {
+  "value": 4.14,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.hours_with_hp_running_pct": {
+  "value": 99.55,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.kwh_over_ev_pct": {
+  "value": 41.92,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.kwh_over_hp_pct": {
+  "value": 58.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.overloaded_without_ev_of_all_pct": {
+  "value": 4.31,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.overloaded_without_ev_pct": {
+  "value": 42.06,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.worst_hour_ev_led_pct": {
+  "value": 87.63,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.staggered.worst_hour_hp_led_pct": {
+  "value": 12.37,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_clear_without_ev_pct": {
+  "value": 94.21,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_lead_ev_pct": {
+  "value": 94.33,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_lead_hp_pct": {
+  "value": 5.67,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_over_per_transformer": {
+  "value": 16.05,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.hours_with_hp_running_pct": {
+  "value": 86.76,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.kwh_over_ev_pct": {
+  "value": 64.68,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.kwh_over_hp_pct": {
+  "value": 35.32,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.overloaded_without_ev_of_all_pct": {
+  "value": 4.31,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.overloaded_without_ev_pct": {
+  "value": 15.05,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.worst_hour_ev_led_pct": {
+  "value": 99.95,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.timer.worst_hour_hp_led_pct": {
+  "value": 0.05,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_clear_without_ev_pct": {
+  "value": 92.08,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_lead_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_lead_ev_pct": {
+  "value": 92.2,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_lead_hp_pct": {
+  "value": 7.8,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_over_per_transformer": {
+  "value": 11.71,
+  "unit": "hours per transformer per year",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.hours_with_hp_running_pct": {
+  "value": 89.51,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.kwh_over_base_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.kwh_over_ev_pct": {
+  "value": 57.24,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.kwh_over_hp_pct": {
+  "value": 42.76,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.overloaded_without_ev_of_all_pct": {
+  "value": 4.31,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.overloaded_without_ev_pct": {
+  "value": 13.19,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.worst_hour_base_led_pct": {
+  "value": 0.0,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.worst_hour_ev_led_pct": {
+  "value": 99.59,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.attribution.moderate.same_segment.margin_115.unmanaged.worst_hour_hp_led_pct": {
+  "value": 0.41,
+  "unit": "%",
+  "script": "ewu/attribution.py",
+  "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
+ },
+ "ewu.findings.teammate.high.shift_fixed_share_pct": {
+  "value": 65.4,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/attribution.py",
+  "method": "teammate fixed-by-staggering points over overloaded points"
+ },
+ "ewu.findings.teammate.moderate.shift_fixed_share_pct": {
+  "value": 88.8,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/attribution.py",
+  "method": "teammate fixed-by-staggering points over overloaded points"
+ },
+ "ewu.shift.high.random.margin_105.staggered.fixed_pct": {
+  "value": 49.36,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_105.staggered.new_overloads_pct": {
+  "value": 0.15,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_105.staggered.overloaded_pct": {
+  "value": 36.46,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.random.margin_105.timer.fixed_pct": {
+  "value": 11.06,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_105.timer.new_overloads_pct": {
+  "value": 4.02,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_105.timer.overloaded_pct": {
+  "value": 67.8,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.random.margin_105.unmanaged.overloaded_pct": {
+  "value": 71.71,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.random.margin_115.staggered.fixed_pct": {
+  "value": 59.43,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_115.staggered.new_overloads_pct": {
+  "value": 0.13,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_115.staggered.overloaded_pct": {
+  "value": 22.35,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.random.margin_115.timer.fixed_pct": {
+  "value": 10.04,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_115.timer.new_overloads_pct": {
+  "value": 6.87,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_115.timer.overloaded_pct": {
+  "value": 56.14,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.random.margin_115.unmanaged.overloaded_pct": {
+  "value": 54.77,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.random.margin_130.staggered.fixed_pct": {
+  "value": 70.61,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_130.staggered.new_overloads_pct": {
+  "value": 0.07,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_130.staggered.overloaded_pct": {
+  "value": 9.78,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.random.margin_130.timer.fixed_pct": {
+  "value": 9.62,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_130.timer.new_overloads_pct": {
+  "value": 9.95,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_130.timer.overloaded_pct": {
+  "value": 39.82,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.random.margin_130.unmanaged.overloaded_pct": {
+  "value": 33.05,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.random.margin_150.staggered.fixed_pct": {
+  "value": 78.54,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_150.staggered.new_overloads_pct": {
+  "value": 0.03,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_150.staggered.overloaded_pct": {
+  "value": 3.12,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.5"
+ },
+ "ewu.shift.high.random.margin_150.timer.fixed_pct": {
+  "value": 9.09,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.random.margin_150.timer.new_overloads_pct": {
+  "value": 9.72,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.random.margin_150.timer.overloaded_pct": {
+  "value": 22.79,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.5"
+ },
+ "ewu.shift.high.random.margin_150.unmanaged.overloaded_pct": {
+  "value": 14.38,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.shift.high.same_segment.margin_105.staggered.fixed_pct": {
+  "value": 36.26,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_105.staggered.new_overloads_pct": {
+  "value": 0.09,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_105.staggered.overloaded_pct": {
+  "value": 40.15,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.same_segment.margin_105.timer.fixed_pct": {
+  "value": 9.5,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_105.timer.new_overloads_pct": {
+  "value": 3.52,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_105.timer.overloaded_pct": {
+  "value": 60.39,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.same_segment.margin_105.unmanaged.overloaded_pct": {
+  "value": 62.85,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.shift.high.same_segment.margin_115.staggered.fixed_pct": {
+  "value": 44.69,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_115.staggered.new_overloads_pct": {
+  "value": 0.09,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_115.staggered.overloaded_pct": {
+  "value": 29.76,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.same_segment.margin_115.timer.fixed_pct": {
+  "value": 8.35,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_115.timer.new_overloads_pct": {
+  "value": 3.59,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_115.timer.overloaded_pct": {
+  "value": 52.76,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.same_segment.margin_115.unmanaged.overloaded_pct": {
+  "value": 53.65,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.shift.high.same_segment.margin_130.staggered.fixed_pct": {
+  "value": 54.84,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_130.staggered.new_overloads_pct": {
+  "value": 0.01,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_130.staggered.overloaded_pct": {
+  "value": 18.57,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.same_segment.margin_130.timer.fixed_pct": {
+  "value": 6.89,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_130.timer.new_overloads_pct": {
+  "value": 4.99,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_130.timer.overloaded_pct": {
+  "value": 43.26,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.same_segment.margin_130.unmanaged.overloaded_pct": {
+  "value": 41.1,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.shift.high.same_segment.margin_150.staggered.fixed_pct": {
+  "value": 64.3,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_150.staggered.new_overloads_pct": {
+  "value": 0.02,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_150.staggered.overloaded_pct": {
+  "value": 9.54,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.5"
+ },
+ "ewu.shift.high.same_segment.margin_150.timer.fixed_pct": {
+  "value": 5.88,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.high.same_segment.margin_150.timer.new_overloads_pct": {
+  "value": 6.89,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.high.same_segment.margin_150.timer.overloaded_pct": {
+  "value": 31.99,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.5"
+ },
+ "ewu.shift.high.same_segment.margin_150.unmanaged.overloaded_pct": {
+  "value": 26.67,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.random.margin_105.staggered.fixed_pct": {
+  "value": 71.86,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_105.staggered.new_overloads_pct": {
+  "value": 0.14,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_105.staggered.overloaded_pct": {
+  "value": 12.19,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.random.margin_105.timer.fixed_pct": {
+  "value": 27.79,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_105.timer.new_overloads_pct": {
+  "value": 3.23,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_105.timer.overloaded_pct": {
+  "value": 34.17,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.random.margin_105.unmanaged.overloaded_pct": {
+  "value": 42.84,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.random.margin_115.staggered.fixed_pct": {
+  "value": 78.56,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_115.staggered.new_overloads_pct": {
+  "value": 0.04,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_115.staggered.overloaded_pct": {
+  "value": 5.65,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.random.margin_115.timer.fixed_pct": {
+  "value": 23.17,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_115.timer.new_overloads_pct": {
+  "value": 4.17,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_115.timer.overloaded_pct": {
+  "value": 24.28,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.random.margin_115.unmanaged.overloaded_pct": {
+  "value": 26.18,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.random.margin_130.staggered.fixed_pct": {
+  "value": 85.06,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_130.staggered.new_overloads_pct": {
+  "value": 0.01,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_130.staggered.overloaded_pct": {
+  "value": 1.79,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.random.margin_130.timer.fixed_pct": {
+  "value": 21.34,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_130.timer.new_overloads_pct": {
+  "value": 4.42,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_130.timer.overloaded_pct": {
+  "value": 13.76,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.random.margin_130.unmanaged.overloaded_pct": {
+  "value": 11.87,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.random.margin_150.staggered.fixed_pct": {
+  "value": 91.98,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_150.staggered.new_overloads_pct": {
+  "value": 0.0,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_150.staggered.overloaded_pct": {
+  "value": 0.3,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.random.margin_150.timer.fixed_pct": {
+  "value": 21.75,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.random.margin_150.timer.new_overloads_pct": {
+  "value": 2.91,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.random.margin_150.timer.overloaded_pct": {
+  "value": 5.84,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.random.margin_150.unmanaged.overloaded_pct": {
+  "value": 3.74,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.staggered.fixed_pct": {
+  "value": 61.7,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.staggered.new_overloads_pct": {
+  "value": 0.06,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.staggered.overloaded_pct": {
+  "value": 16.84,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.timer.fixed_pct": {
+  "value": 22.07,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.timer.new_overloads_pct": {
+  "value": 1.87,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.timer.overloaded_pct": {
+  "value": 36.01,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.same_segment.margin_105.unmanaged.overloaded_pct": {
+  "value": 43.81,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.05"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.staggered.fixed_pct": {
+  "value": 68.7,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.staggered.new_overloads_pct": {
+  "value": 0.02,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.staggered.overloaded_pct": {
+  "value": 10.24,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.timer.fixed_pct": {
+  "value": 19.58,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.timer.new_overloads_pct": {
+  "value": 2.37,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.timer.overloaded_pct": {
+  "value": 28.62,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.same_segment.margin_115.unmanaged.overloaded_pct": {
+  "value": 32.65,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.15"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.staggered.fixed_pct": {
+  "value": 75.6,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.staggered.new_overloads_pct": {
+  "value": 0.05,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.staggered.overloaded_pct": {
+  "value": 4.95,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.timer.fixed_pct": {
+  "value": 15.88,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.timer.new_overloads_pct": {
+  "value": 3.27,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.timer.overloaded_pct": {
+  "value": 20.19,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.same_segment.margin_130.unmanaged.overloaded_pct": {
+  "value": 20.11,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.3"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.staggered.fixed_pct": {
+  "value": 82.6,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.staggered.new_overloads_pct": {
+  "value": 0.01,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.staggered.overloaded_pct": {
+  "value": 1.84,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging staggered, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.timer.fixed_pct": {
+  "value": 14.92,
+  "unit": "% of transformers overloaded unmanaged",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded unmanaged and not overloaded in this mode"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.timer.new_overloads_pct": {
+  "value": 3.17,
+  "unit": "% of all transformers",
+  "script": "ewu/attribution.py",
+  "method": "pooled seeds; overloaded in this mode and not unmanaged"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.timer.overloaded_pct": {
+  "value": 12.11,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging timer, rating = today's peak x 1.5"
+ },
+ "ewu.shift.moderate.same_segment.margin_150.unmanaged.overloaded_pct": {
+  "value": 10.5,
+  "unit": "% of transformers",
+  "script": "ewu/attribution.py",
+  "method": "mean of 5 seeds, EV charging unmanaged, rating = today's peak x 1.5"
+ },
  "ewu.stress.grid_seconds": {
   "value": 20.1,
   "unit": "s",

@@ -33,3 +33,4 @@ test:            ## EWU prototype tests (config, house rules, then one file per 
 prototype:       ## EWU prototype: check the config, then rebuild every EWU output from data/processed
 	$(PY) checks/config_check.py
 	$(PY) ewu/stress.py
+	$(PY) ewu/attribution.py
