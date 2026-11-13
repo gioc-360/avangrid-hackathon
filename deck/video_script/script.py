@@ -31,8 +31,7 @@ LINES = [
      "against its limit, and how much the battery units must cover on its worst day."),
     ("1:33-1:50", "Money view", "Across NYSEG, that is a net cost of $34M instead of $111M in the moderate case, after lease "
      "payments and NYSERDA incentives: 58% to 69% less than upgrading every overloaded transformer."),
-    ("1:50-2:05", "Terminal: bin/ewu screen runs live", "And this is not a slide. Our model runs on all 33,757 homes in seconds, "
-     "and every number on screen is written by the code, never typed. A check fails if one does not match."),
+    ("1:50-2:00", "Terminal: bin/ewu screen runs live", "This runs live. Our model reads all 33,757 homes and prices every transformer's fix in seconds."),
     ("2:05-2:18", "Back to the Network view, Upgrade", "So the planner gets one list: which transformers will overload, where to "
      "place batteries, and the few that need an upgrade. Customers electrify sooner, without waiting for a new transformer."),
 ]
