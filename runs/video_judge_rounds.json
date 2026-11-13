@@ -1,0 +1,368 @@
+{
+ "what": "Simulated judge rounds on the demo film. Every round scored v2 (the film the judges were shown); each round's fixes were applied to the next film: round 1 -> v3, round 2 -> v4, round 3 -> v5. used_avg averages the used judges (exec, customer programs, hackathon judge); held is the held-out finance judge, whose fixes are never applied.",
+ "source": "the workflow's judge records as relayed to the delivery step; fixes from docs/VIDEO_SCRIPT.md Round N changes",
+ "complete": false,
+ "missing": "round 3: the hackathon-judge and held-out-finance records and the end of the customer-programs question were cut off in the relayed text; per-judge fix lists were not relayed (the applied and skipped fixes are in docs/VIDEO_SCRIPT.md)",
+ "rounds": [
+  {
+   "round": 1,
+   "version": "v2",
+   "fixes_went_into": "v3",
+   "used_avg": 3.7,
+   "held": 3.77,
+   "people_impact": 2.72,
+   "demo_value": 3.6,
+   "judges": [
+    {
+     "key": "avangrid-exec",
+     "w": 3.66,
+     "s": {
+      "business_value": 3.6,
+      "analytics": 3.8,
+      "presentation": 3.7,
+      "innovation": 3.3,
+      "people_impact": 2.8,
+      "demo_value": 3.6
+     },
+     "q": "Your flag is any single hour above 1.2 times a rating you guessed as today's peak times 1.15. We have nameplate kVA in our GIS, and our planning standard is thermal loss of life with ambient correction. A pole-top unit at -5 F carries well over 1.2 times its rating for hours without damage. If you rerun the tool on our meter-to-transformer map with nameplate ratings and a thermal criterion, how much of Protect and Upgrade survives? And does the battery rung still exist as something we could put in front of the PSC under the non-wires benefit-cost test?"
+    },
+    {
+     "key": "customer-programs",
+     "w": 3.75,
+     "s": {
+      "business_value": 3.7,
+      "analytics": 4,
+      "presentation": 3.5,
+      "innovation": 3.4,
+      "people_impact": 2.5,
+      "demo_value": 3.6
+     },
+     "q": "Your Shift rung assumes every EV home on a flagged transformer accepts a default late-night slot at half power. When Dana overrides it because she needs the car at 6 am, or simply opts out, at what opt-out rate does Shift stop fixing most of the 26% flagged? And what would Avangrid have to pay or promise her to keep her enrolled without hurting satisfaction?"
+    },
+    {
+     "key": "hackathon-judge",
+     "w": 3.68,
+     "s": {
+      "business_value": 3.6,
+      "analytics": 3.9,
+      "presentation": 3.6,
+      "innovation": 3.3,
+      "people_impact": 2.8,
+      "demo_value": 3.6
+     },
+     "q": "Your own Money page says batteries cost $1,720 a year against the $1,209 upgrade they defer, and that the full ladder (51.92%) costs more than shift-then-upgrade (43.47%). Why should Avangrid run the Protect rung at all instead of shifting and upgrading the rest? What installed battery price, and what treatment under New York's non-wires-alternative test, would you need to get below the $7,730 tie, given that your placeholder range starts at $9,000?"
+    },
+    {
+     "key": "held-out-finance",
+     "w": 3.77,
+     "s": {
+      "business_value": 3.6,
+      "analytics": 4.1,
+      "presentation": 3.7,
+      "innovation": 3.4,
+      "people_impact": 2.8,
+      "demo_value": 3.6
+     },
+     "q": "At your own placeholder prices a battery loses to the upgrade, and the full ladder costs $226.8M present value against $189.9M for shift-then-upgrade. Why should I put Protect in this rate case instead of approving shift-then-upgrade now and holding batteries until a quoted installed price comes in under $7,730 a unit?"
+    }
+   ],
+   "fixes": [
+    {
+     "fix": "Shift: a plain timer still leaves 24% over; cut the 53% line; marker \"Staggered, not a timer: same energy, overnight\"",
+     "from": "both used judges (exec fix 3, customer programs fix 2)",
+     "applied": "applied",
+     "what_changed": "new second Shift line (ewu.shift...timer.overloaded_pct 24.28), 79% of flagged said aloud (78.56), the 53% line is gone, marker relabeled and drawn round the headline with its %; the exec's \"95.38% of overload hours stay under with no new EV\" line is not added (length: the film would pass 4:30)"
+    },
+    {
+     "fix": "Riveras: what changes for a household",
+     "from": "customer programs fix 1 (people impact, the lowest criterion)",
+     "applied": "applied, reworded",
+     "what_changed": "\"One host home clears 90%..., two hosts 93%, and no one's heat is turned down. Two units also give every home we tested room for an EV charger; with none, only 0.5% have it.\" Card subtitle \"Host a battery, room for a charger\". Not said: \"without a service study\" (the model tests peak plus 3 kVA, not a utility process) and \"Level 2\" (the test uses measured mean charging power)"
+    },
+    {
+     "fix": "Flag and Upgrade name Sam, with Sam cards",
+     "from": "v2 gate 6",
+     "applied": "applied",
+     "what_changed": "\"Rung one is Flag, Sam's first question\"; \"Rung four is Upgrade: Sam spends capital only where nothing else works\"; two Illustrative Sam cards"
+    },
+    {
+     "fix": "Money in dollars: box the Labeled scaling line, say $436.9M, $226.8M, $189.9M",
+     "from": "exec fix 1",
+     "applied": "applied",
+     "what_changed": "marker \"Scaled to NYSEG: $436.9M against $226.8M\" on the grey line, the pointer rests on $436.9M; the three nyseg_*_musd facts are spoken; \"an assumption\" said aloud; the 43.47% and 51.92% lines are cut for length"
+    },
+    {
+     "fix": "Terminal: explain 26.00 vs 26.18",
+     "from": "exec fix 2",
+     "applied": "applied in narration",
+     "what_changed": "\"Each run is one random grouping; the page pools five, each within 1.05 points.\" (ewu.stress...seed_gap_pts, a flagged-share gap); no separate marker on the Upgrade 0.60 row, because 1.05 points is about the flagged share and the table marker already boxes all four rows"
+    },
+    {
+     "fix": "Pointer still while a line is read",
+     "from": "v2 gate 8",
+     "applied": "applied",
+     "what_changed": "every move now plays in the gap before its sentence (video/gaps.py sizes the gap from each glide's length, geometry from the v2 take logs in video/geometry.json)"
+    },
+    {
+     "fix": "Pointer on the digits, box edge through the %",
+     "from": "v2 gate 8",
+     "applied": "applied",
+     "what_changed": "hovers aim at a number's bottom right corner; headline markers box `.big` (number and %)"
+    },
+    {
+     "fix": "Shift tooltip over 26.18%",
+     "from": "v2 gate 8",
+     "applied": "applied",
+     "what_changed": "the Shift take no longer hovers the headline; the pointer rests on the ladder bar"
+    },
+    {
+     "fix": "Terminal lines wrap at the right edge",
+     "from": "v2 gate 5",
+     "applied": "applied",
+     "what_changed": "`bin/ewu screen` prints its two long lines as four lines under 80 columns (ewu/screen.py); the take indents every line two columns and starts one row down"
+    },
+    {
+     "fix": "Fade from and to black",
+     "from": "v2 gate 7",
+     "applied": "applied",
+     "what_changed": "video/build.py took min() of the two ramps; now max()"
+    },
+    {
+     "fix": "Source-key tooltips 11 to 14 px; the line promising \"its source key appears\"",
+     "from": "v2 gate 5",
+     "applied": "applied, by removal",
+     "what_changed": "the line is cut, and every rest now lands on the % (or M) after a number, outside its span, so no 11 to 14 px tooltip opens; this drops v2's on-screen proof of the fact keys (the side panel foot still says \"hover it for the key\")"
+    },
+    {
+     "fix": "Marker label \"69.07% of homes qualify for a program\"",
+     "from": "gate 3 on the first v3 draft",
+     "applied": "relabeled",
+     "what_changed": "\"Who can enroll: 69.07% of homes\": the old label read so close to the page headline (ratio 0.8 or more) that the gate's OCR dropped the page line as if it were the label"
+    },
+    {
+     "fix": "Type floor: film the page at 170%",
+     "from": "v2 gate 5",
+     "applied": "skipped",
+     "what_changed": "at 170% Inventory, Protect and Money lose their lower half below the fold (checked with headless Chrome), and the brief forbids scrolling; person cards went from 26 to 30 px role text"
+    },
+    {
+     "fix": "Held-out judge's fixes",
+     "from": "held out",
+     "applied": "not applied, by rule",
+     "what_changed": ""
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "version": "v2",
+   "fixes_went_into": "v4",
+   "used_avg": 3.83,
+   "held": 3.59,
+   "people_impact": 2.68,
+   "demo_value": 3.68,
+   "judges": [
+    {
+     "key": "avangrid-exec",
+     "w": 3.7,
+     "s": {
+      "business_value": 3.6,
+      "analytics": 4,
+      "presentation": 3.4,
+      "innovation": 3.5,
+      "people_impact": 2.6,
+      "demo_value": 3.7
+     },
+     "q": "Before I take one transformer out of my NYSEG and RG&E replacement budget in front of the PSC, how do you know your 0.4% upgrade share isn't 4%? Today it rests on 8 random homes per transformer, a rating guessed at today's peak times 1.15, and hourly data. Once our nameplate ratings, our real meter-to-transformer map and 15-minute peaks go in, what would change it? And who enforces the staggered-charging slot on a cold night when Dana overrides it?"
+    },
+    {
+     "key": "customer-programs",
+     "w": 3.97,
+     "s": {
+      "business_value": 3.9,
+      "analytics": 4.3,
+      "presentation": 3.6,
+      "innovation": 3.6,
+      "people_impact": 2.6,
+      "demo_value": 3.8
+     },
+     "q": "Shift is your biggest rung: 20.57% of transformers fixed with no new equipment. It assumes every EV home on a flagged transformer accepts a utility-assigned, half-power, late-night charging slot. What happens to that number when customers opt out or override on the coldest nights, and what will you show me about comfort and satisfaction so that my team can enroll people into this default without it costing us NPS?"
+    },
+    {
+     "key": "hackathon-judge",
+     "w": 3.82,
+     "s": {
+      "business_value": 3.6,
+      "analytics": 4.2,
+      "presentation": 3.7,
+      "innovation": 3.5,
+      "people_impact": 2.8,
+      "demo_value": 3.8
+     },
+     "q": "Shift does most of the work: 20.57% of the 26.18% flagged, and 'the money is in shifting'. But it assumes every car on a flagged transformer accepts its assigned late-night slot at half power. What opt-in rate does that need? What does the ladder cost if only part of the households on a flagged transformer enroll, so the transformers you counted as Shifted fall back to Protect or Upgrade? And what evidence from Avangrid's own managed-charging programs says you will reach that rate by 2030?"
+    },
+    {
+     "key": "held-out-finance",
+     "w": 3.59,
+     "s": {
+      "business_value": 3.4,
+      "analytics": 3.9,
+      "presentation": 3.5,
+      "innovation": 3.4,
+      "people_impact": 2.7,
+      "demo_value": 3.4
+     },
+     "q": "Your baseline upgrades every flagged transformer, even one that goes over for a single hour a year, and your own business case says 37.31% of flagged units are over for fewer than 3 hours, so a 3-hour rule would flag 16.41% instead of 26.18%. No planner would fund the upgrade-all baseline. Against a realistic duration rule, how much of the $210M NYSEG saving is left? And with the rating guess alone moving the flagged share from 3.74% to 42.84%, why should that saving go into a rate case before you have real transformer nameplates?"
+    }
+   ],
+   "fixes": [
+    {
+     "fix": "Terminal: say the live run's 0.6% against the page's 0.4%; move the marker onto the Upgrade line",
+     "from": "both used judges (exec fix 2, customer programs fix 1)",
+     "applied": "applied",
+     "what_changed": "second T1 line is now \"One grouping leaves 0.6% for upgrade; five pooled, as on the page, leave 0.4%.\" (ewu.screen...upgrade_left_pct 0.6, ewu.sensitivity...upgrade_left_pct 0.42); a second marker \"One grouping; page pools five\" boxes the Upgrade line (0.60, 18) after the table marker; the table marker now starts on \"3,000\" (the run printed at 3:23.3, before it). Not said: \"in 2.4 seconds\" (the filmed run printed 2.3 s; \"in seconds\" stays) and \"4.97% cleared by batteries\" (length)"
+    },
+    {
+     "fix": "Dana: what a battery changes for her home",
+     "from": "customer programs fix 2 (people impact)",
+     "applied": "applied, reworded",
+     "what_changed": "third Protect line: \"For homes like Dana's, a battery also makes room for a charger: 0.5% today, 40.6% with one unit.\" plus a Dana Illustrative card \"Charger room: 0.5% today, 40.6% with one unit\" (ewu.headroom.ev.charge_measured_mean pass_pct_none, pass_pct_one_unit). Not said: \"3 kVA rule\", \"Level 2\", \"without a service study\" (the model tests peak plus 3 kVA, not a utility process)"
+    },
+    {
+     "fix": "Side panel: name it and box it once",
+     "from": "exec fix 3, and the relayed user request (\"make sure theres navigation on side panels\")",
+     "applied": "applied",
+     "what_changed": "the Inventory line opens \"Sam works down the side panel, one click per step\"; marker \"Side panel: one click per step\" boxes the panel's step links right after the real click on Inventory (0:42.1); every step change is still a real side panel click (6 of 6). Label shortened from the judge's \"Side panel: the ladder, one click per rung\" because Inventory is not a rung"
+    },
+    {
+     "fix": "Money in NYSEG dollars",
+     "from": "exec fix 1",
+     "applied": "already in v3",
+     "what_changed": "unchanged"
+    },
+    {
+     "fix": "Shift, the \"own late-night slot\" sentence (customer programs fix 3)",
+     "from": "customer programs",
+     "applied": "skipped",
+     "what_changed": "the fix text arrived cut off after \"For these 11 secon\"; nothing to apply without guessing"
+    },
+    {
+     "fix": "Held-out judge's fixes",
+     "from": "held out",
+     "applied": "not applied, by rule",
+     "what_changed": ""
+    },
+    {
+     "fix": "Motion gate placed reused takes at their old film times",
+     "from": "v4 gate run 1",
+     "applied": "fixed in the check",
+     "what_changed": "video/check_motion.moves now places each take where the edit does (video/plan.take_spans); before, a take copied from v3 kept v3's film_span and 13 of 22 glides read as during a line"
+    },
+    {
+     "fix": "Upgrade nav glide read over the speed limit",
+     "from": "v4 gate run 2",
+     "applied": "re-taken",
+     "what_changed": "the reused v3 take, resampled at the new film position, read too fast where the pointer crosses the side panel edge; the new Upgrade take is inside the limit (speeds in outputs/video/check_v4.md)"
+    },
+    {
+     "fix": "Type floor (gate 5)",
+     "from": "v2 and v3 gate",
+     "applied": "not fixed",
+     "what_changed": "median OCR line 22 px, 80% under 28 px; the gate asks for none under 28 px, which needs the 11 to 13 px page text (chart axes, side panel questions) near 20 CSS px; at that size Inventory, Protect and Money no longer fit one screen and the brief forbids scrolling"
+    }
+   ]
+  },
+  {
+   "round": 3,
+   "version": "v2",
+   "fixes_went_into": "v5",
+   "used_avg": 3.91,
+   "held": 3.65,
+   "people_impact": 2.8,
+   "demo_value": 3.6,
+   "judges": [
+    {
+     "key": "avangrid-exec",
+     "w": 3.91,
+     "s": {
+      "business_value": 3.8,
+      "analytics": 4.2,
+      "presentation": 3.7,
+      "innovation": 3.6,
+      "people_impact": 2.8,
+      "demo_value": 3.6
+     },
+     "q": "At your placeholder prices, a battery costs $1,720 a year against $1,209 for the upgrade it defers, and the full ladder (51.92%) costs more than shift-then-upgrade (43.47%). So why should NYSEG run Protect at all, and how would a home battery that defers a transformer upgrade pass the NY PSC's non-wires-alternative benefit-cost test, with what reliability credit, before you have our meter-to-transformer map and ratings?"
+    },
+    {
+     "key": "customer-programs",
+     "w": 3.9,
+     "s": {
+      "business_value": 3.8,
+      "analytics": 4.3,
+      "presentation": 3.6,
+      "innovation": 3.4,
+      "people_impact": 2.6,
+      "demo_value": 3.7
+     },
+     "q": "Your 20.57% Shift rung assumes every EV home on a flagged transformer is defaulted into staggered chargi",
+     "q_truncated": true
+    }
+   ],
+   "fixes": [
+    {
+     "fix": "Side panel: box the \"Cheapest fix first\" group as the ladder; say the panel is the plan",
+     "from": "exec fix 3, and the relayed user request",
+     "applied": "applied, reworded",
+     "what_changed": "the Inventory line now opens \"The side panel is Sam's plan, one rung per click\" (same 21 words, so every later row keeps its v4 time); the marker now boxes only the ladder group (the \"Cheapest fix first\" heading through Upgrade: Flag, Shift, Protect, Upgrade) with \"Side panel: the ladder, one rung per click\"; every step change is still a real side panel click (6 of 6). Not said: \"cheapest fix first\" or \"in the order it costs\" as our claim, because at placeholder prices a battery costs more a year than the upgrade it defers (the exec's own question); the page's group heading stays as the page's label"
+    },
+    {
+     "fix": "Dana card on Shift: \"Plugs in when she gets home, full by morning\"",
+     "from": "customer programs fix 2 (people impact, the lowest)",
+     "applied": "applied",
+     "what_changed": "card subtitle only, from \"Plugs in on a summer evening\"; it follows from the model (same energy per session, start slot inside the 23:00 to 3:00 window)"
+    },
+    {
+     "fix": "Shift marker \"Timer 24.28% over, staggered 5.65%\" and the 5.65% line",
+     "from": "customer programs fix 2",
+     "applied": "skipped",
+     "what_changed": "neither 24.28% nor 5.65% is on the Shift page, so the marker would point at numbers the screen does not show (gate 3); and 5.65% (ewu.shift) does not quite equal the headline's 26.18% minus 20.57% (pooled sensitivity), a small gap a judge would need explained. The timer's 24% is already said aloud since v3"
+    },
+    {
+     "fix": "Electrify now: 0.5% to 40.6% with one battery unit",
+     "from": "customer programs fix 1",
+     "applied": "already in v4",
+     "what_changed": "said on Protect and carried by a Dana card, not the Riveras card (round 2 gave it to Dana)"
+    },
+    {
+     "fix": "Terminal: one seed against the page's five",
+     "from": "exec fix 2",
+     "applied": "already in v4",
+     "what_changed": "\"One grouping leaves 0.6% for upgrade; five pooled, as on the page, leave 0.4%\" with the marker \"One grouping; page pools five\" on the Upgrade line"
+    },
+    {
+     "fix": "Money in NYSEG dollars ($436.9M against $189.9M), marker on the Labeled scaling line",
+     "from": "exec fix 1",
+     "applied": "already in v3",
+     "what_changed": "the 1 s \"43.47% of upgrade-all cost\" marker after it is not added: one marker at a time and a 1 s label cannot be read"
+    },
+    {
+     "fix": "Type floor (gate 5)",
+     "from": "v2 to v4 gate",
+     "applied": "not fixed",
+     "what_changed": "as in rounds 1 and 2: the gate asks for no OCR line under 28 px, which needs the 11 to 13 px page text near 20 CSS px; at that size Inventory, Protect and Money no longer fit one screen and the brief forbids scrolling"
+    },
+    {
+     "fix": "Held-out judge's fixes",
+     "from": "held out",
+     "applied": "not applied, by rule",
+     "what_changed": ""
+    }
+   ]
+  }
+ ],
+ "delivered": {
+  "version": "v5",
+  "why": "v2 has the highest judge average only because every round judged v2; v2 fails 3 of 8 film gates (type, story, motion), v5 fails 1 (type), and no version passes all 8"
+ }
+}
