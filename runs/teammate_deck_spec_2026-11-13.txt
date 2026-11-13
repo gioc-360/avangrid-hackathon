@@ -1,0 +1,26 @@
+Teammate alignment spec, 2026-11-13 (final deck), as sent; the team decision. One item per line so config/ewu.yaml can cite the line.
+Here is how to align the tool with the final deck:
+Overload rule: count a transformer as overloaded only above 120% of rating in any hour. Keep 100%, 110% and 140% as sensitivity options. With 100% we get 28.5%, which matches your 26%, so this is the main gap.
+Transformer setup:
+3,000 transformers, 8 random homes each, random seed 5.
+Rating is the smallest standard size (25, 37.5, 50, 75, 100, 167 kVA) at or above today's peak divided by 0.85.
+EV load:
+New EVs only in homes not already flagged High or Medium EV; 20% (moderate) or 35% (high).
+7.2 kW for 3 hours, on 47% of days, with start hours drawn from ev_start_pmf.npy.
+Heat pump load: new heat pumps only in homes without primary electric heat; 15% or 30%. Add hp_increment.npy.
+Fix order: batteries only, which is the team decision. Size 1 to 4 IQ 10C units per transformer as the larger of:
+the daily peak excess divided by 3.84 kW
+the daily excess energy divided by 8.06 kWh
+More than 4 units means an upgrade. Keep managed charging as an optional scenario, off by default.
+Costs:
+Battery unit $7,000; lease $330 per unit per year; NYSERDA $2,016 per unit.
+15 years at 7%.
+Upgrade $15,000 counted for 15 of its 40 years: $15,000 x 9.108 / 13.332 = about $10,250.
+Report three columns: gross, net without NYSERDA, and Avangrid cost (net of lease and NYSERDA).
+Targets at 120% and $15,000: Avangrid cost $33M vs $112M (moderate) and $140M vs $340M (high); gross $112M and $441M.
+Peak cut: export is allowed (confirmed in office hours). Report the staggered fleet number (8.8 MW) as the default, and behind the meter only (7.0 MW) as the conservative case. Your 7.0 MW matches our recheck.
+Validation targets at 120%:
+Overloaded: 9.8% moderate, 29.8% high.
+Fixed without an upgrade: 98% and 94%.
+Average units: 1.46 and 1.93.
+Winter driven share: 73% and 89%.

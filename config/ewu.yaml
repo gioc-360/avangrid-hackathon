@@ -214,3 +214,97 @@ teammate_reference:
   ewu_cost_musd_high: {value: 135, unit: $M, source: "repo:runs/business_case_team_v2.txt:31"}
   timer_overloaded_pct_moderate: {value: 16, unit: "% of transformers", source: "repo:runs/business_case_team_v2.txt:35"}
   ev_sessions: {value: 20800, unit: charging sessions, source: "repo:runs/business_case_team_v2.txt:59"}
+
+# Profiles. `deck` (the default) reproduces the final deck from the teammate's alignment spec of 2026-11-13,
+# saved verbatim at runs/teammate_deck_spec_2026-11-13.txt; `cautious` is the earlier method, kept as a named
+# sensitivity profile: it reads the transformer, scenarios, battery, shift and prices blocks above unchanged.
+profiles:
+  default: {value: deck, unit: profile name, assumption: true,
+            basis: "team decision: the tool reproduces the final deck by default; teammate spec 2026-11-13 (final deck)"}
+  cautious:
+    rating_rule: {value: "today's group peak x 1.15", unit: rating rule, source: "repo:runs/business_case_team_v2.txt:59",
+                  quote: "plus 15%", assumption: true, basis: "the earlier method; the transformer block above holds its inputs"}
+    ev_load_rule: {value: measured Level 2 sessions, unit: EV load rule, source: "repo:ewu/adoption.py:40",
+                   quote: "measured level 2 sessions", assumption: true,
+                   basis: "the earlier method: start and length drawn together from this data's sessions"}
+    fix_order: {value: [flag, shift, protect, upgrade], unit: ladder steps, source: "repo:README.md:29",
+                quote: "flag, shift, protect, upgrade", assumption: true, basis: "the earlier method"}
+  deck:
+    transformer_count: {value: 3000, unit: synthetic transformers, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:5",
+                        basis: "teammate spec 2026-11-13 (final deck)"}
+    homes_per_transformer: {value: 8, unit: random homes per transformer, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:5",
+                            basis: "teammate spec 2026-11-13 (final deck)"}
+    seed: {value: 5, unit: random seed, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:5",
+           basis: "teammate spec 2026-11-13 (final deck); our generator is not the teammate's, so the same seed draws different homes"}
+    standard_sizes_kva: {value: [25, 37.5, 50, 75, 100, 167], unit: kVA, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:6",
+                         basis: "teammate spec 2026-11-13 (final deck)"}
+    peak_to_rating_divisor: {value: 0.85, unit: today's group peak / this = smallest rating allowed,
+                             source: "repo:runs/teammate_deck_spec_2026-11-13.txt:6", basis: "teammate spec 2026-11-13 (final deck)"}
+    power_factor: {value: 1.0, unit: kW per kVA, assumption: true,
+                   basis: "kW is treated as kVA; no power factor in the data or the spec"}
+    above_largest_size: {value: multiple 167 kVA units, unit: rule for a group needing more than the largest size,
+                         assumption: true, basis: "the spec lists no size above 167 kVA; the group gets as many 167 kVA units as it needs, counted and logged"}
+    overload_limit: {value: 1.20, unit: loading as a multiple of rating, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:3",
+                     basis: "teammate spec 2026-11-13 (final deck)"}
+    overload_limit_options: {value: [1.00, 1.10, 1.20, 1.40], unit: loading as a multiple of rating,
+                             source: "repo:runs/teammate_deck_spec_2026-11-13.txt:3", basis: "teammate spec 2026-11-13 (final deck)"}
+    ev_excluded_flags: {value: [is_ev_l2], unit: inventory flags that already count as an EV home, assumption: true,
+                        basis: "teammate excludes homes flagged High or Medium EV (spec line 8); our inventory has Level 2 (confidence high) and Level 1 (confidence low), no medium tier, so only Level 2 is excluded"}
+    hp_excluded_flags: {value: [is_electric_heat], unit: inventory flags that already count as primary electric heat,
+                        source: "repo:runs/teammate_deck_spec_2026-11-13.txt:10", quote: "without primary electric heat",
+                        basis: "teammate spec 2026-11-13 (final deck)"}
+    ev_kw: {value: 7.2, unit: kW per new EV charge, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
+            basis: "teammate spec 2026-11-13 (final deck)"}
+    ev_hours: {value: 3, unit: hours per charge, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
+               basis: "teammate spec 2026-11-13 (final deck)"}
+    ev_day_share: {value: 0.47, unit: share of days a new EV charges, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
+                   basis: "teammate spec 2026-11-13 (final deck)"}
+    ev_start_pmf_file: {value: ev_start_pmf.npy, unit: file in data/processed, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
+                        basis: "teammate's array; absent on this machine, so ewu/deck.py derives ev_start_pmf_derived.npy and says so"}
+    hp_increment_file: {value: hp_increment.npy, unit: file in data/processed, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:10",
+                        basis: "teammate's array; absent on this machine, so ewu/deck.py derives hp_increment_derived.npy and says so"}
+    unit_kw: {value: 3.84, unit: kW per IQ 10C unit for sizing, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:12",
+              basis: "teammate spec 2026-11-13 (final deck)"}
+    unit_kwh: {value: 8.06, unit: usable kWh per IQ 10C unit for sizing, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:13",
+               basis: "teammate spec 2026-11-13 (final deck)"}
+    units_min: {value: 1, unit: IQ 10C units per transformer, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:11",
+                basis: "teammate spec 2026-11-13 (final deck)"}
+    units_max: {value: 4, unit: IQ 10C units per transformer; more means upgrade, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:14",
+                basis: "teammate spec 2026-11-13 (final deck)"}
+    managed_charging: {value: false, unit: optional scenario on or off, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:14",
+                       quote: "off by default", basis: "teammate spec 2026-11-13 (final deck); on, new EVs charge staggered as in the shift block"}
+    battery_unit_usd: {value: 7000, unit: $ per IQ 10C unit, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:16",
+                       basis: "teammate spec 2026-11-13 (final deck)"}
+    lease_usd_unit_yr: {value: 330, unit: $ per unit per year, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:16",
+                        basis: "teammate spec 2026-11-13 (final deck)"}
+    nyserda_usd_unit: {value: 2016, unit: $ per unit once, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:16",
+                       basis: "teammate spec 2026-11-13 (final deck)"}
+    years: {value: 15, unit: years counted, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:17", basis: "teammate spec 2026-11-13 (final deck)"}
+    discount_rate: {value: 0.07, unit: share per year, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:17",
+                    basis: "teammate spec 2026-11-13 (final deck)"}
+    upgrade_usd: {value: 15000, unit: $ per transformer upgrade, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:18",
+                  basis: "teammate spec 2026-11-13 (final deck)"}
+    upgrade_life_years: {value: 40, unit: years, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:18",
+                         basis: "teammate spec 2026-11-13 (final deck)"}
+    export_allowed: {value: true, unit: home batteries may export to the grid, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:21",
+                     quote: "export is allowed (confirmed in office hours)", basis: "office hours per teammate"}
+    peak_hours: {value: 50, unit: highest system hours of the year the peak cut averages over, source: "repo:runs/business_case_v3.md:19",
+                 basis: "the rule behind our earlier 7.0 MW"}
+    priority_load_kw: {value: 4, unit: kW mean home load in those hours to be a priority host, source: "repo:runs/business_case_v3.md:18",
+                       quote: ">=4 kW load", basis: "the rule behind our earlier 7.0 MW"}
+    priority_cut_kw: {value: 2, unit: kW mean behind-the-meter cut in those hours to be a priority host, source: "repo:runs/business_case_v3.md:18",
+                      quote: ">=2 kW cut", basis: "the rule behind our earlier 7.0 MW"}
+    units_per_host: {value: 2, unit: IQ 10C units per priority home, source: "pdf:challenge:3", quote: "(2 Units)"}
+    winter_months: {value: [11, 12, 1, 2, 3], unit: months a worst hour must fall in to count as winter driven,
+                    source: "repo:analysis/features.py:111", basis: "same winter months as the rest of the tool (Nov to Mar)"}
+    targets:
+      overloaded_pct: {value: [9.8, 29.8], unit: "% of transformers, moderate and high", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:23"}
+      fixed_without_upgrade_pct: {value: [98, 94], unit: "% of overloaded transformers", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:24"}
+      average_units: {value: [1.46, 1.93], unit: units per battery-fixed transformer, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:25"}
+      winter_share_pct: {value: [73, 89], unit: "% of overloaded transformers", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:26"}
+      avangrid_cost_musd: {value: [33, 140], unit: $M across NYSEG, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:20"}
+      upgrade_all_musd: {value: [112, 340], unit: $M across NYSEG, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:20"}
+      gross_musd: {value: [112, 441], unit: $M across NYSEG, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:20"}
+      peak_cut_export_mw: {value: 8.8, unit: MW, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:21"}
+      peak_cut_behind_meter_mw: {value: 7.0, unit: MW, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:21"}
+      overloaded_pct_at_100: {value: 28.5, unit: "% of transformers, moderate, limit 1.00", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:3"}
