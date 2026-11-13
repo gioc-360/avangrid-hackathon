@@ -24,8 +24,10 @@ model:           ## classify, segment, size batteries -> facts/facts.json + outp
 	$(PY) checks/compare.py
 	$(PY) analysis/report.py
 
-check:           ## are we solving their problem, and is every number traced? (+ battery recompute, about 70 s)
+check:           ## are we solving their problem, and is every number traced? (+ battery recompute and terms, about 140 s)
 	$(PY) checks/check_all.py $(if $(DECK),--deck "$(DECK)")
+	$(PY) checks/terms_check.py --selftest
+	$(PY) checks/terms_check.py
 	$(PY) checks/recompute_battery.py --selftest
 	$(PY) checks/recompute_battery.py
 

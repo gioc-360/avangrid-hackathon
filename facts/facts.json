@@ -564,7 +564,7 @@
   "method": ""
  },
  "class.heat_pump.confidence": {
-  "value": "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+  "value": "low: listed heat pump homes and resistance homes share one kW-vs-temperature curve",
   "unit": "",
   "script": "analysis/classify.py",
   "method": ""
@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 5.4,
+  "value": 5.3,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -6697,25 +6697,25 @@
   "value": 2708,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.moderate.actions.protect": {
   "value": 287,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.moderate.actions.upgrade": {
   "value": 5,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.moderate.avangrid_cost_total_usd": {
   "value": 925635,
   "unit": "$ for the sample",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "deck profile, moderate 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.prices.factor": {
   "value": 9.108,
@@ -8528,7 +8528,7 @@
   "value": [
    "high that heat is electric",
    "high",
-   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "low: listed heat pump homes and resistance homes share one kW-vs-temperature curve",
    "low (the remainder of electric heat)",
    "medium",
    "low, no labels",
@@ -8733,7 +8733,7 @@
    "high that heat is electric",
    "high",
    "high",
-   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "low: listed heat pump homes and resistance homes share one kW-vs-temperature curve",
    "medium",
    "low (the remainder of electric heat)",
    "medium"
@@ -9127,7 +9127,7 @@
    "high that heat is electric",
    "low (the remainder of electric heat)",
    "medium",
-   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "low: listed heat pump homes and resistance homes share one kW-vs-temperature curve",
    "low, no labels",
    "medium",
    "low, no labels"
@@ -14564,7 +14564,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.2,
+  "value": 2.3,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

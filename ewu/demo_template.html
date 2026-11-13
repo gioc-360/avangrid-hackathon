@@ -208,7 +208,7 @@ const STEPS = [
   { id: "money", name: "Money", needs: ["money"], fn: stepMoney },
 ];
 const LEGACY = { 1: "inventory", 2: "flag", 3: "protect", 4: "money", summary: "deck", shift: "network" };   // old links
-// the Network view: the deck profile's synthetic network for the demo scenario, battery-only fix order
+// the Network view: the deck profile's synthetic network for the demo scenario, battery path
 const NET = { f: `fact:ewu.deck.network.${V["config:demo.scenario"]}.`, t: "private:ewu.deck.network.t.", meta: "fact:ewu.deck.network." };
 const NET_VIEWS = [["today", "Today"], ["flag", "2030: Flag"], ["protect", "+ Place batteries"], ["upgrade", "+ Upgrade"]];
 
@@ -405,13 +405,13 @@ function stepNetwork() {
     <button type="button" class="tag" onclick="openHow('network')" aria-label="Synthetic network: open How this is computed">Synthetic network</button>
     <span class="chip">${sc} 2030</span></p>
   <h2 class="headline" id="h-network">${headline}</h2>
-  <div class="netbar"><div class="ladder" role="group" aria-label="Ladder step">${ladder}</div><div class="counts" aria-label="Transformers in each state">${chips}</div></div>
+  <div class="netbar"><div class="ladder" role="group" aria-label="Step">${ladder}</div><div class="counts" aria-label="Transformers in each state">${chips}</div></div>
   <div class="netgrid${S.t >= 0 ? " open" : ""}"><div class="card netcard">${networkSvg(v)}</div>${S.t >= 0 ? detailPanel(S.t) : ""}</div>
-  ${how("network", `<p>Deck v3's method (the deck profile, the default of <code>bin/ewu network</code>), its battery-only fix order: Flag, then Place batteries, then Upgrade. ${sc} 2030 at a ${N("config:profiles.deck.overload_limit", 0, { scale: 100, post: "%" })} overload limit; the counts are the ones <code>bin/ewu screen</code> prints for the same case and the network deck v3 shows on its tool slide.</p>
+  ${how("network", `<p>Deck v3's method (the deck profile, the default of <code>bin/ewu network</code>), its battery path: Flag, then Place batteries, then Upgrade. ${sc} 2030 at a ${N("config:profiles.deck.overload_limit", 0, { scale: 100, post: "%" })} loading limit; the counts are the ones <code>bin/ewu screen</code> prints for the same scenario and the network deck v3 shows on its tool slide.</p>
     ${TAG("GIVEN", `the hourly meter data of the ${N(M + "homes", 0, { post: " homes" })} drawn here and the hourly weather, from the hackathon; the teammate's EV start-hour shares and heat pump curve.`)}
     ${TAG("DERIVED", `each transformer's today peak and its rating, the smallest standard size at or above that peak / ${N("config:profiles.deck.peak_to_rating_divisor", 2)}; which homes already have an EV or electric heat.`)}
     ${TAG("SIMULATED", `${all} synthetic transformers of ${N("config:profiles.deck.homes_per_transformer", 0)} random homes (seed ${N("config:profiles.deck.seed", 0)}); 2030 adoption drawn at the scenario shares of the homes that can add one; EV charges of ${N("config:profiles.deck.ev_kw", 1, { post: " kW" })} on ${N("config:profiles.deck.ev_day_share", 0, { scale: 100, post: "%" })} of days.`)}
-    ${TAG("ASSUMED", `overloaded means above the overload limit share of rating in any hour; kW read as kVA; batteries sized per transformer to the largest day's excess by power (${N("config:profiles.deck.unit_kw", 2, { post: " kW" })} a unit) and energy (${N("config:profiles.deck.unit_kwh", 2, { post: " kWh" })} a unit), at most ${N("config:profiles.deck.units_max", 0, { post: " units" })}, more means an upgrade; the line after batteries is the load capped at the limit, which the sizing covers, not an hour-by-hour dispatch; feeders are an illustrative split of transformer ids into ${N("config:network.feeders", 0)} equal blocks, no feeder data exists.`)}
+    ${TAG("ASSUMED", `overloaded means above the loading limit share of rating in any hour; kW read as kVA; batteries sized per transformer to the largest day's excess by power (${N("config:profiles.deck.unit_kw", 2, { post: " kW" })} a unit) and energy (${N("config:profiles.deck.unit_kwh", 2, { post: " kWh" })} a unit), at most ${N("config:profiles.deck.units_max", 0, { post: " units" })}, more means an upgrade; the line after batteries is the load capped at the limit, which the sizing covers, not an hour-by-hour dispatch; feeders are an illustrative split of transformer ids into ${N("config:network.feeders", 0)} equal blocks, no feeder data exists.`)}
     <p><b>Detail panel.</b> One transformer's ${N("config:profiles.deck.homes_per_transformer", 0)} homes summed, on its worst 2030 day; never a single home. Load your meter-to-transformer map with <code>bin/ewu screen --map your_map.csv</code> to run on real transformers.</p>`)}
   `;
 }
@@ -421,11 +421,11 @@ function caseControls() {
   const sc = ["moderate", "high"].map(s => btn(S.scenario === s, { scenario: s }, word(s))).join("");
   const lm = LIMITS.map((x, i) => btn(S.limit === i, { limit: i }, limitN(i))).join("");
   return `<div class="controls"><div class="grp"><span class="label">Scenario</span>${sc}</div>
-    <div class="grp"><span class="label">Overload limit</span>${lm}</div></div>`;
+    <div class="grp"><span class="label">Loading limit</span>${lm}</div></div>`;
 }
 // what the controls mean, said once inside each disclosure that sits under them
 const caseNote = () => `<p>Scenario: ${["moderate", "high"].map(s => `${word(s)} is ${N(`config:scenarios.${s}.ev_share`, 0, { scale: 100, post: "% EVs" })} and ${N(`config:scenarios.${s}.hp_share`, 0, { scale: 100, post: "% heat pumps" })} in 2030`).join("; ")}, as shares of the homes that can add one.
-    Overload limit: a transformer is overloaded when its load passes that share of its rating in any hour of the year; deck v3 reports ${limitN(DECK_LIMIT)} and shows the other limits as its sensitivity.</p>`;
+    Loading limit: a transformer is overloaded when its load passes that share of its rating in any hour of the year; deck v3 reports ${limitN(DECK_LIMIT)} and shows the other limits as its sensitivity.</p>`;
 const synthetic = () => `${caseNote()}<p>${N("config:profiles.deck.transformer_count", 0)} synthetic transformers of ${N("config:profiles.deck.homes_per_transformer", 0)} random homes (seed ${N("config:profiles.deck.seed", 0)}), real meter data; rating is the smallest standard size at or above today's peak / ${N("config:profiles.deck.peak_to_rating_divisor", 2)}; new EVs charge at ${N("config:profiles.deck.ev_kw", 1, { post: " kW" })} for ${N("config:profiles.deck.ev_hours", 0, { post: " hours" })} on ${N("config:profiles.deck.ev_day_share", 0, { scale: 100, post: "%" })} of days, unmanaged, and new heat pumps add the teammate's hourly curve. A real meter-to-transformer map replaces the synthetic transformers with no other change.</p>`;
 // deck v3 slide 12's bar: overloaded transformers fixed by batteries with 1 or 2 units, with 3 or 4, and upgrade, as % of all transformers
 const BANDS = [["fixed_units_1_2_pct", "var(--protect)", 1, "Fixed by batteries, one or two units"], ["fixed_units_3_4_pct", "var(--protect)", 0.55, "Fixed by batteries, three or four units"],
@@ -453,7 +453,7 @@ const big = html => `<span class="big">${html}</span>`;
 // ---------- Summary: deck v3's headline numbers, from our engine's deck profile
 function stepDeck() {
   const rows = [["Overloaded, % of transformers", "overloaded_pct", 1, "%"], ["Fixed by batteries, % of overloaded", "fixed_of_overloaded_pct", 0, "%"],
-    ["Battery units per fixed transformer", "average_units", 1, ""], ["Winter driven, % of overloaded", "winter_of_overloaded_pct", 0, "%"],
+    ["Battery units per fixed transformer", "average_units", 1, ""], ["Winter nights, % of overloaded", "winter_of_overloaded_pct", 0, "%"],
     ["Net cost", "nyseg_avangrid_cost_musd", 1, "$M"], ["Upgrade all", "nyseg_upgrade_all_musd", 1, "$M"],
     ["Saving", "saving_vs_upgrade_all_pct", 0, "%"]];
   const cellOf = (k, d, u) => N(k, d, u === "$M" ? { pre: "$", post: "M" } : { post: u });
@@ -466,9 +466,9 @@ function stepDeck() {
     ${rows.map(([label, f, d, u]) => `<tr><td>${label}</td>${["moderate", "high"].map(s => `<td class="num">${cellOf(DK(s, f), d, u)}</td>`).join("")}</tr>`).join("")}
     <tr><td>Summer peak cut, ${N("fact:teammate.audit.rerun.priority_homes", 0)} priority homes</td><td class="num" colspan="2" style="text-align:center">${N("fact:teammate.audit.rerun.fleet_priority.peak_cut_mw", 2, { post: " MW" })}</td></tr></table></div>
   <div class="col"><div class="card"><p style="margin:0">Net cost, then Upgrade all</p>${bars}</div></div></div>
-  ${how("deck", `<p>Deck v3 is final: each number here is the one deck v3 shows, from our engine's deck profile (<code>bin/ewu screen</code>), the team's battery-only method run on the teammate's two arrays and all the meter data, at a ${limitN(DECK_LIMIT)} overload limit. Money is v3's basis: present value over ${N("config:profiles.deck.years", 0, { post: " years" })} at ${N("config:profiles.deck.discount_rate", 0, { scale: 100, post: "%" })}, net cost subtracts the customer lease and NYSERDA, and an upgrade is counted for the ${N("config:profiles.deck.years", 0)} of its ${N("config:profiles.deck.upgrade_life_years", 0, { post: " years" })} the program runs, so ${N("config:profiles.deck.upgrade_usd", 0, { pre: "$" })} counts as ${N("fact:ewu.deck.prices.upgrade_counted_usd", 0, { pre: "$" })}. Saving is one minus net cost over Upgrade all, the cost of upgrading every overloaded transformer.</p>
+  ${how("deck", `<p>Deck v3 is final: each number here is the one deck v3 shows, from our engine's deck profile (<code>bin/ewu screen</code>), the team's battery path run on the teammate's two arrays and all the meter data, at a ${limitN(DECK_LIMIT)} loading limit. Money is v3's basis: present value over ${N("config:profiles.deck.years", 0, { post: " years" })} at ${N("config:profiles.deck.discount_rate", 0, { scale: 100, post: "%" })}, net cost subtracts the customer lease and NYSERDA, and an upgrade is counted for the ${N("config:profiles.deck.years", 0)} of its ${N("config:profiles.deck.upgrade_life_years", 0, { post: " years" })} the program runs, so ${N("config:profiles.deck.upgrade_usd", 0, { pre: "$" })} counts as ${N("fact:ewu.deck.prices.upgrade_counted_usd", 0, { pre: "$" })}. Saving is one minus net cost over Upgrade all, the cost of upgrading every overloaded transformer.</p>
     <p>Summer peak cut: the teammate's ${N("fact:teammate.audit.rerun.priority_homes", 0)} priority homes, ${N("config:profiles.deck.units_per_host", 0)} battery units each, rerun on our data with export allowed; the drop in the year's single highest hour, the figure deck v3 shows.</p>
-    <p>Validation: our replica of the teammate's model equals her saved results on every one of ${N("fact:ewu.deck_replica.moderate.rows_equal_her_run", 0, { post: " transformers" })} in each scenario. Run on our inventory tiers and adopter draw, our engine differs from the teammate's model by small amounts: overloaded ${ours("moderate", "overloaded_pct")} against ${r("moderate", "overloaded_pct")} (moderate) and ${ours("high", "overloaded_pct")} against ${r("high", "overloaded_pct")} (high); fixed by batteries ${ours("moderate", "fixed_of_overloaded_pct")} against ${r("moderate", "fixed_of_overloaded_pct")} and ${ours("high", "fixed_of_overloaded_pct")} against ${r("high", "fixed_of_overloaded_pct")}; winter driven ${ours("moderate", "winter_of_overloaded_pct")} against ${r("moderate", "winter_of_overloaded_pct")} and ${ours("high", "winter_of_overloaded_pct")} against ${r("high", "winter_of_overloaded_pct")}.</p>
+    <p>Validation: our replica of the teammate's model equals her saved results on every one of ${N("fact:ewu.deck_replica.moderate.rows_equal_her_run", 0, { post: " transformers" })} in each scenario. Run on our inventory tiers and adopter draw, our engine differs from the teammate's model by small amounts: overloaded ${ours("moderate", "overloaded_pct")} against ${r("moderate", "overloaded_pct")} (moderate) and ${ours("high", "overloaded_pct")} against ${r("high", "overloaded_pct")} (high); fixed by batteries ${ours("moderate", "fixed_of_overloaded_pct")} against ${r("moderate", "fixed_of_overloaded_pct")} and ${ours("high", "fixed_of_overloaded_pct")} against ${r("high", "fixed_of_overloaded_pct")}; winter nights ${ours("moderate", "winter_of_overloaded_pct")} against ${r("moderate", "winter_of_overloaded_pct")} and ${ours("high", "winter_of_overloaded_pct")} against ${r("high", "winter_of_overloaded_pct")}.</p>
     ${TAG("GIVEN", `the hourly meter data of ${N("fact:ewu.inventory.homes", 0, { post: " homes" })} and the hourly weather, from the hackathon.`)}
     ${TAG("GIVEN, from the teammate", `the EV start-hour shares (${N("fact:ewu.deck.inputs.ev_start_pmf.hour0_pct", 1, { post: "%" })} at midnight) and the heat pump curve (${N("fact:ewu.deck.inputs.hp_increment.annual_kwh", 0, { post: " kWh a year" })}, highest hour ${N("fact:ewu.deck.inputs.hp_increment.max_kw", 2, { post: " kW" })}), both built by her ewu_inputs.py from the given meter data and checked here byte for byte.`)}
     ${TAG("DERIVED", `which homes already have an EV or electric heat (our inventory, read from each meter), each transformer's today peak and its rating, the smallest standard size at or above that peak / ${N("config:profiles.deck.peak_to_rating_divisor", 2)}.`)}
@@ -488,8 +488,8 @@ function stepOverview() {
     ${tile("money", "var(--accent)", "Money", N(K("saving_vs_upgrade_all_pct"), 0, { post: "%" }) + est("overview"), "saving against Upgrade all")}
   </div>
   ${how("overview", `<p>For Avangrid distribution planners at NYSEG and RG&amp;E deciding which neighborhood transformers need what before 2030, and for the customer programs team choosing who to offer a battery. Homeowners benefit; they do not use this page.</p>
-    <p>Deck v3's battery-only fix order: Flag finds the transformers overloaded in 2030; Place fixes each with ${N("config:profiles.deck.units_min", 0)} to ${N("config:profiles.deck.units_max", 0)} battery units; Upgrade is what needs more. The bar splits the overloaded transformers into fixed by batteries with one or two units, with three or four, and upgrade, as shares of all transformers; Money is net cost against Upgrade all.</p>
-    <p>Upgrade is ${limitRange("upgrades_pct", 2)} of transformers across the overload limits.</p>${synthetic()}`)}`;
+    <p>Deck v3's steps: Flag finds the transformers overloaded in 2030; Place fixes each with ${N("config:profiles.deck.units_min", 0)} to ${N("config:profiles.deck.units_max", 0)} battery units; Upgrade is what needs more. The bar splits the overloaded transformers into fixed by batteries with one or two units, with three or four, and upgrade, as shares of all transformers; Money is net cost against Upgrade all.</p>
+    <p>Upgrade is ${limitRange("upgrades_pct", 2)} of transformers across the loading limits.</p>${synthetic()}`)}`;
 }
 
 function stepInventory() {
@@ -522,25 +522,25 @@ function stepInventory() {
 function stepFlag() {
   return `${head("flag", "Flag", `${big(N(K("overloaded_pct"), 1, { post: "%" }))} of transformers are overloaded in 2030${est("flag")}`)}
   ${caseControls()}
-  <div class="chips"><span class="chip">Winter driven: ${N(K("winter_of_overloaded_pct"), 0, { post: "%" })} of overloaded</span></div>
-  <div class="card"><p class="sub">Overloaded, by overload limit</p>${byLimit("overloaded_pct")}</div>
-  ${how("flag", `<p>EV charging unmanaged, as in deck v3. ${limitRange("overloaded_pct")} of transformers across the overload limits. Winter driven: most of a transformer's overloaded hours fall in the winter months, November to March (the teammate's rule).</p>${synthetic()}`)}`;
+  <div class="chips"><span class="chip">Winter nights: ${N(K("winter_of_overloaded_pct"), 0, { post: "%" })} of overloaded</span></div>
+  <div class="card"><p class="sub">Overloaded, by loading limit</p>${byLimit("overloaded_pct")}</div>
+  ${how("flag", `<p>EV charging unmanaged, as in deck v3. ${limitRange("overloaded_pct")} of transformers across the loading limits. Winter nights: most of a transformer's overloaded hours fall in the winter months, November to March (the teammate's rule).</p>${synthetic()}`)}`;
 }
 
 function stepProtect() {
   return `${head("protect", "Place", `Batteries fix ${big(N(K("fixed_of_overloaded_pct"), 0, { post: "%" }))} of overloaded transformers, ${N(K("average_units"), 1)} battery units each${est("protect")}`)}
   ${caseControls()}
   <div class="card">${bands(["fixed_units_1_2_pct", "fixed_units_3_4_pct"])}</div>
-  <div class="card"><p class="sub">Fixed by batteries, by overload limit</p>${byLimit("fixed_of_overloaded_pct")}</div>
-  ${how("protect", `<p>Each overloaded transformer gets the fewest battery units that cover every day's excess over its overload limit, by power (${N("config:profiles.deck.unit_kw", 2, { post: " kW" })} a unit) and by energy (${N("config:profiles.deck.unit_kwh", 2, { post: " kWh" })} a unit), at least ${N("config:profiles.deck.units_min", 0)}; one needing more than ${N("config:profiles.deck.units_max", 0)} goes to Upgrade. Sizing to every day of the year covers the coldest nights by construction; deck v3 runs no separate cold snap test, so none is shown here. The bar's shares are of all transformers; battery units each is the mean over the fixed transformers.</p>${synthetic()}`)}`;
+  <div class="card"><p class="sub">Fixed by batteries, by loading limit</p>${byLimit("fixed_of_overloaded_pct")}</div>
+  ${how("protect", `<p>Each overloaded transformer gets the fewest battery units that cover every day's excess over its loading limit, by power (${N("config:profiles.deck.unit_kw", 2, { post: " kW" })} a unit) and by energy (${N("config:profiles.deck.unit_kwh", 2, { post: " kWh" })} a unit), at least ${N("config:profiles.deck.units_min", 0)}; one needing more than ${N("config:profiles.deck.units_max", 0)} goes to Upgrade. Sizing to every day of the year covers the coldest nights by construction; deck v3 runs no separate cold snap test, so none is shown here. The bar's shares are of all transformers; battery units each is the mean over the fixed transformers.</p>${synthetic()}`)}`;
 }
 
 function stepUpgrade() {
   return `${head("upgrade", "Upgrade", `${big(N(K("upgrade_of_overloaded_pct"), 0, { post: "%" }))} of overloaded transformers need an upgrade: ${N(K("upgrades"), 0)} of ${N("config:profiles.deck.transformer_count", 0)}${est("upgrade")}`)}
   ${caseControls()}
   <div class="card">${bands(["upgrades_pct"])}</div>
-  <div class="card"><p class="sub">Upgrade, % of overloaded, by overload limit</p>${byLimit("upgrade_of_overloaded_pct")}</div>
-  ${how("upgrade", `<p>Still overloaded after batteries: these need more than ${N("config:profiles.deck.units_max", 0, { post: " battery units" })}. ${limitRange("upgrade_of_overloaded_pct")} of overloaded transformers across the overload limits.</p>${synthetic()}`)}`;
+  <div class="card"><p class="sub">Upgrade, % of overloaded, by loading limit</p>${byLimit("upgrade_of_overloaded_pct")}</div>
+  ${how("upgrade", `<p>Still overloaded after batteries: these need more than ${N("config:profiles.deck.units_max", 0, { post: " battery units" })}. ${limitRange("upgrade_of_overloaded_pct")} of overloaded transformers across the loading limits.</p>${synthetic()}`)}`;
 }
 
 function stepMoney() {
@@ -552,7 +552,7 @@ function stepMoney() {
   return `${head("money", "Money", `Net cost is ${big(N(K("saving_vs_upgrade_all_pct"), 0, { post: "%" }))} less than upgrading all overloaded transformers${est("money")}`)}
   ${caseControls()}
   <div class="row"><div class="col"><div class="card"><p class="sub">Across NYSEG, present value</p>${bars}</div></div>
-  <div class="col"><div class="card"><p class="sub">Saving, by overload limit</p>${byLimit("saving_vs_upgrade_all_pct")}</div></div></div>
+  <div class="col"><div class="card"><p class="sub">Saving, by loading limit</p>${byLimit("saving_vs_upgrade_all_pct")}</div></div></div>
   ${how("money", `<p>Deck v3's three battery columns, same basis on every slide: gross cost is battery units at ${N("config:profiles.deck.battery_unit_usd", 0, { pre: "$" })} plus the upgrades still needed; net cost without NYSERDA subtracts the customer lease, ${N("config:profiles.deck.lease_usd_unit_yr", 0, { pre: "$", post: " a year" })} a unit, worth ${N("fact:ewu.deck.prices.lease_pv_usd", 0, { pre: "$" })} over ${N("config:profiles.deck.years", 0, { post: " years" })} at ${N("config:profiles.deck.discount_rate", 0, { scale: 100, post: "%" })}; net cost also subtracts NYSERDA's ${N("config:profiles.deck.nyserda_usd_unit", 0, { pre: "$" })} a unit. Saving is one minus net cost over Upgrade all, the cost of upgrading every overloaded transformer.</p>
     <p>${grossMore ? "Gross cost is above Upgrade all at this scenario and limit, so the saving rests on the lease and NYSERDA." : "Gross cost is below Upgrade all at this scenario and limit, before the lease and NYSERDA."}</p>
     <p>Upgrade: ${N("config:profiles.deck.upgrade_usd", 0, { pre: "$" })} a transformer, lasting ${N("config:profiles.deck.upgrade_life_years", 0, { post: " years" })}, counted for the ${N("config:profiles.deck.years", 0)} years the program runs: ${N("fact:ewu.deck.prices.upgrade_counted_usd", 0, { pre: "$" })} (present value factors ${N("fact:ewu.deck.prices.factor", 3)} and ${N("fact:ewu.deck.prices.life_factor", 3)}).</p>

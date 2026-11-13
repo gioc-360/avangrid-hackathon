@@ -1,7 +1,7 @@
 """Engine figures: the architecture diagram and the tech specs sheet, as 1920x1080 SVG and PNG, numbers from facts.
 
 What: architecture_svg() draws the engine as one left-to-right flow (Read inputs, Profile every home, Add 2030
-      load, Run the ladder, Ship action lists) with the file names under each box and a trust layer across
+      load, Run the steps, Ship action lists) with the file names under each box and a trust layer across
       the bottom; spec_rows() lists the measured specs as (spec, value) pairs; specs_svg() draws them as a
       ruled table; render_png() screenshots each SVG with headless Chrome. Writes outputs/deck/.
 Why:  the product is the engine, not the viewer page, so the deck needs a picture of the engine and a sheet
@@ -76,7 +76,7 @@ def flow_boxes():
                                      ("stress.py", "mono"), ("", "rule"), (f"{config_value('transformer.count'):,} transformers", "grey"),
                                      (f"of {config_value('transformer.homes_per_transformer')} homes each", "grey"), ("or the real map", "grey"),
                                      ("EVs, heat pumps", "grey"), ("by scenario", "grey"), ("EV sessions from", "grey"), ("given meter data", "grey")]),
-        ("Run the ladder", 1118, 290, [("SIMULATED", "tag"), ("Flag, Shift,", "bold"), ("Protect, Upgrade", "bold"), ("ewu/", "grey"),
+        ("Run the steps", 1118, 290, [("SIMULATED", "tag"), ("Flag, Shift,", "bold"), ("Place, Upgrade", "bold"), ("ewu/", "grey"),
                                        ("shift.py", "mono"), ("fitscore.py", "mono"), ("dispatch.py", "mono"),
                                        ("coldsnap.py", "mono"), ("economics.py", "mono"), ("sensitivity.py", "mono"),
                                        ("screen.py", "mono")]),

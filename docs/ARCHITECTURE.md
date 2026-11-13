@@ -18,7 +18,7 @@ Deck figure: outputs/deck/architecture.png (1920x1080, drawn from facts by deck/
 └─────────┬──────────┘             │                    │
           ▼                        │                    │
 ┌────────────────────┐   facts     │                    │
-│ Run the ladder     │────────────▶│                    │
+│ Run the steps      │────────────▶│                    │
 └─────────┬──────────┘             │                    │
           ▼                        │                    │
 ┌────────────────────┐   facts     │                    │
@@ -32,10 +32,10 @@ Figure 1  EWU engine, one offline batch run
 | Step | Code | Reads | Writes |
 |---|---|---|---|
 | Read inputs | analysis/ingest.py | hourly meter CSVs (zips or folders), weather workbook, organizers' EV, heat pump and solar customer lists, config/ewu.yaml, optional meter-to-transformer map (`--map`) | data/processed/load.npy, one row per customer, one column per hour |
-| Profile every home | analysis/features.py, classify.py, segment.py, bess.py, ewu/inventory.py | load matrix and weather | load_present.npy (33,757 homes x 8,760 hours, 1.18 GB), equipment flags, segment, battery tier, program eligibility per home |
+| Profile every home | analysis/features.py, classify.py, segment.py, bess.py, ewu/inventory.py | load matrix and weather | load_present.npy (33,757 homes x 8,760 hours, 1.18 GB), technology flags, segment, battery tier, program eligibility per home |
 | Add 2030 load | ewu/feeders.py, adoption.py, stress.py | homes, flags, weather, config scenarios | kW by transformer by hour in three parts (base, EV, heat pump) for 3,000 synthetic transformers of 8 homes, or the real map's groups |
-| Run the ladder | ewu/shift.py, fitscore.py, dispatch.py, coldsnap.py, economics.py, sensitivity.py, screen.py | the 2030 loading | each transformer's rung: within limit, Flag, Shift (staggered EV charging), Protect (fit-score home batteries), Upgrade; priced on equal life |
-| Ship action lists | ewu/plan.py, plan_output.py (`bin/ewu plan`), business_case.py, demo_page.py | the ladder states and prices | transformer_actions.csv, capital_plan.csv, battery_hosts.csv, program_targets.csv, docs/BUSINESS_CASE.md, outputs/demo/ewu_demo.html |
+| Run the steps | ewu/shift.py, fitscore.py, dispatch.py, coldsnap.py, economics.py, sensitivity.py, screen.py | the 2030 loading | each transformer's step: within limit, Flag, Shift (managed charging), Place (batteries in fit-score homes), Upgrade; priced on equal life |
+| Ship action lists | ewu/plan.py, plan_output.py (`bin/ewu plan`), business_case.py, demo_page.py | the step states and prices | transformer_actions.csv, capital_plan.csv, battery_hosts.csv, program_targets.csv, docs/BUSINESS_CASE.md, outputs/demo/ewu_demo.html |
 
 Side analyses run on the same loading: ewu/attribution.py (which load causes each overload hour), tophours.py (MW cut in the system's top hours), headroom.py (the service test for a new charger), robustness.py (soft inputs moved), network.py (the page's network view).
 
@@ -53,7 +53,7 @@ Side analyses run on the same loading: ewu/attribution.py (which load causes eac
 
 ## What Avangrid's map changes
 
-One flag. `bin/ewu screen --map map.csv` (columns meter_id, transformer_id, kva) swaps the synthetic groups for real ones through ewu/feeders.py `load_map()`; nothing else in the engine changes, and groups of different sizes run as separate batches. Two limits today: ratings still follow today's peak times the sizing margin, because nameplate kVA needs a power factor nobody has given us, and `bin/ewu plan` does not take `--map` yet.
+One flag. `bin/ewu screen --map map.csv` (columns meter_id, transformer_id, kva) swaps the synthetic transformers for real ones through ewu/feeders.py `load_map()`; nothing else in the engine changes, and groups of different sizes run as separate batches. Two limits today: ratings still follow today's peak times the sizing margin, because a kVA rating from the utility's records needs a power factor nobody has given us, and `bin/ewu plan` does not take `--map` yet.
 
 ## Privacy
 
@@ -64,7 +64,7 @@ Everything runs on one machine with no network calls. Real home-level rows stay 
 ```
 make env        # .venv with requirements.txt
 make data features model    # zips to load matrix, features, classes, segments
-bin/ewu screen  # the ladder live on the full data
+bin/ewu screen  # the steps live on the full data
 bin/ewu plan    # action lists
 make check      # trust layer
 ```

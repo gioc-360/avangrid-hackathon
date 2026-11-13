@@ -15,42 +15,42 @@ data, copied by `bin/ewu arrays` and checked by sha256 on every run: EV start ho
 and one heat pump curve (8,761 kWh a year, highest hour 4.22 kW).
 
 The replica column is `bin/ewu screen --replica`: our code following her ewu_sim_bo2.py line for line, which equals
-her own run on all 3,000 transformers in each case.
+her own run on all 3,000 transformers in each scenario.
 
-| At a 1.20 limit | Moderate, ours | Moderate, her code | Moderate, deck | High, ours | High, her code | High, deck |
+| At a 1.20 limit | Moderate, ours | Moderate, teammate's model | Moderate, deck | High, ours | High, teammate's model | High, deck |
 |---|---|---|---|---|---|---|
 | Overloaded, % of transformers | 9.7% | 9.8% | 9.8% | 29.9% | 29.8% | 29.8% |
-| Fixed without an upgrade, % of overloaded | 98.3% | 98.3% | 98% | 91.6% | 93.5% | 94% |
+| Fixed by batteries, % of overloaded | 98.3% | 98.3% | 98% | 91.6% | 93.5% | 94% |
 | Average units per fixed transformer | 1.54 | 1.46 | 1.46 | 1.91 | 1.93 | 1.93 |
-| Winter driven, % of overloaded | 79.8% | 72.9% | 73% | 90.0% | 89.2% | 89% |
-| Gross cost across NYSEG, $M | 116.6 | 111.7 | 112 | 436.3 | 440.5 | 441 (her code gives 440) |
-| Net without NYSERDA, $M | 67.4 | 64.6 | not in the deck | 261.2 | 260.8 | not in the deck |
-| Avangrid cost (net of lease and NYSERDA), $M | 34.3 | 32.9 | 33 | 143.8 | 140.3 | 140 |
-| Upgrade every overloaded transformer, $M | 111.0 | 112.1 | 112 | 340.5 | 340.1 | 340 |
+| Winter nights, % of overloaded | 79.8% | 72.9% | 73% | 90.0% | 89.2% | 89% |
+| Gross cost across NYSEG, $M | 116.6 | 111.7 | 112 | 436.3 | 440.5 | 441 (the teammate's model gives 440) |
+| Net cost without NYSERDA, $M | 67.4 | 64.6 | not in the deck | 261.2 | 260.8 | not in the deck |
+| Net cost (after the lease and NYSERDA), $M | 34.3 | 32.9 | 33 | 143.8 | 140.3 | 140 |
+| Upgrade all, $M | 111.0 | 112.1 | 112 | 340.5 | 340.1 | 340 |
 
-Avangrid cost is the saving's whole basis: at gross, the high case costs more than upgrading every overloaded
-transformer. Peak cut with export, 2,733 priority homes with 2 units each pooled as one fleet:
+Net cost is the saving's whole basis: in gross cost, the High 2030 scenario costs more than
+Upgrade all, the cost of upgrading every overloaded transformer. Summer peak cut, export allowed, 2,733 priority homes with 2 units each pooled as one fleet:
 9.05 MW off the yearly peak (deck 8.8 MW, the same metric as the teammate's program.py;
-6.40 MW on average over the top 50 hours). Behind the meter only, the conservative case:
+6.40 MW on average over the top 50 hours). Behind the meter only, the conservative reading:
 7.11 MW over the top hours (deck 7.0 MW, our earlier number; the teammate's own behind-the-meter figure is
 5.60 MW, see docs/TEAMMATE_AUDIT.md).
 
-Two deck numbers miss on our tool's own run, and we report them rather than tune constants. High-case fixed
-without an upgrade is lower because our inventory flags which homes already have an EV or electric heat
+Two deck numbers miss on our tool's own run, and we report them rather than tune constants. High 2030 fixed
+by batteries is lower because our inventory flags which homes already have an EV or electric heat
 differently from the teammate's tiers: swapping only the tiers in her run moves it from
-93.5% to 91.5%. Moderate winter driven share is higher on our seed: over seeds 1 to 20 it
+93.5% to 91.5%. Moderate winter nights share is higher on our seed: over seeds 1 to 20 it
 runs from 72.1% to 81.0%. `bin/ewu screen --profile cautious` gives the earlier method below.
 
 ## Cautious profile: the earlier method, kept as a named sensitivity
 
-**Find the street transformers that 2030 electrification will push over their limit, and give each one the
-cheapest fix: Flag, Shift, Protect, Upgrade.** In the moderate 2030 case, 26.18% of
-neighborhood transformers go over the limit at least once a year (54.77% in the high case). Staggered
-EV charging fixes 78.56% of them. Shifting and then upgrading what is still over costs
-43.47% of upgrading every flagged transformer; the full ladder with batteries costs 51.92%.
-Shifting is the money saver. A battery is the targeted rung for the places shifting cannot reach.
+**Find the street transformers that 2030 electrification will overload, and give each one the
+cheapest fix: Flag, Shift, Place, Upgrade.** In the Moderate 2030 scenario, 26.18% of
+neighborhood transformers are overloaded at least once a year (54.77% in High 2030). Managed
+charging fixes 78.56% of them. Shifting and then upgrading what is still overloaded costs
+43.47% of Upgrade all; the full battery path costs 51.92%.
+Shifting is the money saver. A battery is the targeted step for the places shifting cannot reach.
 
-## WHAT: the flagged share depends on how much room a transformer has, so we state it as a range
+## WHAT: the overloaded share depends on how much room a transformer has, so we state it as a range
 
 | Rating, as today's group peak times | 1.05 | 1.15 | 1.30 | 1.50 |
 |---|---|---|---|---|
@@ -60,11 +60,11 @@ Shifting is the money saver. A battery is the targeted rung for the places shift
 | High 2030, over at least 3 hours a year | 58.38% | 41.27% | 22.2% | 8.4% |
 
 A flag is any hour above 1.2 times the rating, so the flag is also a duration question.
-In the moderate case at today's peak times 1.15, 37.31% of flagged transformers are over for fewer than
+In Moderate 2030 at today's peak times 1.15, 37.31% of overloaded transformers are overloaded for fewer than
 3 hours a year (median 4 hours). A rule of at least 3 hours over flags 16.41% instead of
-26.18%. Upgrade-all prices every flagged transformer at $15,000 (mid placeholder), even one over for a single hour a year,
+26.18%. Upgrade all prices every overloaded transformer at $15,000 (mid placeholder), even one over for a single hour a year,
 so it is the costliest reading of the flag; Avangrid's own duration rule is an ask. On the
-Feb 7-8 cold snap, with staggered charging, 2.70% of transformers go over, for a median of
+Feb 7-8 cold snap, with managed charging, 2.70% of transformers are overloaded, for a median of
 3 hours and 3.02 kWh above the limit.
 
 ## WHY: at the measured heat pump load, EV timing decides whether a transformer overloads; heat pumps decide when
@@ -73,18 +73,18 @@ Heat pumps run in 90.52% of overload hours but are the larger cause in only
 4.57%. In 76.0% of overload hours it takes both: neither new load alone crosses the
 limit. What decides the program is that 95.38% of overload hours stay under with no new EV load.
 The heat pump raises the floor all night; the charger is the spike that crosses the limit.
-So staggering cuts the moderate case from 26.18% to 5.65% of transformers. A simple timer that
-starts every car at once does not: it nets 24.28% in the moderate case and backfires in the high
-case, from 54.77% to 56.14%, because cars start together on the coldest nights.
+So managed charging cuts Moderate 2030 from 26.18% to 5.65% of transformers. A simple timer that
+starts every car at once does not: it nets 24.28% in Moderate 2030 and backfires in High
+2030, from 54.77% to 56.14%, because cars start together on the coldest nights.
 
 That answer leans on one input. The heat pump load is a single slope, 0.05 kW per F below 60 F
 (3.0 kW at 0 F), taken as the median difference between electric-heat homes and the rest, not a heat pump model.
-At 1.5 times that slope, staggering fixes 60.7% instead of 78.56% and the heat pump leads
+At 1.5 times that slope, managed charging fixes 60.7% instead of 78.56% and the heat pump leads
 26.67% of overload hours; at 2 times, 46.1% and 50.29% (moderate). So the answer holds
-near the measured slope. A heavier heat pump moves work from Shift to Protect and Upgrade; metered heat
+near the measured slope. A heavier heat pump moves work from Shift to Place and Upgrade; metered heat
 pump homes would settle the slope. A second soft input: the runs draw both devices off one random order, so
 97.91% of new heat pump homes also get a new EV (a labeled assumption). Drawn apart (20.25% overlap),
-25.28% of transformers overload instead of 26.18% and staggering fixes 83.83%, so the answer does not rest on the stacking.
+25.28% of transformers overload instead of 26.18% and managed charging fixes 83.83%, so the answer does not rest on the stacking.
 
 What shifting cannot reach is where a battery earns its place:
 - **Heat pumps alone.** 1.97% of transformers (moderate) and 11.73% (high) overload with no
@@ -93,15 +93,15 @@ What shifting cannot reach is where a battery earns its place:
   measured mean session (3.78 hours from 18:00, an assumed start), only 0.5% of homes without
   an EV can add a Level 2 charger within it today; one battery unit raises that to 40.6%, two to
   100%. The older 2-hour charge (an assumption) gave 57.2% for one unit. Two units let that home electrify now.
-- **The cold snap.** One host home with two units (20.16 kWh) clears 89.88% of the
-  transformers still over on Feb 7-8, with state of charge carried hour by hour.
+- **The cold snap.** One battery host with two units (20.16 kWh) fixes 89.88% of the
+  transformers still overloaded on Feb 7-8, with state of charge carried hour by hour.
 
 ## Scott's metric: what the battery hosts cut in the system's top hours
 
-Hosts sit on the transformers still over with staggered charging (169.6 per 3,000, moderate), one
-host each, chosen by fit score: the kW a battery in that home can cut across the system's top hours, so a
-peaky home ranks above a flat, long-loaded one. Random hosts on the same transformers are the control.
-Each battery here is dispatched for the system on the hours shown; one unit per host.
+Battery hosts sit on the transformers still overloaded with managed charging (169.6 per 3,000, moderate), one
+battery host each, chosen by fit score: the kW a battery in that home can cut across the system's top hours, so a
+peaky home ranks above a flat, long-loaded one. Random battery hosts on the same transformers are the control.
+Each battery here is dispatched for the system on the hours shown; one unit per battery host.
 
 | System hours (metered) | Jul 2 hours in set | Feb 7 hours in set | kW per battery, fit score | kW per battery, random | MW, fit-score fleet | % of these homes' 2030 load |
 |---|---|---|---|---|---|---|
@@ -113,50 +113,50 @@ Each battery here is dispatched for the system on the hours shown; one unit per 
 
 Jul 2 holds the year's highest metered hour. Feb 7 is the winter peak, but its highest hour ranks
 123 of the year, so today's annual top 50 are all summer hours; the winter set is where Feb 7 counts.
-Fit-score hosts cut more per battery than random hosts in every set, scenario and unit count. In the high
+Fit-score battery hosts cut more per battery than random battery hosts in every set, scenario and unit count. In the high
 case the fit-score fleet cuts on average 1.17 MW across the top 20 hours. The fleet is small because the sample is: the
 portable number is kW per battery.
 
-## HOW: four rungs, cheapest first (moderate 2030, today's peak times 1.15)
+## HOW: four steps, cheapest first (moderate 2030, today's peak times 1.15)
 
-| Rung | What Avangrid does | Share of all transformers |
+| Step | What Avangrid does | Share of all transformers |
 |---|---|---|
 | 1. Flag | Run `bin/ewu screen` on hourly meter data | 26.18% |
-| 2. Shift | Default EV homes on flagged transformers to staggered charging | 20.57% fixed |
-| 3. Protect | One or two fit-score host homes, one or two units each (1.42 per transformer) | 5.23% cleared |
-| 4. Upgrade | Upgrade what nothing else clears | 0.42% |
+| 2. Shift | Default EV homes on overloaded transformers to managed charging | 20.57% fixed |
+| 3. Place | One or two fit-score battery hosts, one or two units each (1.42 per transformer) | 5.23% fixed by batteries |
+| 4. Upgrade | Upgrade what nothing else fixes | 0.42% |
 
 Check status: the number review (`checks/review_numbers.py`, record in runs/review_round.json) rebuilt headline numbers
-its own way, among them the flagged share and its duration, the heat pump and EV shares of overload hours, the
-3 kVA pass shares and the pricing arithmetic behind the 51.92% ladder share. The battery numbers were then rebuilt by
-separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.json, part of `make check`): the cold snap clear rates, the
-fit-score kW in the top 20 hours and the 1.42 batteries per protected transformer all reproduce.
+its own way, among them the overloaded share and its duration, the heat pump and EV shares of overload hours, the
+3 kVA pass shares and the pricing arithmetic behind the 51.92% battery path share. The battery numbers were then rebuilt by
+separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.json, part of `make check`): the cold snap fix rates, the
+fit-score kW in the top 20 hours and the 1.42 battery units per transformer fixed by batteries all reproduce.
 
-**The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
+**The battery price that makes Place pay.** At placeholder prices the batteries of a transformer they fix cost
 $1,720 a year against $1,209 for the upgrade they put off (equal life, 7% rate, a placeholder). A battery beats
 the upgrade only below $7,730 per installed unit; the placeholder range is $9,000 to $13,000. Not counted,
-all upside for batteries and none verified: host lease payments, the NYSERDA incentive, capacity value.
-Across all 16 grid cells and price cases the ladder runs 30.8% to 151.19% of upgrade-all,
+all upside for batteries and none verified: customer lease payments, the NYSERDA incentive, capacity value.
+Across all 16 grid cells and price cases the battery path runs 30.8% to 151.19% of Upgrade all,
 shift-then-upgrade 28.72% to 102.97%.
 
 Scaled to NYSEG (labeled assumption: our sample is typical of 890,000 customers, 8 per transformer),
-present value at mid prices: upgrade every flagged transformer $436.9M, the ladder $226.8M,
+present value at mid prices: Upgrade all $436.9M, the battery path $226.8M,
 shift then upgrade $189.9M.
 
 ## The asks to Avangrid (open items, not claims)
 
-1. A meter-to-transformer map with ratings. It replaces the synthetic groups with one flag (`--map`).
-   Without it the ratings are guessed, which is why the flagged share above is a range.
+1. A meter-to-transformer map with ratings. It replaces the synthetic transformers with one flag (`--map`).
+   Without it the ratings are guessed, which is why the overloaded share above is a range.
 2. The installed battery price Avangrid can get, against the $7,730 tie, and whether NYSERDA
-   incentives, host leases and capacity value can be counted.
+   incentives, customer leases and capacity value can be counted.
 3. How a home battery that defers a transformer upgrade is treated under New York's non-wires-alternative
-   benefit-cost test. We do not know, and the answer decides whether Protect is a utility program.
+   benefit-cost test. We do not know, and the answer decides whether Place is a utility program.
 
 **How it holds up.** Measured on 33,757 homes' hourly meters: EV session start times, heat pump load
 against temperature, the 3 kVA test, the system top hours. Simulated: transformers are 8 random homes,
 3,000 per run, 5 seeds; hourly data hides 15-minute peaks; no ambient derate. Every number here is
 written by `ewu/business_case.py` from facts/facts.json and config/ewu.yaml, and `checks/trace_numbers.py`
-traces each one. The teammate's earlier figures (for example 9.8% and 29.8% flagged) came from a different
+traces each one. The teammate's earlier figures (for example 9.8% and 29.8% overloaded) came from a different
 simulation and are not used here; the differences are listed in docs/FINDINGS.md. Left out because we
 could not source them: rate decoupling returning value to customers, capital spending as a multiple of
 cash flow, and a return on avoided capital.

@@ -1,6 +1,6 @@
 # Avangrid AMI hackathon: end uses, segments, batteries
 
-Hourly smart-meter data for 33,757 homes plus weather. The pipeline classifies equipment (EV Level 1/2, AC,
+Hourly smart-meter data for 33,757 homes plus weather. The pipeline classifies technology (EV Level 1/2, AC,
 electric and heat-pump heat, water heaters, pools, hot tubs, solar and solar + battery), segments homes, and
 ranks and sizes behind-the-meter batteries (Enphase IQ 10C). The repo also checks itself: one command answers
 "are we still solving the problem they set?" and "does every number and quote trace to code or a source page?"
@@ -18,15 +18,15 @@ Data is not in the repo (event-confidential). Point `DATA=` at the folder holdin
 
 ## Run the EWU tool
 
-Electrify Without Upgrade (EWU) finds the neighborhood transformers that 2030 EVs and heat pumps will push
-over their limit and gives each the cheapest fix. It runs offline on the processed meter data; every command
+Electrify Without Upgrade (EWU) finds the neighborhood transformers that 2030 EVs and heat pumps will
+overload and gives each the cheapest fix. It runs offline on the processed meter data; every command
 prints aggregates only. Run it as `bin/ewu` (`python -I -m ewu` does not work, because `-I` keeps the repo
 off the import path).
 
 ```
 bin/ewu --help                                     # list the commands
-bin/ewu inventory                                  # Parts 1 and 2: equipment, segment, eligible programs per home
-bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Protect, Upgrade on the full data, live
+bin/ewu inventory                                  # Parts 1 and 2: technology, segment, eligible programs per home
+bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Place, Upgrade on the full data, live
 bin/ewu screen --map meters.csv                    # same, on a real map: meter_id, transformer_id, kva
 bin/ewu network                                    # the screen's synthetic network, transformer by transformer, for the page
 bin/ewu coldsnap --date 2026-02-07                 # battery hour by hour through the Feb 7-8 cold snap
@@ -40,9 +40,9 @@ make prototype                                     # rebuild all of the above fr
 
 ```
 ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
-│ meter data   │──▶│ FLAG         │──▶│ SHIFT        │──▶│ PROTECT      │──▶│ UPGRADE      │
+│ meter data   │──▶│ FLAG         │──▶│ SHIFT        │──▶│ PLACE        │──▶│ UPGRADE      │
 │ + map (opt.) │   │ stress.py    │   │ shift.py     │   │ fitscore.py  │   │ economics.py │
-│ inventory.py │   │ any hour over│   │ staggered EV │   │ dispatch.py  │   │ what is left │
+│ inventory.py │   │ any hour over│   │ managed EV   │   │ dispatch.py  │   │ what is left │
 └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
                           every number ──▶ analysis/facts.py record() ──▶ facts/facts.json
 ```
@@ -54,8 +54,8 @@ The demo page shows deck v3's numbers only, all from the engine's deck profile (
 CLI, `--profile cautious`). It opens on Summary, one column per scenario; Network then draws one substation, 6
 illustrative feeders and every synthetic transformer of the deck profile, recolored by Today, 2030: Flag,
 + Place batteries, + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
-Place, Upgrade and Money switch scenario and overload limit. The page uses deck v3's terms: overloaded, fixed by
-batteries, upgrade, net cost, Upgrade all, saving. Each view keeps its assumptions in one closed
+Place, Upgrade and Money switch scenario and loading limit. The page uses deck v3's terms, one per idea
+(docs/TERMS.md, checked by `checks/terms_check.py` in `make check`). Each view keeps its assumptions in one closed
 "How this is computed".
 The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
 file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.

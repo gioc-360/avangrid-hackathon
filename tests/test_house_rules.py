@@ -15,7 +15,7 @@ from checks import check_all, config_check
 
 ROOT = Path(__file__).resolve().parent.parent
 NEW_CHECKS = ("config_check", "trace_numbers", "demo_check", "demo_audit", "qa_refs", "judge_rounds_check", "review_numbers",
-              "recompute_battery", "battery_model", "teammate_rerun", "teammate_audit")
+              "recompute_battery", "battery_model", "teammate_rerun", "teammate_audit", "terms_check")
 EM_DASH = chr(0x2014)
 PLAIN_NAME = re.compile(r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$")
 

@@ -44,7 +44,7 @@ def test_each_view_builds_one_disclosure_and_marks_its_assumed_numbers():
 def test_assumptions_live_in_the_disclosure_not_on_the_face():
     moved = {"deck": ["kW read as kVA", "our replica of the teammate's model", "GIVEN, from the teammate", "ASSUMED", "Money is v3's basis"],
              "money": ["Scaling, assumption", "present value factors", "customer lease"],
-             "overview": ["battery-only fix order", "distribution planners"],
+             "overview": ["Deck v3's steps", "distribution planners"],
              "network": ["GIVEN", "illustrative split", "kW read as kVA"],
              "inventory": ["not a real customer", "Confidence for each technology"],
              "protect": ["every day's excess", "no separate cold snap test"],

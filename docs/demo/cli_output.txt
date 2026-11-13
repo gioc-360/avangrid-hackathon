@@ -4,16 +4,16 @@ Arrays: ev_start_pmf from the teammate (data/processed, sha256 checked; ewu_inpu
 
                                      moderate       high
 Overloaded, % of transformers             9.7       29.9
-Fixed without an upgrade, %              98.3       91.6
+Fixed by batteries, %                    98.3       91.6
 Average units per fixed                  1.54       1.91
-Winter driven, % of overloaded           79.8       90.0
-NYSEG gross, $M                         116.6      436.3
-NYSEG net without nyserda, $M            67.4      261.2
-NYSEG avangrid cost, $M                  34.3      143.8
-NYSEG upgrade all, $M                   111.0      340.5
+Winter nights, % of overloaded           79.8       90.0
+NYSEG gross cost, $M                    116.6      436.3
+NYSEG net cost without NYSERDA, $M       67.4      261.2
+NYSEG net cost, $M                       34.3      143.8
+NYSEG Upgrade all, $M                   111.0      340.5
 
-Overloaded % by limit: 1.00: 30.0/60.0; 1.10: 17.2/43.2; 1.20: 9.7/29.9; 1.40: 2.4/13.9
-Peak cut, 2,733 priority homes x 2 units: export fleet 9.05 MW off the yearly peak (mean over the top 50 hours 6.40 MW); behind the meter 7.11 MW (mean over those hours)
+Overloaded % by loading limit: 1.00: 30.0/60.0; 1.10: 17.2/43.2; 1.20: 9.7/29.9; 1.40: 2.4/13.9
+Summer peak cut, 2,733 priority homes x 2 units: export allowed 9.05 MW off the yearly peak (mean over the top 50 hours 6.40 MW); behind the meter 7.11 MW (mean over those hours)
 
 2.1 s, full meter data, aggregates only
 
@@ -22,14 +22,14 @@ EWU screen: moderate 2030, rating = today's peak x 1.15
 3,000 transformers (random grouping, seed 0), 24,000 homes
 
 step     what                                     % of transformers transformers
-Flag     over the limit, EV charging unmanaged                26.00          780
-Shift    fixed by staggered EV charging                       20.50          615
-Protect  cleared by fit-score home batteries                   4.97          149
+Flag     overloaded, EV charging unmanaged                    26.00          780
+Shift    fixed by managed charging                            20.50          615
+Place    fixed by batteries in fit-score homes                 4.97          149
 Upgrade  left for a transformer upgrade                        0.60           18
 
-Staggering newly overloads 0.07% of transformers; they join Protect or Upgrade.
-Batteries: 213 units, 1.43 per protected transformer.
-Ladder cost as % of upgrading every flagged transformer (equal life):
+Managed charging newly overloads 0.07% of transformers; they join Place or Upgrade.
+Batteries: 213 units, 1.43 per transformer fixed by batteries.
+Battery path cost as % of Upgrade all (equal life):
 low prices 69.09%, mid prices 51.79%, high prices 43.14%
 
-2.2 s, full meter data, aggregates only
+2.3 s, full meter data, aggregates only

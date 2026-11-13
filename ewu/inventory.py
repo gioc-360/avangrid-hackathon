@@ -148,7 +148,7 @@ def record_inventory(summary, homes, load, config):
 
 def print_inventory(summary):
     print(f"Inventory: {summary['homes']:,} homes, one row each in outputs/private/inventory.parquet\n")
-    print(f"{'equipment':<18} {'homes':>7} {'% homes':>8}  confidence")
+    print(f"{'technology':<18} {'homes':>7} {'% homes':>8}  confidence")
     for c, v in summary["classes"].items():
         print(f"{c:<18} {v['count']:>7,} {v['share_pct']:>8.2f}  {v['confidence']}")
     print(f"\n{'segment':<18} {'homes':>7} {'% homes':>8}")

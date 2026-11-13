@@ -227,8 +227,8 @@ profiles:
     ev_load_rule: {value: measured Level 2 sessions, unit: EV load rule, source: "repo:ewu/adoption.py:40",
                    quote: "measured level 2 sessions", assumption: true,
                    basis: "the earlier method: start and length drawn together from this data's sessions"}
-    fix_order: {value: [flag, shift, protect, upgrade], unit: ladder steps, source: "repo:README.md:29",
-                quote: "flag, shift, protect, upgrade", assumption: true, basis: "the earlier method"}
+    fix_order: {value: [flag, shift, place, upgrade], unit: steps, source: "repo:README.md:29",
+                quote: "flag, shift, place, upgrade", assumption: true, basis: "the earlier method"}
   deck:
     transformer_count: {value: 3000, unit: synthetic transformers, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:5",
                         basis: "teammate spec 2026-11-13 (final deck)"}

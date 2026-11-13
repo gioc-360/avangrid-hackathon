@@ -102,16 +102,16 @@ def print_screen(cell, money, scenario, grouping, margin, seconds):
     source = "real transformer map" if cell["map"] else f"{grouping} grouping, seed {cell['seed']}"
     print(f"EWU screen: {scenario} 2030, rating = today's peak x {margin:.2f}")
     print(f"{cell['transformers']:,} transformers ({source}), {cell['homes']:,} homes\n")
-    rows = [("Flag", "over the limit, EV charging unmanaged", s["flagged_pct"], cell["flagged"]),
-            ("Shift", "fixed by staggered EV charging", s["shift_fixed_pct"], cell["shift_fixed"]),
-            ("Protect", "cleared by fit-score home batteries", s["protected_pct"], cell["protected"]),
+    rows = [("Flag", "overloaded, EV charging unmanaged", s["flagged_pct"], cell["flagged"]),
+            ("Shift", "fixed by managed charging", s["shift_fixed_pct"], cell["shift_fixed"]),
+            ("Place", "fixed by batteries in fit-score homes", s["protected_pct"], cell["protected"]),
             ("Upgrade", "left for a transformer upgrade", s["upgrade_left_pct"], cell["upgrade_left"])]
     print(f"{'step':<8} {'what':<40} {'% of transformers':>17} {'transformers':>12}")
     for step, what, pct, count in rows:
         print(f"{step:<8} {what:<40} {pct:>17.2f} {count:>12,}")
-    print(f"\nStaggering newly overloads {s['new_from_stagger_pct']:.2f}% of transformers; they join Protect or Upgrade.")
-    print(f"Batteries: {cell['batteries']:,} units, {s['batteries_per_protected']:.2f} per protected transformer.")
-    print("Ladder cost as % of upgrading every flagged transformer (equal life):")
+    print(f"\nManaged charging newly overloads {s['new_from_stagger_pct']:.2f}% of transformers; they join Place or Upgrade.")
+    print(f"Batteries: {cell['batteries']:,} units, {s['batteries_per_protected']:.2f} per transformer fixed by batteries.")
+    print("Battery path cost as % of Upgrade all (equal life):")
     print(", ".join(f"{case} prices {m['ladder']:.2f}%" for case, m in money.items()))
     print(f"\n{seconds:.1f} s, full meter data, aggregates only")
 

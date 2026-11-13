@@ -23,6 +23,9 @@ FIELDS = {"overloaded_pct": "% of transformers", "fixed_of_overloaded_pct": "% o
 
 SHARES = {"fixed_units_1_2_pct": ("fixed_units_1_2", "transformers"), "fixed_units_3_4_pct": ("fixed_units_3_4", "transformers"),
           "upgrades_pct": ("upgrades", "transformers"), "upgrade_of_overloaded_pct": ("upgrades", "overloaded")}
+# the money columns in deck v3's words (docs/TERMS.md); the keys stay the fact names
+MONEY_WORDS = {"gross": "gross cost", "net_without_nyserda": "net cost without NYSERDA", "avangrid_cost": "net cost",
+               "upgrade_all": "Upgrade all"}
 
 
 def band_shares(cell):
@@ -87,19 +90,19 @@ def print_deck_screen(result, config, limit, seconds):
     print(f"EWU screen, deck profile: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
           f"standard kVA rating, overloaded above {limit:.2f} x rating; managed charging {'on' if result['managed'] else 'off'}")
     print("Arrays: " + "; ".join(f"{name} {deck.array_label(origin)}" for name, origin in setup["origins"].items()) + "\n")
-    rows = [("Overloaded, % of transformers", "overloaded_pct", "{:.1f}"), ("Fixed without an upgrade, %", "fixed_of_overloaded_pct", "{:.1f}"),
-            ("Average units per fixed", "average_units", "{:.2f}"), ("Winter driven, % of overloaded", "winter_of_overloaded_pct", "{:.1f}")]
+    rows = [("Overloaded, % of transformers", "overloaded_pct", "{:.1f}"), ("Fixed by batteries, %", "fixed_of_overloaded_pct", "{:.1f}"),
+            ("Average units per fixed", "average_units", "{:.2f}"), ("Winter nights, % of overloaded", "winter_of_overloaded_pct", "{:.1f}")]
     print(f"{'':<34} {'moderate':>10} {'high':>10}")
     for label, name, fmt in rows:
         print(f"{label:<34} " + " ".join(f"{fmt.format(result['cells'][(s, limit)][name]):>10}" for s in deck.SCENARIOS))
     for column in deck_money.COLUMNS:
-        print(f"{'NYSEG ' + column.replace('_', ' ') + ', $M':<34} "
+        print(f"{'NYSEG ' + MONEY_WORDS[column] + ', $M':<34} "
               + " ".join(f"{result['money'][(s, limit)]['nyseg_musd'][column]:>10.1f}" for s in deck.SCENARIOS))
-    print("\nOverloaded % by limit: " + "; ".join(
+    print("\nOverloaded % by loading limit: " + "; ".join(
         f"{lim:.2f}: " + "/".join(f"{result['cells'][(s, lim)]['overloaded_pct']:.1f}" for s in deck.SCENARIOS)
         for lim in config_value("profiles.deck.overload_limit_options", config)))
     p = result["peak"]
-    print(f"Peak cut, {p['hosts']:,} priority homes x 2 units: export fleet {p['export_peak_drop_mw']:.2f} MW off the yearly peak "
+    print(f"Summer peak cut, {p['hosts']:,} priority homes x 2 units: export allowed {p['export_peak_drop_mw']:.2f} MW off the yearly peak "
           f"(mean over the top {p['hours']} hours {p['export_mw']:.2f} MW); behind the meter {p['behind_meter_mw']:.2f} MW (mean over those hours)")
     print(f"\n{seconds:.1f} s, full meter data, aggregates only")
 

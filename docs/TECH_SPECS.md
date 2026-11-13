@@ -65,11 +65,11 @@ The screen limit is 60 s (config checks.screen_seconds_max).
 
 | Command | What it does |
 |---|---|
-| `inventory` | equipment, segment and eligible programs for every home |
-| `screen [--scenario] [--margin] [--grouping] [--map CSV]` | Flag, Shift, Protect, Upgrade for one scenario and sizing, live |
+| `inventory` | technology, segment and eligible programs for every home |
+| `screen [--scenario] [--margin] [--grouping] [--map CSV]` | Flag, Shift, Place, Upgrade for one scenario and sizing, live |
 | `network` | the screen's synthetic network, transformer by transformer, for the page |
 | `coldsnap [--date]` | battery duration test through the cold snap |
-| `sensitivity` | the ladder and its cost over scenarios, sizing margins and groupings |
+| `sensitivity` | the steps and their cost over scenarios, sizing margins and groupings |
 | `tophours` | MW the fit-score batteries cut in the system's top 20 and 50 hours |
 | `robustness` | heat pump slope variants, flag durations, the 3 kVA test by charge length |
 | `case` | writes docs/BUSINESS_CASE.md with every number filled from facts |
@@ -96,7 +96,7 @@ The action lists come from `bin/ewu plan` (ewu/plan.py, ewu/plan_output.py). Col
 | outputs/plan/capital_plan.csv | whole sample, placeholder prices | option, what, transformers_upgraded, batteries, ev_homes_enrolled, pv_usd_low, pv_usd_mid, pv_usd_high, share_of_upgrade_all_pct_low, share_of_upgrade_all_pct_mid, share_of_upgrade_all_pct_high, prices |
 | battery_hosts.csv (real: outputs/private/plan with `--private`; simulated: outputs/showcase) | home | transformer_id, rank, home_id, fit_score, kw_cut_top_hours, units |
 | program_targets.csv (same two places) | home | home_id, transformer_id, segment, programs, reason, priority |
-| outputs/private/inventory.parquet (`bin/ewu inventory`) | home, private | CUSTOMER_NUMBER, segment, annual_kwh, peak_kw, battery tier and units, p_ev, p_heat_pump, one is_* flag and one confidence_* word per equipment class, monthly kWh, one eligible_* column per program |
+| outputs/private/inventory.parquet (`bin/ewu inventory`) | home, private | CUSTOMER_NUMBER, segment, annual_kwh, peak_kw, battery tier and units, p_ev, p_heat_pump, one is_* flag and one confidence_* word per technology, monthly kWh, one eligible_* column per program |
 | facts/facts.json | aggregate | key: {value, unit, script, method}; per-home and per-transformer values go to the gitignored outputs/private/facts_private.json |
 | docs/BUSINESS_CASE.md, outputs/demo/ewu_demo.html | aggregate | the business case and the viewer, both filled only from facts |
 
@@ -118,12 +118,12 @@ It runs offline: no web service, no cloud, no customer data leaves the machine i
 | Hourly meter data, 33,757 usable homes x 8,760 hours | GIVEN | In the hackathon data (35,725 meters supplied) |
 | Hourly weather | GIVEN | In the hackathon data |
 | Labeled EV, heat pump and solar homes | GIVEN | In the hackathon data (samples, used to check detection) |
-| Equipment inventory, segments, program eligibility | DERIVED | Computed from the given meter and weather data |
+| Technology inventory, segments, program eligibility | DERIVED | Computed from the given meter and weather data |
 | Level 2 EV charging sessions | DERIVED | Measured from the given meter data, then reused for 2030 EVs |
 | Transformers (3,000 of 8 homes) and feeders | SIMULATED | No meter-to-transformer map was given; real homes are grouped at random until Avangrid's map is loaded with --map |
 | 2030 EV and heat pump adopters | SIMULATED | Scenario draws (moderate 20% EV, 15% heat pump; high 35%, 30%) |
-| Overloads, Shift, Protect, Upgrade results | SIMULATED | Model output on the simulated transformers and 2030 load |
-| transformer_actions.csv | SIMULATED | Model output per simulated transformer |
+| Overloads, Shift, Place, Upgrade results | SIMULATED | Model output on the synthetic transformers and 2030 load |
+| transformer_actions.csv | SIMULATED | Model output per synthetic transformer |
 | battery_hosts.csv, program_targets.csv (showcase) | SIMULATED | Simulated homes (SIM- ids) drawn from segment statistics; real lists only with --private, never shared |
 | Transformer ratings, 120% limit, prices, discount rate | ASSUMED | Placeholders in config/ewu.yaml, each with its source or "assumption"; to confirm with Avangrid |
 | capital_plan.csv | ASSUMED | Model output priced at placeholder costs |

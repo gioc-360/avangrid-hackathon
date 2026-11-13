@@ -2,14 +2,14 @@
 
 What: `inventory` lists every home's equipment, segment and eligible programs (aggregate table on screen,
       rows in outputs/private); `screen` runs the deck profile (both scenarios, battery-only fix, money, peak
-      cut; `--profile cautious --scenario moderate --margin 1.15` runs the earlier Flag, Shift, Protect, Upgrade)
+      cut; `--profile cautious --scenario moderate --margin 1.15` runs the earlier Flag, Shift, Place, Upgrade)
       live on the full data; `coldsnap --date 2026-02-07` runs the battery duration test through the cold
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
       `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
       the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `network` writes
       the screen's synthetic network state by state for the page; `arrays` copies and checks the teammate's
       two deck arrays into data/processed; `case` writes the one-page business case from
-      facts; `demo` builds the offline demo page (side panel: Network, Overview, Inventory, Flag, Shift, Protect,
+      facts; `demo` builds the offline demo page (side panel: Network, Overview, Inventory, Flag, Shift, Place,
       Upgrade, Money) and opens it.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
       never a customer or a single transformer.
@@ -150,7 +150,7 @@ def run_demo_command(args):
 def add_profile_options(command, replica=False):
     """--profile (deck by default, cautious = the earlier method), --limit and --managed for the deck profile."""
     command.add_argument("--profile", default=config_value("profiles.default"), choices=("deck", "cautious") + (("deck-replica",) if replica else ()),
-                         help="deck = the final deck's method (default); cautious = the earlier Flag, Shift, Protect, Upgrade")
+                         help="deck = the final deck's method (default); cautious = the earlier Flag, Shift, Place, Upgrade")
     command.add_argument("--limit", type=float, default=config_value("profiles.deck.overload_limit"),
                          choices=config_value("profiles.deck.overload_limit_options"), help="deck: overloaded above this x rating")
     command.add_argument("--managed", action="store_true", help="deck: optional managed charging scenario")
@@ -159,15 +159,15 @@ def add_profile_options(command, replica=False):
 def main(argv=None):
     parser = argparse.ArgumentParser(prog="ewu", description="Electrify Without Upgrade prototype")
     commands = parser.add_subparsers(dest="command", required=True)
-    inv = commands.add_parser("inventory", help="equipment, segment and eligible programs for every home")
+    inv = commands.add_parser("inventory", help="technology, segment and eligible programs for every home")
     inv.set_defaults(run=run_inventory_command)
-    scr = commands.add_parser("screen", help="Flag, Shift, Protect, Upgrade for one scenario and sizing, live")
+    scr = commands.add_parser("screen", help="Flag, Shift, Place, Upgrade for one scenario and sizing, live")
     scr.add_argument("--scenario", default=config_value("demo.scenario"), choices=("moderate", "high"))
     scr.add_argument("--margin", type=float, default=config_value("demo.margin"), help="rating = today's peak x this")
     scr.add_argument("--grouping", default="random", choices=("random", "same_segment"))
-    scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic groups (cautious)")
+    scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic transformers (cautious)")
     add_profile_options(scr, replica=True)
-    scr.add_argument("--replica", action="store_true", help="profile deck-replica: the teammate's code followed exactly")
+    scr.add_argument("--replica", action="store_true", help="profile deck-replica: the teammate's model followed exactly")
     scr.add_argument("--tiers", default="teammate", choices=("teammate", "ours"), help="deck-replica: whose EV and heat tiers")
     scr.set_defaults(run=run_screen_command)
     net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
@@ -177,7 +177,7 @@ def main(argv=None):
     cold = commands.add_parser("coldsnap", help="battery duration test through the cold snap")
     cold.add_argument("--date", default=config_value("demo.cold_snap_start"), help="first day of the window")
     cold.set_defaults(run=run_coldsnap_command)
-    grid = commands.add_parser("sensitivity", help="ladder and its cost over scenarios x sizing margins x groupings")
+    grid = commands.add_parser("sensitivity", help="the steps and their cost over scenarios x sizing margins x groupings")
     grid.set_defaults(run=run_sensitivity_command)
     top = commands.add_parser("tophours", help="MW the fit-score batteries cut in the system's top 20 and 50 hours")
     top.set_defaults(run=run_top_hours_command)

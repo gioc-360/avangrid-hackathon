@@ -6,7 +6,7 @@ judge who opens a reference lands on the code the answer describes. Every number
 facts/facts.json or config/ewu.yaml (`checks/trace_numbers.py docs/CODE_QA.md`). Results are for the moderate
 2030 scenario, random grouping, transformers rated at today's group peak times 1.15, unless a line says otherwise.
 
-### Q1. How do you know which homes have an EV or a heat pump, with no equipment list?
+### Q1. How do you know which homes have an EV or a heat pump, with no technology list?
 
 Each class is one physical rule on the hourly load. A home is a Level 2 EV home when it shows repeated blocks
 of high load above its own daily floor on weather-neutral days, mostly starting in the evening or at night. The
@@ -19,7 +19,7 @@ Code: `analysis/classify.py:109 F.ev_l2_night_share` (the rule), `analysis/class
 
 ### Q2. How does a home end up eligible for a program?
 
-`ewu inventory` joins the equipment flags, segment and battery tier into one row per home, then applies each
+`ewu inventory` joins the technology flags, segment and battery tier into one row per home, then applies each
 program's rule from config: the home must have every flag the rule names and none of the excluded flags (vacant
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
 Across all 33,757 usable homes, 69.07% are eligible for at least one program.
@@ -33,7 +33,7 @@ Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:147 managed_charg
 We do not; we simulate it and say so. `build_transformers` cuts the homes into groups of 8, either at random or
 sorted by segment so neighbors are alike (the clustered case), and draws 3,000 groups per seed with no home in
 two groups. The real map plugs in through `load_map`, which reads meter_id, transformer_id and kva and refuses a
-meter listed under two transformers; `bin/ewu screen --map file.csv` runs the same ladder on it, with uneven
+meter listed under two transformers; `bin/ewu screen --map file.csv` runs the same steps on it, with uneven
 group sizes handled in batches.
 
 Code: `ewu/feeders.py:26 def build_transformers`, `ewu/feeders.py:41 def load_map`,
@@ -60,7 +60,7 @@ measured from real Level 2 sessions in this data, at 7.2 kW. Each new heat pump 
 below the balance point, from the measured cold-weather slope. Transformer load is exactly today's load plus the
 two adds, which a test checks. Both devices are drawn off one random order per seed, so 97.91% of new heat pump
 homes also get a new EV. That stacking is a labeled assumption in config; with heat pump adopters drawn apart
-(20.25% also get an EV), 25.28% of transformers overload instead of 26.18% and staggering fixes 83.83% of them
+(20.25% also get an EV), 25.28% of transformers overload instead of 26.18% and managed charging fixes 83.83% of them
 instead of 78.56%, so the answer does not rest on it.
 
 Code: `ewu/adoption.py:39 def measure_ev_sessions`, `ewu/adoption.py:63 def pick_adopters`,
@@ -68,7 +68,7 @@ Code: `ewu/adoption.py:39 def measure_ev_sessions`, `ewu/adoption.py:63 def pick
 `ewu/adoption.py:103-107 def heat_pump_kw`, `ewu/stress.py:98 total = parts["base"] + parts["ev"] + parts["hp"]`,
 `tests/test_stress.py:40 def test_loading_equals_base_plus_ev_plus_heat_pump_adds`.
 
-### Q6. Your teammate says most overloads are heat pump nights, yet EV staggering fixes most of them. Which is it?
+### Q6. Your teammate says most overloads are heat pump nights, yet managed EV charging fixes most of them. Which is it?
 
 Both, once timing is separated from cause. Each overload hour's energy above the limit is split between the EV
 and the heat pump by their effect averaged over both orders of arrival (a two-load Shapley value), after today's
@@ -83,13 +83,13 @@ Code: `ewu/attribution.py:35-42 def fair_shares`, `ewu/attribution.py:60 still_o
 `ewu/attribution.py:61 needs_both = (base[t, h] + ev[t, h] <= limit)`,
 `tests/test_attribution.py:44 def test_fair_split_adds_up_to_the_energy_above_the_limit`.
 
-### Q7. What does staggered charging do, and does it lose any energy?
+### Q7. What does managed charging do, and does it lose any energy?
 
 Each EV on a transformer gets its own start slot in the overnight window, ranked among that transformer's EVs
 (round robin once a transformer has more EVs than hours in the window),
 and charges at half power until the same energy is in. Half power halves the spike and separate slots stop two
 cars stacking. The energy each session delivers is computed before it is moved, and a test checks that every
-home gets the same energy in every mode. Staggering cuts overloaded transformers from 26.18% to 5.65%.
+home gets the same energy in every mode. Managed charging cuts overloaded transformers from 26.18% to 5.65%.
 
 Code: `ewu/shift.py:60 def stagger_slots`, `ewu/shift.py:76 config_value("shift.stagger_power_share", config) * charger_kw`,
 `ewu/shift.py:80 energy = delivered_hours(ev_sessions) * charger_kw`,
@@ -112,10 +112,10 @@ Code: `ewu/dispatch.py:82 np.maximum(soc[i] - spec["floor_kwh"]`, `ewu/dispatch.
 
 ### Q9. Does a home battery last a long cold night?
 
-`bin/ewu coldsnap` runs Feb 7-8, the coldest stretch in the data (coldest hour -5.0 F), with staggered charging.
+`bin/ewu coldsnap` runs Feb 7-8, the coldest stretch in the data (coldest hour -5.0 F), with managed charging.
 The battery is dispatched over the whole year, so its charge on the first cold night is whatever earlier hours
-left it, not assumed full. Of the 2.70% of transformers the cold snap pushes over the limit, one host home with two
-battery units clears 89.88% and two such hosts clear 92.84%.
+left it, not assumed full. Of the 2.70% of transformers the cold snap overloads, one battery host with two
+battery units fixes 89.88% and two battery hosts fix 92.84%.
 
 Code: `ewu/coldsnap.py:26 def window_hours`, `ewu/coldsnap.py:49 host_kw = dispatch.own_loading(inputs, parts, hosts.T.ravel(), owner, mode, config)`,
 `ewu/coldsnap.py:58 result = dispatch.run_batteries`,
@@ -126,7 +126,7 @@ Code: `ewu/coldsnap.py:26 def window_hours`, `ewu/coldsnap.py:49 host_kw = dispa
 
 By fit score: the kW a battery in that home could cut in the system's top hours of each season (Feb 7 and Jul 2
 are in the set), capped by battery power, by the home's own load and by usable energy per day. On transformers
-still over with staggered charging, one fit-score host with one unit clears 66.75% of them against 43.75% for a
+still overloaded with managed charging, one fit-score battery host with one unit fixes 66.75% of them against 43.75% for a
 random home on the same transformers, and a test requires fit score to win.
 
 Code: `ewu/fitscore.py:32 def system_top_hours`, `ewu/fitscore.py:42-51 def fit_score`,
@@ -138,8 +138,8 @@ Code: `ewu/fitscore.py:32 def system_top_hours`, `ewu/fitscore.py:42-51 def fit_
 
 On equal life: each capital cost becomes a yearly cost at a 7% discount rate, so the battery is bought again
 within the transformer's life. Deferral value, what pushing the upgrade back by one battery life is worth, is
-reported beside it and never exceeds the upgrade's price. The full ladder costs 51.92% of upgrading every flagged
-transformer, from 30.8% to 151.19% across all 16 grid cells and price cases; at placeholder prices batteries tie
+reported beside it and never exceeds the upgrade's price. The battery path costs 51.92% of Upgrade
+all, from 30.8% to 151.19% across all 16 grid cells and price cases; at placeholder prices batteries tie
 the upgrade only below $7,730 a unit, so shifting is where the money is. Every price is read from config.
 
 Code: `ewu/economics.py:26 def capital_recovery_factor`, `ewu/economics.py:43 def deferral_value`,
@@ -164,7 +164,7 @@ Nowhere off this machine. Per-home and per-transformer values go through `record
 outputs/private/, which git ignores, and a test checks git really ignores it. Commands print aggregates only, and
 a test checks the inventory printout holds no customer number. The demo page shows no real home: the Network view draws
 synthetic transformers (8 homes summed each) and Inventory draws Composite homes (segment averages); a test
-checks the page carries no single home and no host's battery charge. The page is built locally and is gitignored.
+checks the page carries no single home and no battery host's charge. The page is built locally and is gitignored.
 
 Code: `analysis/facts.py:19 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
 `ewu/deck_views.py:84 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
@@ -181,7 +181,7 @@ of transformers by hours, so cost grows with the number of transformers, not wit
 Code: `checks/demo_check.py:41 def time_live_screen`, `checks/demo_check.py:95 checks.screen_seconds_max`,
 `ewu/stress.py:35-44 out += pick @ rows`.
 
-### Q15. Random groups change with the seed. How stable are the results?
+### Q15. Synthetic transformers change with the seed. How stable are the results?
 
 Every random draw takes a seed, so a run is repeatable, and every grid result pools 5 seeds (the live screen
 runs one of them). A test requires the seeds to agree on the overloaded share within 1.5 points in every cell;
@@ -189,7 +189,7 @@ the widest gap in any cell is 1.37 points. `make prototype`
 rebuilds every output and the demo page from the processed data.
 
 Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:182 seeds:`,
-`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:35 prototype:`.
+`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:37 prototype:`.
 
 ### Q16. How is the network built and what changes with our real map?
 
@@ -200,8 +200,8 @@ batteries and 5 for an upgrade, which are the screen's counts; a test holds them
 illustrative split: transformer ids are cut into 6 equal blocks, a config input marked as an assumption, because
 the data has no feeder map. The page draws one substation, a trunk per feeder and every transformer on a
 lateral, and its `look` rule is the same as `view_counts` in Python; `demo_check.py` counts the drawn transformers
-in each state at every ladder step and fails when they differ from the facts. With your meter-to-transformer map,
-`bin/ewu screen --map` replaces the random groups through `load_map`; the feeders would then come from your map
+in each state at every step and fails when they differ from the facts. With your meter-to-transformer map,
+`bin/ewu screen --map` replaces the synthetic transformers through `load_map`; the feeders would then come from your map
 instead of the equal-block split.
 
 Code: `ewu/deck_views.py:23 def deck_states`, `ewu/deck_views.py:26 deck.run_deck`,

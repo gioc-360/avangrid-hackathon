@@ -96,9 +96,9 @@ def network_main(scenario=None, limit=None, managed=None):
         record_network(states, counts, config, "deck.network")
         managed_states = deck_states(read_inputs(), config, scenario, limit, True)   # the optional scenario, for the page
         record_network(managed_states, view_counts(managed_states), config, "deck.network_managed")
-    print(f"Network, deck profile: {states['setup']['groups'].count:,} synthetic transformers, {scenario} 2030, limit {limit:.2f}")
+    print(f"Network, deck profile: {states['setup']['groups'].count:,} synthetic transformers, {scenario} 2030, loading limit {limit:.2f}")
     for view, words in counts.items():
-        print(f"  {view:<8} " + ", ".join(f"{w} {n:,}" for w, n in words.items()))
+        print(f"  {SHOW.get(view, view):<8} " + ", ".join(f"{SHOW.get(w, w)} {n:,}" for w, n in words.items()))
     print(f"{time.time() - started:.1f} s, aggregates only; {'facts recorded' if official else 'what-if: facts not recorded'}")
     return counts
 
@@ -143,7 +143,7 @@ def plan_main(scenario=None, limit=None, managed=None):
     states = deck_states(read_inputs(), config, scenario, limit, managed)
     table, capital = plan_table(states, config), capital_rows(states, config)
     note = (f"deck profile, {scenario} 2030, limit {limit} x standard kVA rating; synthetic transformers, 8-home sums; "
-            "costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years")
+            "costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years")
     paths = [plan.write_csv(table, OUT / "transformer_actions.csv", note), plan.write_csv(capital, OUT / "capital_plan.csv", note)]
     counts = table.action.value_counts()
     if limit == config_value("profiles.deck.overload_limit", config) and not states["cell"]["managed"]:
@@ -151,11 +151,15 @@ def plan_main(scenario=None, limit=None, managed=None):
         for action in ACTIONS:
             record(f"ewu.deck.plan.{scenario}.actions.{action}", int(counts.get(action, 0)), "transformers", note)
         record(f"ewu.deck.plan.{scenario}.avangrid_cost_total_usd", int(table.avangrid_cost_usd.sum()), "$ for the sample", note)
-    print(f"EWU plan, deck profile: {scenario} 2030, limit {limit:.2f}, {len(table):,} transformers")
+    print(f"EWU plan, deck profile: {scenario} 2030, loading limit {limit:.2f}, {len(table):,} transformers")
     for action in ACTIONS:
         on = table.action == action
-        print(f"{action:<8} {int(on.sum()):>6,} transformers {int(table.units[on].sum()):>6,} units ${int(table.avangrid_cost_usd[on].sum()):>12,}")
+        print(f"{SHOW.get(action, action):<8} {int(on.sum()):>6,} transformers {int(table.units[on].sum()):>6,} units ${int(table.avangrid_cost_usd[on].sum()):>12,}")
     for path in paths:
         print(f"written  {path.relative_to(ROOT)}")
     print(f"{time.time() - started:.1f} s, transformer-level only, stays local")
     return table
+
+
+# words the printouts show for the state and action identifiers (docs/TERMS.md)
+SHOW = {"protect": "place", "protected": "fixed by batteries", "over": "overloaded", "within": "within limit"}
