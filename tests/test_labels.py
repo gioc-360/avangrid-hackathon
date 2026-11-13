@@ -16,7 +16,7 @@ from checks import label_inventory
 from ewu.demo_page import TEMPLATE
 
 PAGE = TEMPLATE.read_text()
-VIEWS = ("network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")
+VIEWS = ("deck", "network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")
 FACE_WORDS_MAX = 100   # visible words per view, side panel included, after the 2026-11-13 labeling pass
 
 
@@ -42,7 +42,8 @@ def test_each_view_builds_one_disclosure_and_marks_its_assumed_numbers():
 
 
 def test_assumptions_live_in_the_disclosure_not_on_the_face():
-    moved = {"money": ["placeholder", "discount rate", "Labeled scaling, assumption", "Equal-life"],
+    moved = {"deck": ["kW read as kVA", "her code is our replica", "GIVEN, from the teammate", "ASSUMED"],
+             "money": ["placeholder", "discount rate", "Labeled scaling, assumption", "Equal-life"],
              "overview": ["placeholders flagged", "cheapest fix first"],
              "network": ["Synthetic network.", "illustrative split", "The case."],
              "inventory": ["not a real customer", "How sure each equipment read is"],

@@ -4276,1552 +4276,1810 @@
   "method": "hourly weather in the window"
  },
  "ewu.deck.arrays.ev_start_pmf": {
-  "value": "derived",
+  "value": "teammate",
   "unit": "",
   "script": "ewu/deck_screen.py",
   "method": "teammate = their file in data/processed; derived = built from our data"
  },
  "ewu.deck.arrays.hp_increment": {
-  "value": "derived",
+  "value": "teammate",
   "unit": "",
   "script": "ewu/deck_screen.py",
   "method": "teammate = their file in data/processed; derived = built from our data"
  },
  "ewu.deck.high.limit_100.avangrid_share_of_upgrade_all_pct": {
-  "value": 47.5,
+  "value": 49.7,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.average_units": {
-  "value": 2.08,
+  "value": 2.07,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.batteries": {
-  "value": 3369,
+  "value": 3126,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.fixed": {
-  "value": 1618,
+  "value": 1510,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.fixed_of_overloaded_pct": {
-  "value": 87.79,
+  "value": 83.84,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.nyseg_avangrid_cost_musd": {
-  "value": 332.7,
+  "value": 339.9,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.nyseg_batteries": {
-  "value": 124934,
+  "value": 115923,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.nyseg_gross_musd": {
-  "value": 960.0,
+  "value": 922.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.nyseg_net_without_nyserda_musd": {
-  "value": 584.5,
+  "value": 573.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.nyseg_upgrade_all_musd": {
-  "value": 700.4,
+  "value": 684.4,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.overloaded": {
-  "value": 1843,
+  "value": 1801,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.overloaded_pct": {
-  "value": 61.43,
+  "value": 60.03,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.upgrades": {
-  "value": 225,
+  "value": 291,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.winter_majority_hours_pct": {
+  "value": 87.23,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_100.winter_of_overloaded_pct": {
-  "value": 77.59,
+  "value": 87.23,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.winter_worst_hour_pct": {
+  "value": 84.68,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.avangrid_share_of_upgrade_all_pct": {
-  "value": 43.4,
+  "value": 45.4,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.average_units": {
-  "value": 2.02,
+  "value": 1.98,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.batteries": {
-  "value": 2433,
+  "value": 2258,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.fixed": {
-  "value": 1206,
+  "value": 1143,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.fixed_of_overloaded_pct": {
-  "value": 92.77,
+  "value": 88.26,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.nyseg_avangrid_cost_musd": {
-  "value": 214.2,
+  "value": 223.4,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.nyseg_batteries": {
-  "value": 90224,
+  "value": 83734,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.nyseg_gross_musd": {
-  "value": 667.3,
+  "value": 643.9,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.nyseg_net_without_nyserda_musd": {
-  "value": 396.1,
+  "value": 392.2,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.nyseg_upgrade_all_musd": {
-  "value": 494.0,
+  "value": 492.1,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.overloaded": {
-  "value": 1300,
+  "value": 1295,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.overloaded_pct": {
-  "value": 43.33,
+  "value": 43.17,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.upgrades": {
-  "value": 94,
+  "value": 152,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.winter_majority_hours_pct": {
+  "value": 90.04,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_110.winter_of_overloaded_pct": {
-  "value": 79.69,
+  "value": 90.04,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.winter_worst_hour_pct": {
+  "value": 86.95,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.avangrid_share_of_upgrade_all_pct": {
-  "value": 39.6,
+  "value": 42.2,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.average_units": {
-  "value": 1.88,
+  "value": 1.91,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.batteries": {
-  "value": 1630,
+  "value": 1571,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.fixed": {
-  "value": 869,
+  "value": 821,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.fixed_of_overloaded_pct": {
-  "value": 94.77,
+  "value": 91.63,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.nyseg_avangrid_cost_musd": {
-  "value": 137.8,
+  "value": 143.8,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.nyseg_batteries": {
-  "value": 60446,
+  "value": 58258,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.nyseg_gross_musd": {
-  "value": 441.4,
+  "value": 436.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.nyseg_net_without_nyserda_musd": {
-  "value": 259.7,
+  "value": 261.2,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.nyseg_upgrade_all_musd": {
-  "value": 348.5,
+  "value": 340.5,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.overloaded": {
-  "value": 917,
+  "value": 896,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.overloaded_pct": {
-  "value": 30.57,
+  "value": 29.87,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.upgrades": {
-  "value": 48,
+  "value": 75,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.winter_majority_hours_pct": {
+  "value": 89.96,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_120.winter_of_overloaded_pct": {
-  "value": 79.93,
+  "value": 89.96,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.winter_worst_hour_pct": {
+  "value": 87.61,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.avangrid_share_of_upgrade_all_pct": {
-  "value": 32.6,
+  "value": 34.8,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.average_units": {
-  "value": 1.61,
+  "value": 1.68,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.batteries": {
-  "value": 635,
+  "value": 677,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.fixed": {
-  "value": 395,
+  "value": 402,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.fixed_of_overloaded_pct": {
-  "value": 97.77,
+  "value": 96.63,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.nyseg_avangrid_cost_musd": {
-  "value": 50.0,
+  "value": 55.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.nyseg_batteries": {
-  "value": 23548,
+  "value": 25105,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.nyseg_gross_musd": {
-  "value": 168.3,
+  "value": 181.1,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.nyseg_net_without_nyserda_musd": {
-  "value": 97.5,
+  "value": 105.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.nyseg_upgrade_all_musd": {
-  "value": 153.5,
+  "value": 158.1,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.overloaded": {
-  "value": 404,
+  "value": 416,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.overloaded_pct": {
-  "value": 13.47,
+  "value": 13.87,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.upgrades": {
-  "value": 9,
+  "value": 14,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.winter_majority_hours_pct": {
+  "value": 92.07,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.high.limit_140.winter_of_overloaded_pct": {
-  "value": 85.89,
+  "value": 92.07,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.winter_worst_hour_pct": {
+  "value": 93.03,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.inputs.ev_start_pmf.csv_twin_max_diff": {
+  "value": 0.0,
+  "unit": "largest difference to the CSV twin",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.ev_start_pmf.hour0_pct": {
+  "value": 13.0629,
+  "unit": "% of starts at midnight",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.ev_start_pmf.hours_15_22_pct": {
+  "value": 43.0624,
+  "unit": "% of starts 15:00 to 22:00",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.ev_start_pmf.sha256": {
+  "value": "7fbff91f61aad0bc1aa7dcaa866bb257a2c4e6eff74e876649419cf4bfd49bd2",
+  "unit": "sha256 of data/processed file",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.ev_start_pmf.sum": {
+  "value": 1.0,
+  "unit": "sum of 24 start-hour weights",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.ev_start_pmf.values": {
+  "value": 24,
+  "unit": "values",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.hp_increment.annual_kwh": {
+  "value": 8760.5515,
+  "unit": "kWh one adopter adds per year",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.hp_increment.csv_twin_max_diff": {
+  "value": 0.0,
+  "unit": "largest difference to the CSV twin",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.hp_increment.max_kw": {
+  "value": 4.2202,
+  "unit": "kW, highest hour",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.hp_increment.sha256": {
+  "value": "2a63625a4e3999d014a686986eb72f29d54fc73f02d5c2b675007cf9e63db5b4",
+  "unit": "sha256 of data/processed file",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
+ },
+ "ewu.deck.inputs.hp_increment.values": {
+  "value": 8760,
+  "unit": "values",
+  "script": "ewu/deck_arrays.py",
+  "method": "bin/ewu arrays; teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"
  },
  "ewu.deck.managed.high.limit_100.avangrid_share_of_upgrade_all_pct": {
-  "value": 44.2,
+  "value": 50.0,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.average_units": {
-  "value": 1.76,
+  "value": 1.77,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.batteries": {
-  "value": 1127,
+  "value": 1187,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.fixed": {
-  "value": 641,
+  "value": 672,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.fixed_of_overloaded_pct": {
-  "value": 84.45,
+  "value": 75.93,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.nyseg_avangrid_cost_musd": {
-  "value": 127.5,
+  "value": 168.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.nyseg_batteries": {
-  "value": 41793,
+  "value": 44018,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.nyseg_gross_musd": {
-  "value": 337.4,
+  "value": 389.1,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.nyseg_net_without_nyserda_musd": {
-  "value": 211.8,
+  "value": 256.8,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.nyseg_upgrade_all_musd": {
-  "value": 288.4,
+  "value": 336.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.overloaded": {
-  "value": 759,
+  "value": 885,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.overloaded_pct": {
-  "value": 25.3,
+  "value": 29.5,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.upgrades": {
-  "value": 118,
+  "value": 213,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_100.winter_majority_hours_pct": {
+  "value": 99.32,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_100.winter_of_overloaded_pct": {
-  "value": 98.29,
+  "value": 99.32,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_100.winter_worst_hour_pct": {
+  "value": 99.32,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.avangrid_share_of_upgrade_all_pct": {
-  "value": 40.5,
+  "value": 46.7,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.average_units": {
-  "value": 1.65,
+  "value": 1.73,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.batteries": {
-  "value": 618,
+  "value": 761,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.fixed": {
-  "value": 375,
+  "value": 440,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.fixed_of_overloaded_pct": {
-  "value": 87.21,
+  "value": 80.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.nyseg_avangrid_cost_musd": {
-  "value": 66.2,
+  "value": 97.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.nyseg_batteries": {
-  "value": 22918,
+  "value": 28220,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.nyseg_gross_musd": {
-  "value": 181.3,
+  "value": 239.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.nyseg_net_without_nyserda_musd": {
-  "value": 112.4,
+  "value": 154.5,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.nyseg_upgrade_all_musd": {
-  "value": 163.4,
+  "value": 209.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.overloaded": {
-  "value": 430,
+  "value": 550,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.overloaded_pct": {
-  "value": 14.33,
+  "value": 18.33,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.upgrades": {
-  "value": 55,
+  "value": 110,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_110.winter_majority_hours_pct": {
+  "value": 99.82,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_110.winter_of_overloaded_pct": {
-  "value": 98.6,
+  "value": 99.82,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_110.winter_worst_hour_pct": {
+  "value": 99.64,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.avangrid_share_of_upgrade_all_pct": {
-  "value": 37.1,
+  "value": 44.5,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.average_units": {
-  "value": 1.57,
+  "value": 1.7,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.batteries": {
-  "value": 340,
+  "value": 461,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.ev_homes": {
-  "value": 8400,
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.fixed": {
-  "value": 216,
+  "value": 271,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.fixed_of_overloaded_pct": {
-  "value": 90.38,
+  "value": 82.62,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.hp_homes": {
-  "value": 7200,
+  "value": 6348,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.nyseg_avangrid_cost_musd": {
-  "value": 33.7,
+  "value": 55.5,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.nyseg_batteries": {
-  "value": 12608,
+  "value": 17095,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.nyseg_gross_musd": {
-  "value": 97.0,
+  "value": 141.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.nyseg_net_without_nyserda_musd": {
-  "value": 59.1,
+  "value": 89.9,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.nyseg_upgrade_all_musd": {
-  "value": 90.8,
+  "value": 124.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.overloaded": {
-  "value": 239,
+  "value": 328,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.overloaded_pct": {
-  "value": 7.97,
+  "value": 10.93,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_120.upgrades": {
-  "value": 23,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_120.winter_of_overloaded_pct": {
-  "value": 99.58,
-  "unit": "% of overloaded transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_140.avangrid_share_of_upgrade_all_pct": {
-  "value": 30.0,
-  "unit": "% of upgrading every overloaded transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_140.average_units": {
-  "value": 1.49,
-  "unit": "IQ 10C units per battery-fixed transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_140.batteries": {
-  "value": 85,
-  "unit": "IQ 10C units",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_140.ev_homes": {
-  "value": 8400,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.high.limit_140.fixed": {
   "value": 57,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.high.limit_140.fixed_of_overloaded_pct": {
-  "value": 98.28,
+ "ewu.deck.managed.high.limit_120.winter_majority_hours_pct": {
+  "value": 99.39,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.high.limit_140.hp_homes": {
-  "value": 7200,
+ "ewu.deck.managed.high.limit_120.winter_of_overloaded_pct": {
+  "value": 99.39,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_120.winter_worst_hour_pct": {
+  "value": 99.7,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.avangrid_share_of_upgrade_all_pct": {
+  "value": 38.4,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.average_units": {
+  "value": 1.62,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.batteries": {
+  "value": 152,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.ev_homes": {
+  "value": 8162,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.fixed": {
+  "value": 94,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.fixed_of_overloaded_pct": {
+  "value": 89.52,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.hp_homes": {
+  "value": 6348,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.nyseg_avangrid_cost_musd": {
-  "value": 6.6,
+  "value": 15.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.nyseg_batteries": {
-  "value": 3152,
+  "value": 5637,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.nyseg_gross_musd": {
-  "value": 22.4,
+  "value": 43.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.nyseg_net_without_nyserda_musd": {
-  "value": 13.0,
+  "value": 26.7,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.nyseg_upgrade_all_musd": {
-  "value": 22.0,
+  "value": 39.9,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.overloaded": {
-  "value": 58,
+  "value": 105,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.overloaded_pct": {
-  "value": 1.93,
+  "value": 3.5,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.upgrades": {
-  "value": 1,
+  "value": 11,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.high.limit_140.winter_majority_hours_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.high.limit_140.winter_of_overloaded_pct": {
   "value": 100.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
-  "value": 32.1,
-  "unit": "% of upgrading every overloaded transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.average_units": {
-  "value": 1.46,
-  "unit": "IQ 10C units per battery-fixed transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.batteries": {
-  "value": 229,
-  "unit": "IQ 10C units",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.ev_homes": {
-  "value": 4800,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.fixed": {
-  "value": 157,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.fixed_of_overloaded_pct": {
-  "value": 94.58,
-  "unit": "% of overloaded transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.hp_homes": {
-  "value": 3600,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.nyseg_avangrid_cost_musd": {
-  "value": 20.2,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.nyseg_batteries": {
-  "value": 8492,
-  "unit": "IQ 10C units across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.nyseg_gross_musd": {
-  "value": 62.9,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.nyseg_net_without_nyserda_musd": {
-  "value": 37.3,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.nyseg_upgrade_all_musd": {
-  "value": 63.1,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.overloaded": {
-  "value": 166,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.overloaded_pct": {
-  "value": 5.53,
-  "unit": "% of transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.upgrades": {
-  "value": 9,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_100.winter_of_overloaded_pct": {
-  "value": 96.99,
-  "unit": "% of overloaded transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.avangrid_share_of_upgrade_all_pct": {
-  "value": 29.7,
-  "unit": "% of upgrading every overloaded transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.average_units": {
-  "value": 1.39,
-  "unit": "IQ 10C units per battery-fixed transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.batteries": {
-  "value": 100,
-  "unit": "IQ 10C units",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.ev_homes": {
-  "value": 4800,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.fixed": {
-  "value": 72,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.fixed_of_overloaded_pct": {
-  "value": 96.0,
-  "unit": "% of overloaded transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.hp_homes": {
-  "value": 3600,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.nyseg_avangrid_cost_musd": {
-  "value": 8.5,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.nyseg_batteries": {
-  "value": 3708,
-  "unit": "IQ 10C units across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.nyseg_gross_musd": {
-  "value": 27.1,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.nyseg_net_without_nyserda_musd": {
-  "value": 16.0,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.nyseg_upgrade_all_musd": {
-  "value": 28.5,
-  "unit": "$M across NYSEG",
-  "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.overloaded": {
-  "value": 75,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.overloaded_pct": {
-  "value": 2.5,
-  "unit": "% of transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.upgrades": {
-  "value": 3,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_110.winter_of_overloaded_pct": {
-  "value": 98.67,
-  "unit": "% of overloaded transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.avangrid_share_of_upgrade_all_pct": {
-  "value": 26.7,
-  "unit": "% of upgrading every overloaded transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.average_units": {
-  "value": 1.38,
-  "unit": "IQ 10C units per battery-fixed transformer",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.batteries": {
-  "value": 36,
-  "unit": "IQ 10C units",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.ev_homes": {
-  "value": 4800,
-  "unit": "homes",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.fixed": {
-  "value": 26,
-  "unit": "transformers",
-  "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
- },
- "ewu.deck.managed.moderate.limit_120.fixed_of_overloaded_pct": {
+ "ewu.deck.managed.high.limit_140.winter_worst_hour_pct": {
   "value": 100.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.hp_homes": {
-  "value": 3600,
+ "ewu.deck.managed.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
+  "value": 34.9,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.average_units": {
+  "value": 1.41,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.batteries": {
+  "value": 273,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.ev_homes": {
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.nyseg_avangrid_cost_musd": {
-  "value": 2.6,
+ "ewu.deck.managed.moderate.limit_100.fixed": {
+  "value": 194,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.fixed_of_overloaded_pct": {
+  "value": 89.4,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.hp_homes": {
+  "value": 3174,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 28.8,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.nyseg_batteries": {
-  "value": 1335,
+ "ewu.deck.managed.moderate.limit_100.nyseg_batteries": {
+  "value": 10124,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.nyseg_gross_musd": {
-  "value": 9.3,
+ "ewu.deck.managed.moderate.limit_100.nyseg_gross_musd": {
+  "value": 79.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.nyseg_net_without_nyserda_musd": {
-  "value": 5.3,
+ "ewu.deck.managed.moderate.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 49.2,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.nyseg_upgrade_all_musd": {
-  "value": 9.9,
+ "ewu.deck.managed.moderate.limit_100.nyseg_upgrade_all_musd": {
+  "value": 82.5,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.overloaded": {
-  "value": 26,
+ "ewu.deck.managed.moderate.limit_100.overloaded": {
+  "value": 217,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.overloaded_pct": {
-  "value": 0.87,
+ "ewu.deck.managed.moderate.limit_100.overloaded_pct": {
+  "value": 7.23,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.managed.moderate.limit_120.upgrades": {
-  "value": 0,
+ "ewu.deck.managed.moderate.limit_100.upgrades": {
+  "value": 23,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.winter_majority_hours_pct": {
+  "value": 98.16,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.winter_of_overloaded_pct": {
+  "value": 98.16,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_100.winter_worst_hour_pct": {
+  "value": 98.16,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.avangrid_share_of_upgrade_all_pct": {
+  "value": 36.3,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.average_units": {
+  "value": 1.48,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.batteries": {
+  "value": 121,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.ev_homes": {
+  "value": 4664,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.fixed": {
+  "value": 82,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.fixed_of_overloaded_pct": {
+  "value": 89.13,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.hp_homes": {
+  "value": 3174,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 12.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_batteries": {
+  "value": 4487,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_gross_musd": {
+  "value": 35.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 21.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.nyseg_upgrade_all_musd": {
+  "value": 35.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.overloaded": {
+  "value": 92,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.overloaded_pct": {
+  "value": 3.07,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.upgrades": {
+  "value": 10,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.winter_majority_hours_pct": {
+  "value": 97.83,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.winter_of_overloaded_pct": {
+  "value": 97.83,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_110.winter_worst_hour_pct": {
+  "value": 97.83,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.avangrid_share_of_upgrade_all_pct": {
+  "value": 34.9,
+  "unit": "% of upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.average_units": {
+  "value": 1.46,
+  "unit": "IQ 10C units per battery-fixed transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.batteries": {
+  "value": 57,
+  "unit": "IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.ev_homes": {
+  "value": 4664,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.fixed": {
+  "value": 39,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.fixed_of_overloaded_pct": {
+  "value": 90.7,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.hp_homes": {
+  "value": 3174,
+  "unit": "homes",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 5.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_batteries": {
+  "value": 2114,
+  "unit": "IQ 10C units across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_gross_musd": {
+  "value": 16.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 10.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.nyseg_upgrade_all_musd": {
+  "value": 16.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_screen.py",
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.overloaded": {
+  "value": 43,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.overloaded_pct": {
+  "value": 1.43,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.upgrades": {
+  "value": 4,
+  "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.winter_majority_hours_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_120.winter_of_overloaded_pct": {
   "value": 100.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_120.winter_worst_hour_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.avangrid_share_of_upgrade_all_pct": {
-  "value": 19.3,
+  "value": 33.8,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.average_units": {
-  "value": 1.0,
+  "value": 1.75,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.batteries": {
-  "value": 3,
+  "value": 14,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.ev_homes": {
-  "value": 4800,
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.fixed": {
-  "value": 3,
+  "value": 8,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.fixed_of_overloaded_pct": {
   "value": 100.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.hp_homes": {
-  "value": 3600,
+  "value": 3174,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.nyseg_avangrid_cost_musd": {
-  "value": 0.2,
+  "value": 1.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.nyseg_batteries": {
-  "value": 111,
+  "value": 519,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.nyseg_gross_musd": {
-  "value": 0.8,
+  "value": 3.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.nyseg_net_without_nyserda_musd": {
-  "value": 0.4,
+  "value": 2.1,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.nyseg_upgrade_all_musd": {
-  "value": 1.1,
+  "value": 3.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.overloaded": {
-  "value": 3,
+  "value": 8,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.overloaded_pct": {
-  "value": 0.1,
+  "value": 0.27,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.upgrades": {
   "value": 0,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_140.winter_majority_hours_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.managed.moderate.limit_140.winter_of_overloaded_pct": {
   "value": 100.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.managed.moderate.limit_140.winter_worst_hour_pct": {
+  "value": 100.0,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
-  "value": 34.9,
+  "value": 35.1,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.average_units": {
-  "value": 1.71,
+  "value": 1.68,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.batteries": {
-  "value": 1516,
+  "value": 1448,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.ev_homes": {
-  "value": 4800,
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.fixed": {
-  "value": 886,
+  "value": 863,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.fixed_of_overloaded_pct": {
-  "value": 97.26,
+  "value": 96.0,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.hp_homes": {
-  "value": 3600,
+  "value": 3174,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.nyseg_avangrid_cost_musd": {
-  "value": 120.7,
+  "value": 119.9,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.nyseg_batteries": {
-  "value": 56218,
+  "value": 53697,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.nyseg_gross_musd": {
-  "value": 403.0,
+  "value": 389.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.nyseg_net_without_nyserda_musd": {
-  "value": 234.1,
+  "value": 228.2,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.nyseg_upgrade_all_musd": {
-  "value": 346.2,
+  "value": 341.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.overloaded": {
-  "value": 911,
+  "value": 899,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.overloaded_pct": {
-  "value": 30.37,
+  "value": 29.97,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_100.upgrades": {
-  "value": 25,
+  "value": 36,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.moderate.limit_100.winter_of_overloaded_pct": {
-  "value": 64.87,
+ "ewu.deck.moderate.limit_100.winter_majority_hours_pct": {
+  "value": 72.97,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.winter_of_overloaded_pct": {
+  "value": 72.97,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.winter_worst_hour_pct": {
+  "value": 73.08,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.avangrid_share_of_upgrade_all_pct": {
-  "value": 31.9,
+  "value": 32.9,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.average_units": {
   "value": 1.59,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.batteries": {
-  "value": 856,
+  "value": 798,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.ev_homes": {
-  "value": 4800,
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.fixed": {
-  "value": 540,
+  "value": 501,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.fixed_of_overloaded_pct": {
-  "value": 98.18,
+  "value": 96.91,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.hp_homes": {
-  "value": 3600,
+  "value": 3174,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.nyseg_avangrid_cost_musd": {
-  "value": 66.6,
+  "value": 64.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.nyseg_batteries": {
-  "value": 31743,
+  "value": 29593,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.nyseg_gross_musd": {
-  "value": 226.0,
+  "value": 213.2,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.nyseg_net_without_nyserda_musd": {
-  "value": 130.6,
+  "value": 124.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.nyseg_upgrade_all_musd": {
-  "value": 209.0,
+  "value": 196.5,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.overloaded": {
-  "value": 550,
+  "value": 517,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.overloaded_pct": {
-  "value": 18.33,
+  "value": 17.23,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.upgrades": {
-  "value": 10,
+  "value": 16,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.winter_majority_hours_pct": {
+  "value": 75.05,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_110.winter_of_overloaded_pct": {
-  "value": 67.82,
+  "value": 75.05,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.winter_worst_hour_pct": {
+  "value": 75.82,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.avangrid_share_of_upgrade_all_pct": {
-  "value": 30.2,
+  "value": 30.9,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.average_units": {
-  "value": 1.53,
+  "value": 1.54,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.batteries": {
-  "value": 472,
+  "value": 442,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.ev_homes": {
-  "value": 4800,
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.fixed": {
-  "value": 309,
+  "value": 287,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.fixed_of_overloaded_pct": {
-  "value": 99.04,
+  "value": 98.29,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.hp_homes": {
-  "value": 3600,
+  "value": 3174,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.nyseg_avangrid_cost_musd": {
-  "value": 35.8,
+  "value": 34.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.nyseg_batteries": {
-  "value": 17503,
+  "value": 16391,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.nyseg_gross_musd": {
-  "value": 123.7,
+  "value": 116.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.nyseg_net_without_nyserda_musd": {
-  "value": 71.1,
+  "value": 67.4,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.nyseg_upgrade_all_musd": {
-  "value": 118.6,
+  "value": 111.0,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.overloaded": {
-  "value": 312,
+  "value": 292,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.overloaded_pct": {
-  "value": 10.4,
+  "value": 9.73,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_120.upgrades": {
-  "value": 3,
+  "value": 5,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.moderate.limit_120.winter_of_overloaded_pct": {
-  "value": 65.71,
+ "ewu.deck.moderate.limit_120.winter_majority_hours_pct": {
+  "value": 79.79,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.winter_of_overloaded_pct": {
+  "value": 79.79,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.winter_worst_hour_pct": {
+  "value": 78.77,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.avangrid_share_of_upgrade_all_pct": {
   "value": 26.8,
   "unit": "% of upgrading every overloaded transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.average_units": {
-  "value": 1.34,
+  "value": 1.33,
   "unit": "IQ 10C units per battery-fixed transformer",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.batteries": {
-  "value": 110,
+  "value": 96,
   "unit": "IQ 10C units",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.ev_homes": {
-  "value": 4800,
+  "value": 4664,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.fixed": {
-  "value": 82,
+  "value": 72,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.fixed_of_overloaded_pct": {
-  "value": 98.8,
+  "value": 98.63,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.hp_homes": {
-  "value": 3600,
+  "value": 3174,
   "unit": "homes",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.nyseg_avangrid_cost_musd": {
-  "value": 8.5,
+  "value": 7.4,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.nyseg_batteries": {
-  "value": 4079,
+  "value": 3560,
   "unit": "IQ 10C units across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.nyseg_gross_musd": {
-  "value": 28.9,
+  "value": 25.3,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.nyseg_net_without_nyserda_musd": {
-  "value": 16.7,
+  "value": 14.6,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.nyseg_upgrade_all_musd": {
-  "value": 31.5,
+  "value": 27.7,
   "unit": "$M across NYSEG",
   "script": "ewu/deck_screen.py",
-  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "15 years at 7%, upgrade counted 15 of 40 years; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.overloaded": {
-  "value": 83,
+  "value": 73,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.overloaded_pct": {
-  "value": 2.77,
+  "value": 2.43,
   "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.moderate.limit_140.upgrades": {
   "value": 1,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
- "ewu.deck.moderate.limit_140.winter_of_overloaded_pct": {
-  "value": 77.11,
+ "ewu.deck.moderate.limit_140.winter_majority_hours_pct": {
+  "value": 83.56,
   "unit": "% of overloaded transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.winter_of_overloaded_pct": {
+  "value": 83.56,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.winter_worst_hour_pct": {
+  "value": 84.93,
+  "unit": "% of overloaded transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.network.high.flag.over": {
   "value": 917,
@@ -5961,6 +6219,12 @@
   "script": "ewu/deck_screen.py",
   "method": "ewu/peakcut.py, top hours of the metered system load"
  },
+ "ewu.deck.peakcut.export_peak_drop_mw": {
+  "value": 9.05,
+  "unit": "MW",
+  "script": "ewu/deck_screen.py",
+  "method": "ewu/peakcut.py, top hours of the metered system load"
+ },
  "ewu.deck.peakcut.export_peak_hour_mw": {
   "value": 9.05,
   "unit": "MW",
@@ -6073,43 +6337,1585 @@
   "value": 1,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.rating.kva_167_0": {
   "value": 1,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.rating.kva_25_0": {
   "value": 978,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.rating.kva_37_5": {
   "value": 1834,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.rating.kva_50_0": {
   "value": 174,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
  "ewu.deck.rating.kva_75_0": {
   "value": 12,
   "unit": "transformers",
   "script": "ewu/deck_screen.py",
-  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf derived, hp_increment derived"
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.recharge.high.average_units": {
+  "value": 1.91,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.average_units_after": {
+  "value": 1.91,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.fixed": {
+  "value": 821,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.fixed_after": {
+  "value": 817,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.fixed_after_pct": {
+  "value": 91.18,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.fixed_pct": {
+  "value": 91.63,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.still_over": {
+  "value": 11,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.high.worst_kw": {
+  "value": 8.4613,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.average_units": {
+  "value": 1.54,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.average_units_after": {
+  "value": 1.53,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.fixed": {
+  "value": 287,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.fixed_after": {
+  "value": 286,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.fixed_after_pct": {
+  "value": 97.95,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.fixed_pct": {
+  "value": 98.29,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.still_over": {
+  "value": 1,
+  "unit": "transformers",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
+ },
+ "ewu.deck.recharge.moderate.worst_kw": {
+  "value": 4.3103,
+  "unit": "",
+  "script": "ewu/deck_recharge.py",
+  "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
  },
  "ewu.deck.seconds": {
-  "value": 2.1,
+  "value": 3.3,
   "unit": "s",
   "script": "ewu/deck_screen.py",
   "method": "whole deck screen, data load included"
+ },
+ "ewu.deck_replica.high.limit_100.average_units": {
+  "value": 2.09,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.batteries": {
+  "value": 3085,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.ev_homes": {
+  "value": 8292,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.fixed": {
+  "value": 1478,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.fixed_of_overloaded_pct": {
+  "value": 83.74,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.hp_homes": {
+  "value": 6069,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 335.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.nyseg_gross_musd": {
+  "value": 909.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.nyseg_gross_musd_raw": {
+  "value": 909.8795,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 566.0,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.nyseg_upgrade_all_musd": {
+  "value": 670.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.overloaded": {
+  "value": 1765,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.overloaded_pct": {
+  "value": 58.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.upgrades": {
+  "value": 287,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.winter_of_overloaded_pct": {
+  "value": 45.21,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_100.winter_worst_hour_pct": {
+  "value": 82.95,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.average_units": {
+  "value": 1.98,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.batteries": {
+  "value": 2285,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.ev_homes": {
+  "value": 8292,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.fixed": {
+  "value": 1153,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.fixed_of_overloaded_pct": {
+  "value": 89.03,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.hp_homes": {
+  "value": 6069,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 221.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.nyseg_gross_musd": {
+  "value": 647.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.nyseg_gross_musd_raw": {
+  "value": 647.1103,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 392.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.nyseg_upgrade_all_musd": {
+  "value": 492.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.overloaded": {
+  "value": 1295,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.overloaded_pct": {
+  "value": 43.17,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.upgrades": {
+  "value": 142,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.winter_of_overloaded_pct": {
+  "value": 61.62,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_110.winter_worst_hour_pct": {
+  "value": 86.1,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.average_units": {
+  "value": 1.93,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.batteries": {
+  "value": 1612,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.ev_homes": {
+  "value": 8292,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.fixed": {
+  "value": 837,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.fixed_of_overloaded_pct": {
+  "value": 93.52,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.hp_homes": {
+  "value": 6069,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 140.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.nyseg_gross_musd": {
+  "value": 440.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.nyseg_gross_musd_raw": {
+  "value": 440.4893,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 260.8,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.nyseg_upgrade_all_musd": {
+  "value": 340.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.overloaded": {
+  "value": 895,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.overloaded_pct": {
+  "value": 29.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.upgrades": {
+  "value": 58,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.winter_of_overloaded_pct": {
+  "value": 89.16,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_120.winter_worst_hour_pct": {
+  "value": 87.49,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.average_units": {
+  "value": 1.68,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.batteries": {
+  "value": 651,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.ev_homes": {
+  "value": 8292,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.fixed": {
+  "value": 387,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.fixed_of_overloaded_pct": {
+  "value": 97.24,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.hp_homes": {
+  "value": 6069,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 51.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.nyseg_gross_musd": {
+  "value": 173.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.nyseg_gross_musd_raw": {
+  "value": 173.1689,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 100.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.nyseg_upgrade_all_musd": {
+  "value": 151.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.overloaded": {
+  "value": 398,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.overloaded_pct": {
+  "value": 13.27,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.upgrades": {
+  "value": 11,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.winter_of_overloaded_pct": {
+  "value": 95.48,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.limit_140.winter_worst_hour_pct": {
+  "value": 92.46,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.high.rows_equal_her_run": {
+  "value": 3000,
+  "unit": "of 3,000 transformers, every field equal",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.average_units": {
+  "value": 1.93,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.ev_homes": {
+  "value": 8292,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.fixed_of_overloaded_pct": {
+  "value": 93.52,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.hp_homes": {
+  "value": 6069,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.overloaded_pct": {
+  "value": 29.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.winter_of_overloaded_pct": {
+  "value": 89.16,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.high.winter_worst_hour_pct": {
+  "value": 87.49,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.average_units": {
+  "value": 1.46,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.ev_homes": {
+  "value": 4673,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.fixed_of_overloaded_pct": {
+  "value": 98.31,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.hp_homes": {
+  "value": 3053,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.overloaded_pct": {
+  "value": 9.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.winter_of_overloaded_pct": {
+  "value": 72.88,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.a_her_run.moderate.winter_worst_hour_pct": {
+  "value": 73.9,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.average_units": {
+  "value": 1.92,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.ev_homes": {
+  "value": 8175,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.fixed_of_overloaded_pct": {
+  "value": 91.55,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.hp_homes": {
+  "value": 6424,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.overloaded_pct": {
+  "value": 30.37,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.winter_of_overloaded_pct": {
+  "value": 90.45,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.high.winter_worst_hour_pct": {
+  "value": 88.91,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.average_units": {
+  "value": 1.44,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.ev_homes": {
+  "value": 4600,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.fixed_of_overloaded_pct": {
+  "value": 98.64,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.hp_homes": {
+  "value": 3231,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.overloaded_pct": {
+  "value": 9.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.winter_of_overloaded_pct": {
+  "value": 76.27,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.b_our_tiers.moderate.winter_worst_hour_pct": {
+  "value": 74.58,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "B: our inventory tiers; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.average_units": {
+  "value": 1.9,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.ev_homes": {
+  "value": 8162,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.fixed_of_overloaded_pct": {
+  "value": 91.26,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.hp_homes": {
+  "value": 6401,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.overloaded_pct": {
+  "value": 30.9,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.winter_of_overloaded_pct": {
+  "value": 90.61,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.high.winter_worst_hour_pct": {
+  "value": 89.32,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.average_units": {
+  "value": 1.5,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.ev_homes": {
+  "value": 4725,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.fixed_of_overloaded_pct": {
+  "value": 99.07,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.hp_homes": {
+  "value": 3145,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.overloaded_pct": {
+  "value": 10.77,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.winter_of_overloaded_pct": {
+  "value": 76.16,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.c_our_groups.moderate.winter_worst_hour_pct": {
+  "value": 77.09,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "C: + our deck groups (seed 5), our filled load, 8.06 kWh; limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.average_units": {
+  "value": 1.91,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.ev_homes": {
+  "value": 8162,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.fixed_of_overloaded_pct": {
+  "value": 91.63,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.hp_homes": {
+  "value": 6348,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.overloaded_pct": {
+  "value": 29.87,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.winter_of_overloaded_pct": {
+  "value": 89.96,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.high.winter_worst_hour_pct": {
+  "value": 87.61,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.average_units": {
+  "value": 1.54,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.ev_homes": {
+  "value": 4664,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.fixed_of_overloaded_pct": {
+  "value": 98.29,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.hp_homes": {
+  "value": 3174,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.overloaded_pct": {
+  "value": 9.73,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.winter_of_overloaded_pct": {
+  "value": 79.79,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.d_deck_eligible.moderate.winter_worst_hour_pct": {
+  "value": 78.77,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "D: our deck engine, shares of eligible homes (deck default); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.average_units": {
+  "value": 1.95,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.ev_homes": {
+  "value": 8400,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.fixed_of_overloaded_pct": {
+  "value": 90.7,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.hp_homes": {
+  "value": 7200,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.overloaded_pct": {
+  "value": 34.07,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.winter_of_overloaded_pct": {
+  "value": 93.05,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.high.winter_worst_hour_pct": {
+  "value": 88.94,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.average_units": {
+  "value": 1.58,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.ev_homes": {
+  "value": 4800,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.fixed_of_overloaded_pct": {
+  "value": 97.03,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.hp_homes": {
+  "value": 3600,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.overloaded_pct": {
+  "value": 11.23,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.winter_of_overloaded_pct": {
+  "value": 79.82,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.ladder.e_deck_all_homes.moderate.winter_worst_hour_pct": {
+  "value": 78.64,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "E: shares of all grouped homes (earlier reading); limit 1.20"
+ },
+ "ewu.deck_replica.moderate.limit_100.average_units": {
+  "value": 1.71,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.batteries": {
+  "value": 1420,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.ev_homes": {
+  "value": 4673,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.fixed": {
+  "value": 830,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.fixed_of_overloaded_pct": {
+  "value": 96.96,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.hp_homes": {
+  "value": 3053,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.nyseg_avangrid_cost_musd": {
+  "value": 114.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.nyseg_gross_musd": {
+  "value": 378.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.nyseg_gross_musd_raw": {
+  "value": 378.4888,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.nyseg_net_without_nyserda_musd": {
+  "value": 220.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.nyseg_upgrade_all_musd": {
+  "value": 325.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.overloaded": {
+  "value": 856,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.overloaded_pct": {
+  "value": 28.53,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.upgrades": {
+  "value": 26,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.winter_of_overloaded_pct": {
+  "value": 25.12,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_100.winter_worst_hour_pct": {
+  "value": 71.26,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.average_units": {
+  "value": 1.56,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.batteries": {
+  "value": 784,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.ev_homes": {
+  "value": 4673,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.fixed": {
+  "value": 501,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.fixed_of_overloaded_pct": {
+  "value": 97.47,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.hp_homes": {
+  "value": 3053,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.nyseg_avangrid_cost_musd": {
+  "value": 62.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.nyseg_gross_musd": {
+  "value": 208.5,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.nyseg_gross_musd_raw": {
+  "value": 208.4536,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.nyseg_net_without_nyserda_musd": {
+  "value": 121.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.nyseg_upgrade_all_musd": {
+  "value": 195.3,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.overloaded": {
+  "value": 514,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.overloaded_pct": {
+  "value": 17.13,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.upgrades": {
+  "value": 13,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.winter_of_overloaded_pct": {
+  "value": 41.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_110.winter_worst_hour_pct": {
+  "value": 75.29,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.average_units": {
+  "value": 1.46,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.batteries": {
+  "value": 423,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.ev_homes": {
+  "value": 4673,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.fixed": {
+  "value": 290,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.fixed_of_overloaded_pct": {
+  "value": 98.31,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.hp_homes": {
+  "value": 3053,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.nyseg_avangrid_cost_musd": {
+  "value": 32.9,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.nyseg_gross_musd": {
+  "value": 111.7,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.nyseg_gross_musd_raw": {
+  "value": 111.7038,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.nyseg_net_without_nyserda_musd": {
+  "value": 64.6,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.nyseg_upgrade_all_musd": {
+  "value": 112.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.overloaded": {
+  "value": 295,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.overloaded_pct": {
+  "value": 9.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.upgrades": {
+  "value": 5,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.winter_of_overloaded_pct": {
+  "value": 72.88,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_120.winter_worst_hour_pct": {
+  "value": 73.9,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.average_units": {
+  "value": 1.41,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.batteries": {
+  "value": 97,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.ev_homes": {
+  "value": 4673,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.fixed": {
+  "value": 69,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.fixed_of_overloaded_pct": {
+  "value": 100.0,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.hp_homes": {
+  "value": 3053,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.nyseg_avangrid_cost_musd": {
+  "value": 7.1,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.nyseg_gross_musd": {
+  "value": 25.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.nyseg_gross_musd_raw": {
+  "value": 25.1796,
+  "unit": "$M across NYSEG, unrounded",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.nyseg_net_without_nyserda_musd": {
+  "value": 14.4,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.nyseg_upgrade_all_musd": {
+  "value": 26.2,
+  "unit": "$M across NYSEG",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.overloaded": {
+  "value": 69,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.overloaded_pct": {
+  "value": 2.3,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.upgrades": {
+  "value": 0,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.winter_of_overloaded_pct": {
+  "value": 81.16,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.limit_140.winter_worst_hour_pct": {
+  "value": 79.71,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.moderate.rows_equal_her_run": {
+  "value": 3000,
+  "unit": "of 3,000 transformers, every field equal",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.seconds": {
+  "value": 53.6,
+  "unit": "s",
+  "script": "ewu/deck_replica_run.py",
+  "method": "bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers teammate"
+ },
+ "ewu.deck_replica.spread.high.average_units.max": {
+  "value": 1.94,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.average_units.mean": {
+  "value": 1.8935,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.average_units.min": {
+  "value": 1.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.average_units.sd": {
+  "value": 0.0262,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.fixed_of_overloaded_pct.max": {
+  "value": 93.2,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.fixed_of_overloaded_pct.mean": {
+  "value": 91.8,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.fixed_of_overloaded_pct.min": {
+  "value": 90.7,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.fixed_of_overloaded_pct.sd": {
+  "value": 0.6726,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.overloaded_pct.max": {
+  "value": 31.83,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.overloaded_pct.mean": {
+  "value": 30.322,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.overloaded_pct.min": {
+  "value": 29.17,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.overloaded_pct.sd": {
+  "value": 0.6333,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_of_overloaded_pct.max": {
+  "value": 91.6,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_of_overloaded_pct.mean": {
+  "value": 90.2005,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_of_overloaded_pct.min": {
+  "value": 87.81,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_of_overloaded_pct.sd": {
+  "value": 0.9464,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_worst_hour_pct.max": {
+  "value": 89.82,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_worst_hour_pct.mean": {
+  "value": 88.2865,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_worst_hour_pct.min": {
+  "value": 86.02,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.high.winter_worst_hour_pct.sd": {
+  "value": 1.0575,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.average_units.max": {
+  "value": 1.6,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.average_units.mean": {
+  "value": 1.51,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.average_units.min": {
+  "value": 1.45,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.average_units.sd": {
+  "value": 0.0442,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.fixed_of_overloaded_pct.max": {
+  "value": 99.67,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.fixed_of_overloaded_pct.mean": {
+  "value": 98.8235,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.fixed_of_overloaded_pct.min": {
+  "value": 97.93,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.fixed_of_overloaded_pct.sd": {
+  "value": 0.5778,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.overloaded_pct.max": {
+  "value": 10.97,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.overloaded_pct.mean": {
+  "value": 10.036,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.overloaded_pct.min": {
+  "value": 9.03,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.overloaded_pct.sd": {
+  "value": 0.4629,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.max": {
+  "value": 81.0,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.mean": {
+  "value": 78.0055,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.min": {
+  "value": 72.07,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_of_overloaded_pct.sd": {
+  "value": 2.3931,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_worst_hour_pct.max": {
+  "value": 80.56,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_worst_hour_pct.mean": {
+  "value": 77.6625,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_worst_hour_pct.min": {
+  "value": 74.14,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
+ },
+ "ewu.deck_replica.spread.moderate.winter_worst_hour_pct.sd": {
+  "value": 2.2569,
+  "unit": "",
+  "script": "ewu/deck_replica_run.py",
+  "method": "deck profile at 1.20, seeds 1 to spread_seeds"
  },
  "ewu.demo.composite_0.annual_kwh": {
   "value": 17134,
@@ -12344,7 +14150,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.3,
+  "value": 3.2,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

@@ -1,24 +1,33 @@
-"""Deck alignment: the deck profile's own results against the teammate's final-deck targets, at a 120% limit.
+"""Deck alignment: the deck profile and the deck-replica profile against the teammate's final-deck targets.
 
-What: runs the deck screen once on the full data and compares overloaded share, fixed without an upgrade,
-      average units, winter driven share, NYSEG money and both peak cuts with profiles.deck.targets, inside
-      profiles.deck.tolerances; unit tests pin the rating rule, the sizing rule and the money arithmetic.
+What: runs the deck screen once on the full data with the teammate's two arrays and compares overloaded
+      share, fixed without an upgrade, average units, winter driven share, NYSEG money and both peak cuts with
+      profiles.deck.targets inside profiles.deck.tolerances; runs the replica of her code and requires it to
+      equal her saved results exactly; unit tests pin the rating rule, the sizing rule and the money arithmetic.
 Why:  the final deck uses these numbers; the tool must reproduce them by default or say plainly where and why
-      it does not. A target we miss is reported, never tuned away: its test is marked xfail with the cause.
-How:  pytest; a module fixture runs ewu/deck_screen.run_deck_screen() once (about 3 s). The money arithmetic is
-      also checked on the teammate's own implied counts, so a formula slip cannot hide behind simulation noise.
+      it does not. A target we miss is reported, never tuned away: its test is marked xfail with the cause
+      measured by the ladder and the seed spread in `bin/ewu screen --replica` (ewu.deck_replica.* facts).
+How:  pytest; module fixtures run ewu/deck_screen.run_deck_screen() (about 3 s) and the replica for both
+      scenarios (about 3 s; skipped when the teammate's folder, which holds her tiers, is not on this machine).
 """
+import json
+from pathlib import Path
 import numpy as np
+import pandas as pd
 import pytest
-from ewu import config_value, read_config, read_inputs
-from ewu import deck, deck_money, deck_screen
+from ewu import FLAG_COLUMNS, PROCESSED, ROOT, config_value, read_config, read_inputs
+from ewu import deck, deck_money, deck_replica, deck_replica_run, deck_screen
 
 CONFIG = read_config()
 LIMIT = float(config_value("profiles.deck.overload_limit", CONFIG))
 SCENARIOS = ("moderate", "high")
-MISSING_ARRAYS = ("most likely the heat pump array and the definition: the teammate's hp_increment.npy is not on this "
-                  "machine, ours is derived (0.05 kW per F below 60 F); a heavier heat pump (x1.5) lifts winter share to "
-                  "81% and 90% but overloaded to 14% and 41%, and counting any winter hour over gives 82% and 93%")
+FOLDER = Path(config_value("profiles.deck.teammate_folder", CONFIG)).expanduser()
+TIERS = ("our inventory tiers: the ladder step from her tiers to ours (A to B) moves her own run from 93.5% to 91.5% "
+         "fixed in the high case, and over seeds 1 to 20 the deck profile's high case spans 90.7% to 93.2% (mean 91.8%), "
+         "below 94% minus 2 points")
+DRAW = ("sampling and tiers: the ladder moves her run's 72.9% to 76.3% with our tiers (A to B) and to 79.8% with our "
+        "fixed-count adopter draw (C to D); over seeds 1 to 20 the deck profile's moderate case spans 72.1% to 81.0% "
+        "(mean 78.0%), so 73% sits inside the range but our seed 5 does not reach it")
 
 
 def target(name):
@@ -43,7 +52,7 @@ def test_overloaded_share_matches_the_deck(result, i):
     assert abs(cell(result, i)["overloaded_pct"] - target("overloaded_pct")[i]) <= tolerance("overloaded_pts")
 
 
-@pytest.mark.parametrize("i", [0, 1])
+@pytest.mark.parametrize("i", [0, pytest.param(1, marks=pytest.mark.xfail(reason="high 91.6% against 94%: " + TIERS, strict=True))])
 def test_fixed_without_upgrade_matches_the_deck(result, i):
     assert abs(cell(result, i)["fixed_of_overloaded_pct"] - target("fixed_without_upgrade_pct")[i]) <= tolerance("fixed_pts")
 
@@ -53,8 +62,7 @@ def test_average_units_match_the_deck(result, i):
     assert abs(cell(result, i)["average_units"] - target("average_units")[i]) <= tolerance("average_units")
 
 
-@pytest.mark.xfail(reason="winter share 65.7% and 79.9% against 73% and 89%: " + MISSING_ARRAYS, strict=False)
-@pytest.mark.parametrize("i", [0, 1])
+@pytest.mark.parametrize("i", [pytest.param(0, marks=pytest.mark.xfail(reason="moderate 79.8% against 73%: " + DRAW, strict=True)), 1])
 def test_winter_driven_share_matches_the_deck(result, i):
     assert abs(cell(result, i)["winter_of_overloaded_pct"] - target("winter_share_pct")[i]) <= tolerance("winter_pts")
 
@@ -71,11 +79,45 @@ def test_behind_the_meter_peak_cut_matches_the_deck(result):
     assert abs(result["peak"]["behind_meter_mw"] - target("peak_cut_behind_meter_mw")) <= tolerance("peak_mw")
 
 
-@pytest.mark.xfail(reason="our pooled export fleet, 8.06 kWh usable per unit, shaved day by day, averages 6.4 MW over the "
-                   "top 50 hours (9.05 MW in the highest hour); 8.8 MW equals 2,612 homes x 20.16 kWh nameplate spread "
-                   "evenly over a 6-hour window, a different energy and averaging rule", strict=False)
 def test_export_fleet_peak_cut_matches_the_deck(result):
-    assert abs(result["peak"]["export_mw"] - target("peak_cut_export_mw")) <= tolerance("peak_mw")
+    """The deck's 8.8 MW is the teammate's program.py peak drop (profiles.deck.peak_cut_metric), measured the same way."""
+    assert config_value("profiles.deck.peak_cut_metric", CONFIG) == "peak_drop"
+    assert abs(result["peak"]["export_peak_drop_mw"] - target("peak_cut_export_mw")) <= tolerance("peak_mw")
+
+
+def test_deck_profile_loads_the_teammates_arrays(result):
+    assert result["setup"]["origins"] == {"ev_start_pmf": "teammate", "hp_increment": "teammate"}
+
+
+def test_a_changed_array_fails_loudly(tmp_path):
+    bad = tmp_path / "hp_increment.npy"
+    np.save(bad, np.zeros(deck.HOURS))
+    from ewu.deck_arrays import verify_array
+    with pytest.raises(ValueError, match="sha256"):
+        verify_array("hp_increment", bad, CONFIG)
+
+
+@pytest.fixture(scope="module")
+def replica():
+    if not (FOLDER / config_value("profiles.deck_replica.classification_file", CONFIG)).exists():
+        pytest.skip("the teammate's folder (her tiers) is not on this machine")
+    homes = pd.read_parquet(PROCESSED / "segmented.parquet", columns=FLAG_COLUMNS)
+    setup = deck_replica.replica_setup(homes, CONFIG)
+    return deck_replica_run.run_scenarios(setup, CONFIG, config_value("profiles.deck_replica.unit_kwh", CONFIG))
+
+
+@pytest.mark.parametrize("scenario", SCENARIOS)
+def test_replica_equals_her_saved_results(replica, scenario):
+    """Her ewu_bo2_econ.json and ewu_results.json values (teammate.audit.file.* facts) at the decimals she saved."""
+    saved = {k[len(f"teammate.audit.file.{scenario}."):]: v["value"] for k, v in
+             json.loads((ROOT / "facts/facts.json").read_text()).items() if k.startswith(f"teammate.audit.file.{scenario}.")}
+    _, cells, money = replica[scenario]
+    cell, musd = cells[LIMIT], money[LIMIT]["nyseg_musd"]
+    assert round(cell["overloaded_pct"], 1) == saved["overloaded"] and round(cell["fixed_of_overloaded_pct"], 1) == saved["fixed"]
+    assert round(cell["average_units"], 2) == saved["mean_units"]
+    assert round(cell["winter_of_overloaded_pct"], 1) == saved["results_winter_driven"]
+    assert (musd["avangrid_cost"], musd["upgrade_all"], musd["gross"], musd["net_without_nyserda"]) == \
+        (saved["net_m"], saved["trad_m"], saved["gross_m"], saved["netnony_m"])
 
 
 def test_cautious_profile_still_exists_and_deck_is_the_default():

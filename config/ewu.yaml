@@ -259,10 +259,18 @@ profiles:
                basis: "teammate spec 2026-11-13 (final deck)"}
     ev_day_share: {value: 0.47, unit: share of days a new EV charges, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
                    basis: "teammate spec 2026-11-13 (final deck)"}
+    teammate_folder: {value: ~/Downloads/_prototype, unit: folder bin/ewu arrays reads the two arrays from (read only, untrusted),
+                      assumption: true, basis: "where the teammate's prototype was downloaded on 2026-11-13; nothing in it is run or changed"}
     ev_start_pmf_file: {value: ev_start_pmf.npy, unit: file in data/processed, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:9",
-                        basis: "teammate's array; absent on this machine, so ewu/deck.py derives ev_start_pmf_derived.npy and says so"}
+                        status: GIVEN-BY-TEAMMATE, provenance: "teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data",
+                        basis: "copied by bin/ewu arrays from the teammate's folder and checked against ev_start_pmf.csv; if the file is absent, ewu/deck.py derives ev_start_pmf_derived.npy and says so"}
+    ev_start_pmf_sha256: {value: "7fbff91f61aad0bc1aa7dcaa866bb257a2c4e6eff74e876649419cf4bfd49bd2", unit: sha256 of data/processed/ev_start_pmf.npy, source: "fact:ewu.deck.inputs.ev_start_pmf.sha256",
+                          status: GIVEN-BY-TEAMMATE, provenance: "teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"}
     hp_increment_file: {value: hp_increment.npy, unit: file in data/processed, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:10",
-                        basis: "teammate's array; absent on this machine, so ewu/deck.py derives hp_increment_derived.npy and says so"}
+                        status: GIVEN-BY-TEAMMATE, provenance: "teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data",
+                        basis: "copied by bin/ewu arrays from the teammate's folder and checked against hp_increment.csv; if the file is absent, ewu/deck.py derives hp_increment_derived.npy and says so"}
+    hp_increment_sha256: {value: "2a63625a4e3999d014a686986eb72f29d54fc73f02d5c2b675007cf9e63db5b4", unit: sha256 of data/processed/hp_increment.npy, source: "fact:ewu.deck.inputs.hp_increment.sha256",
+                          status: GIVEN-BY-TEAMMATE, provenance: "teammate ewu_inputs.py, 2026-11-13; built from hackathon meter data"}
     unit_kw: {value: 3.84, unit: kW per IQ 10C unit for sizing, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:12",
               basis: "teammate spec 2026-11-13 (final deck)"}
     unit_kwh: {value: 8.06, unit: usable kWh per IQ 10C unit for sizing, source: "repo:runs/teammate_deck_spec_2026-11-13.txt:13",
@@ -297,6 +305,15 @@ profiles:
     units_per_host: {value: 2, unit: IQ 10C units per priority home, source: "pdf:challenge:3", quote: "(2 Units)"}
     winter_months: {value: [11, 12, 1, 2, 3], unit: months a worst hour must fall in to count as winter driven,
                     source: "repo:analysis/features.py:111", basis: "same winter months as the rest of the tool (Nov to Mar)"}
+    adoption_share_base: {value: eligible_homes, unit: "what the 20% / 35% EV and 15% / 30% heat pump shares are a share of",
+                          source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:31", quote: "if not isev[i] and rng.random()<p_ev",
+                          basis: "spec lines 8 and 10 do not say; the teammate's code that made the deck applies the share to eligible homes only (each eligible home adopts with that chance); all_homes = the earlier reading, a share of every grouped home"}
+    winter_rule: {value: majority_of_over_hours, unit: rule for a winter driven overload,
+                  source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:50", quote: "[11,12,1,2,3]).mean()>0.5",
+                  basis: "the spec gives the 73% / 89% targets but no definition; the teammate's code counts a transformer when more than half its hours over the limit fall in November to March; worst_hour = our earlier rule, still reported"}
+    peak_cut_metric: {value: peak_drop, unit: how the export fleet's headline MW is measured,
+                      source: "repo:runs/teammate_code_2026-11-13/program.py.txt:30", quote: "'Peak cut MW':S.max()-s.max()",
+                      basis: "the deck's 8.8 MW is today's yearly peak minus the new yearly peak; the mean over the top hours is still reported"}
     targets:
       overloaded_pct: {value: [9.8, 29.8], unit: "% of transformers, moderate and high", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:23"}
       fixed_without_upgrade_pct: {value: [98, 94], unit: "% of overloaded transformers", source: "repo:runs/teammate_deck_spec_2026-11-13.txt:24"}
@@ -315,3 +332,24 @@ profiles:
       winter_pts: {value: 5, unit: percentage points, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
       money_share: {value: 0.15, unit: share of the target, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
       peak_mw: {value: 0.5, unit: MW, assumption: true, basis: "validation tolerance set in the team's alignment task, 2026-11-13"}
+  deck_replica:
+    grouping_seed: {value: 11, unit: seed of the generator that draws the 3,000 groups,
+                    source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:2", quote: "rng=np.random.default_rng(11)"}
+    adoption_seed: {value: 5, unit: seed of the generator for adoption and EV days,
+                    source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:54", quote: "d=run(pe,ph,5)"}
+    unit_kwh: {value: 8.064, unit: usable kWh per IQ 10C unit in the teammate's sizing,
+               source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:7", basis: "her code uses 8.064; the spec line 13 says 8.06"}
+    nan_fill: {value: home mean, unit: rule for missing hours, source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:12",
+               quote: "mu=np.nanmean(X,1,keepdims=True); X=np.where(np.isnan(X),mu,X)"}
+    rating_cap: {value: 167, unit: kVA; a group above it is rated 167, source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:35",
+                 quote: "else sizes[-1]"}
+    ev_tiers: {value: [High, Medium], unit: teammate EV tiers that already count as an EV home,
+               source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:14", quote: "c.ev.isin(['High','Medium'])"}
+    heat_tier: {value: Primary, unit: teammate electric heat tier that already counts as electric heat,
+                source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:14", quote: "c.electric_heat=='Primary'"}
+    classification_file: {value: customer_classification.csv, unit: "teammate's per-customer tiers, read in place from profiles.deck.teammate_folder, never copied",
+                          assumption: true, basis: "her script reads classification.csv (ewu_sim_bo2.py line 3); the downloaded folder holds it as customer_classification.csv, which the 2026-11-13 audit matched row for row to our 33,757 homes"}
+    winter_limit: {value: 1.2, unit: loading as a multiple of rating the winter rule counts hours above, at every limit option,
+                   source: "repo:runs/teammate_code_2026-11-13/ewu_sim_bo2.py.txt:6", quote: "OVER=1.2"}
+    spread_seeds: {value: 20, unit: seeds the deck profile is rerun with to measure sampling spread, assumption: true,
+                   basis: "enough runs to see whether a gap to the deck sits inside the seed-to-seed range; about 1.5 s each"}

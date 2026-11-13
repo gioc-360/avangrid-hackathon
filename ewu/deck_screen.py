@@ -15,6 +15,7 @@ from ewu import deck, deck_money, peakcut
 
 FIELDS = {"overloaded_pct": "% of transformers", "fixed_of_overloaded_pct": "% of overloaded transformers",
           "average_units": "IQ 10C units per battery-fixed transformer", "winter_of_overloaded_pct": "% of overloaded transformers",
+          "winter_worst_hour_pct": "% of overloaded transformers", "winter_majority_hours_pct": "% of overloaded transformers",
           "overloaded": "transformers", "fixed": "transformers", "upgrades": "transformers", "batteries": "IQ 10C units",
           "ev_homes": "homes", "hp_homes": "homes"}
 
@@ -71,7 +72,7 @@ def print_deck_screen(result, config, limit, seconds):
     setup = result["setup"]
     print(f"EWU screen, deck profile: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
           f"standard kVA rating, overloaded above {limit:.2f} x rating; managed charging {'on' if result['managed'] else 'off'}")
-    print(f"Arrays: ev_start_pmf {setup['origins']['ev_start_pmf']}, hp_increment {setup['origins']['hp_increment']}\n")
+    print("Arrays: " + "; ".join(f"{name} {deck.array_label(origin)}" for name, origin in setup["origins"].items()) + "\n")
     rows = [("Overloaded, % of transformers", "overloaded_pct", "{:.1f}"), ("Fixed without an upgrade, %", "fixed_of_overloaded_pct", "{:.1f}"),
             ("Average units per fixed", "average_units", "{:.2f}"), ("Winter driven, % of overloaded", "winter_of_overloaded_pct", "{:.1f}")]
     print(f"{'':<34} {'moderate':>10} {'high':>10}")
@@ -84,8 +85,8 @@ def print_deck_screen(result, config, limit, seconds):
         f"{lim:.2f}: " + "/".join(f"{result['cells'][(s, lim)]['overloaded_pct']:.1f}" for s in deck.SCENARIOS)
         for lim in config_value("profiles.deck.overload_limit_options", config)))
     p = result["peak"]
-    print(f"Peak cut, {p['hosts']:,} priority homes x 2 units, mean over the top {p['hours']} hours: export fleet "
-          f"{p['export_mw']:.2f} MW (highest hour {p['export_peak_hour_mw']:.2f} MW), behind the meter {p['behind_meter_mw']:.2f} MW")
+    print(f"Peak cut, {p['hosts']:,} priority homes x 2 units: export fleet {p['export_peak_drop_mw']:.2f} MW off the yearly peak "
+          f"(mean over the top {p['hours']} hours {p['export_mw']:.2f} MW); behind the meter {p['behind_meter_mw']:.2f} MW (mean over those hours)")
     print(f"\n{seconds:.1f} s, full meter data, aggregates only")
 
 

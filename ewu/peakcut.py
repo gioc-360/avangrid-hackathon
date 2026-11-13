@@ -12,7 +12,9 @@ How:  top hours = the year's `peak_hours` highest metered system hours. Each pri
       scaled down on any day where the cuts add to more than its usable energy (ewu/fitscore.fit_score).
       With export, the fleet's power and energy pool: each day holding a top hour is shaved to the flat line
       that uses at most the fleet's energy, never more than its power in any hour (bisection on the line).
-      Both report the mean MW cut over the top hours, plus the cut in the single highest hour.
+      Both report the mean MW cut over the top hours, plus the cut in the single highest hour; the export fleet
+      also reports the peak drop, today's yearly peak minus the new yearly peak, the teammate's program.py
+      metric (profiles.deck.peak_cut_metric) behind the deck's 8.8 MW.
 """
 import numpy as np
 import pandas as pd
@@ -49,15 +51,15 @@ def flat_line_cut(day_kw, power_kw, energy_kwh):
     return np.minimum(np.maximum(day_kw - high, 0.0), power_kw)
 
 
-def export_cut(sysload, hours, homes, spec):
-    """kW cut in each top hour when the whole fleet pools power and energy and may export."""
+def export_cut(sysload, hours, homes, spec, whole_year=False):
+    """kW cut in each top hour (or every hour of the year) when the whole fleet pools power and energy and may export."""
     days = np.unique(hours // 24)
     cut = np.zeros(len(sysload))
     for d in days:
         span = slice(d * 24, d * 24 + 24)
         cut[span] = flat_line_cut(np.asarray(sysload[span], dtype=np.float64), homes * spec["power_kw"],
                                   homes * spec["energy_kwh"])
-    return cut[hours]
+    return cut if whole_year else cut[hours]
 
 
 def run_peak_cut(inputs, config):
@@ -71,11 +73,14 @@ def run_peak_cut(inputs, config):
     behind = fitscore.fit_score(np.asarray(inputs["load"][rows][:, hours], dtype=np.float64)[None], day, spec)
     behind_by_hour = np.minimum(np.maximum(np.asarray(inputs["load"][rows][:, hours], dtype=np.float64), 0.0),
                                 spec["power_kw"]).sum(0)
-    exported = export_cut(sysload, hours, len(rows), spec)
+    year_cut = export_cut(sysload, hours, len(rows), spec, whole_year=True)
+    exported = year_cut[hours]
     peak = int(np.argmax(sysload[hours]))
+    peak_drop = float(np.max(sysload)) - float(np.max(np.asarray(sysload, dtype=np.float64) - year_cut))
     return {"hosts": len(rows), "units": len(rows) * deck_value("units_per_host", config), "hours": len(hours),
             "days": len(np.unique(day)), "behind_meter_mw": round(float(behind.sum()) / 1000, 2),
             "export_mw": round(float(exported.mean()) / 1000, 2),
             "export_peak_hour_mw": round(float(exported[peak]) / 1000, 2),
+            "export_peak_drop_mw": round(peak_drop / 1000, 2),
             "behind_meter_power_cap_mw": round(float(behind_by_hour.mean()) / 1000, 2),
             "top_hours_load_mw": round(float(sysload[hours].mean()) / 1000, 2)}

@@ -1,9 +1,9 @@
-"""Demo check: the offline demo page renders all 8 views, every number on it is a stored number, and the live
+"""Demo check: the offline demo page renders all 9 views, every number on it is a stored number, and the live
 screen command answers on the full data in under a minute.
 
 What: confirms outputs/demo/ewu_demo.html loads nothing from outside; renders it in headless Chrome in every
       scenario x grouping x sizing (cycling homes, hosts, Network ladder steps, an opened transformer); requires
-      all 8 views filled, Network states drawn equal to facts, no NaN, every shown number bound to its key and
+      all 9 views filled, Network states drawn equal to facts, no NaN, every shown number bound to its key and
       equal to it at the shown precision; screenshots each view to outputs/private/demo_shots/; times `bin/ewu
       screen` (fails at the config limit), records ewu.cli.screen_seconds, writes docs/demo/cli_output.txt,
       where every number must trace. `--selftest` plants seven bad pages and must catch each.
@@ -26,7 +26,7 @@ from ewu.demo_page import PAGE, collect_values, config_inputs, read_json
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SHOTS, CLI_OUTPUT = ROOT / "outputs" / "private" / "demo_shots", ROOT / "docs" / "demo" / "cli_output.txt"
 OUTSIDE, BROKEN = re.compile(r"https?://|<link\b|@import|\bsrc\s*=|url\(", re.I), re.compile(r"\b(NaN|undefined|Infinity)\b")
-STEPS = ("network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
+STEPS = ("deck", "network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")   # the side panel, in order
 NET_VIEWS, MARKS = ("today", "flag", "shift", "protect", "upgrade"), ("polyline", "rect", "path", "circle", "line")
 
 

@@ -7,7 +7,8 @@ What: `inventory` lists every home's equipment, segment and eligible programs (a
       snap; `sensitivity` runs and prices the ladder over every scenario, sizing margin and grouping mode;
       `tophours` measures the MW battery hosts cut in the system's top 20 and 50 hours; `robustness` reruns
       the heat pump slope variants, the flag durations and the 3 kVA test with measured charge lengths; `network` writes
-      the screen's synthetic network state by state for the page; `case` writes the one-page business case from
+      the screen's synthetic network state by state for the page; `arrays` copies and checks the teammate's
+      two deck arrays into data/processed; `case` writes the one-page business case from
       facts; `demo` builds the offline demo page (side panel: Network, Overview, Inventory, Flag, Shift, Protect,
       Upgrade, Money) and opens it.
 Why:  judges and the demo need one short command per question, and every command must print aggregates only,
@@ -87,6 +88,10 @@ def run_inventory_command(args):
 
 
 def run_screen_command(args):
+    if args.replica or args.profile == "deck-replica":
+        from ewu import deck_replica_run
+        deck_replica_run.main(args.tiers)
+        return 0
     if args.profile == "deck":
         from ewu import deck_screen
         deck_screen.main(args.limit, True if args.managed else None)
@@ -142,9 +147,9 @@ def run_demo_command(args):
     return 0
 
 
-def add_profile_options(command):
+def add_profile_options(command, replica=False):
     """--profile (deck by default, cautious = the earlier method), --limit and --managed for the deck profile."""
-    command.add_argument("--profile", default=config_value("profiles.default"), choices=("deck", "cautious"),
+    command.add_argument("--profile", default=config_value("profiles.default"), choices=("deck", "cautious") + (("deck-replica",) if replica else ()),
                          help="deck = the final deck's method (default); cautious = the earlier Flag, Shift, Protect, Upgrade")
     command.add_argument("--limit", type=float, default=config_value("profiles.deck.overload_limit"),
                          choices=config_value("profiles.deck.overload_limit_options"), help="deck: overloaded above this x rating")
@@ -161,7 +166,9 @@ def main(argv=None):
     scr.add_argument("--margin", type=float, default=config_value("demo.margin"), help="rating = today's peak x this")
     scr.add_argument("--grouping", default="random", choices=("random", "same_segment"))
     scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic groups (cautious)")
-    add_profile_options(scr)
+    add_profile_options(scr, replica=True)
+    scr.add_argument("--replica", action="store_true", help="profile deck-replica: the teammate's code followed exactly")
+    scr.add_argument("--tiers", default="teammate", choices=("teammate", "ours"), help="deck-replica: whose EV and heat tiers")
     scr.set_defaults(run=run_screen_command)
     net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
     net.add_argument("--scenario", default=None, choices=("moderate", "high"), help="deck: scenario (default demo.scenario)")
@@ -181,8 +188,9 @@ def main(argv=None):
     demo = commands.add_parser("demo", help="build the offline demo page and open it")
     demo.add_argument("--no-open", action="store_true", help="build only")
     demo.set_defaults(run=run_demo_command)
-    from ewu import plan_output   # `plan`: transformer action list, capital plan; home lists only --private or simulated --showcase
-    plan_output.add_command(commands)
+    from ewu import plan_output, deck_arrays, deck_recharge   # plan: action lists; arrays: teammate's inputs; recharge: sizing
+    for module in (plan_output, deck_arrays, deck_recharge):
+        module.add_command(commands)
     args = parser.parse_args(argv)
     return args.run(args)
 

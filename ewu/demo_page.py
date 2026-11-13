@@ -2,8 +2,8 @@
 numbers the code already wrote.
 
 What: collect_values() gathers every fact, private fact and config input the page may show, each under a
-      prefixed key (fact:, private:, config:); steps_built() says which data group (network, inventory, screen,
-      cold snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
+      prefixed key (fact:, private:, config:); steps_built() says which data group (deck, network, inventory,
+      screen, cold snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
       outputs/demo/ewu_demo.html.
 Why:  the live demo must work with no network and no server, and every number on it must trace to code. The
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
@@ -20,10 +20,13 @@ from ewu import ROOT
 
 TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
-FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.")
+FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.",
+                 "ewu.deck.", "ewu.deck_replica.")
 PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.")
 NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
 NEEDS = {
+    "deck": ["fact:ewu.deck.moderate.limit_120.overloaded_pct", "fact:ewu.deck_replica.moderate.limit_120.overloaded_pct",
+             "fact:ewu.deck.peakcut.export_peak_drop_mw", "fact:ewu.deck.inputs.hp_increment.annual_kwh"],
     "network": ["fact:ewu.network.transformers_drawn", "fact:ewu.network.upgrade.upgrade", "private:ewu.network.t.state",
                 "private:ewu.network.t.feeder", "private:ewu.network.t.base_kw", "private:ewu.network.t.over_today"],
     "inventory": ["fact:ewu.inventory.homes", "fact:ewu.inventory.any_program_pct", "fact:ewu.demo.home_count",

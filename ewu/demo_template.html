@@ -147,9 +147,11 @@ svg.net text.feeder { font-weight: 600; font-size: 18px; }
 <body>
 <div class="app">
 <aside class="side">
-  <a class="appname" href="#step=network">Electrify Without Upgrade</a>
+  <a class="appname" href="#step=deck">Electrify Without Upgrade</a>
   <nav aria-label="Views">
     <ol>
+      <li><a class="step-link" href="#step=deck" data-step="deck"><span class="name">Deck</span></a></li>
+      <li class="group" aria-hidden="true"></li>
       <li><a class="step-link" href="#step=network" data-step="network"><span class="name">Network</span></a></li>
       <li><a class="step-link" href="#step=overview" data-step="overview"><span class="name">Overview</span></a></li>
       <li><a class="step-link" href="#step=inventory" data-step="inventory"><span class="name">Inventory</span></a></li>
@@ -164,6 +166,7 @@ svg.net text.feeder { font-weight: 600; font-size: 18px; }
   </nav>
 </aside>
 <main>
+  <section class="step" id="deck" aria-labelledby="h-deck"><div class="body"></div></section>
   <section class="step" id="network" aria-labelledby="h-network"><div class="body"></div></section>
   <section class="step" id="overview" aria-labelledby="h-overview"><div class="body"></div></section>
   <section class="step" id="inventory" aria-labelledby="h-inventory"><div class="body"></div></section>
@@ -178,7 +181,7 @@ svg.net text.feeder { font-weight: 600; font-size: 18px; }
 <script>
 const D = JSON.parse(document.getElementById("data").textContent);
 const V = D.values;
-const S = { step: "network", net: "today", t: -1, home: 0, scenario: V["config:demo.scenario"], grouping: "random", margin: Math.max(0, V["config:transformer.sizing_margins"].indexOf(V["config:demo.margin"])), hosts: 0 };
+const S = { step: "deck", net: "today", t: -1, home: 0, scenario: V["config:demo.scenario"], grouping: "random", margin: Math.max(0, V["config:transformer.sizing_margins"].indexOf(V["config:demo.margin"])), hosts: 0 };
 const WORDS = { ev_home: "EV home", electric_heat: "Electric heat", dual_electrified: "EV and electric heat",
   summer_peaker: "Summer peaker", solar: "Solar", baseline: "Baseline", ac: "Air conditioning", ac_central: "Central AC",
   heat_pump: "Heat pump", resistance_heat: "Resistance heat", ev_l2: "Fast home EV charger", ev_l1: "Slow EV charging from an outlet",
@@ -193,6 +196,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 // the views in panel order; `needs` names the data groups (demo_page.NEEDS) a view draws from
 const STEPS = [
+  { id: "deck", name: "Deck", needs: ["deck"], fn: stepDeck },
   { id: "network", name: "Network", needs: ["network"], fn: stepNetwork },
   { id: "overview", name: "Overview", needs: ["screen", "money"], fn: stepOverview },
   { id: "inventory", name: "Inventory", needs: ["inventory"], fn: stepInventory },
@@ -236,7 +240,7 @@ function readHash() {
   for (const k of ["scenario", "grouping"]) if (p.has(k)) S[k] = p.get(k);
   if (p.has("net") && NET_VIEWS.some(([v]) => v === p.get("net"))) S.net = p.get("net");
   const step = p.get("step") || p.get("only");
-  if (step) S.step = LEGACY[step] || (STEPS.some(s => s.id === step) ? step : "network");
+  if (step) S.step = LEGACY[step] || (STEPS.some(s => s.id === step) ? step : "deck");
 }
 
 // "How this is computed": one closed disclosure per view; `est` marks a number that rests on it and opens it
@@ -439,6 +443,30 @@ function sizeRange(field) {
 const head = (id, name, headline) => `<p class="eyebrow"><b>${name}</b></p><h2 class="headline" id="h-${id}">${headline}</h2>`;
 const big = html => `<span class="big">${html}</span>`;
 const synthetic = () => `${caseNote()}<p>${N("config:transformer.count", 0)} synthetic transformers of ${N("config:transformer.homes_per_transformer", 0)} homes, real meter data grouped by the Grouping control, ${N("config:checks.seeds", 0)} seeds pooled; over means above ${N("config:transformer.overload_limit", 2)} x rating in any hour of the year. A real meter-to-transformer map replaces the synthetic groups with no other change.</p>`;
+
+// ---------- Deck: the final deck's method (profile deck, the default) beside the replica of the teammate's code
+const DK = (s, f) => `fact:ewu.deck.${s}.limit_120.${f}`, RK = (s, f) => `fact:ewu.deck_replica.${s}.limit_120.${f}`;
+const TAG = (word, html) => `<p><b>${word}</b>: ${html}</p>`;
+function stepDeck() {
+  const rows = [["Overloaded", "overloaded_pct", 1, "%"], ["Fixed without an upgrade", "fixed_of_overloaded_pct", 1, "%"],
+    ["Units per fixed transformer", "average_units", 2, ""], ["Winter driven", "winter_of_overloaded_pct", 1, "%"],
+    ["Avangrid cost", "nyseg_avangrid_cost_musd", 1, "$M"], ["Upgrade every overloaded", "nyseg_upgrade_all_musd", 1, "$M"]];
+  const cellOf = (k, d, u) => N(k, d, u === "$M" ? { pre: "$", post: "M" } : { post: u });
+  const top = Math.max(...["moderate", "high"].map(s => V[DK(s, "nyseg_upgrade_all_musd")]));
+  const bars = ["moderate", "high"].map(s => `<p style="margin:0">${word(s)}</p>${hbar([[V[DK(s, "nyseg_avangrid_cost_musd")], "var(--protect)"]], top, 14)}${hbar([[V[DK(s, "nyseg_upgrade_all_musd")], "var(--upgrade)"]], top, 14)}`).join("");
+  return `${head("deck", "Deck", `Batteries fix ${big(N(DK("moderate", "fixed_of_overloaded_pct"), 1, { post: "%" }))} of overloaded transformers without an upgrade, moderate 2030${est("deck")}`)}
+  <div class="row"><div class="col"><table><tr><td></td><td class="num">Moderate</td><td class="num">her code</td><td class="num">High</td><td class="num">her code</td></tr>
+    ${rows.map(([label, f, d, u]) => `<tr><td>${label}</td>${["moderate", "high"].map(s => `<td class="num">${cellOf(DK(s, f), d, u)}</td><td class="num">${cellOf(RK(s, f), d, u)}</td>`).join("")}</tr>`).join("")}
+    <tr><td>Peak cut, export</td><td class="num">${N("fact:ewu.deck.peakcut.export_peak_drop_mw", 2, { post: " MW" })}</td><td></td><td></td><td></td></tr></table></div>
+  <div class="col"><div class="card"><p style="margin:0">Avangrid cost, then upgrade all</p>${bars}</div></div></div>
+  ${how("deck", `<p>The team's final-deck method (teammate spec of 2026-11-13), run by this tool on the meter data; the earlier method stays in the views below. Columns: Moderate and High are this tool's deck profile; her code is our replica of the teammate's ewu_sim_bo2.py, which equals her saved results on every one of ${N("fact:ewu.deck_replica.moderate.rows_equal_her_run", 0, { post: " transformers" })} in each case. Every input carries one tag.</p>
+    ${TAG("GIVEN", `the hourly meter data of ${N("fact:ewu.inventory.homes", 0, { post: " homes" })} and the hourly weather, from the hackathon.`)}
+    ${TAG("GIVEN, from the teammate", `the EV start-hour shares (${N("fact:ewu.deck.inputs.ev_start_pmf.hour0_pct", 1, { post: "%" })} at midnight) and the heat pump curve (${N("fact:ewu.deck.inputs.hp_increment.annual_kwh", 0, { post: " kWh a year" })}, highest hour ${N("fact:ewu.deck.inputs.hp_increment.max_kw", 2, { post: " kW" })}), both built by her ewu_inputs.py from the given meter data and checked here byte for byte.`)}
+    ${TAG("DERIVED", `which homes already have an EV or electric heat (our inventory, read from each meter), each transformer's today peak and its rating, the smallest standard size at or above that peak / ${N("config:profiles.deck.peak_to_rating_divisor", 2)}; the priority battery homes for the peak cut.`)}
+    ${TAG("SIMULATED", `${N("config:profiles.deck.transformer_count", 0)} synthetic transformers of ${N("config:profiles.deck.homes_per_transformer", 0)} random homes; new EVs and heat pumps drawn at the scenario shares of eligible homes; EV charges of ${N("config:profiles.deck.ev_kw", 1, { post: " kW" })} on ${N("config:profiles.deck.ev_day_share", 0, { scale: 100, post: "%" })} of days.`)}
+    ${TAG("ASSUMED", `overloaded above ${N("config:profiles.deck.overload_limit", 0, { scale: 100, post: "%" })} of rating in any hour; kW read as kVA; battery unit ${N("config:profiles.deck.battery_unit_usd", 0, { pre: "$" })}, lease ${N("config:profiles.deck.lease_usd_unit_yr", 0, { pre: "$", post: " a year" })}, NYSERDA ${N("config:profiles.deck.nyserda_usd_unit", 0, { pre: "$" })}, ${N("config:profiles.deck.years", 0, { post: " years" })} at ${N("config:profiles.deck.discount_rate", 0, { scale: 100, post: "%" })}; upgrade ${N("config:profiles.deck.upgrade_usd", 0, { pre: "$" })} counted for ${N("config:profiles.deck.years", 0)} of its ${N("config:profiles.deck.upgrade_life_years", 0, { post: " years" })}; NYSEG as ${N("config:prices.nyseg_electric_customers", 0)} customers on ${N("config:profiles.deck.homes_per_transformer", 0)}-home transformers.</p>
+    <p>Avangrid cost is units net of the customer lease and NYSERDA; gross is ${N(DK("moderate", "nyseg_gross_musd"), 1, { pre: "$", post: "M" })} and ${N(DK("high", "nyseg_gross_musd"), 1, { pre: "$", post: "M" })}, so the saving rests on the lease and the incentive. Peak cut with export is today's yearly peak minus the new one; behind the meter only, ${N("fact:ewu.deck.peakcut.behind_meter_mw", 2, { post: " MW" })} over the top hours.`)}`)}`;
+}
 
 function stepOverview() {
   const c = C(), m = `fact:ewu.economics.${cell()}.mid.discounted.`, h = "fact:ewu.economics.headline.";

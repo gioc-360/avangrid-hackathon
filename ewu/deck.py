@@ -1,7 +1,7 @@
 """Deck profile: the final deck's transformer screen and battery-only fix, built from the teammate's spec.
 
 What: standard_rating() sizes each synthetic transformer to a standard kVA; ev_start_pmf() and hp_increment()
-      load the teammate's arrays from data/processed, or derive our own and say so; pick_adopters() draws new
+      load the teammate's arrays from data/processed (sha256 checked against config), or derive our own and say so; pick_adopters() draws new
       EV and heat pump homes; ev_loading() adds 3-hour 7.2 kW charges; battery_units() sizes 1 to 4 IQ 10C
       units per overloaded transformer; run_deck() runs one scenario at every overload limit option.
 Why:  the team decided the final deck's method (runs/teammate_deck_spec_2026-11-13.txt). The tool must
@@ -9,8 +9,9 @@ Why:  the team decided the final deck's method (runs/teammate_deck_spec_2026-11-
 How:  rating = smallest size in profiles.deck.standard_sizes_kva at or above today's group peak / 0.85 (kW as
       kVA, power factor 1); a group needing more than the largest size gets as many of it as it needs, counted.
       Overloaded = any hour above limit x rating. Units = max over days of ceil(day's peak excess / unit_kw) and
-      ceil(day's excess kWh / unit_kwh), at least units_min; above units_max = upgrade. Winter driven = the
-      worst hour (highest loading over rating) falls in profiles.deck.winter_months. With managed charging on,
+      ceil(day's excess kWh / unit_kwh), at least units_min; above units_max = upgrade. Winter driven
+      (profiles.deck.winter_rule) = more than half the hours over the limit fall in winter_months (the
+      teammate's rule), or the worst hour does (ours); both are reported. With managed charging on,
       each new EV charge moves into the shift block's staggered window at its power share, same energy.
 """
 import numpy as np
@@ -38,9 +39,20 @@ def standard_rating(today_peak_kw, config):
 
 
 def array_source(name, config):
-    """(path, 'teammate') when the teammate's file sits in data/processed, else (derived path, 'derived')."""
+    """(path, 'teammate') when the teammate's file sits in data/processed and its sha256 is the one in config
+    (ewu/deck_arrays.verify_array fails loudly otherwise), else (derived path, 'derived')."""
     path = PROCESSED / deck_value(name, config)
-    return (path, "teammate") if path.exists() else (path.with_name(f"{path.stem}_derived.npy"), "derived")
+    if not path.exists():
+        return path.with_name(f"{path.stem}_derived.npy"), "derived"
+    from ewu.deck_arrays import verify_array
+    verify_array(name.removesuffix("_file"), path, config)
+    return path, "teammate"
+
+
+def array_label(origin):
+    """How a printout names an array's origin."""
+    return ("from the teammate (data/processed, sha256 checked; ewu_inputs.py 2026-11-13, built from the meter data)"
+            if origin == "teammate" else "derived from our data (the teammate's file is absent)")
 
 
 def ev_start_pmf(inputs, config):
@@ -74,7 +86,8 @@ def hp_increment(inputs, config):
 
 def pick_adopters(group_homes, homes, scenario, seed, config):
     """(ev_homes, hp_homes): grouped, occupied homes without the device today, one order per device and seed,
-    so high adopters include moderate ones."""
+    so high adopters include moderate ones; the share applies to eligible homes or to all grouped homes
+    (profiles.deck.adoption_share_base)."""
     grouped = np.asarray(group_homes)
     vacant = homes["is_other_inactive"].to_numpy()
     picks = []
@@ -84,7 +97,8 @@ def pick_adopters(group_homes, homes, scenario, seed, config):
         for flag in deck_value(flags, config):
             has |= homes[flag].to_numpy()
         eligible = order[~has[order] & ~vacant[order]]
-        wanted = int(round(config_value(f"scenarios.{scenario}.{device}", config) * len(grouped)))
+        pool = len(eligible) if deck_value("adoption_share_base", config) == "eligible_homes" else len(grouped)
+        wanted = int(round(config_value(f"scenarios.{scenario}.{device}", config) * pool))
         if wanted > len(eligible):
             raise ValueError(f"{scenario} wants {wanted} {device} adopters but only {len(eligible)} homes can add one")
         picks.append(np.sort(eligible[:wanted]))
@@ -151,11 +165,15 @@ def run_deck(inputs, config, scenario, setup=None, managed=None, limits=None):
     hp = np.bincount(owner[hp_homes], minlength=groups.count)[:, None] * setup["hp_kw"][None, :]
     total = setup["base"] + ev + hp
     worst = total.argmax(1)
-    winter = np.isin(setup["month"][worst], deck_value("winter_months", config))
+    winter_month = np.isin(setup["month"], deck_value("winter_months", config))
+    winter_worst = winter_month[worst]
     cells = {}
     for limit in limits or deck_value("overload_limit_options", config):
         ceiling = limit * setup["rating"]
-        over = (total > ceiling[:, None]).any(1)
+        above = total > ceiling[:, None]
+        over = above.any(1)
+        winter_major = 2 * (above & winter_month[None, :]).sum(1) > above.sum(1)
+        winter = winter_major if deck_value("winter_rule", config) == "majority_of_over_hours" else winter_worst
         units = np.zeros(groups.count, dtype=np.int64)
         units[over] = battery_units(total[over], ceiling[over], config)
         fixed = over & (units <= deck_value("units_max", config))
@@ -166,6 +184,8 @@ def run_deck(inputs, config, scenario, setup=None, managed=None, limits=None):
             "upgrades": int((over & ~fixed).sum()), "batteries": int(units[fixed].sum()),
             "average_units": round(float(units[fixed].mean()), 2) if fixed.any() else 0.0,
             "winter_of_overloaded_pct": percent_of(int((over & winter).sum()), n_over),
+            "winter_worst_hour_pct": percent_of(int((over & winter_worst).sum()), n_over),
+            "winter_majority_hours_pct": percent_of(int((over & winter_major).sum()), n_over),
             "ev_homes": len(ev_homes), "hp_homes": len(hp_homes), "managed": bool(managed),
             "state": {"over": over, "fixed": fixed, "units": units, "ceiling": ceiling, "worst_hour": worst}}
     return cells, {"base": setup["base"], "ev": ev, "hp": hp, "ev_homes": ev_homes, "hp_homes": hp_homes}
