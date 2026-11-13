@@ -127,3 +127,15 @@ def test_company_brief_keeps_unverified_claims_apart():
     sourced, _, unverified = text.partition("## Unverified, do not trust")
     for claim in ("Rate Decoupling Mechanism", "3.4 times operating cash flow", "Stillwater"):
         assert claim in unverified and claim not in sourced
+
+
+SINGLE_HOME_FIGURES = ("runs/plain/fig2_signatures.png", "runs/plain/fig6_dispatch_example.png")
+
+
+def test_single_home_figures_are_not_tracked_and_new_run_figures_are_ignored():
+    """Audit MUST_FIX 2: the two bench figures that draw single real homes stay off git."""
+    tracked = subprocess.run(["git", "-C", str(ROOT), "ls-files", "--", *SINGLE_HOME_FIGURES],
+                             capture_output=True, text=True).stdout.split()
+    assert tracked == []
+    for path in (*SINGLE_HOME_FIGURES, "runs/any_bench/new_figure.png"):
+        assert subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", path]).returncode == 0, path

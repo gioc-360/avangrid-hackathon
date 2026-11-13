@@ -3,7 +3,7 @@
 What: build_inventory() reads the classified and segmented homes and returns one row per home: every
       equipment flag, a confidence word per flag, the EV and heat pump owner probabilities, the segment and
       one column per program saying eligible or not; summarize_inventory() turns that into counts;
-      record_inventory() writes the counts to facts and the demo homes to the private facts file;
+      record_inventory() writes the counts and one Composite home per demo segment to facts;
       print_inventory() prints the aggregate table. Rows go to outputs/private/inventory.parquet.
 Why:  the challenge asks for "a tool applied to hourly loads that will estimate inventory of heating and
       cooling appliances, and identify customers eligible for utility programs, BESS, etc." This is that
@@ -11,8 +11,10 @@ Why:  the challenge asks for "a tool applied to hourly loads that will estimate 
 How:  flags and probabilities come from analysis/classify.py, segment and battery tier from analysis/segment.py
       and analysis/bess.py (no new modelling here). Each flag's confidence word is the one classify.py
       recorded for its class. A home is eligible for a program when it has every flag in the program's rule
-      in config/ewu.yaml and none of the excluded flags. The demo picker takes, for each segment named in
-      config, the home with the median annual kWh, so no home is chosen by hand.
+      in config/ewu.yaml and none of the excluded flags. The demo shows no real home: for each segment named
+      in config it shows a Composite home, the average of every home in that segment (mean load by hour,
+      mean kWh by month, share of homes with each device and in each program), so the page and the video
+      carry segment aggregates only and nothing per home leaves the private table.
 """
 import json
 import numpy as np
@@ -70,14 +72,12 @@ def summarize_inventory(homes, config):
             "unassigned_segment": int((homes["segment"].fillna("") == "").sum())}
 
 
-def pick_demo_homes(homes, config):
-    """Row numbers of the picker homes: per configured segment, the home with the median annual kWh."""
-    picks = []
-    for segment in config_value("demo.picker_segments", config):
-        rows = np.flatnonzero(homes["segment"].to_numpy() == segment)
-        kwh = homes["annual_kwh"].to_numpy()[rows]
-        picks.append(int(rows[np.argsort(kwh, kind="stable")[len(rows) // 2]]))
-    return picks
+def segment_mean_load(load, rows, chunk=2000):
+    """Mean kW by hour of the year over the given homes, read in chunks so the memory-mapped matrix stays on disk."""
+    total = np.zeros(load.shape[1], dtype=np.float64)
+    for first in range(0, len(rows), chunk):
+        total += np.asarray(load[rows[first:first + chunk]], dtype=np.float64).sum(0)
+    return total / len(rows)
 
 
 def day_shape(load_row, months, index):
@@ -86,9 +86,46 @@ def day_shape(load_row, months, index):
     return np.asarray(load_row, dtype=np.float64)[on].reshape(-1, 24).mean(0)
 
 
+def composite_homes(homes, load, config, index):
+    """Per configured segment, the Composite home: averages over every home in the segment, never one home."""
+    rules, _ = program_rules(config)
+    words = read_class_facts()
+    two = lambda a: [round(float(x), 2) for x in a]
+    out = []
+    for segment in config_value("demo.picker_segments", config):
+        rows = np.flatnonzero(homes["segment"].to_numpy() == segment)
+        group = homes.iloc[rows]
+        share = lambda column: round(100.0 * float(group[column].mean()), 2)
+        flags = sorted((c for c in CLASSES if group[f"is_{c}"].any()), key=lambda c: -group[f"is_{c}"].mean())
+        programs = sorted((p for p in rules if group[f"eligible_{p}"].any()), key=lambda p: -group[f"eligible_{p}"].mean())
+        mean_load = segment_mean_load(load, rows)
+        home = {"segment": segment, "homes": len(rows), "annual_kwh": int(round(group["annual_kwh"].mean())),
+                "peak_kw": round(float(group["peak_kw"].mean()), 2),
+                "monthly_kwh": two(group[[f"kwh_m{m:02d}" for m in range(1, 13)]].mean()),
+                "flags": flags, "flag_share_pct": [share(f"is_{c}") for c in flags],
+                "confidence": [str(words[c]["confidence"]) for c in flags],
+                "programs": programs, "program_share_pct": [share(f"eligible_{p}") for p in programs]}
+        home |= {column: round(float(group[column].mean()), 2) for column in PROBABILITIES.values()}
+        for season in ("winter", "summer"):
+            shape = day_shape(mean_load, config_value(f"battery.{season}_months", config), index)
+            home[f"{season}_day_kw"], home[f"{season}_day_peak_kw"] = two(shape), round(float(shape.max()), 2)
+        out.append(home)
+    return out
+
+
+UNITS = {"segment": "segment", "homes": "homes averaged", "annual_kwh": "kWh, segment mean",
+         "peak_kw": "kW, segment mean of each home's highest hour", "monthly_kwh": "kWh by month, segment mean",
+         "flags": "equipment found in the segment", "flag_share_pct": "% of segment homes with each device",
+         "confidence": "confidence word per device class", "programs": "programs any segment home qualifies for",
+         "program_share_pct": "% of segment homes eligible", "p_ev": "probability, segment mean",
+         "p_heat_pump": "probability, segment mean", "winter_day_kw": "kW by hour of day, segment mean load",
+         "summer_day_kw": "kW by hour of day, segment mean load", "winter_day_peak_kw": "kW, top of the mean day",
+         "summer_day_peak_kw": "kW, top of the mean day"}
+
+
 def record_inventory(summary, homes, load, config):
-    """Counts to facts/facts.json; the demo homes' rows to the private facts file only."""
-    from analysis.facts import record
+    """Counts and the Composite homes to facts/facts.json; old single-home demo rows leave the private file."""
+    from analysis.facts import forget, record
     record("ewu.inventory.homes", summary["homes"], "homes", "one row per usable home")
     for c, v in summary["classes"].items():
         record(f"ewu.inventory.class.{c}.count", v["count"], "homes", "flag from analysis/classify.py")
@@ -100,26 +137,13 @@ def record_inventory(summary, homes, load, config):
         record(f"ewu.inventory.program.{p}.count", v["count"], "homes", "every flag in the config rule, none excluded")
         record(f"ewu.inventory.program.{p}.share_pct", v["share_pct"], "% of homes", "")
     record("ewu.inventory.any_program_pct", summary["any_program"], "% of homes", "eligible for at least one program")
+    forget("ewu.demo.", private=True)
+    forget("ewu.demo.composite_")
     index = pd.read_parquet(PROCESSED / "weather.parquet").index
-    rules, _ = program_rules(config)
-    two = lambda a: [round(float(x), 2) for x in a]
-    for i, row in enumerate(pick_demo_homes(homes, config)):
-        h, key = homes.iloc[row], f"ewu.demo.home_{i}"
-        flags = [c for c in CLASSES if h[f"is_{c}"]]
-        record(f"{key}.segment", h["segment"], "segment", "", private=True)
-        record(f"{key}.flags", flags, "equipment", "", private=True)
-        record(f"{key}.confidence", [h[f"confidence_{c}"] for c in flags], "confidence word per flag", "", private=True)
-        for c, column in PROBABILITIES.items():
-            record(f"{key}.{column}", round(float(h[column]), 2), "probability", "calibrated owner score", private=True)
-        record(f"{key}.programs", [p for p in rules if h[f"eligible_{p}"]], "programs", "", private=True)
-        record(f"{key}.annual_kwh", int(round(h["annual_kwh"])), "kWh", "", private=True)
-        record(f"{key}.peak_kw", round(float(h["peak_kw"]), 2), "kW", "", private=True)
-        record(f"{key}.monthly_kwh", two([h[f"kwh_m{m:02d}"] for m in range(1, 13)]), "kWh by month", "", private=True)
-        for season in ("winter", "summer"):
-            shape = day_shape(load[row], config_value(f"battery.{season}_months", config), index)
-            record(f"{key}.{season}_day_kw", two(shape), "kW by hour of day", f"mean over {season} months", private=True)
-            record(f"{key}.{season}_day_peak_kw", round(float(shape.max()), 2), "kW", "", private=True)
-    record("ewu.demo.home_count", len(config_value("demo.picker_segments", config)), "homes", "picker homes")
+    for i, home in enumerate(composite_homes(homes, load, config, index)):
+        for name, value in home.items():
+            record(f"ewu.demo.composite_{i}.{name}", value, UNITS[name], "Composite home: average of every home in the segment")
+    record("ewu.demo.home_count", len(config_value("demo.picker_segments", config)), "Composite homes", "one per picker segment")
 
 
 def print_inventory(summary):

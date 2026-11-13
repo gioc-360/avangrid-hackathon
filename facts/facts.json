@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 10.8,
+  "value": 8.7,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -4258,7 +4258,7 @@
   "method": "pooled 5 seeds, random grouping, Feb 7-8 window, battery dispatched all year; no battery"
  },
  "ewu.coldsnap.seconds": {
-  "value": 58.3,
+  "value": 61.9,
   "unit": "s",
   "script": "ewu/coldsnap.py",
   "method": "whole cold snap run"
@@ -4275,11 +4275,1193 @@
   "script": "ewu/coldsnap.py",
   "method": "hourly weather in the window"
  },
+ "ewu.demo.composite_0.annual_kwh": {
+  "value": 17134,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.confidence": {
+  "value": [
+   "high",
+   "high",
+   "medium",
+   "medium",
+   "medium"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.flag_share_pct": {
+  "value": [
+   100.0,
+   83.11,
+   65.29,
+   26.83,
+   0.19
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.flags": {
+  "value": [
+   "ev_l2",
+   "ac",
+   "ac_central",
+   "pool",
+   "other_flat_large"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.homes": {
+  "value": 533,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.monthly_kwh": {
+  "value": [
+   1450.28,
+   1264.33,
+   1234.44,
+   1121.23,
+   1334.92,
+   1722.46,
+   2015.91,
+   1803.7,
+   1344.1,
+   1176.42,
+   1221.21,
+   1445.01
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.p_ev": {
+  "value": 0.96,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.p_heat_pump": {
+  "value": 0.63,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.peak_kw": {
+  "value": 12.74,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.program_share_pct": {
+  "value": [
+   100.0,
+   83.11,
+   63.23,
+   26.83
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.programs": {
+  "value": [
+   "managed_charging",
+   "smart_thermostat",
+   "home_battery",
+   "pool_pump_timer"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.segment": {
+  "value": "ev_home",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.summer_day_kw": {
+  "value": [
+   2.59,
+   2.42,
+   2.19,
+   2.01,
+   1.82,
+   1.7,
+   1.68,
+   1.74,
+   1.8,
+   1.92,
+   2.07,
+   2.25,
+   2.44,
+   2.6,
+   2.74,
+   2.95,
+   3.18,
+   3.37,
+   3.39,
+   3.34,
+   3.29,
+   3.19,
+   2.92,
+   2.64
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.summer_day_peak_kw": {
+  "value": 3.39,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.winter_day_kw": {
+  "value": [
+   2.04,
+   1.91,
+   1.77,
+   1.63,
+   1.53,
+   1.5,
+   1.57,
+   1.59,
+   1.55,
+   1.55,
+   1.55,
+   1.57,
+   1.62,
+   1.61,
+   1.63,
+   1.74,
+   1.95,
+   2.22,
+   2.33,
+   2.35,
+   2.34,
+   2.26,
+   2.04,
+   1.96
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_0.winter_day_peak_kw": {
+  "value": 2.35,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.annual_kwh": {
+  "value": 16243,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.confidence": {
+  "value": [
+   "high that heat is electric",
+   "high",
+   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "low (the remainder of electric heat)",
+   "medium",
+   "low, no labels",
+   "low: dehumidifiers and well pumps look alike",
+   "medium",
+   "low, no labels",
+   "medium"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.flag_share_pct": {
+  "value": [
+   100.0,
+   72.59,
+   53.44,
+   46.56,
+   30.98,
+   8.06,
+   6.87,
+   6.33,
+   2.99,
+   0.08
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.flags": {
+  "value": [
+   "electric_heat",
+   "ac",
+   "heat_pump",
+   "resistance_heat",
+   "ac_central",
+   "water_heater",
+   "ev_l1",
+   "pool",
+   "hot_tub",
+   "other_flat_large"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.homes": {
+  "value": 2605,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.monthly_kwh": {
+  "value": [
+   2330.81,
+   2026.79,
+   1576.58,
+   1051.89,
+   939.87,
+   867.18,
+   1061.07,
+   935.37,
+   762.61,
+   1007.83,
+   1509.26,
+   2173.54
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.p_ev": {
+  "value": 0.53,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.p_heat_pump": {
+  "value": 0.91,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.peak_kw": {
+  "value": 9.06,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.program_share_pct": {
+  "value": [
+   100.0,
+   72.59,
+   57.7,
+   46.56,
+   6.33
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.programs": {
+  "value": [
+   "winter_demand_response",
+   "smart_thermostat",
+   "home_battery",
+   "heat_pump_conversion",
+   "pool_pump_timer"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.segment": {
+  "value": "electric_heat",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.summer_day_kw": {
+  "value": [
+   1.11,
+   1.01,
+   0.95,
+   0.91,
+   0.9,
+   0.93,
+   1.01,
+   1.08,
+   1.13,
+   1.2,
+   1.26,
+   1.34,
+   1.41,
+   1.45,
+   1.49,
+   1.55,
+   1.63,
+   1.7,
+   1.7,
+   1.65,
+   1.6,
+   1.52,
+   1.38,
+   1.22
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.summer_day_peak_kw": {
+  "value": 1.7,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.winter_day_kw": {
+  "value": [
+   2.49,
+   2.45,
+   2.42,
+   2.43,
+   2.47,
+   2.58,
+   2.74,
+   2.8,
+   2.79,
+   2.75,
+   2.7,
+   2.66,
+   2.61,
+   2.55,
+   2.53,
+   2.57,
+   2.71,
+   2.86,
+   2.9,
+   2.9,
+   2.85,
+   2.77,
+   2.64,
+   2.54
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_1.winter_day_peak_kw": {
+  "value": 2.9,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.annual_kwh": {
+  "value": 24581,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.confidence": {
+  "value": [
+   "high that heat is electric",
+   "high",
+   "high",
+   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "medium",
+   "low (the remainder of electric heat)",
+   "medium"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.flag_share_pct": {
+  "value": [
+   100.0,
+   100.0,
+   80.95,
+   69.52,
+   60.95,
+   30.48,
+   10.48
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.flags": {
+  "value": [
+   "electric_heat",
+   "ev_l2",
+   "ac",
+   "heat_pump",
+   "ac_central",
+   "resistance_heat",
+   "pool"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.homes": {
+  "value": 105,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.monthly_kwh": {
+  "value": [
+   3140.27,
+   2759.08,
+   2247.85,
+   1632.32,
+   1593.15,
+   1602.32,
+   1909.59,
+   1692.3,
+   1344.43,
+   1597.18,
+   2090.19,
+   2972.62
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.p_ev": {
+  "value": 0.98,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.p_heat_pump": {
+  "value": 0.96,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.peak_kw": {
+  "value": 14.9,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.program_share_pct": {
+  "value": [
+   100.0,
+   100.0,
+   100.0,
+   92.38,
+   80.95,
+   30.48,
+   10.48
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.programs": {
+  "value": [
+   "managed_charging",
+   "service_upgrade_watch",
+   "winter_demand_response",
+   "home_battery",
+   "smart_thermostat",
+   "heat_pump_conversion",
+   "pool_pump_timer"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.segment": {
+  "value": "dual_electrified",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.summer_day_kw": {
+  "value": [
+   2.38,
+   2.25,
+   1.94,
+   1.71,
+   1.56,
+   1.56,
+   1.68,
+   1.72,
+   1.79,
+   1.86,
+   2.0,
+   2.13,
+   2.28,
+   2.38,
+   2.51,
+   2.66,
+   2.9,
+   3.19,
+   3.27,
+   3.26,
+   3.19,
+   3.07,
+   2.81,
+   2.46
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.summer_day_peak_kw": {
+  "value": 3.27,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.winter_day_kw": {
+  "value": [
+   3.98,
+   3.88,
+   3.63,
+   3.37,
+   3.29,
+   3.35,
+   3.58,
+   3.55,
+   3.46,
+   3.4,
+   3.34,
+   3.31,
+   3.26,
+   3.22,
+   3.21,
+   3.33,
+   3.64,
+   4.05,
+   4.21,
+   4.35,
+   4.26,
+   4.09,
+   3.89,
+   3.84
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_2.winter_day_peak_kw": {
+  "value": 4.35,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.annual_kwh": {
+  "value": 11212,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.confidence": {
+  "value": [
+   "high",
+   "medium",
+   "medium",
+   "low: dehumidifiers and well pumps look alike",
+   "low, no labels",
+   "low, no labels",
+   "medium"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.flag_share_pct": {
+  "value": [
+   99.97,
+   92.8,
+   19.69,
+   17.03,
+   1.63,
+   0.5,
+   0.03
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.flags": {
+  "value": [
+   "ac",
+   "ac_central",
+   "pool",
+   "ev_l1",
+   "water_heater",
+   "hot_tub",
+   "other_flat_large"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.homes": {
+  "value": 6801,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.monthly_kwh": {
+  "value": [
+   920.47,
+   795.33,
+   770.89,
+   701.76,
+   831.13,
+   1139.54,
+   1480.29,
+   1251.47,
+   856.24,
+   747.85,
+   780.18,
+   937.11
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.p_ev": {
+  "value": 0.55,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.p_heat_pump": {
+  "value": 0.58,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.peak_kw": {
+  "value": 7.16,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.program_share_pct": {
+  "value": [
+   99.97,
+   47.99,
+   19.69
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.programs": {
+  "value": [
+   "smart_thermostat",
+   "home_battery",
+   "pool_pump_timer"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.segment": {
+  "value": "summer_peaker",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.summer_day_kw": {
+  "value": [
+   1.42,
+   1.28,
+   1.18,
+   1.12,
+   1.08,
+   1.08,
+   1.14,
+   1.23,
+   1.33,
+   1.46,
+   1.61,
+   1.77,
+   1.94,
+   2.09,
+   2.21,
+   2.35,
+   2.48,
+   2.57,
+   2.53,
+   2.4,
+   2.24,
+   2.08,
+   1.86,
+   1.62
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.summer_day_peak_kw": {
+  "value": 2.57,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.winter_day_kw": {
+  "value": [
+   0.98,
+   0.93,
+   0.9,
+   0.89,
+   0.9,
+   0.95,
+   1.05,
+   1.12,
+   1.13,
+   1.15,
+   1.16,
+   1.17,
+   1.19,
+   1.18,
+   1.18,
+   1.22,
+   1.33,
+   1.47,
+   1.48,
+   1.46,
+   1.42,
+   1.33,
+   1.2,
+   1.07
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_3.winter_day_peak_kw": {
+  "value": 1.48,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.annual_kwh": {
+  "value": 8998,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.confidence": {
+  "value": [
+   "high",
+   "low: dehumidifiers and well pumps look alike",
+   "high",
+   "high",
+   "high that heat is electric",
+   "low (the remainder of electric heat)",
+   "medium",
+   "low: listed HP homes and resistance homes share one kW-vs-temperature curve",
+   "low, no labels",
+   "medium",
+   "low, no labels"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.flag_share_pct": {
+  "value": [
+   100.0,
+   23.74,
+   22.85,
+   18.1,
+   16.91,
+   13.95,
+   4.45,
+   2.97,
+   1.78,
+   0.3,
+   0.3
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.flags": {
+  "value": [
+   "solar",
+   "ev_l1",
+   "ac",
+   "ev_l2",
+   "electric_heat",
+   "resistance_heat",
+   "ac_central",
+   "heat_pump",
+   "water_heater",
+   "pool",
+   "hot_tub"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.homes": {
+  "value": 337,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.monthly_kwh": {
+  "value": [
+   1110.3,
+   926.48,
+   762.4,
+   576.99,
+   566.38,
+   569.47,
+   697.47,
+   657.88,
+   585.54,
+   643.46,
+   813.22,
+   1088.14
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.p_ev": {
+  "value": 0.74,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.p_heat_pump": {
+  "value": 0.65,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.peak_kw": {
+  "value": 7.78,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.program_share_pct": {
+  "value": [
+   100.0,
+   22.85,
+   18.1,
+   17.21,
+   16.91,
+   13.95,
+   5.04,
+   0.3
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.programs": {
+  "value": [
+   "solar_plus_storage",
+   "smart_thermostat",
+   "managed_charging",
+   "home_battery",
+   "winter_demand_response",
+   "heat_pump_conversion",
+   "service_upgrade_watch",
+   "pool_pump_timer"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.segment": {
+  "value": "solar",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.summer_day_kw": {
+  "value": [
+   1.28,
+   1.18,
+   1.07,
+   1.01,
+   0.96,
+   0.97,
+   0.84,
+   0.57,
+   0.36,
+   0.25,
+   0.21,
+   0.22,
+   0.25,
+   0.26,
+   0.32,
+   0.41,
+   0.56,
+   0.87,
+   1.26,
+   1.6,
+   1.78,
+   1.7,
+   1.56,
+   1.4
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.summer_day_peak_kw": {
+  "value": 1.78,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.winter_day_kw": {
+  "value": [
+   1.32,
+   1.27,
+   1.24,
+   1.23,
+   1.24,
+   1.28,
+   1.36,
+   1.42,
+   1.22,
+   1.0,
+   0.91,
+   0.86,
+   0.85,
+   0.87,
+   0.95,
+   1.13,
+   1.43,
+   1.7,
+   1.78,
+   1.78,
+   1.75,
+   1.66,
+   1.51,
+   1.39
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_4.winter_day_peak_kw": {
+  "value": 1.78,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.annual_kwh": {
+  "value": 4647,
+  "unit": "kWh, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.confidence": {
+  "value": [
+   "high",
+   "medium",
+   "low: dehumidifiers and well pumps look alike",
+   "low, no labels",
+   "medium",
+   "low, no labels"
+  ],
+  "unit": "confidence word per device class",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.flag_share_pct": {
+  "value": [
+   52.75,
+   12.53,
+   1.52,
+   0.7,
+   0.62,
+   0.33
+  ],
+  "unit": "% of segment homes with each device",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.flags": {
+  "value": [
+   "ac",
+   "ac_central",
+   "ev_l1",
+   "water_heater",
+   "pool",
+   "hot_tub"
+  ],
+  "unit": "equipment found in the segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.homes": {
+  "value": 15335,
+  "unit": "homes averaged",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.monthly_kwh": {
+  "value": [
+   433.15,
+   375.24,
+   359.1,
+   317.75,
+   336.16,
+   387.82,
+   508.54,
+   437.76,
+   341.31,
+   346.02,
+   369.1,
+   435.43
+  ],
+  "unit": "kWh by month, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.p_ev": {
+  "value": 0.45,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.p_heat_pump": {
+  "value": 0.54,
+  "unit": "probability, segment mean",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.peak_kw": {
+  "value": 4.2,
+  "unit": "kW, segment mean of each home's highest hour",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.program_share_pct": {
+  "value": [
+   52.75,
+   0.62,
+   0.26
+  ],
+  "unit": "% of segment homes eligible",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.programs": {
+  "value": [
+   "smart_thermostat",
+   "pool_pump_timer",
+   "home_battery"
+  ],
+  "unit": "programs any segment home qualifies for",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.segment": {
+  "value": "baseline",
+  "unit": "segment",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.summer_day_kw": {
+  "value": [
+   0.53,
+   0.49,
+   0.45,
+   0.43,
+   0.42,
+   0.43,
+   0.45,
+   0.48,
+   0.5,
+   0.53,
+   0.56,
+   0.59,
+   0.63,
+   0.66,
+   0.69,
+   0.72,
+   0.77,
+   0.82,
+   0.82,
+   0.79,
+   0.76,
+   0.73,
+   0.66,
+   0.59
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.summer_day_peak_kw": {
+  "value": 0.82,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.winter_day_kw": {
+  "value": [
+   0.46,
+   0.43,
+   0.42,
+   0.42,
+   0.43,
+   0.46,
+   0.5,
+   0.54,
+   0.55,
+   0.55,
+   0.56,
+   0.56,
+   0.56,
+   0.55,
+   0.55,
+   0.57,
+   0.62,
+   0.68,
+   0.69,
+   0.67,
+   0.65,
+   0.61,
+   0.55,
+   0.49
+  ],
+  "unit": "kW by hour of day, segment mean load",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
+ "ewu.demo.composite_5.winter_day_peak_kw": {
+  "value": 0.69,
+  "unit": "kW, top of the mean day",
+  "script": "ewu/inventory.py",
+  "method": "Composite home: average of every home in the segment"
+ },
  "ewu.demo.home_count": {
   "value": 6,
-  "unit": "homes",
+  "unit": "Composite homes",
   "script": "ewu/inventory.py",
-  "method": "picker homes"
+  "method": "one per picker segment"
  },
  "ewu.economics.battery_vs_upgrade.high.batteries_per_cleared": {
   "value": 1.42,
@@ -8552,7 +9734,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 8.6,
+  "value": 6.7,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

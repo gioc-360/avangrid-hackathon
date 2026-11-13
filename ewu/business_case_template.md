@@ -21,7 +21,7 @@ Shifting is the money saver. A battery is the targeted rung for the places shift
 A flag is any hour above [[config:transformer.overload_limit|.1f]] times the rating, so the flag is also a duration question.
 In the moderate case at today's peak times [[config:transformer.base_margin]], [[ewu.robustness.flag_hours.moderate.random.margin_115.short_of_flagged_pct]]% of flagged transformers are over for fewer than
 [[config:robustness.flag_min_hours]] hours a year (median [[ewu.robustness.flag_hours.moderate.random.margin_115.median_hours_of_flagged|.0f]] hours). A rule of at least [[config:robustness.flag_min_hours]] hours over flags [[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_min_hours_pct]]% instead of
-[[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_pct]]%. Upgrade-all prices every flagged transformer at $[[config:prices.upgrade_cost_usd|,.0f]] (mid), even one over for a single hour a year,
+[[ewu.robustness.flag_hours.moderate.random.margin_115.flagged_pct]]%. Upgrade-all prices every flagged transformer at $[[config:prices.upgrade_cost_usd|,.0f]] (mid placeholder), even one over for a single hour a year,
 so it is the costliest reading of the flag; Avangrid's own duration rule is an ask. On the
 Feb 7-8 cold snap, with staggered charging, [[ewu.coldsnap.moderate.staggered.margin_115.flagged_pct|.2f]]% of transformers go over, for a median of
 [[ewu.coldsnap.moderate.staggered.margin_115.hours_over_median|.0f]] hours and [[ewu.coldsnap.moderate.staggered.margin_115.kwh_over_median]] kWh above the limit.
@@ -92,7 +92,7 @@ separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.j
 fit-score kW in the top 20 hours and the [[ewu.sensitivity.moderate.random.margin_115.batteries_per_protected]] batteries per protected transformer all reproduce.
 
 **The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
-$[[ewu.economics.battery_vs_upgrade.mid.battery_yearly_usd|,.0f]] a year against $[[ewu.economics.battery_vs_upgrade.mid.upgrade_yearly_usd|,.0f]] for the upgrade they put off (equal life, [[config:prices.discount_rate|.0%]] rate). A battery beats
+$[[ewu.economics.battery_vs_upgrade.mid.battery_yearly_usd|,.0f]] a year against $[[ewu.economics.battery_vs_upgrade.mid.upgrade_yearly_usd|,.0f]] for the upgrade they put off (equal life, [[config:prices.discount_rate|.0%]] rate, a placeholder). A battery beats
 the upgrade only below $[[ewu.economics.battery_vs_upgrade.mid.tie_unit_usd_equal_life|,.0f]] per installed unit; the placeholder range is $[[config:prices.battery_unit_cost_low_usd|,.0f]] to $[[config:prices.battery_unit_cost_high_usd|,.0f]]. Not counted,
 all upside for batteries and none verified: host lease payments, the NYSERDA incentive, capacity value.
 Across all [[ewu.sensitivity.cells]] grid cells and price cases the ladder runs [[ewu.economics.headline.ladder_share_pct.low]]% to [[ewu.economics.headline.ladder_share_pct.high]]% of upgrade-all,

@@ -24,9 +24,9 @@ program's rule from config: the home must have every flag the rule names and non
 or part-year homes). No rule is typed in Python, and a test changes a rule in config and sees eligibility move.
 Across all 33,757 usable homes, 69.07% qualify for at least one program.
 
-Code: `ewu/inventory.py:53 homes[needs].all`, `config/ewu.yaml:142 managed_charging:`,
-`tests/test_inventory.py:50 def test_every_program_is_exactly_its_config_rule`,
-`tests/test_inventory.py:61 def test_changing_a_config_rule_changes_eligibility`.
+Code: `ewu/inventory.py:55 homes[needs].all`, `config/ewu.yaml:142 managed_charging:`,
+`tests/test_inventory.py:51 def test_every_program_is_exactly_its_config_rule`,
+`tests/test_inventory.py:62 def test_changing_a_config_rule_changes_eligibility`.
 
 ### Q3. There is no meter-to-transformer map. How do you know which homes share a transformer?
 
@@ -117,8 +117,8 @@ The battery is dispatched over the whole year, so its charge on the first cold n
 left it, not assumed full. Of the 2.70% of transformers the cold snap pushes over the limit, one host home with two
 battery units clears 89.88% and two such hosts clear 92.84%.
 
-Code: `ewu/coldsnap.py:25 def window_hours`, `ewu/coldsnap.py:48 host_kw = dispatch.own_loading(inputs, parts, hosts.T.ravel(), owner, mode, config)`,
-`ewu/coldsnap.py:57 result = dispatch.run_batteries`,
+Code: `ewu/coldsnap.py:26 def window_hours`, `ewu/coldsnap.py:49 host_kw = dispatch.own_loading(inputs, parts, hosts.T.ravel(), owner, mode, config)`,
+`ewu/coldsnap.py:58 result = dispatch.run_batteries`,
 `tests/test_dispatch.py:146 def test_cold_snap_window_is_feb_7_to_8`,
 `tests/test_dispatch.py:126 def test_zero_batteries_reproduce_the_m1_numbers`.
 
@@ -155,18 +155,21 @@ that made it and the method. `trace_numbers.py` fails a doc when a number matche
 precision shown. `demo_check.py` renders the demo page in headless Chrome, binds every shown number to its key
 and compares it with the stored value. `config_check.py` opens the source of every config input.
 
-Code: `analysis/facts.py:17 def record(key, value`, `checks/trace_numbers.py:59 def matching_key`,
+Code: `analysis/facts.py:18 def record(key, value`, `checks/trace_numbers.py:59 def matching_key`,
 `checks/demo_check.py:102 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
 
 ### Q13. Where does customer data go?
 
 Nowhere off this machine. Per-home and per-transformer values go through `record(..., private=True)` into
 outputs/private/, which git ignores, and a test checks git really ignores it. Commands print aggregates only, and
-a test checks the inventory printout holds no customer number. The demo page is built locally and is gitignored.
+a test checks the inventory printout holds no customer number. The demo page shows no real home: step 1 draws
+Composite homes (segment averages) and the cold snap step draws fleet battery charge, never a host's own; a test
+checks the page carries neither. The page is built locally and is gitignored.
 
-Code: `analysis/facts.py:18 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
-`ewu/inventory.py:110 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
-`tests/test_inventory.py:79 def test_printed_table_holds_aggregates_only`.
+Code: `analysis/facts.py:19 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
+`ewu/coldsnap.py:167 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
+`tests/test_inventory.py:111 def test_printed_table_holds_aggregates_only`,
+`tests/test_inventory.py:97 def test_demo_page_carries_no_single_home_and_no_host_charge`.
 
 ### Q14. Does it run fast enough to use live, and does it scale?
 

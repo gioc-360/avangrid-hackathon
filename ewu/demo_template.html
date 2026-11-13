@@ -61,12 +61,12 @@ svg text { fill: var(--muted); font-size: 11px; }
   <nav><a href="#step=1">Inventory</a><a href="#step=2">Screen</a><a href="#step=3">Cold snap</a><a href="#step=4">Money</a></nav>
 </header>
 <main>
-  <section id="step1"><h2 data-step="1">Inventory: what each home has, and what it qualifies for</h2>
-    <p class="ask">Pick a home. Equipment is read from its hourly meter data alone.</p><div class="body"></div></section>
+  <section id="step1"><h2 data-step="1">Inventory: what each kind of home has, and what it qualifies for</h2>
+    <p class="ask">Pick a segment. Each Composite home is the average of every home in that segment, not a real customer. Equipment is read from hourly meter data alone.</p><div class="body"></div></section>
   <section id="step2"><h2 data-step="2">Screen: which transformers 2030 overloads, and the cheapest fix</h2>
     <p class="ask">Pick a scenario, how big today's transformers are, and how neighbors are grouped.</p><div class="body"></div></section>
   <section id="step3"><h2 data-step="3">Cold snap: does a home battery last two cold nights?</h2>
-    <p class="ask">One flagged transformer through the coldest two days of the data, hour by hour.</p><div class="body"></div></section>
+    <p class="ask">One flagged transformer through the coldest two days of the data, hour by hour; battery charge is the fleet of every flagged transformer.</p><div class="body"></div></section>
   <section id="step4"><h2 data-step="4">Money: the ladder against upgrading every flagged transformer</h2>
     <p class="ask">Equal-life cost: a battery wears out before a transformer does, so it is bought again within the transformer's life.</p><div class="body"></div></section>
   <p class="note">Every number on this page is read from facts the code wrote or from config/ewu.yaml. Hover a number to see its key.</p>
@@ -124,24 +124,25 @@ function hbar(parts, total, height) {
 }
 
 function stepInventory() {
-  const k = `private:ewu.demo.home_`;
+  const k = `fact:ewu.demo.composite_`;
   const count = V["fact:ewu.demo.home_count"];
   let picker = "";
   for (let i = 0; i < count; i++) picker += btn(S.home === i, { home: i }, esc(word(V[k + i + ".segment"])));
   const h = k + S.home, flags = V[h + ".flags"], conf = V[h + ".confidence"], programs = V[h + ".programs"];
-  let rows = flags.map((f, i) => `<tr><td>${esc(word(f))}</td><td>${esc(conf[i])}</td></tr>`).join("");
-  rows += `<tr><td>EV owner score</td><td>${N(h + ".p_ev", 0, { scale: 100, post: "%" })}</td></tr>`;
-  rows += `<tr><td>Heat pump owner score</td><td>${N(h + ".p_heat_pump", 0, { scale: 100, post: "%" })}</td></tr>`;
+  let rows = flags.map((f, i) => `<tr><td>${esc(word(f))}</td><td>${N(h + ".flag_share_pct", 2, { index: i, post: "%" })}</td><td>${esc(conf[i])}</td></tr>`).join("");
+  rows += `<tr><td>Average EV owner score</td><td>${N(h + ".p_ev", 0, { scale: 100, post: "%" })}</td><td></td></tr>`;
+  rows += `<tr><td>Average heat pump owner score</td><td>${N(h + ".p_heat_pump", 0, { scale: 100, post: "%" })}</td><td></td></tr>`;
   const win = V[h + ".winter_day_kw"], sum = V[h + ".summer_day_kw"], hi = Math.max(...win, ...sum) * 1.1;
   const months = V[h + ".monthly_kwh"], mmax = Math.max(...months);
   const bars = months.map((m, i) => `<rect x="${i * 40 + 6}" y="${(90 - m / mmax * 80).toFixed(1)}" width="28" height="${(m / mmax * 80).toFixed(1)}" fill="var(--base)"/>` +
     `<text x="${i * 40 + 20}" y="104" text-anchor="middle">${"JFMAMJJASOND"[i]}</text>`).join("");
-  return `<div class="controls"><span class="label">Home</span>${picker}</div>
+  const chips = programs.map((p, i) => `<span class="chip">${esc(word(p))} ${N(h + ".program_share_pct", 2, { index: i, post: "%" })}</span>`).join("");
+  return `<div class="controls"><span class="label">Composite home</span>${picker}</div>
   <div class="row"><div class="col">
-    <p><b>${esc(word(V[h + ".segment"]))}</b> segment. Uses ${N(h + ".annual_kwh", 0, { post: " kWh" })} a year; highest hour ${N(h + ".peak_kw", 2, { post: " kW" })}.</p>
-    <table><tr><th>Equipment found</th><th>Confidence</th></tr>${rows}</table>
-    <p style="margin:12px 0 2px">Eligible programs</p>
-    <div class="chips">${programs.length ? programs.map(p => `<span class="chip">${esc(word(p))}</span>`).join("") : '<span class="note">none</span>'}</div>
+    <p><b>Composite home, ${esc(word(V[h + ".segment"]))} segment</b>: the average of ${N(h + ".homes", 0, { post: " homes" })} in the segment, not a real customer. Uses ${N(h + ".annual_kwh", 0, { post: " kWh" })} a year; average highest hour ${N(h + ".peak_kw", 2, { post: " kW" })}.</p>
+    <table><tr><th>Equipment found</th><th>Share of segment homes</th><th>Confidence</th></tr>${rows}</table>
+    <p style="margin:12px 0 2px">Programs, share of segment homes eligible</p>
+    <div class="chips">${programs.length ? chips : '<span class="note">none</span>'}</div>
     <p class="note">Across all ${N("fact:ewu.inventory.homes", 0)} homes, ${N("fact:ewu.inventory.any_program_pct", 2, { post: "%" })} qualify for at least one program.</p>
   </div><div class="col">
     <p class="note"><span class="key" style="background:var(--ev)"></span>Average winter day, top ${N(h + ".winter_day_peak_kw", 2, { post: " kW" })}
@@ -149,7 +150,7 @@ function stepInventory() {
     <svg viewBox="0 0 480 170"><line x1="0" y1="150" x2="480" y2="150" stroke="var(--line)"/>
       <g transform="translate(0,10)">${line(win, 480, 140, 0, hi, "var(--ev)")}${line(sum, 480, 140, 0, hi, "var(--protect)")}</g>
       <text x="0" y="166">00:00</text><text x="240" y="166" text-anchor="middle">12:00</text><text x="480" y="166" text-anchor="end">23:00</text></svg>
-    <p class="note" style="margin-top:10px">Energy by month</p>
+    <p class="note" style="margin-top:10px">Energy by month, segment average</p>
     <svg viewBox="0 0 480 108">${bars}</svg>
   </div></div>`;
 }
@@ -191,7 +192,7 @@ function stepScreen() {
 function stepColdsnap() {
   const hosts = V["config:battery.coldsnap_hosts_per_transformer"], n = hosts[S.hosts];
   const e = "private:ewu.coldsnap.example.", agg = `fact:ewu.coldsnap.${V["config:demo.scenario"]}.staggered.margin_${Math.round(V["config:transformer.base_margin"] * 100)}.`;
-  const load = V[e + "load_kw"], net = V[e + `hosts_${n}.net_kw`], soc = V[e + `hosts_${n}.soc_kwh`], cap = V[e + `hosts_${n}.capacity_kwh`];
+  const load = V[e + "load_kw"], net = V[e + `hosts_${n}.net_kw`], med = V[agg + `hosts_${n}.soc_median_pct_by_hour`], p10 = V[agg + `hosts_${n}.soc_p10_pct_by_hour`];
   const limit = V[e + "limit_kw"], hi = Math.max(...load, limit) * 1.08;
   const ly = (180 - limit / hi * 180).toFixed(1);
   const pick = hosts.map((h, i) => btn(S.hosts === i, { hosts: i }, N("config:battery.coldsnap_hosts_per_transformer", 0, { index: i }) + (h === 1 ? " host home" : " host homes"))).join("");
@@ -205,11 +206,13 @@ function stepColdsnap() {
       <line x1="0" x2="560" y1="${ly}" y2="${ly}" stroke="var(--limit)" stroke-dasharray="6 4"/>
       ${line(load, 560, 180, 0, hi, "var(--base)")}${line(net, 560, 180, 0, hi, "var(--ev)")}</g>
       <text x="0" y="198">2026-02-07</text><text x="280" y="198">2026-02-08</text></svg>
-    <p class="note" style="margin-top:8px"><span class="key" style="background:var(--soc)"></span>Battery charge, from empty to ${N(e + `hosts_${n}.capacity_kwh`, 2, { post: " kWh" })} full</p>
+    <p class="note" style="margin-top:8px">Battery charge across every flagged transformer (fleet, not this one), % of full:
+      <span class="key" style="background:var(--soc)"></span>median, lowest at ${N(agg + `hosts_${n}.soc_median_pct_by_hour`, 1, { index: med.indexOf(Math.min(...med)), post: "%" })}
+      &nbsp; <span class="key" style="background:var(--soc);opacity:.5"></span>bottom tenth (dashed), lowest at ${N(agg + `hosts_${n}.soc_p10_pct_by_hour`, 1, { index: p10.indexOf(Math.min(...p10)), post: "%" })}</p>
     <svg viewBox="0 0 560 90"><line x1="0" x2="560" y1="84" y2="84" stroke="var(--line)"/><line x1="0" x2="560" y1="4" y2="4" stroke="var(--line)"/>
-      <g transform="translate(0,4)">${line(soc, 560, 80, 0, cap, "var(--soc)")}</g></svg>
+      <g transform="translate(0,4)">${line(med, 560, 80, 0, 100, "var(--soc)")}${line(p10, 560, 80, 0, 100, "var(--soc)", true)}</g></svg>
   </div><div class="col">
-    <p>${esc(word(V["config:demo.scenario"]))} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}. This transformer spends ${N(e + "kwh_over", 2, { post: " kWh" })} above its limit over the two days with no battery.</p>
+    <p>${esc(word(V["config:demo.scenario"]))} 2030, staggered EV charging, rating x ${N("config:transformer.base_margin", 2)}. The load is the sum of the transformer's ${N("config:transformer.homes_per_transformer", 0)} homes. This transformer spends ${N(e + "kwh_over", 2, { post: " kWh" })} above its limit over the two days with no battery.</p>
     <p>Of the ${N(agg + "flagged_pct", 2, { post: "%" })} of transformers the cold snap pushes over the limit, one host clears
       ${N(agg + "hosts_1.cleared_pct", 2, { post: "%" })} and two hosts clear ${N(agg + "hosts_2.cleared_pct", 2, { post: "%" })}.</p>
     <p class="note">Coldest hour ${N("fact:ewu.coldsnap.window_min_temp_f", 1, { post: " F" })}. The battery runs all year, so its charge on the first cold night is earned, not assumed. It charges only when the transformer has room under the limit.</p>

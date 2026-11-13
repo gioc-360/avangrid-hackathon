@@ -7,8 +7,9 @@ Why:  the live demo must work with no network and no server, and every number on
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
       which checks/demo_check.py compares with the stored value.
 How:  the values travel inside the page as one JSON block; the template's script draws the steps from them.
-      Per-home and per-transformer values come from outputs/private/facts_private.json, so the page is
-      gitignored and stays on this machine. A step whose inputs are missing shows "not built" and the keys
+      The page shows no real home: step 1 draws a Composite home per segment (segment averages, public
+      facts), and the cold snap step draws one 8-home transformer's load from outputs/private/facts_private.json
+      with battery charge from the fleet facts, never a host's own charge. The page stays gitignored. A step whose inputs are missing shows "not built" and the keys
       it lacks, instead of failing quietly.
 """
 import json
@@ -17,14 +18,16 @@ from ewu import ROOT
 TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
 FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.")
-PRIVATE_PREFIXES = ("ewu.demo.", "ewu.coldsnap.example.")
+PRIVATE_PREFIXES = ("ewu.coldsnap.example.",)
+NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
 NEEDS = {
     "inventory": ["fact:ewu.inventory.homes", "fact:ewu.inventory.any_program_pct", "fact:ewu.demo.home_count",
-                  "private:ewu.demo.home_0.flags", "private:ewu.demo.home_0.winter_day_kw"],
+                  "fact:ewu.demo.composite_0.flags", "fact:ewu.demo.composite_0.winter_day_kw"],
     "screen": ["fact:ewu.sensitivity.moderate.random.margin_115.flagged_pct",
                "fact:ewu.sensitivity.high.same_segment.margin_150.upgrade_left_pct",
                "fact:ewu.sensitivity.moderate.random.margin_115.new_from_stagger_pct"],
-    "coldsnap": ["private:ewu.coldsnap.example.load_kw", "private:ewu.coldsnap.example.hosts_2.soc_kwh",
+    "coldsnap": ["private:ewu.coldsnap.example.load_kw", "private:ewu.coldsnap.example.hosts_2.net_kw",
+                 "fact:ewu.coldsnap.moderate.staggered.margin_115.hosts_2.soc_median_pct_by_hour",
                  "fact:ewu.coldsnap.moderate.staggered.margin_115.hosts_1.cleared_pct"],
     "money": ["fact:ewu.economics.headline.ladder_share_pct.base", "fact:ewu.sensitivity.cells",
               "fact:ewu.economics.battery_vs_upgrade.mid.tie_unit_usd_equal_life",
@@ -52,7 +55,8 @@ def collect_values(config, root=ROOT):
     facts = read_json(root / "facts" / "facts.json")
     private = read_json(root / "outputs" / "private" / "facts_private.json")
     values = {f"fact:{k}": v["value"] for k, v in facts.items() if k.startswith(FACT_PREFIXES)}
-    values |= {f"private:{k}": v["value"] for k, v in private.items() if k.startswith(PRIVATE_PREFIXES)}
+    values |= {f"private:{k}": v["value"] for k, v in private.items()
+               if k.startswith(PRIVATE_PREFIXES) and not any(word in k for word in NEVER_SHOWN)}
     values |= {f"config:{k}": v for k, v in config_inputs(config).items()}
     return values
 

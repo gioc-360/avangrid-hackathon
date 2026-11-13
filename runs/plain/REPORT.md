@@ -100,11 +100,11 @@ The segments do not overlap: a home goes to the first one in the table that it m
 
 ## 5. Charts
 - `fig1_label_validation.png`: each classifier's recall on labeled homes against its flag rate among everyone else.
-- `fig2_signatures.png`: day-by-hour heatmaps of one typical home per class (PV, L2 EV, electric heat, pool, seasonal, AC).
+- `fig2_signatures.png`: day-by-hour heatmaps of one typical home per class (PV, L2 EV, electric heat, pool, seasonal, AC). Local only, not in git: it draws single real homes, so never use it in the video or deck.
 - `fig3_segment_peak_share.png`: each segment's share of customers against its share of the summer and winter peak.
 - `fig4_temp_response.png`: median kW against outdoor temperature by class. HP and electric-heat curves have the same shape.
 - `fig5_battery_supply_curve.png`: cumulative MW of system-peak relief as homes are added in rank order.
-- `fig6_dispatch_example.png`: the median summer tier-A home on the system peak day, before and after the battery.
+- `fig6_dispatch_example.png`: the median summer tier-A home on the system peak day, before and after the battery. Local only, not in git: it draws single real homes, so never use it in the video or deck.
 - `fig7_kmeans_shapes.png`: the six seasonal day-shape centroids from k-means.
 
 ## 6. Surprises, doubts, next checks

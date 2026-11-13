@@ -21,7 +21,7 @@ Shifting is the money saver. A battery is the targeted rung for the places shift
 A flag is any hour above 1.2 times the rating, so the flag is also a duration question.
 In the moderate case at today's peak times 1.15, 37.31% of flagged transformers are over for fewer than
 3 hours a year (median 4 hours). A rule of at least 3 hours over flags 16.41% instead of
-26.18%. Upgrade-all prices every flagged transformer at $15,000 (mid), even one over for a single hour a year,
+26.18%. Upgrade-all prices every flagged transformer at $15,000 (mid placeholder), even one over for a single hour a year,
 so it is the costliest reading of the flag; Avangrid's own duration rule is an ask. On the
 Feb 7-8 cold snap, with staggered charging, 2.70% of transformers go over, for a median of
 3 hours and 3.02 kWh above the limit.
@@ -92,7 +92,7 @@ separate code (`checks/recompute_battery.py`, record in runs/recompute_battery.j
 fit-score kW in the top 20 hours and the 1.42 batteries per protected transformer all reproduce.
 
 **The battery price that makes Protect pay.** At placeholder prices a cleared transformer's batteries cost
-$1,720 a year against $1,209 for the upgrade they put off (equal life, 7% rate). A battery beats
+$1,720 a year against $1,209 for the upgrade they put off (equal life, 7% rate, a placeholder). A battery beats
 the upgrade only below $7,730 per installed unit; the placeholder range is $9,000 to $13,000. Not counted,
 all upside for batteries and none verified: host lease payments, the NYSERDA incentive, capacity value.
 Across all 16 grid cells and price cases the ladder runs 30.8% to 151.19% of upgrade-all,

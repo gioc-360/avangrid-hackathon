@@ -1,6 +1,7 @@
 """Facts: the only door a number takes to reach a slide, a doc or the demo page.
 
-What: record(key, value, unit, method) writes one fact with the script that made it. Aggregates go to
+What: record(key, value, unit, method) writes one fact with the script that made it; forget(prefix) drops
+      every fact whose key starts with prefix, so a retired output leaves nothing stale. Aggregates go to
       facts/facts.json (in git). record(..., private=True) sends per-home and per-transformer values to
       outputs/private/facts_private.json, which is gitignored and never leaves this machine.
 Why:  checks/check_all.py and the EWU checks trace every shown number back to code. One door for every
@@ -25,3 +26,15 @@ def record(key, value, unit="", method="", private=False):
         value = round(value, 4)
     d[key] = {"value": value, "unit": unit, "script": caller, "method": method}
     path.write_text(json.dumps(dict(sorted(d.items())), indent=1))
+
+
+def forget(prefix, private=False):
+    """Drop every fact whose key starts with prefix; return how many went."""
+    path = PRIVATE_FACTS if private else FACTS
+    if not path.exists():
+        return 0
+    d = json.loads(path.read_text())
+    kept = {k: v for k, v in d.items() if not k.startswith(prefix)}
+    if len(kept) != len(d):
+        path.write_text(json.dumps(kept, indent=1))
+    return len(d) - len(kept)

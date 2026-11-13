@@ -43,3 +43,15 @@ def test_config_items_and_formats():
 def test_dropped_claims_stay_out():
     text = business_case.OUTPUT.read_text().lower()
     assert [claim for claim in DROPPED if claim in text] == []
+
+
+def test_every_assumed_price_is_labeled_where_it_is_cited():
+    """Audit MUST_FIX 3: a price config marks as an assumption must say placeholder or assumption on its line."""
+    import re
+    prices = read_config()["prices"]
+    unlabeled = []
+    for number, line in enumerate(business_case.TEMPLATE.read_text().splitlines(), 1):
+        for name in re.findall(r"\[\[config:prices\.([a-z0-9_]+)", line):
+            if prices[name].get("assumption") and not re.search(r"placeholder|assumption", line, re.I):
+                unlabeled.append(f"template line {number}: prices.{name}")
+    assert unlabeled == []

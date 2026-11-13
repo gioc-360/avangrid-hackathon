@@ -3,8 +3,9 @@
 What: window_hours() turns a start date into the cold snap's hour range; flag_and_dispatch() flags transformers over
       the limit inside the window, puts 1 or 2 battery hosts on each and dispatches them all year;
       run_coldsnap() does that for every seed, scenario and EV mode (unmanaged, staggered); summarize_coldsnap()
-      pools seeds; record_coldsnap() writes the aggregates to facts and one example transformer to the private
-      facts file. ewu/cli.py prints the aggregates.
+      pools seeds; record_coldsnap() writes the aggregates to facts and one example transformer's load (8
+      homes summed, before and after batteries) to the private facts file; no host's own battery charge is
+      kept, since it follows one home's load. ewu/cli.py prints the aggregates.
 Why:  plan objection 1: the battery was never tested on a long cold night. Hours over, kWh over, the longest
       run of hours over and the state of charge by hour across both nights answer it with numbers.
 How:  2030 loading is the M1 loading (random grouping, base sizing margin) with EV charging unmanaged or
@@ -150,7 +151,13 @@ def window_temps(window):
 
 
 def record_example(runs, window, config, record):
-    """The demo transformer: the flagged one with the median kWh over, seed 0, demo scenario, staggered."""
+    """The demo transformer: the flagged one with the median kWh over, seed 0, demo scenario, staggered.
+
+    Only transformer totals are kept. The page draws battery charge from the fleet facts
+    (soc_median_pct_by_hour, soc_p10_pct_by_hour), never from this transformer's hosts.
+    """
+    from analysis.facts import forget
+    forget("ewu.coldsnap.example.", private=True)
     run = runs[(config_value("demo.scenario", config), "staggered", 0)]
     if not run["flagged"]:
         return
@@ -164,7 +171,5 @@ def record_example(runs, window, config, record):
         result = block["result"]
         record(f"ewu.coldsnap.example.hosts_{count}.net_kw", two(result["net_kw"][t]), "kW", "after batteries",
                private=True)
-        record(f"ewu.coldsnap.example.hosts_{count}.soc_kwh", two(result["soc_kwh"][:, t].sum(0)), "kWh",
-               "pooled hosts", private=True)
         record(f"ewu.coldsnap.example.hosts_{count}.capacity_kwh", count * run["spec"]["energy_kwh"], "kWh", "",
                private=True)

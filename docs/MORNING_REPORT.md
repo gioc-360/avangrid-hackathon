@@ -79,7 +79,7 @@ bin/ewu demo                                       # build and open the offline 
 bin/ewu screen --scenario moderate --margin 1.15   # the live run on the full meter data
 bin/ewu case                                       # rewrite docs/BUSINESS_CASE.md from facts
 ```
-Follow docs/DEMO_SCRIPT.md row by row. If the terminal hangs, show docs/demo/cli_output.txt. The page shows one real home and one transformer, so keep it on this laptop. `make prototype` rebuilds everything from data/processed.
+Follow docs/DEMO_SCRIPT.md row by row. If the terminal hangs, show docs/demo/cli_output.txt. Step 1 now shows Composite homes (segment averages, no real customer) and the cold snap shows fleet battery charge; the page file still holds one synthetic transformer's hourly load, so keep it on this laptop. `make prototype` rebuilds everything from data/processed.
 
 ## Log
 - 2026-11-12 23:17 ET | SCOPE | PASS | 12 milestones with exit checks, 8 ordered cuts; plan section "Scoped" is the build contract
