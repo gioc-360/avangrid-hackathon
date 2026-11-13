@@ -76,6 +76,9 @@ def write_docx(total):
                 r.font.size = Pt(9); r.font.color.rgb = RGBColor(0x5F, 0x6B, 0x66)
     widths = [0.3, 0.8, 1.5, 4.4]
     from docx.shared import Inches
+    t.autofit = False
+    for col, wd in zip(t.columns, widths):
+        col.width = Inches(wd)
     for row in t.rows:
         for c, wd in zip(row.cells, widths):
             c.width = Inches(wd)
