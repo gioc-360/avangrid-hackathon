@@ -8785,6 +8785,666 @@
   "script": "ewu/network.py",
   "method": "demo screen case: moderate 2030, rating = today's peak x 1.15, random grouping, seed 0; same states as bin/ewu screen"
  },
+ "ewu.plan.moderate.random.margin_115.actions.none": {
+  "value": 2218,
+  "unit": "transformers",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.moderate.random.margin_115.actions.protect": {
+  "value": 149,
+  "unit": "transformers",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.moderate.random.margin_115.actions.shift": {
+  "value": 615,
+  "unit": "transformers",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.moderate.random.margin_115.actions.upgrade": {
+  "value": 18,
+  "unit": "transformers",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.moderate.random.margin_115.est_cost_total_usd": {
+  "value": 6059676,
+  "unit": "$ present value, mid placeholder prices",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.showcase.battery_hosts": {
+  "value": 168,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.showcase.capital_plan": {
+  "value": 3,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.showcase.program_targets": {
+  "value": 4413,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.showcase.simulated_homes": {
+  "value": 24000,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.showcase.transformer_actions": {
+  "value": 3000,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.written.capital_plan": {
+  "value": 3,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.rows.written.transformer_actions": {
+  "value": 3000,
+  "unit": "rows",
+  "script": "ewu/plan_output.py",
+  "method": "bin/ewu plan, seed 0, 3000 synthetic transformers, same states as bin/ewu screen"
+ },
+ "ewu.plan.seconds": {
+  "value": 4.9,
+  "unit": "s",
+  "script": "ewu/plan_output.py",
+  "method": "whole bin/ewu plan run, data load and writing included"
+ },
+ "ewu.plan.showcase.host_units_1.hosts": {
+  "value": 123,
+  "unit": "hosts",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.host_units_1.kw_cut_mean": {
+  "value": 1.8479,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.host_units_1.kw_cut_sd": {
+  "value": 0.1572,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.host_units_2.hosts": {
+  "value": 45,
+  "unit": "hosts",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.host_units_2.kw_cut_mean": {
+  "value": 2.854,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.host_units_2.kw_cut_sd": {
+  "value": 0.4302,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "real fit-score hosts of this run, aggregate the simulator samples from"
+ },
+ "ewu.plan.showcase.redrawn": {
+  "value": 47,
+  "unit": "simulated values redrawn",
+  "script": "ewu/plan_output.py",
+  "method": "privacy guard: equal to a real row"
+ },
+ "ewu.plan.showcase.segment.baseline.annual_kwh_mean": {
+  "value": 4647.3901,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.annual_kwh_sd": {
+  "value": 2326.6648,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.eligible_smart_thermostat_share": {
+  "value": 0.5275,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.homes": {
+  "value": 15335,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.peak_kw_mean": {
+  "value": 4.1998,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.peak_kw_sd": {
+  "value": 1.8488,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.baseline.share": {
+  "value": 0.4543,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.annual_kwh_mean": {
+  "value": 24581.291,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.annual_kwh_sd": {
+  "value": 8358.5771,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.eligible_heat_pump_conversion_share": {
+  "value": 0.3048,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.eligible_managed_charging_share": {
+  "value": 1.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.eligible_smart_thermostat_share": {
+  "value": 0.8095,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.eligible_winter_demand_response_share": {
+  "value": 1.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.homes": {
+  "value": 105,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.peak_kw_mean": {
+  "value": 14.9024,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.peak_kw_sd": {
+  "value": 4.3506,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.dual_electrified.share": {
+  "value": 0.0031,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.annual_kwh_mean": {
+  "value": 16242.8135,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.annual_kwh_sd": {
+  "value": 7381.7153,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.eligible_heat_pump_conversion_share": {
+  "value": 0.4656,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.eligible_smart_thermostat_share": {
+  "value": 0.7259,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.eligible_winter_demand_response_share": {
+  "value": 1.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.homes": {
+  "value": 2605,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.peak_kw_mean": {
+  "value": 9.0619,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.peak_kw_sd": {
+  "value": 3.4425,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.electric_heat.share": {
+  "value": 0.0772,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.annual_kwh_mean": {
+  "value": 8942.8857,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.annual_kwh_sd": {
+  "value": 1942.9027,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.eligible_smart_thermostat_share": {
+  "value": 1.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.homes": {
+  "value": 4776,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.peak_kw_mean": {
+  "value": 6.0692,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.peak_kw_sd": {
+  "value": 1.7702,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.emerging.share": {
+  "value": 0.1415,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.annual_kwh_mean": {
+  "value": 17134.0059,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.annual_kwh_sd": {
+  "value": 7904.2305,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.eligible_managed_charging_share": {
+  "value": 1.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.eligible_smart_thermostat_share": {
+  "value": 0.8311,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.homes": {
+  "value": 533,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.peak_kw_mean": {
+  "value": 12.7446,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.peak_kw_sd": {
+  "value": 3.302,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.ev_home.share": {
+  "value": 0.0158,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.annual_kwh_mean": {
+  "value": 91.511,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.annual_kwh_sd": {
+  "value": 97.0351,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.eligible_smart_thermostat_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.homes": {
+  "value": 201,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.peak_kw_mean": {
+  "value": 0.4632,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.peak_kw_sd": {
+  "value": 0.7526,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.inactive.share": {
+  "value": 0.006,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.annual_kwh_mean": {
+  "value": 7413.647,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.annual_kwh_sd": {
+  "value": 6453.3418,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.eligible_smart_thermostat_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.homes": {
+  "value": 3064,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.peak_kw_mean": {
+  "value": 5.9616,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.peak_kw_sd": {
+  "value": 3.6672,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.seasonal.share": {
+  "value": 0.0908,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.annual_kwh_mean": {
+  "value": 8997.7539,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.annual_kwh_sd": {
+  "value": 6812.8418,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.eligible_heat_pump_conversion_share": {
+  "value": 0.1395,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.eligible_managed_charging_share": {
+  "value": 0.181,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.eligible_smart_thermostat_share": {
+  "value": 0.2285,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.eligible_winter_demand_response_share": {
+  "value": 0.1691,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.homes": {
+  "value": 337,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.peak_kw_mean": {
+  "value": 7.7769,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.peak_kw_sd": {
+  "value": 4.5361,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.solar.share": {
+  "value": 0.01,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.annual_kwh_mean": {
+  "value": 11212.2666,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.annual_kwh_sd": {
+  "value": 5538.813,
+  "unit": "kWh",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.eligible_heat_pump_conversion_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.eligible_managed_charging_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.eligible_smart_thermostat_share": {
+  "value": 0.9997,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.eligible_winter_demand_response_share": {
+  "value": 0.0,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.homes": {
+  "value": 6801,
+  "unit": "homes",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.peak_kw_mean": {
+  "value": 7.1638,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.peak_kw_sd": {
+  "value": 2.3971,
+  "unit": "kW",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
+ "ewu.plan.showcase.segment.summer_peaker.share": {
+  "value": 0.2015,
+  "unit": "share",
+  "script": "ewu/plan_output.py",
+  "method": "segment aggregate the simulator samples from, all inventory homes"
+ },
  "ewu.robustness.adoption_one_order.high.margin_115.flagged_min_hours_pct": {
   "value": 41.27,
   "unit": "% of transformers over at least 3 hours a year",

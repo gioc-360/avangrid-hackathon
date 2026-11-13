@@ -32,3 +32,7 @@ outputs/**/*.pptx
 # bench figures: some draw single real homes (fig2_signatures, fig6_dispatch_example); new ones stay local
 runs/**/*.png
 video/rec/mouse
+
+# bin/ewu plan: transformer-level CSVs come from metered load and showcase CSVs sit beside them; both stay local (README is tracked)
+outputs/plan/
+outputs/showcase/*.csv

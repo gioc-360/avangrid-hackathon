@@ -160,6 +160,8 @@ def main(argv=None):
     demo = commands.add_parser("demo", help="build the offline demo page and open it")
     demo.add_argument("--no-open", action="store_true", help="build only")
     demo.set_defaults(run=run_demo_command)
+    from ewu import plan_output   # `plan`: transformer action list, capital plan; home lists only --private or simulated --showcase
+    plan_output.add_command(commands)
     args = parser.parse_args(argv)
     return args.run(args)
 
