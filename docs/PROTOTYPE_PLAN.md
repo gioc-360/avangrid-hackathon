@@ -1,5 +1,125 @@
 # Overnight build plan: Electrify Without Upgrade (EWU) prototype
 
+## Scoped (this section wins over everything below)
+
+Scoped 2026-11-12 23:17 ET. One coder, one night, one goal: a live demo that runs offline, answers in under a minute
+and survives code questions. The teammate builds the deck; this build hands over numbers and screens, never slides.
+
+Decisions taken. D1: commit and push to branch `prototype` after each green milestone (this replaces "No git push"
+in section 7). D2: our rebuild is the reference; differences from the teammate's numbers are reported, never tuned
+away. D3: k = 8 homes per transformer, and only 8.
+
+```
+┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐
+│ M0  INV    │──▶│ M1  M2     │──▶│ M3  M4     │──▶│ M5         │──▶│ M6  M7     │──▶│ J1 M8 J2   │
+│ config,    │   │ stress,    │   │ cold snap, │   │ money,     │   │ CLI, demo  │   │ judges,    │
+│ inventory  │   │ attribution│   │ fit score  │   │ range grid │   │ page, docs │   │ review     │
+└────────────┘   └────────────┘   └────────────┘   └────────────┘   └────────────┘   └────────────┘
+```
+
+### S1. Layout fixed by this scope (so the exit checks are exact)
+- `config/ewu.yaml`: every input as `{value, unit, source}` or `{value, unit, assumption: true}`. Blocks: `scenarios`,
+  `transformer` (k, count, sizing margins, overload limit), `battery` (challenge page 3 spec), `shift`, `prices`,
+  `demo`, `checks` (every test threshold), `teammate_reference` (numbers from runs/business_case_team_v2.txt with
+  their line, used only for the D2 difference table).
+- `ewu/`: adoption.py, feeders.py, stress.py, dispatch.py, fitscore.py, economics.py, inventory.py, demo_page.py,
+  cli.py. `bin/ewu` is a two-line shell wrapper around `.venv/bin/python -I ewu/cli.py`. cli.py gains one
+  subcommand per milestone: `inventory` in INV, `coldsnap` in M3, `sensitivity` in M5, `screen` and `demo` in M6.
+- `tests/` with `conftest.py` that puts the repo root on the import path (needed under `-I`).
+- `checks/config_check.py`, `checks/trace_numbers.py`, `checks/demo_check.py`, `checks/qa_refs.py`,
+  `checks/judge_rounds_check.py`. Each has `--selftest` that plants one bad case and must catch it.
+- Facts go under `ewu.*` in facts/facts.json. That file is in git, so it holds aggregates only. Per-home and
+  per-transformer values shown on the demo page go through `record(..., private=True)`, which writes
+  `outputs/private/facts_private.json`. One door for every number, and nothing per-home reaches git.
+- Demo page: `outputs/demo/ewu_demo.html` (gitignored). Fallback screenshots: `outputs/private/demo_shots/`, not
+  `docs/demo/`, because steps 1 and 3 show one home and one transformer. `docs/demo/cli_output.txt` holds aggregate
+  terminal output only.
+
+### S2. Milestones (ids, time box in ET, what is built, what the exit check proves)
+| Id | Box | Build | The exit check proves |
+|---|---|---|---|
+| M0 | 23:20-23:50 | `caffeinate -dims &`; config/ewu.yaml; config_check.py; pytest in requirements.txt; tests/conftest.py; `record(private=True)`; Makefile targets `test` and `prototype` | every config value has a source or an assumption flag; a planted unsourced value is caught; new modules have a what/why/how docstring, stay under the line cap, hold no em dash |
+| INV | 23:50-00:20 | inventory.py and `bin/ewu inventory`: one row per home with equipment flags, confidence, segment, eligible programs (rules in config), written to outputs/private/inventory.parquet; prints the aggregate table only | row count equals fact `data.customers_usable`; every home has a segment; each class count equals its `class.*.count` fact; every program rule is read from config; stdout holds no customer number |
+| M1 | 00:20-01:20 | adoption.py, feeders.py, stress.py: 2030 scenarios, k = 8 groups, random and same-segment grouping, sizing = today's peak times each margin in config; `load_map(csv)` for a real map | loading equals base plus EV plus heat pump adds; no home sits in two transformers; overloaded share never rises as the margin rises; 5 seeds agree within the config tolerance; the overloaded share at every sizing margin is in facts |
+| M2 | 01:20-02:10 | attribution of overload hours to base, EV and heat pump kW; EV timer mode and staggered mode; docs/FINDINGS.md answers the 73% versus 89% question and holds the D2 difference table | shares sum to 100%; shifting moves EV energy and loses none; timer and staggered results are in facts; every number in FINDINGS.md traces |
+| M3 | 02:10-03:30 | dispatch.py and `bin/ewu coldsnap`: battery through Feb 7-8, hour by hour, charging only under the limit | state of charge stays between 0 and capacity; power stays within the challenge spec; energy balance holds within the config tolerance; zero batteries reproduces the M1 numbers; hours over, kWh over and share cleared are in facts. Then one agent that did not write the code recomputes 3 of those numbers its own way and logs match or mismatch; a mismatch reopens M3 once |
+| M4 | 03:30-04:15 | fitscore.py: system top hours, kW cut per home in those hours, hosts chosen on flagged transformers, 1 or 2 units per host | Feb 7 and Jul 2 are in the top-hour set; fit-score hosts clear more flagged transformers per battery than random hosts on the same set |
+| M5 | 04:15-05:10 | economics.py: ladder cost, equal-life comparison (battery life versus transformer life), deferral value, one labeled NYSEG scaling line; `bin/ewu sensitivity` runs the grid of 2 scenarios by 4 margins by 2 grouping modes | economics.py holds no typed price; equal lives and zero discount rate give the plain cost ratio; deferral value never exceeds the upgrade cost; all grid cells are in facts; the headline is stated as a range |
+| M6 | 05:10-06:20 | cli.py gains `screen` (flag, shift, protect, upgrade split for one scenario and margin, optional `--map`) and `demo`; demo_page.py builds the 4-step offline page from cached results; `make prototype` rebuilds all of it from data/processed | `make prototype` runs clean; the page has no outside link or script; headless Chrome renders all 4 steps with no NaN or undefined; every number on the page binds to a fact key or a private fact; `bin/ewu screen` on the full data finishes under 60 s and the seconds are in facts |
+| M7 | 06:20-06:50 | docs/DEMO_SCRIPT.md (3-minute click path: click, one sentence, objection answered); docs/CODE_QA.md (10 judge questions, each answered with file:line); README section "Run the EWU tool" with one diagram | every file:line resolves; every number in the three docs traces |
+| J1 | 06:50-07:20 | docs/COMPANY_BRIEF.md (sourced lines only, unverified teammate claims listed apart); judge round 1 per section 6b, Talent Development judge held out; fix the top 3 gaps in wording and outputs | runs/judge_rounds.json holds round 1 for all 9 judges with per-criterion gaps to the A1 anchor; all tests and the demo check still pass after the fixes |
+| M8 | 07:20-07:50 | one fresh agent tries to break 10 numbers by recomputing them; the code examiner asks 10 questions against CODE_QA.md; fix or label what breaks | runs/review_round.json holds 10 number checks and 10 answers; examiner pass is 9 of 10; tests and demo check still pass |
+| J2 | 07:50-08:10 | judge round 2, scores only, no fixes | round 2 and the held-out judge's change are in judge_rounds.json and MORNING_REPORT.md |
+
+Hard stop 08:15 ET: stop building, write the top of docs/MORNING_REPORT.md (section 8), commit, push.
+
+### S3. Exact exit-check commands
+Run from the repo root. Every command must exit 0. Every milestone also runs the gates line last.
+```
+cd /Users/giocaballero/avangrid-hackathon
+GATES  make check && .venv/bin/python -I checks/compare.py
+M0     .venv/bin/python -I checks/config_check.py --selftest && .venv/bin/python -I checks/config_check.py && .venv/bin/python -I -m pytest -q tests/test_config.py tests/test_house_rules.py
+INV    bin/ewu inventory && .venv/bin/python -I -m pytest -q tests/test_inventory.py
+M1     .venv/bin/python -I -m pytest -q tests/test_stress.py
+M2     .venv/bin/python -I -m pytest -q tests/test_attribution.py && .venv/bin/python -I checks/trace_numbers.py --selftest && .venv/bin/python -I checks/trace_numbers.py docs/FINDINGS.md
+M3     .venv/bin/python -I -m pytest -q tests/test_dispatch.py && bin/ewu coldsnap --date 2026-02-07
+M4     .venv/bin/python -I -m pytest -q tests/test_fitscore.py
+M5     .venv/bin/python -I -m pytest -q tests/test_economics.py && bin/ewu sensitivity && .venv/bin/python -I checks/trace_numbers.py docs/FINDINGS.md
+M6     make prototype && .venv/bin/python -I -m pytest -q tests/ && .venv/bin/python -I checks/demo_check.py --selftest && .venv/bin/python -I checks/demo_check.py
+M7     .venv/bin/python -I checks/qa_refs.py --selftest && .venv/bin/python -I checks/qa_refs.py docs/CODE_QA.md && .venv/bin/python -I checks/trace_numbers.py docs/DEMO_SCRIPT.md docs/CODE_QA.md docs/FINDINGS.md
+J1     .venv/bin/python -I checks/judge_rounds_check.py --round 1 && .venv/bin/python -I -m pytest -q tests/ && .venv/bin/python -I checks/demo_check.py
+M8     .venv/bin/python -I checks/judge_rounds_check.py --review && .venv/bin/python -I -m pytest -q tests/ && .venv/bin/python -I checks/demo_check.py
+J2     .venv/bin/python -I checks/judge_rounds_check.py --round 2
+```
+`checks/demo_check.py` is one script that: confirms outputs/demo/ewu_demo.html exists and names no http or https
+resource; dumps the page with headless Chrome ("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+--headless) and finds all 4 steps filled; writes one screenshot per step to outputs/private/demo_shots/; confirms
+every number on the page binds to a fact key or a private fact and equals it; times `bin/ewu screen --scenario
+moderate --margin 1.15` on the full data, fails at 60 s or more, and records `ewu.cli.screen_seconds`.
+
+### S4. Rules that hold for every milestone
+- After a green exit check: `git add -A`, then `git diff --cached --name-only`; unstage any .npy, .parquet, .csv,
+  anything under outputs/private/ or outputs/demo/, and any per-home file; commit with a plain description; then
+  `git push -q origin prototype`. Then append one line under "## Log" in docs/MORNING_REPORT.md.
+- A failing check is fixed and retried at most 2 times. On the third fail the milestone is logged FAIL and the build
+  moves to the next milestone that does not depend on it. Thresholds in `checks:` are fixed tonight; a test is
+  never loosened to pass.
+- Tests, checks and CLI commands print aggregates only. Judge and review agents read aggregates only: CLI output,
+  FINDINGS.md, DEMO_SCRIPT.md, facts.json. Steps 1 and 3 of the page are checked by script, not by an agent
+  looking at a home's rows.
+- Before `make prototype` and any other step over 60 s: read the Loggie call file named in section 6; if a
+  recording is live, wait 10 minutes and read it again.
+- The three unverified teammate claims in section 6b stay off the demo page and out of the demo script.
+- Depends on: INV, M1 need M0. M2, M3 need M1. M4 needs M3. M5 needs M2, M3, M4. M6 needs INV and M1; a step
+  whose milestone failed shows "not built" on the page. M7, J1, M8 need M6. J2 needs J1.
+
+### S5. Cut outright (not built tonight)
+- Ambient-temperature derate (objection 6 is answered by hours over and kWh over the limit).
+- Adoption clustered by transformer. Same-segment grouping stays as the one clustered mode.
+- k = 4 and k = 12 in the grid (D3).
+- report_ewu.py and deck PNG figures. The demo page is the readout; the step screenshots serve the deck.
+- docs/ARCHITECTURE.md. Its one diagram goes in the README.
+- The one-pager for judges. Judges read the CLI output, FINDINGS.md and DEMO_SCRIPT.md.
+- Independent verify after M5 and after M8. One stays, after M3; M8 covers the others.
+- CODE_QA.md shrinks from 20 questions to 10, the number the examiner asks.
+
+### S6. Cut order if behind (drop from the top; each cut is logged in MORNING_REPORT.md)
+1. J2, the second judge round.
+2. `load_map(csv)` test and `--map` flag. The data contract stays as three lines in the README.
+3. Same-segment grouping mode. The grid shrinks to 2 scenarios by 4 margins.
+4. The NYSEG scaling line in M5.
+5. The D2 difference table in FINDINGS.md.
+6. CODE_QA.md drops to 5 questions and the examiner pass becomes 4 of 5.
+7. The home picker in step 1 becomes one fixed home.
+8. M8.
+
+Never cut: INV, the sizing range in M1, attribution in M2, the cold snap in M3, fit-score hosts in M4, equal-life
+economics in M5, the 4-step offline page and the under-60-s `bin/ewu screen` in M6, the self-checks (config_check,
+trace_numbers, demo_check, pytest), and J1. If one of these fails three times it is reported FAIL, never dropped
+quietly.
+
+## Original plan (kept for context; Scoped above wins where they differ)
+
 Owner: autonomous build, night of 2026-11-12 to 11-13. Deck due 5pm ET 11-13 (teammate builds the deck).
 Purpose: the live DEMO portion. The prototype must run on stage in under a minute and survive code questions.
 Scoper: read this whole file, then tighten scope; do not widen it.
