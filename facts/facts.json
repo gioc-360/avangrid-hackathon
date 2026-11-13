@@ -9734,7 +9734,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.4,
+  "value": 2.3,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"

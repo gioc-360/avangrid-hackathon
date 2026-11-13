@@ -88,8 +88,8 @@ def record_screen(cell, money, scenario, grouping, margin, seconds):
 def print_screen(cell, money, scenario, grouping, margin, seconds):
     s = cell["shares"]
     source = "real transformer map" if cell["map"] else f"{grouping} grouping, seed {cell['seed']}"
-    print(f"EWU screen: {scenario} 2030, rating = today's peak x {margin:.2f}, {cell['transformers']:,} transformers "
-          f"({source}), {cell['homes']:,} homes\n")
+    print(f"EWU screen: {scenario} 2030, rating = today's peak x {margin:.2f}")
+    print(f"{cell['transformers']:,} transformers ({source}), {cell['homes']:,} homes\n")
     rows = [("Flag", "over the limit, EV charging unmanaged", s["flagged_pct"], cell["flagged"]),
             ("Shift", "fixed by staggered EV charging", s["shift_fixed_pct"], cell["shift_fixed"]),
             ("Protect", "cleared by fit-score home batteries", s["protected_pct"], cell["protected"]),
@@ -99,7 +99,7 @@ def print_screen(cell, money, scenario, grouping, margin, seconds):
         print(f"{step:<8} {what:<40} {pct:>17.2f} {count:>12,}")
     print(f"\nStaggering newly overloads {s['new_from_stagger_pct']:.2f}% of transformers; they join Protect or Upgrade.")
     print(f"Batteries: {cell['batteries']:,} units, {s['batteries_per_protected']:.2f} per protected transformer.")
-    print("Ladder cost as % of upgrading every flagged transformer (equal life): " +
-          ", ".join(f"{case} prices {m['ladder']:.2f}%" for case, m in money.items()))
+    print("Ladder cost as % of upgrading every flagged transformer (equal life):")
+    print(", ".join(f"{case} prices {m['ladder']:.2f}%" for case, m in money.items()))
     print(f"\n{seconds:.1f} s, full meter data, aggregates only")
 
