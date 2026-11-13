@@ -11630,7 +11630,7 @@
   "method": "pooled 5 seeds, 1 host per transformer still over the limit with staggered charging, battery dispatched for the system on these hours"
  },
  "ewu.tophours.seconds": {
-  "value": 32.4,
+  "value": 44.1,
   "unit": "s",
   "script": "ewu/tophours.py",
   "method": "whole top-hours run"
@@ -11874,6 +11874,84 @@
   "unit": "",
   "script": "analysis/segment.py",
   "method": ""
+ },
+ "judge.anchor.weighted": {
+  "value": 4.14,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "A1 anchor, runs/judge_rounds.json"
+ },
+ "judge.review.examiner_after_fixes": {
+  "value": 10,
+  "unit": "of 10",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/review_round.json examiner_pass.after_fixes"
+ },
+ "judge.review.examiner_first_read": {
+  "value": 7,
+  "unit": "of 10",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/review_round.json examiner_pass.first_read"
+ },
+ "judge.round_1.all_average": {
+  "value": 3.23,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 1, average_weighted"
+ },
+ "judge.round_1.held_out": {
+  "value": 3.2,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 1, held_out_weighted"
+ },
+ "judge.round_1.used_average": {
+  "value": 3.24,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 1, average_weighted_used_8"
+ },
+ "judge.round_1.used_gap_to_anchor": {
+  "value": -0.9,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 1, used average minus anchor"
+ },
+ "judge.round_2.code_examiner_passed": {
+  "value": 9,
+  "unit": "of 10",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, code_examiner_latest"
+ },
+ "judge.round_2.held_out": {
+  "value": 3.45,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, held_out_weighted"
+ },
+ "judge.round_2.held_out_change": {
+  "value": 0.25,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, held_out_change"
+ },
+ "judge.round_2.used_average": {
+  "value": 3.4,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, average_weighted_used_8"
+ },
+ "judge.round_2.used_change": {
+  "value": 0.16,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, used_change"
+ },
+ "judge.round_2.used_gap_to_anchor": {
+  "value": -0.74,
+  "unit": "of 5",
+  "script": "checks/judge_rounds_check.py",
+  "method": "runs/judge_rounds.json round 2, used average minus anchor"
  },
  "scale.bess_seconds": {
   "value": 25.7,

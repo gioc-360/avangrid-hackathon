@@ -293,6 +293,35 @@
     "the deck (teammate builds it)"
    ],
    "next_round_should_read": "docs/BUSINESS_CASE.md in place of runs/business_case_team_v2.txt"
+  },
+  {
+   "round": 2,
+   "date": "2026-11-13",
+   "scores_only": true,
+   "average_weighted_used_8": 3.4,
+   "held_out_weighted": 3.45,
+   "held_out_change": 0.25,
+   "used_change": 0.16,
+   "gap_to_anchor_weighted_used_8": -0.74,
+   "judges": [],
+   "judges_note": "Per-judge and per-criterion scores were not handed to the morning report step, only the two averages and the nine hardest questions below. They are not filled in by hand, so checks/judge_rounds_check.py --round 2 fails until the round is rerun or its raw scores are saved.",
+   "read_by_judges": "The questions quote the teammate one-pager (runs/business_case_team_v2.txt: 9.8%, 73%, 1.7 batteries at about $11,500, $27M, a return on avoided capital) next to the demo page, the live bin/ewu screen output and bin/ewu case, so round 2 still had the old one-pager in front of it.",
+   "hardest_questions": [
+    "Your page says 1.7 batteries at $11,500 replace a $15,000 upgrade, but your own `bin/ewu case` says a battery only wins below $7,730 a unit, and your fit-score fleet cuts 0.29 MW in the top 20 hours. So which customers would you put a battery on tomorrow, and how many of my top 20 system hours do they remove?",
+    "Your page says 1.7 batteries at $11,500 replace a $15,000 transformer, but your own demo says batteries break even only below $7,730 a unit once you account for the battery wearing out at 15 years against the transformer's 30. At NYSEG's real installed cost, would you still put a single battery in this program, or is this a managed-charging program with storage as a footnote? And under which New York mechanism, by name, does Avangrid earn anything on the capital it avoids?",
+    "Your page says 9.8% of transformers overload, the ladder costs $27M against $164M, and \"every battery avoids an upgrade\". Your live tool just printed 26% overloaded and $226.8M against $436.9M, and your money step says \"batteries add cost\" unless a unit installs below $7,730. Which numbers do you stand behind? And if batteries lose to the upgrade at your own prices, why should my program fund 2,100 to 17,700 of them instead of just running managed charging and upgrading the rest?",
+    "Your one-pager says 9.8% of transformers overload and 73% of overloads are winter heat pump nights; your live command just printed 26.00% and your case says heat pumps are the larger cause in 4.57% of overload hours, and that shifting then upgrading ($189.9M) is cheaper than your battery ladder ($226.8M). Which numbers are on your slides, and why should Avangrid fund batteries at all?",
+    "Your one-pager says 9.8% of transformers overload and a 1.7-unit battery replaces a $15,000 upgrade, but your live command printed 26.00% and your own demo page says \"batteries add cost\" above $7,730 a unit. Which numbers do you want us to score, and where is the code that produced 9.8%, 73% and $27M?",
+    "Your one-pager says 9.8% of transformers overload and a battery is cheaper than the $15,000 upgrade. Your own demo says 26.18% and that batteries cost more than the upgrade at your prices. Which number do I take to my capital plan? And why do you count a single hour at 120% on a -5 F night as an overload, when IEEE C57.91 loading guidance would let that transformer carry it with negligible loss of life?",
+    "Your one-pager says winter heat pump nights cause 73% to 89% of overloads and every battery avoids an upgrade, but your own tool says heat pumps are the larger cause in 4.57% of overload hours and that shifting then upgrading (43.47% of upgrade-all) is cheaper than your full ladder with batteries (51.92%). If batteries raise the cost at mid prices and cut 1.71 kW each in the system top 20 hours, why should Avangrid fund the Protect rung at all rather than run managed charging and upgrade the rest?",
+    "Your page says 1.7 batteries at about $11,500 replace a $15,000 upgrade and that Avangrid \"can seek a return on avoided capital\". Your own tool says a battery beats the upgrade only below $7,730 a unit on an equal-life basis. Which number do you stand behind? And under which NY PSC mechanism (the BCA Handbook test for a non-wires alternative, an earnings adjustment mechanism or shared savings) would a third-party-leased home battery that defers a distribution transformer earn Avangrid anything or pass the cost test?",
+    "Your one-pager says a battery on an overloaded transformer beats the $15,000 upgrade and that 73% of overloads are heat pump nights. Your own demo says batteries cost $1,720 a year against $1,209 for the upgrade, and heat pumps are the larger cause in only 4.57% of overload hours. Which is right? And since every transformer here is synthetic, why should Avangrid fund batteries rather than simply run managed charging?"
+   ],
+   "code_examiner_latest": {
+    "passed": 9,
+    "of": 10,
+    "note": "latest examiner count handed to the morning report step; runs/review_round.json records 7 of 10 on first read and 10 of 10 after the fix-M8 fixes"
+   }
   }
  ]
 }

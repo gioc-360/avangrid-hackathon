@@ -5,7 +5,8 @@ What: `--round N` passes when round N has all 9 judge seats, exactly one held ou
       the A1 anchor equal to score minus anchor, and the round averages equal to the judges' numbers.
       Round 2 must also state the held-out judge's change from round 1. `--review` passes when
       runs/review_round.json holds 10 number checks and 10 examiner answers with at least 9 passing.
-      `--selftest` plants one bad case of each kind and fails unless every one is caught.
+      `--selftest` plants one bad case of each kind and fails unless every one is caught. `--record-facts`
+      writes the round averages, the anchor and the examiner counts to facts/facts.json under judge.*.
 Why:  the plan's stop rule and morning report read these scores; a round with a missing judge, a weighted
       score that does not follow from its parts or a gap typed by hand would mislead the next fix.
 How:  plain JSON reads and arithmetic, with a tolerance of one rounding step (0.006); each problem is a
@@ -15,6 +16,7 @@ import argparse, copy, json, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 ROUNDS = ROOT / "runs" / "judge_rounds.json"
 REVIEW = ROOT / "runs" / "review_round.json"
 CRITERIA = ("value", "analytics", "presentation", "innovation")
@@ -109,15 +111,39 @@ def run_selftest(data):
     return ok
 
 
+def record_judge_facts(data, review):
+    """Write each round's averages, the anchor and the examiner counts as judge.* facts, so docs can trace them."""
+    from analysis.facts import record
+    record("judge.anchor.weighted", data["anchor"]["weighted"], "of 5", "A1 anchor, runs/judge_rounds.json")
+    method = "runs/judge_rounds.json round {}, {}"
+    for rnd in data.get("rounds", []):
+        n = rnd["round"]
+        for field, key in (("average_weighted_used_8", "used_average"), ("held_out_weighted", "held_out"),
+                           ("average_weighted", "all_average"), ("held_out_change", "held_out_change"),
+                           ("used_change", "used_change")):
+            if field in rnd:
+                record(f"judge.round_{n}.{key}", rnd[field], "of 5", method.format(n, field))
+        record(f"judge.round_{n}.used_gap_to_anchor", round(rnd["average_weighted_used_8"] - data["anchor"]["weighted"], 2),
+               "of 5", method.format(n, "used average minus anchor"))
+        if "code_examiner_latest" in rnd:
+            record(f"judge.round_{n}.code_examiner_passed", rnd["code_examiner_latest"]["passed"], "of 10", method.format(n, "code_examiner_latest"))
+    for stage in ("first_read", "after_fixes"):
+        record(f"judge.review.examiner_{stage}", review["examiner_pass"][stage], "of 10", f"runs/review_round.json examiner_pass.{stage}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--round", type=int, help="check this judge round")
     parser.add_argument("--review", action="store_true", help="check runs/review_round.json")
     parser.add_argument("--selftest", action="store_true", help="plant bad cases and require each caught")
+    parser.add_argument("--record-facts", action="store_true", help="write round averages to facts as judge.*")
     args = parser.parse_args()
     data = json.loads(ROUNDS.read_text()) if ROUNDS.exists() else {}
     if args.selftest:
         sys.exit(0 if run_selftest(data) else 1)
+    if args.record_facts:
+        record_judge_facts(data, json.loads(REVIEW.read_text()))
+        sys.exit(print("judge facts recorded") or 0)
     problems = []
     if args.round:
         problems += round_problems(data, args.round)
