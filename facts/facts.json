@@ -16661,5 +16661,797 @@
   "unit": "tests",
   "script": "deck/engine_specs.py",
   "method": "pytest --collect-only -q tests/ | tail -1"
+ },
+ "teammate.audit.code.adoption_seed": {
+  "value": 5,
+  "unit": "seed",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py:54"
+ },
+ "teammate.audit.code.fleet_kwh": {
+  "value": 16.128,
+  "unit": "kWh",
+  "script": "checks/teammate_audit.py",
+  "method": "program.py:4"
+ },
+ "teammate.audit.code.grouping_seed": {
+  "value": 11,
+  "unit": "seed",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py:2"
+ },
+ "teammate.audit.code.skipped_ids_from": {
+  "value": 10001,
+  "unit": "customer id",
+  "script": "checks/teammate_audit.py",
+  "method": "config.yaml:6"
+ },
+ "teammate.audit.code.unit_kwh": {
+  "value": 8.064,
+  "unit": "kWh",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py:7"
+ },
+ "teammate.audit.econ.a15": {
+  "value": 9.1079,
+  "unit": "years",
+  "script": "checks/teammate_audit.py",
+  "method": "annuity factor 15 years at 7%"
+ },
+ "teammate.audit.econ.a40": {
+  "value": 13.3317,
+  "unit": "years",
+  "script": "checks/teammate_audit.py",
+  "method": "40 years at 7%"
+ },
+ "teammate.audit.econ.avangrid_unit_usd": {
+  "value": 1978.3884,
+  "unit": "$ per unit",
+  "script": "checks/teammate_audit.py",
+  "method": "7,000 - lease PV - 2,016"
+ },
+ "teammate.audit.econ.lease_pv_usd": {
+  "value": 3005.6116,
+  "unit": "$ per unit",
+  "script": "checks/teammate_audit.py",
+  "method": "330 x a15"
+ },
+ "teammate.audit.econ.nyseg_scale": {
+  "value": 37.0833,
+  "unit": "NYSEG transformers per modeled transformer",
+  "script": "checks/teammate_audit.py",
+  "method": "890,000 / 8 / 3,000"
+ },
+ "teammate.audit.econ.nyseg_transformers": {
+  "value": 111250.0,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "890,000 / 8"
+ },
+ "teammate.audit.econ.upgrade_15_of_40_usd": {
+  "value": 10247.6518,
+  "unit": "$",
+  "script": "checks/teammate_audit.py",
+  "method": "15,000 x a15 / a40"
+ },
+ "teammate.audit.file.candidates.btm_kw_per_home": {
+  "value": 2.1464,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "mean red_top50 over priority homes"
+ },
+ "teammate.audit.file.candidates.btm_mw": {
+  "value": 5.6021,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "sum of red_top50 over priority homes"
+ },
+ "teammate.audit.file.candidates.priority": {
+  "value": 2610,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "battery_candidates.csv tier Priority"
+ },
+ "teammate.audit.file.candidates.priority_two_units": {
+  "value": 2610,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "priority rows with 2 units"
+ },
+ "teammate.audit.file.customers": {
+  "value": 33757,
+  "unit": "customers",
+  "script": "checks/teammate_audit.py",
+  "method": "rows of customer_classification.csv"
+ },
+ "teammate.audit.file.customers_10001_20000": {
+  "value": 8464,
+  "unit": "customers",
+  "script": "checks/teammate_audit.py",
+  "method": "ids in 10,001 to 20,000"
+ },
+ "teammate.audit.file.high.fixed": {
+  "value": 93.5,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.fixed"
+ },
+ "teammate.audit.file.high.gross_m": {
+  "value": 440.5,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.gross_M"
+ },
+ "teammate.audit.file.high.mean_units": {
+  "value": 1.93,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.mean_units"
+ },
+ "teammate.audit.file.high.net_m": {
+  "value": 140.3,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.net_M"
+ },
+ "teammate.audit.file.high.netnony_m": {
+  "value": 260.8,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.netnoNY_M"
+ },
+ "teammate.audit.file.high.overloaded": {
+  "value": 29.8,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.overloaded"
+ },
+ "teammate.audit.file.high.results_fixed_by_managed_ev": {
+  "value": 1.0,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json fixed_by_managed_EV"
+ },
+ "teammate.audit.file.high.results_need_battery": {
+  "value": 36.8,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json need_battery"
+ },
+ "teammate.audit.file.high.results_overloaded": {
+  "value": 29.8,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json overloaded"
+ },
+ "teammate.audit.file.high.results_winter_driven": {
+  "value": 89.2,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json winter_driven"
+ },
+ "teammate.audit.file.high.smart_extra": {
+  "value": 3,
+  "unit": "transformers overloaded only under smart charging",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_econ.json fixed + battery + upgrade - overloaded"
+ },
+ "teammate.audit.file.high.trad_full_m": {
+  "value": 497.8,
+  "unit": "$M",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json _full key"
+ },
+ "teammate.audit.file.high.trad_m": {
+  "value": 340.1,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json High_120_15000_eq.trad_M"
+ },
+ "teammate.audit.file.hp.annual_kwh": {
+  "value": 8760.5515,
+  "unit": "kWh per adopter per year",
+  "script": "checks/teammate_audit.py",
+  "method": "hp_increment.npy sum"
+ },
+ "teammate.audit.file.hp.below_10f_kw": {
+  "value": 3.6654,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "mean over hours below 10 F"
+ },
+ "teammate.audit.file.hp.jun_aug_kwh": {
+  "value": 85.2432,
+  "unit": "kWh",
+  "script": "checks/teammate_audit.py",
+  "method": "June to August"
+ },
+ "teammate.audit.file.hp.max_kw": {
+  "value": 4.2202,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "hp_increment.npy max"
+ },
+ "teammate.audit.file.hp.nov_mar_kwh": {
+  "value": 7344.4524,
+  "unit": "kWh",
+  "script": "checks/teammate_audit.py",
+  "method": "November to March"
+ },
+ "teammate.audit.file.moderate.fixed": {
+  "value": 98.3,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.fixed"
+ },
+ "teammate.audit.file.moderate.gross_m": {
+  "value": 111.7,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.gross_M"
+ },
+ "teammate.audit.file.moderate.mean_units": {
+  "value": 1.46,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.mean_units"
+ },
+ "teammate.audit.file.moderate.net_m": {
+  "value": 32.9,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.net_M"
+ },
+ "teammate.audit.file.moderate.netnony_m": {
+  "value": 64.6,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.netnoNY_M"
+ },
+ "teammate.audit.file.moderate.overloaded": {
+  "value": 9.8,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.overloaded"
+ },
+ "teammate.audit.file.moderate.results_fixed_by_managed_ev": {
+  "value": 0.9,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json fixed_by_managed_EV"
+ },
+ "teammate.audit.file.moderate.results_need_battery": {
+  "value": 15.1,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json need_battery"
+ },
+ "teammate.audit.file.moderate.results_overloaded": {
+  "value": 9.8,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json overloaded"
+ },
+ "teammate.audit.file.moderate.results_winter_driven": {
+  "value": 72.9,
+  "unit": "% of transformers or of overloaded",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json winter_driven"
+ },
+ "teammate.audit.file.moderate.smart_extra": {
+  "value": 2,
+  "unit": "transformers overloaded only under smart charging",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_econ.json fixed + battery + upgrade - overloaded"
+ },
+ "teammate.audit.file.moderate.trad_full_m": {
+  "value": 164.1,
+  "unit": "$M",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json _full key"
+ },
+ "teammate.audit.file.moderate.trad_m": {
+  "value": 112.1,
+  "unit": "as saved",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_bo2_econ.json Moderate_120_15000_eq.trad_M"
+ },
+ "teammate.audit.file.pmf.hour0_pct": {
+  "value": 13.0629,
+  "unit": "% of starts",
+  "script": "checks/teammate_audit.py",
+  "method": "ev_start_pmf.npy[0]"
+ },
+ "teammate.audit.file.pmf.hours_15_22_pct": {
+  "value": 43.0624,
+  "unit": "% of starts",
+  "script": "checks/teammate_audit.py",
+  "method": "ev_start_pmf.npy 15 to 22"
+ },
+ "teammate.audit.file.program.peak_cut_mw": {
+  "value": 8.8,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "program_scenarios.csv Peak cut MW, priority row"
+ },
+ "teammate.audit.file.program.peak_today_mw": {
+  "value": 78.48,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "program_scenarios.csv today peak"
+ },
+ "teammate.audit.file.program.priority_homes": {
+  "value": 2610,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "program_scenarios.csv row 2 name"
+ },
+ "teammate.audit.file.program.top50_cut_mw": {
+  "value": 6.16,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "drop in the mean of the top 50 hours, priority row"
+ },
+ "teammate.audit.file.thermostat_technical_mw": {
+  "value": 7.032,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "segment_technology_reduction.csv sum"
+ },
+ "teammate.audit.rebuild.ev_source_homes": {
+  "value": 266,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "High tier EV homes"
+ },
+ "teammate.audit.rebuild.hour0_carried_pct": {
+  "value": 55.2823,
+  "unit": "% of hour-0 starts",
+  "script": "checks/teammate_audit.py",
+  "method": "already charging at 23:00"
+ },
+ "teammate.audit.rebuild.hp_max_diff_kw": {
+  "value": 0.0,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "her recipe on our data vs her array"
+ },
+ "teammate.audit.rebuild.hp_reference_pool": {
+  "value": 12495,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "no electric heat, central AC"
+ },
+ "teammate.audit.rebuild.hp_source_homes": {
+  "value": 41,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "labeled HP and primary electric heat"
+ },
+ "teammate.audit.rebuild.mild_days": {
+  "value": 145,
+  "unit": "days",
+  "script": "checks/teammate_audit.py",
+  "method": "45 to 68 F"
+ },
+ "teammate.audit.rebuild.pmf_continuous_diff_pts": {
+  "value": 0.1918,
+  "unit": "points",
+  "script": "checks/teammate_audit.py",
+  "method": "max over 24 hours"
+ },
+ "teammate.audit.rebuild.pmf_continuous_hour0_pct": {
+  "value": 13.2547,
+  "unit": "% of starts",
+  "script": "checks/teammate_audit.py",
+  "method": "sessions run across midnight"
+ },
+ "teammate.audit.rebuild.pmf_hour0_pct": {
+  "value": 25.4677,
+  "unit": "% of starts",
+  "script": "checks/teammate_audit.py",
+  "method": "her recipe as written"
+ },
+ "teammate.audit.rerun.btm_mw": {
+  "value": 5.6021,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "sum of 2-unit cut over the top 50 hours"
+ },
+ "teammate.audit.rerun.fleet_our_hosts.peak_cut_mw": {
+  "value": 9.0505,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "her program.py fleet, peak minus new peak"
+ },
+ "teammate.audit.rerun.fleet_our_hosts.top50_cut_mw": {
+  "value": 6.3983,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "her program.py fleet, mean cut over the top 50 hours"
+ },
+ "teammate.audit.rerun.fleet_priority.peak_cut_mw": {
+  "value": 8.8025,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "her program.py fleet, peak minus new peak"
+ },
+ "teammate.audit.rerun.fleet_priority.top50_cut_mw": {
+  "value": 6.1588,
+  "unit": "MW",
+  "script": "checks/teammate_audit.py",
+  "method": "her program.py fleet, mean cut over the top 50 hours"
+ },
+ "teammate.audit.rerun.high.batteries_nyseg": {
+  "value": 59778.3333,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.eq.gross_musd": {
+  "value": 440.4893,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.eq.net_musd": {
+  "value": 140.3058,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.eq.net_no_nyserda_musd": {
+  "value": 260.8189,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.eq.trad_musd": {
+  "value": 340.1153,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.fixed_pct": {
+  "value": 93.5196,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.full.gross_musd": {
+  "value": 450.7108,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.full.net_musd": {
+  "value": 150.5273,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.full.net_no_nyserda_musd": {
+  "value": 271.0404,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.full.trad_musd": {
+  "value": 497.8438,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.high.managed_only": {
+  "value": 472,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "over only when managed"
+ },
+ "teammate.audit.rerun.high.managed_over_pct": {
+  "value": 44.5333,
+  "unit": "%",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim.py managed rule, over limit"
+ },
+ "teammate.audit.rerun.high.mean_units": {
+  "value": 1.9259,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.money_fields_equal": {
+  "value": 4,
+  "unit": "of 4 money fields",
+  "script": "checks/teammate_audit.py",
+  "method": "rerun vs ewu_bo2_econ.json at one decimal"
+ },
+ "teammate.audit.rerun.high.overloaded": {
+  "value": 895,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.overloaded_pct": {
+  "value": 29.8333,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.overloaded_pct_100": {
+  "value": 58.8333,
+  "unit": "%",
+  "script": "checks/teammate_audit.py",
+  "method": "limit 1.00"
+ },
+ "teammate.audit.rerun.high.rating_capped": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "peak / 0.85 above 167 kVA"
+ },
+ "teammate.audit.rerun.high.recharge_fixed": {
+  "value": 837,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "battery-fixed at 1.20"
+ },
+ "teammate.audit.rerun.high.recharge_still_over": {
+  "value": 4,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "above 1.20 once batteries recharge from headroom"
+ },
+ "teammate.audit.rerun.high.recharge_worst_kw": {
+  "value": 2.1679,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "largest hour left above the limit"
+ },
+ "teammate.audit.rerun.high.units": {
+  "value": 1612,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.upgrades": {
+  "value": 58,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.high.winter_pct": {
+  "value": 89.162,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.batteries_nyseg": {
+  "value": 15686.25,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.eq.gross_musd": {
+  "value": 111.7038,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.eq.net_musd": {
+  "value": 32.9336,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.eq.net_no_nyserda_musd": {
+  "value": 64.5571,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.eq.trad_musd": {
+  "value": 112.105,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.fixed_pct": {
+  "value": 98.3051,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.full.gross_musd": {
+  "value": 112.585,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.full.net_musd": {
+  "value": 33.8147,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.full.net_no_nyserda_musd": {
+  "value": 65.4382,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.full.trad_musd": {
+  "value": 164.0938,
+  "unit": "$M across NYSEG",
+  "script": "checks/teammate_audit.py",
+  "method": "deck money arithmetic on the rerun counts"
+ },
+ "teammate.audit.rerun.moderate.managed_only": {
+  "value": 211,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "over only when managed"
+ },
+ "teammate.audit.rerun.moderate.managed_over_pct": {
+  "value": 15.9667,
+  "unit": "%",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim.py managed rule, over limit"
+ },
+ "teammate.audit.rerun.moderate.mean_units": {
+  "value": 1.4586,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.money_fields_equal": {
+  "value": 4,
+  "unit": "of 4 money fields",
+  "script": "checks/teammate_audit.py",
+  "method": "rerun vs ewu_bo2_econ.json at one decimal"
+ },
+ "teammate.audit.rerun.moderate.overloaded": {
+  "value": 295,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.overloaded_pct": {
+  "value": 9.8333,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.overloaded_pct_100": {
+  "value": 28.5333,
+  "unit": "%",
+  "script": "checks/teammate_audit.py",
+  "method": "limit 1.00"
+ },
+ "teammate.audit.rerun.moderate.rating_capped": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "peak / 0.85 above 167 kVA"
+ },
+ "teammate.audit.rerun.moderate.recharge_fixed": {
+  "value": 290,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "battery-fixed at 1.20"
+ },
+ "teammate.audit.rerun.moderate.recharge_still_over": {
+  "value": 0,
+  "unit": "transformers",
+  "script": "checks/teammate_audit.py",
+  "method": "above 1.20 once batteries recharge from headroom"
+ },
+ "teammate.audit.rerun.moderate.recharge_worst_kw": {
+  "value": 0.0,
+  "unit": "kW",
+  "script": "checks/teammate_audit.py",
+  "method": "largest hour left above the limit"
+ },
+ "teammate.audit.rerun.moderate.units": {
+  "value": 423,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.upgrades": {
+  "value": 5,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.moderate.winter_pct": {
+  "value": 72.8814,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "her ewu_sim_bo2.py rerun, limit 1.20"
+ },
+ "teammate.audit.rerun.priority_homes": {
+  "value": 2610,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "battery_sim.py + rank.py thresholds"
+ },
+ "teammate.audit.rerun.results_fields": {
+  "value": 21,
+  "unit": "fields",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json fields"
+ },
+ "teammate.audit.rerun.results_fields_equal": {
+  "value": 21,
+  "unit": "fields",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_results.json saved vs rerun"
+ },
+ "teammate.audit.rerun.sample.distinct_homes": {
+  "value": 17196,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "homes drawn into the 3,000 groups"
+ },
+ "teammate.audit.rerun.sample.nan_pct": {
+  "value": 0.1451,
+  "unit": "% of hours",
+  "script": "checks/teammate_audit.py",
+  "method": "missing hours filled with the home mean"
+ },
+ "teammate.audit.rerun.sample.repeated_homes": {
+  "value": 5374,
+  "unit": "homes",
+  "script": "checks/teammate_audit.py",
+  "method": "homes in two or more groups"
+ },
+ "teammate.audit.sens.high.fixed_pct": {
+  "value": 90.9958,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.high.mean_units": {
+  "value": 2.0221,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.high.overloaded_pct": {
+  "value": 31.4667,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.high.winter_pct": {
+  "value": 90.572,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.moderate.fixed_pct": {
+  "value": 96.9697,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.moderate.mean_units": {
+  "value": 1.5764,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.moderate.overloaded_pct": {
+  "value": 9.9,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
+ },
+ "teammate.audit.sens.moderate.winter_pct": {
+  "value": 74.0741,
+  "unit": "",
+  "script": "checks/teammate_audit.py",
+  "method": "ewu_sim_bo2.py with the start-hour array her script as written gives"
  }
 }
