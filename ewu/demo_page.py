@@ -21,7 +21,7 @@ from ewu import ROOT
 TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
 FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.",
-                 "ewu.deck.", "ewu.deck_replica.")
+                 "ewu.deck.", "ewu.deck_replica.", "teammate.audit.rerun.fleet_priority.", "teammate.audit.rerun.priority_homes")
 PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.", "ewu.deck.network.t.", "ewu.deck.network_managed.t.")
 NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
 NEEDS = {

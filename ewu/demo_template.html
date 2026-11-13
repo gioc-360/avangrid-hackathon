@@ -5,21 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EWU Demo</title>
 <style>
-/* state colors validated with the dataviz palette script, light and dark (2026-11-13): over/upgrade, shifted,
-   protected pass CVD and normal-vision floors; every state also has its own shape and word */
+/* palette from the team deck (greens #008c38 #0b3b30, blue #0089bd, orange #c46a00, neutrals #1d2b24 #d5ded8 #eef5f0).
+   dataviz palette script, 2026-11-13: over/upgrade (orange) vs protected (dark green) and the load series pass CVD;
+   shifted (green) vs over (orange) fails protan, so it rests on secondary encoding: every state has its own shape and word */
 :root {
-  --bg: #f6f5f1; --panel: #ecebe5; --card: #fdfcfa; --ink: #1d232b; --muted: #4f5862; --faint: #5f676f; --line: #d9d6cf;
-  --wire: #9aa1a9; --node: #a3abb4;
-  --base: #8a96a3; --ev: #2f6db5; --hp: #b07a12; --summer: #b07a12; --shift: #1b8a5a; --protect: #a33a8a; --upgrade: #c4452b; --limit: #c4452b;
-  --soc: #6b4fa3; --chip: #e7e9ec; --accent: #2f6db5; --focus: #2f6db5; --ctl: #7d838c;
-  --lift: 0 1px 2px rgba(29, 35, 43, .06), 0 4px 14px rgba(29, 35, 43, .06);
+  --bg: #f7faf8; --panel: #eef5f0; --card: #ffffff; --ink: #1d2b24; --muted: #4a5651; --faint: #5f6b66; --line: #d5ded8;
+  --wire: #a0aaa5; --node: #a0aaa5;
+  --base: #a0aaa5; --ev: #0089bd; --hp: #8cc63f; --summer: #c46a00; --shift: #008c38; --protect: #0b3b30; --upgrade: #c46a00; --limit: #c4452b;
+  --soc: #0b3b30; --chip: #eef5f0; --accent: #008c38; --focus: #0089bd; --ctl: #5f6b66;
+  --lift: 0 1px 2px rgba(29, 43, 36, .06), 0 4px 14px rgba(29, 43, 36, .06);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #15181c; --panel: #1a1e23; --card: #1f242a; --ink: #e8eaed; --muted: #b0b8c1; --faint: #98a1ab; --line: #343b44;
-    --wire: #5d6670; --node: #6f7882;
-    --base: #8995a2; --ev: #6aa2e6; --hp: #e2a83c; --summer: #e2a83c; --shift: #2c9a68; --protect: #c05cb0; --upgrade: #e0623e; --limit: #e0623e;
-    --soc: #a68be0; --chip: #2a3038; --accent: #6aa2e6; --focus: #8bb8ee; --ctl: #6f7882;
+    --bg: #0f1714; --panel: #14201b; --card: #1a2721; --ink: #e8f0eb; --muted: #b4c0ba; --faint: #9aa6a0; --line: #2e3d36;
+    --wire: #5f6b66; --node: #6f7b76;
+    --base: #8a9690; --ev: #4fc3f0; --hp: #8cc63f; --summer: #f7a84a; --shift: #16b161; --protect: #b9e4c9; --upgrade: #f7a84a; --limit: #e0623e;
+    --soc: #b9e4c9; --chip: #22302a; --accent: #16b161; --focus: #4fc3f0; --ctl: #6f7b76;
     --lift: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
   }
 }
@@ -480,11 +481,11 @@ function stepDeck() {
   const top = Math.max(...["moderate", "high"].map(s => V[DK(s, "nyseg_upgrade_all_musd")]));
   const bars = ["moderate", "high"].map(s => `<p style="margin:0">${word(s)}</p>${hbar([[V[DK(s, "nyseg_avangrid_cost_musd")], "var(--protect)"]], top, 14)}${hbar([[V[DK(s, "nyseg_upgrade_all_musd")], "var(--upgrade)"]], top, 14)}`).join("");
   return `${head("deck", "Deck", `Batteries fix ${big(N(DK("moderate", "fixed_of_overloaded_pct"), 1, { post: "%" }))} of overloaded transformers without an upgrade, moderate 2030${est("deck")}`)}
-  <div class="row"><div class="col"><table><tr><td></td><td class="num">Moderate</td><td class="num">her code</td><td class="num">High</td><td class="num">her code</td></tr>
+  <div class="row"><div class="col"><table><tr><td></td><td class="num">Moderate<br><small>our engine</small></td><td class="num">Moderate<br><small>original deck model</small></td><td class="num">High<br><small>our engine</small></td><td class="num">High<br><small>original deck model</small></td></tr>
     ${rows.map(([label, f, d, u]) => `<tr><td>${label}</td>${["moderate", "high"].map(s => `<td class="num">${cellOf(DK(s, f), d, u)}</td><td class="num">${cellOf(RK(s, f), d, u)}</td>`).join("")}</tr>`).join("")}
-    <tr><td>Peak cut, export</td><td class="num">${N("fact:ewu.deck.peakcut.export_peak_drop_mw", 2, { post: " MW" })}</td><td></td><td></td><td></td></tr></table></div>
+    <tr><td>Peak cut, export<br><small>our hosts / ${N("fact:teammate.audit.rerun.priority_homes", 0)} priority homes (deck v3)</small></td><td class="num">${N("fact:ewu.deck.peakcut.export_peak_drop_mw", 2, { post: " MW" })}</td><td class="num">${N("fact:teammate.audit.rerun.fleet_priority.peak_cut_mw", 2, { post: " MW" })}</td><td></td><td></td></tr></table></div>
   <div class="col"><div class="card"><p style="margin:0">Avangrid cost, then upgrade all</p>${bars}</div></div></div>
-  ${how("deck", `<p>The team's final-deck method (teammate spec of 2026-11-13), run by this tool on the meter data; the earlier method stays in the views below. Columns: Moderate and High are this tool's deck profile; her code is our replica of the teammate's ewu_sim_bo2.py, which equals her saved results on every one of ${N("fact:ewu.deck_replica.moderate.rows_equal_her_run", 0, { post: " transformers" })} in each case. Every input carries one tag.</p>
+  ${how("deck", `<p>The team's final-deck method (teammate spec of 2026-11-13), run by this tool on the meter data; the earlier method stays in the views below. Columns: "our engine" is this tool's deck profile, the numbers deck v3 uses; "original deck model" is the teammate's model behind the first submission (ewu_sim_bo2.py), rerun here as a replica, which equals her saved results on every one of ${N("fact:ewu.deck_replica.moderate.rows_equal_her_run", 0, { post: " transformers" })} in each case. Every input carries one tag.</p>
     ${TAG("GIVEN", `the hourly meter data of ${N("fact:ewu.inventory.homes", 0, { post: " homes" })} and the hourly weather, from the hackathon.`)}
     ${TAG("GIVEN, from the teammate", `the EV start-hour shares (${N("fact:ewu.deck.inputs.ev_start_pmf.hour0_pct", 1, { post: "%" })} at midnight) and the heat pump curve (${N("fact:ewu.deck.inputs.hp_increment.annual_kwh", 0, { post: " kWh a year" })}, highest hour ${N("fact:ewu.deck.inputs.hp_increment.max_kw", 2, { post: " kW" })}), both built by her ewu_inputs.py from the given meter data and checked here byte for byte.`)}
     ${TAG("DERIVED", `which homes already have an EV or electric heat (our inventory, read from each meter), each transformer's today peak and its rating, the smallest standard size at or above that peak / ${N("config:profiles.deck.peak_to_rating_divisor", 2)}; the priority battery homes for the peak cut.`)}
