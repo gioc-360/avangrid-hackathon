@@ -14256,5 +14256,556 @@
   "unit": "% of winter top-100h load",
   "script": "analysis/segment.py",
   "method": ""
+ },
+ "specs.check_scripts": {
+  "value": 9,
+  "unit": "scripts",
+  "script": "deck/engine_specs.py",
+  "method": "tracked checks/*.py, less the battery_model helper"
+ },
+ "specs.cli_command_names": {
+  "value": [
+   "inventory",
+   "screen",
+   "network",
+   "coldsnap",
+   "sensitivity",
+   "tophours",
+   "robustness",
+   "case",
+   "demo",
+   "plan"
+  ],
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "bin/ewu --help"
+ },
+ "specs.cli_commands": {
+  "value": 10,
+  "unit": "subcommands",
+  "script": "deck/engine_specs.py",
+  "method": "bin/ewu --help"
+ },
+ "specs.code.analysis.files": {
+  "value": 8,
+  "unit": "Python files",
+  "script": "deck/engine_specs.py",
+  "method": "tracked files under analysis/"
+ },
+ "specs.code.analysis.lines": {
+  "value": 1013,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l of tracked files under analysis/"
+ },
+ "specs.code.checks.files": {
+  "value": 10,
+  "unit": "Python files",
+  "script": "deck/engine_specs.py",
+  "method": "tracked files under checks/"
+ },
+ "specs.code.checks.lines": {
+  "value": 1539,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l of tracked files under checks/"
+ },
+ "specs.code.deck.files": {
+  "value": 0,
+  "unit": "Python files",
+  "script": "deck/engine_specs.py",
+  "method": "tracked files under deck/"
+ },
+ "specs.code.deck.lines": {
+  "value": 0,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l of tracked files under deck/"
+ },
+ "specs.code.engine.files": {
+  "value": 21,
+  "unit": "Python files",
+  "script": "deck/engine_specs.py",
+  "method": "tracked files under ewu/"
+ },
+ "specs.code.engine.largest_module_lines": {
+  "value": 200,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "longest tracked ewu module"
+ },
+ "specs.code.engine.lines": {
+  "value": 2799,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l of tracked files under ewu/"
+ },
+ "specs.code.tests.files": {
+  "value": 16,
+  "unit": "Python files",
+  "script": "deck/engine_specs.py",
+  "method": "tracked files under tests/"
+ },
+ "specs.code.tests.lines": {
+  "value": 1626,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l of tracked files under tests/"
+ },
+ "specs.lines.analysis.bess": {
+  "value": 218,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/bess.py"
+ },
+ "specs.lines.analysis.classify": {
+  "value": 151,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/classify.py"
+ },
+ "specs.lines.analysis.facts": {
+  "value": 40,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/facts.py"
+ },
+ "specs.lines.analysis.features": {
+  "value": 131,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/features.py"
+ },
+ "specs.lines.analysis.ingest": {
+  "value": 80,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/ingest.py"
+ },
+ "specs.lines.analysis.report": {
+  "value": 227,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/report.py"
+ },
+ "specs.lines.analysis.report_data": {
+  "value": 66,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/report_data.py"
+ },
+ "specs.lines.analysis.segment": {
+  "value": 100,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l analysis/segment.py"
+ },
+ "specs.lines.checks.battery_model": {
+  "value": 80,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/battery_model.py"
+ },
+ "specs.lines.checks.check_all": {
+  "value": 198,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/check_all.py"
+ },
+ "specs.lines.checks.compare": {
+  "value": 33,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/compare.py"
+ },
+ "specs.lines.checks.config_check": {
+  "value": 196,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/config_check.py"
+ },
+ "specs.lines.checks.demo_check": {
+  "value": 200,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/demo_check.py"
+ },
+ "specs.lines.checks.judge_rounds_check": {
+  "value": 200,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/judge_rounds_check.py"
+ },
+ "specs.lines.checks.qa_refs": {
+  "value": 123,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/qa_refs.py"
+ },
+ "specs.lines.checks.recompute_battery": {
+  "value": 182,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/recompute_battery.py"
+ },
+ "specs.lines.checks.review_numbers": {
+  "value": 196,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/review_numbers.py"
+ },
+ "specs.lines.checks.trace_numbers": {
+  "value": 131,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l checks/trace_numbers.py"
+ },
+ "specs.lines.ewu.__init__": {
+  "value": 38,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/__init__.py"
+ },
+ "specs.lines.ewu.adoption": {
+  "value": 107,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/adoption.py"
+ },
+ "specs.lines.ewu.attribution": {
+  "value": 190,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/attribution.py"
+ },
+ "specs.lines.ewu.business_case": {
+  "value": 79,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/business_case.py"
+ },
+ "specs.lines.ewu.cli": {
+  "value": 170,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/cli.py"
+ },
+ "specs.lines.ewu.coldsnap": {
+  "value": 175,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/coldsnap.py"
+ },
+ "specs.lines.ewu.demo_page": {
+  "value": 85,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/demo_page.py"
+ },
+ "specs.lines.ewu.dispatch": {
+  "value": 107,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/dispatch.py"
+ },
+ "specs.lines.ewu.economics": {
+  "value": 155,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/economics.py"
+ },
+ "specs.lines.ewu.feeders": {
+  "value": 60,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/feeders.py"
+ },
+ "specs.lines.ewu.fitscore": {
+  "value": 200,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/fitscore.py"
+ },
+ "specs.lines.ewu.headroom": {
+  "value": 112,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/headroom.py"
+ },
+ "specs.lines.ewu.inventory": {
+  "value": 160,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/inventory.py"
+ },
+ "specs.lines.ewu.network": {
+  "value": 167,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/network.py"
+ },
+ "specs.lines.ewu.printouts": {
+  "value": 71,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/printouts.py"
+ },
+ "specs.lines.ewu.robustness": {
+  "value": 200,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/robustness.py"
+ },
+ "specs.lines.ewu.screen": {
+  "value": 117,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/screen.py"
+ },
+ "specs.lines.ewu.sensitivity": {
+  "value": 163,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/sensitivity.py"
+ },
+ "specs.lines.ewu.shift": {
+  "value": 111,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/shift.py"
+ },
+ "specs.lines.ewu.stress": {
+  "value": 171,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/stress.py"
+ },
+ "specs.lines.ewu.tophours": {
+  "value": 161,
+  "unit": "lines",
+  "script": "deck/engine_specs.py",
+  "method": "wc -l ewu/tophours.py"
+ },
+ "specs.machine.cores": {
+  "value": 12,
+  "unit": "cores",
+  "script": "deck/engine_specs.py",
+  "method": "sysctl hw.ncpu"
+ },
+ "specs.machine.cpu": {
+  "value": "Apple M2 Max",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "sysctl"
+ },
+ "specs.machine.model": {
+  "value": "MacBook Pro",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "system_profiler SPHardwareDataType"
+ },
+ "specs.machine.ram_gb": {
+  "value": 64,
+  "unit": "GB",
+  "script": "deck/engine_specs.py",
+  "method": "sysctl hw.memsize / 2^30"
+ },
+ "specs.make_check.exit_code": {
+  "value": 0,
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "make check exit code"
+ },
+ "specs.make_check.seconds": {
+  "value": 21,
+  "unit": "s",
+  "script": "deck/engine_specs.py",
+  "method": "wall clock of make check, load average 5.3"
+ },
+ "specs.matrix.bytes": {
+  "value": 1182845280,
+  "unit": "bytes",
+  "script": "deck/engine_specs.py",
+  "method": "homes x hours x 4 bytes in memory"
+ },
+ "specs.matrix.dtype": {
+  "value": "float32",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "numpy dtype of the load matrix"
+ },
+ "specs.matrix.file_bytes": {
+  "value": 1182845408,
+  "unit": "bytes",
+  "script": "deck/engine_specs.py",
+  "method": "load_present.npy on disk, header included"
+ },
+ "specs.matrix.full_load_seconds": {
+  "value": 0.18,
+  "unit": "s",
+  "script": "deck/engine_specs.py",
+  "method": "np.load of the whole matrix plus one sum, warm disk cache"
+ },
+ "specs.matrix.gb": {
+  "value": 1.18,
+  "unit": "GB",
+  "script": "deck/engine_specs.py",
+  "method": "homes x hours x 4 bytes / 1e9"
+ },
+ "specs.matrix.homes": {
+  "value": 33757,
+  "unit": "homes",
+  "script": "deck/engine_specs.py",
+  "method": "rows of data/processed/load_present.npy"
+ },
+ "specs.matrix.hours": {
+  "value": 8760,
+  "unit": "hours",
+  "script": "deck/engine_specs.py",
+  "method": "columns of data/processed/load_present.npy"
+ },
+ "specs.output.bess_candidates.rows": {
+  "value": 5341,
+  "unit": "homes",
+  "script": "deck/engine_specs.py",
+  "method": "rows of outputs/bess_candidates.csv"
+ },
+ "specs.output.demo_page_bytes": {
+  "value": 2000320,
+  "unit": "bytes",
+  "script": "deck/engine_specs.py",
+  "method": "outputs/demo/ewu_demo.html, one offline file"
+ },
+ "specs.output.inventory.columns": {
+  "value": 59,
+  "unit": "columns",
+  "script": "deck/engine_specs.py",
+  "method": "columns of outputs/private/inventory.parquet"
+ },
+ "specs.output.inventory.program_columns": {
+  "value": 8,
+  "unit": "programs",
+  "script": "deck/engine_specs.py",
+  "method": "eligible_* columns, one per program in config/ewu.yaml"
+ },
+ "specs.output.inventory.rows": {
+  "value": 33757,
+  "unit": "homes",
+  "script": "deck/engine_specs.py",
+  "method": "rows of outputs/private/inventory.parquet"
+ },
+ "specs.package.PyYAML": {
+  "value": "6.0.3",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.matplotlib": {
+  "value": "3.11.2",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.numpy": {
+  "value": "2.5.4",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.openpyxl": {
+  "value": "3.1.5",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.pandas": {
+  "value": "3.1.1",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.polars": {
+  "value": "2.1.0",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.pyarrow": {
+  "value": "26.0.1",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.pytest": {
+  "value": "9.2.0",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.python-pptx": {
+  "value": "1.0.2",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.scikit-learn": {
+  "value": "1.9.1",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.package.scipy": {
+  "value": "1.18.1",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": "version installed in .venv"
+ },
+ "specs.python_version": {
+  "value": "3.12.0",
+  "unit": "",
+  "script": "deck/engine_specs.py",
+  "method": ".venv/bin/python --version"
+ },
+ "specs.screen.load_average": {
+  "value": 5.7,
+  "unit": "runnable processes",
+  "script": "deck/engine_specs.py",
+  "method": "1-minute load average right after the run"
+ },
+ "specs.screen.max_resident_bytes": {
+  "value": 3500032000,
+  "unit": "bytes",
+  "script": "deck/engine_specs.py",
+  "method": "max resident set, memory-mapped matrix pages included; bin/ewu screen defaults, facts write off, load average 5.7"
+ },
+ "specs.screen.max_resident_gb": {
+  "value": 3.5,
+  "unit": "GB",
+  "script": "deck/engine_specs.py",
+  "method": "max resident set / 1e9; bin/ewu screen defaults, facts write off, load average 5.7"
+ },
+ "specs.screen.measured_seconds": {
+  "value": 2.4,
+  "unit": "s",
+  "script": "deck/engine_specs.py",
+  "method": "time the CLI printed; bin/ewu screen defaults, facts write off, load average 5.7"
+ },
+ "specs.screen.peak_footprint_bytes": {
+  "value": 913132184,
+  "unit": "bytes",
+  "script": "deck/engine_specs.py",
+  "method": "/usr/bin/time -l peak memory footprint; bin/ewu screen defaults, facts write off, load average 5.7"
+ },
+ "specs.screen.peak_footprint_gb": {
+  "value": 0.91,
+  "unit": "GB",
+  "script": "deck/engine_specs.py",
+  "method": "peak memory footprint / 1e9; bin/ewu screen defaults, facts write off, load average 5.7"
+ },
+ "specs.tests_collected": {
+  "value": 132,
+  "unit": "tests",
+  "script": "deck/engine_specs.py",
+  "method": "pytest --collect-only -q tests/ | tail -1"
  }
 }
