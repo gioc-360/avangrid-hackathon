@@ -74,11 +74,12 @@ def test_the_page_carries_the_network_and_builds_offline():
     assert built["network"], missing["network"]
     html = demo_page.page_html(values)
     assert not demo_check.OUTSIDE.search(html)
-    assert '"network":true' in html and "private:ewu.network.t.state" in html
-    assert not any("meter" in k or "customer" in k for k in values if k.startswith("private:ewu.network."))
+    assert '"network":true' in html and "private:ewu.deck.network.t.state" in html
+    assert not any("meter" in k or "customer" in k for k in values if k.startswith("private:ewu.deck.network."))
 
 
-def test_the_page_draws_the_deck_network_by_default():
+def test_the_page_draws_the_deck_network_only():
+    """Deck v3 is final: one setup, the deck profile; no cautious or managed-charging network on the page."""
     values = demo_page.collect_values(CONFIG)
     assert all("ewu.deck.network." in k for k in demo_page.NEEDS["network"])
     state = values["private:ewu.deck.network.t.state"]
@@ -86,4 +87,19 @@ def test_the_page_draws_the_deck_network_by_default():
     assert len(state) == values["fact:ewu.deck.network.transformers_drawn"]
     for code, word in ((0, "within"), (2, "protected"), (3, "upgrade")):
         assert state.count(code) == values[f"fact:ewu.deck.network.{scenario}.upgrade.{word}"], word
-    assert 'S = { step: "deck", prof: "deck"' in demo_page.TEMPLATE.read_text()
+    assert not any(k.startswith(("private:ewu.network.", "fact:ewu.network.", "private:ewu.deck.network_managed.",
+                                 "fact:ewu.deck.network_managed.")) for k in values)
+    template = demo_page.TEMPLATE.read_text()
+    assert 'const S = { step: "deck"' in template
+    assert "Cautious" not in template and "Managed charging (optional)" not in template
+
+
+def test_the_deck_network_counts_equal_the_deck_screen():
+    """The page's network for the demo scenario has the deck screen's counts at the deck limit (bin/ewu screen)."""
+    facts = {k: v["value"] for k, v in json.loads((ROOT / "facts" / "facts.json").read_text()).items()}
+    scenario = config_value("demo.scenario", CONFIG)
+    net, cell = f"ewu.deck.network.{scenario}.", f"ewu.deck.{scenario}.limit_{round(100 * config_value('profiles.deck.overload_limit', CONFIG))}."
+    assert facts[net + "flag.over"] == facts[cell + "overloaded"]
+    assert facts[net + "upgrade.protected"] == facts[cell + "fixed"]
+    assert facts[net + "upgrade.upgrade"] == facts[cell + "upgrades"]
+    assert facts["ewu.deck.network.transformers_drawn"] == config_value("profiles.deck.transformer_count", CONFIG)

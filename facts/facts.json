@@ -2280,7 +2280,7 @@
   "method": "pooled 5 seeds; base first, then EV and heat pump split the energy above the limit"
  },
  "ewu.cli.screen_seconds": {
-  "value": 4.6,
+  "value": 5.1,
   "unit": "s",
   "script": "checks/demo_check.py",
   "method": "wall clock of bin/ewu screen on the full data, from demo_check"
@@ -4329,9 +4329,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_100.fixed_units_1_2_pct": {
+  "value": 34.27,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_100.fixed_units_3_4": {
   "value": 482,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.fixed_units_3_4_pct": {
+  "value": 16.07,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4383,9 +4395,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_100.saving_vs_upgrade_all_pct": {
+  "value": 50.33,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.upgrade_of_overloaded_pct": {
+  "value": 16.16,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_100.upgrades": {
   "value": 291,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_100.upgrades_pct": {
+  "value": 9.7,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4449,9 +4479,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_110.fixed_units_1_2_pct": {
+  "value": 27.17,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_110.fixed_units_3_4": {
   "value": 328,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.fixed_units_3_4_pct": {
+  "value": 10.93,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4503,9 +4545,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_110.saving_vs_upgrade_all_pct": {
+  "value": 54.6,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.upgrade_of_overloaded_pct": {
+  "value": 11.74,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_110.upgrades": {
   "value": 152,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_110.upgrades_pct": {
+  "value": 5.07,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4569,9 +4629,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_120.fixed_units_1_2_pct": {
+  "value": 20.23,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_120.fixed_units_3_4": {
   "value": 214,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.fixed_units_3_4_pct": {
+  "value": 7.13,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4623,9 +4695,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_120.saving_vs_upgrade_all_pct": {
+  "value": 57.78,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.upgrade_of_overloaded_pct": {
+  "value": 8.37,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_120.upgrades": {
   "value": 75,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_120.upgrades_pct": {
+  "value": 2.5,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4689,9 +4779,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_140.fixed_units_1_2_pct": {
+  "value": 11.23,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_140.fixed_units_3_4": {
   "value": 65,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.fixed_units_3_4_pct": {
+  "value": 2.17,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -4743,9 +4845,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.high.limit_140.saving_vs_upgrade_all_pct": {
+  "value": 65.22,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.upgrade_of_overloaded_pct": {
+  "value": 3.37,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.high.limit_140.upgrades": {
   "value": 14,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.high.limit_140.upgrades_pct": {
+  "value": 0.47,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5739,9 +5859,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_100.fixed_units_1_2_pct": {
+  "value": 23.63,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_100.fixed_units_3_4": {
   "value": 154,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.fixed_units_3_4_pct": {
+  "value": 5.13,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5793,9 +5925,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_100.saving_vs_upgrade_all_pct": {
+  "value": 64.9,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.upgrade_of_overloaded_pct": {
+  "value": 4.0,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_100.upgrades": {
   "value": 36,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_100.upgrades_pct": {
+  "value": 1.2,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5859,9 +6009,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_110.fixed_units_1_2_pct": {
+  "value": 14.33,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_110.fixed_units_3_4": {
   "value": 71,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.fixed_units_3_4_pct": {
+  "value": 2.37,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5913,9 +6075,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_110.saving_vs_upgrade_all_pct": {
+  "value": 67.11,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.upgrade_of_overloaded_pct": {
+  "value": 3.09,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_110.upgrades": {
   "value": 16,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_110.upgrades_pct": {
+  "value": 0.53,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -5979,9 +6159,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_120.fixed_units_1_2_pct": {
+  "value": 8.37,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_120.fixed_units_3_4": {
   "value": 36,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.fixed_units_3_4_pct": {
+  "value": 1.2,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -6033,9 +6225,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_120.saving_vs_upgrade_all_pct": {
+  "value": 69.06,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.upgrade_of_overloaded_pct": {
+  "value": 1.71,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_120.upgrades": {
   "value": 5,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_120.upgrades_pct": {
+  "value": 0.17,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -6099,9 +6309,21 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_140.fixed_units_1_2_pct": {
+  "value": 2.3,
+  "unit": "% of transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_140.fixed_units_3_4": {
   "value": 3,
   "unit": "transformers fixed by 3 or 4 IQ 10C units",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.fixed_units_3_4_pct": {
+  "value": 0.1,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
@@ -6153,9 +6375,27 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.limit_140.saving_vs_upgrade_all_pct": {
+  "value": 73.24,
+  "unit": "% less than upgrading every overloaded transformer",
+  "script": "ewu/deck_screen.py",
+  "method": "1 - Avangrid cost / upgrade-all, the deck v3 basis; deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.upgrade_of_overloaded_pct": {
+  "value": 1.37,
+  "unit": "% of overloaded",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
  "ewu.deck.moderate.limit_140.upgrades": {
   "value": 1,
   "unit": "transformers",
+  "script": "ewu/deck_screen.py",
+  "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
+ },
+ "ewu.deck.moderate.limit_140.upgrades_pct": {
+  "value": 0.03,
+  "unit": "% of transformers",
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },

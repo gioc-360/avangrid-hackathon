@@ -98,10 +98,10 @@ def test_demo_page_carries_no_single_home_and_no_host_charge():
     from ewu import demo_page
     values = demo_page.collect_values(CONFIG)
     private = [k for k in values if k.startswith("private:")]
-    assert all(k.startswith(("private:ewu.coldsnap.example.", "private:ewu.network.t.", "private:ewu.deck.network.t.",
-                             "private:ewu.deck.network_managed.t.")) for k in private), private
+    assert all(k.startswith("private:ewu.deck.network.t.") for k in private), private
     assert [k for k in private if "soc_kwh" in k or "ewu.demo." in k] == []
     assert "fact:ewu.demo.composite_0.flags" in values
+    assert values["fact:ewu.inventory.homes"] == values["fact:data.customers_usable"]   # deck v3's 33,757 homes
     page = demo_page.TEMPLATE.read_text()
     assert "private:ewu.demo." not in page and "soc_kwh" not in page and "Composite" in page
     planted = {"ewu.coldsnap.example.hosts_1.soc_kwh": {"value": [1.0]}, "ewu.demo.home_0.peak_kw": {"value": 9.9}}

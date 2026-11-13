@@ -16,7 +16,7 @@ from checks import label_inventory
 from ewu.demo_page import TEMPLATE
 
 PAGE = TEMPLATE.read_text()
-VIEWS = ("deck", "network", "overview", "inventory", "flag", "shift", "protect", "upgrade", "money")
+VIEWS = ("deck", "network", "overview", "inventory", "flag", "protect", "upgrade", "money")
 FACE_WORDS_MAX = 100   # visible words per view, side panel included, after the 2026-11-13 labeling pass
 
 
@@ -42,12 +42,12 @@ def test_each_view_builds_one_disclosure_and_marks_its_assumed_numbers():
 
 
 def test_assumptions_live_in_the_disclosure_not_on_the_face():
-    moved = {"deck": ["kW read as kVA", "her code is our replica", "GIVEN, from the teammate", "ASSUMED"],
-             "money": ["placeholder", "discount rate", "Labeled scaling, assumption", "Equal-life"],
-             "overview": ["placeholders flagged", "cheapest fix first"],
-             "network": ["Synthetic network.", "illustrative split", "The case."],
+    moved = {"deck": ["kW read as kVA", "our replica of the teammate's code", "GIVEN, from the teammate", "ASSUMED", "Money is v3's basis"],
+             "money": ["Scaling, assumption", "present value factors", "customer lease"],
+             "overview": ["battery-only fix order", "distribution planners"],
+             "network": ["GIVEN", "illustrative split", "kW read as kVA"],
              "inventory": ["not a real customer", "How sure each equipment read is"],
-             "protect": ["Cold snap case", "earned, not assumed"],
+             "protect": ["every day's excess", "no separate cold snap test"],
              "flag": ["EV charging unmanaged"], "upgrade": ["Still over after"]}
     for view, phrases in moved.items():
         face, how = split(view_source(view))

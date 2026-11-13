@@ -80,10 +80,10 @@ def test_a_step_without_its_facts_shows_not_built():
     values = demo_page.collect_values(CONFIG)
     built, _ = demo_page.steps_built(values)
     assert all(built.values())
-    lost = {k: v for k, v in values.items() if not k.startswith("private:ewu.coldsnap.")}
+    lost = {k: v for k, v in values.items() if not k.startswith("fact:teammate.audit.rerun.")}
     built, missing = demo_page.steps_built(lost)
-    assert not built["coldsnap"] and built["money"] and missing["coldsnap"]
-    assert '"coldsnap":false' in demo_page.page_html(lost)
+    assert not built["summary"] and built["money"] and missing["summary"]
+    assert '"summary":false' in demo_page.page_html(lost)
 
 
 def test_demo_check_catches_every_planted_fault():

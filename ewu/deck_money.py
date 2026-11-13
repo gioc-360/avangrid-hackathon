@@ -3,7 +3,7 @@
 What: present_value_factor() is the annuity factor; deck_prices() reads every deck price from config and
       derives the counted upgrade cost; price_deck() turns one deck cell's counts into gross, net without
       NYSERDA and Avangrid cost (net of lease and NYSERDA) next to upgrading every overloaded transformer,
-      in $ per sample and $M across NYSEG.
+      in $ per sample and $M across NYSEG, and the saving against upgrading (deck v3's 58% to 69%).
 Why:  the final deck reports these three columns at a 120% limit and a $15,000 upgrade; the tool must print
       the same columns from its own counts so every deck number traces to code.
 How:  15 years at 7%: factor (1 - 1.07^-15) / 0.07 = 9.108. A $15,000 upgrade lives 40 years (factor 13.332),
@@ -52,4 +52,6 @@ def price_deck(cell, config, upgrade_usd=None):
     return {"sample_usd": sample, "nyseg_musd": {k: round(v * scale / 1e6, 1) for k, v in sample.items()},
             "nyseg_batteries": round(units * scale), "nyseg_transformers": round(transformers), "prices": p,
             "avangrid_share_of_upgrade_all_pct": round(100 * sample["avangrid_cost"] / sample["upgrade_all"], 1)
+            if sample["upgrade_all"] else 0.0,
+            "saving_vs_upgrade_all_pct": round(100 * (1 - sample["avangrid_cost"] / sample["upgrade_all"]), 2)
             if sample["upgrade_all"] else 0.0}

@@ -1,17 +1,18 @@
 # Demo script: three minutes, one page, one live command
 
 The demo is the offline page `outputs/demo/ewu_demo.html` plus one terminal command run live on the full meter
-data. Each row is one click, one sentence to say, and the judge objection that sentence answers. Every number
-below traces to facts/facts.json or config/ewu.yaml (`checks/trace_numbers.py docs/DEMO_SCRIPT.md`); the page
-shows the same numbers, each with its key on hover. Results are for the moderate 2030 scenario (20% of homes add
-an EV, 15% a heat pump), transformers rated at today's group peak times 1.15, random grouping, unless a row
-says otherwise.
+data. Each row is one click, one sentence to say, and the judge objection that sentence answers. Deck v3 is final,
+so the page and this script carry deck v3's numbers only: our engine's deck profile (the team's battery-only
+method on the teammate's arrays), money on v3's basis. Every number below traces to facts/facts.json or
+config/ewu.yaml (`checks/trace_numbers.py docs/DEMO_SCRIPT.md`); the page shows the same numbers, each with its key
+on hover. Results are for the moderate 2030 scenario (20% of eligible homes add an EV, 15% a heat pump) at the
+120% overload limit, unless a row says otherwise.
 
 ## Before you go on
 
-- Run `bin/ewu demo` to build and open the page. It needs no network and no server. It opens on Network, Today.
-- Open a terminal in the repo with `bin/ewu screen --profile cautious --scenario moderate --margin 1.15` typed and not yet run.
-- On the other views, leave the case on Moderate, x 1.15, Random (the pressed buttons name it; each view's
+- Run `bin/ewu demo` to build and open the page. It needs no network and no server. It opens on Summary.
+- Open a terminal in the repo with `bin/ewu screen` typed and not yet run (the deck profile is the default).
+- On the views with controls, leave the case on Moderate and 120% (the pressed buttons name it; each view's
   "How this is computed" spells it out). Move between views by clicking the left side panel, not by scrolling.
 - Every assumption, source and caveat sits in each view's closed "How this is computed"; an "est." tag or the
   "Synthetic network" tag opens it. Open one only if a judge asks.
@@ -22,27 +23,28 @@ says otherwise.
 
 | Time | Click | Say (one sentence) | Objection it answers |
 |---|---|---|---|
-| 0:00 | Page open on Network, Today | "This is the grid we plan: one substation, 6 feeders and all 3,000 transformers, every one within its limit today." | "Is this a dashboard or a planning tool?" |
-| 0:12 | Ladder: 2030: Flag | "Add 2030's EVs and heat pumps with charging unmanaged and 780 transformers go over their limit." | "How big is the problem?" |
-| 0:22 | Ladder: + Shift | "Staggering EV charging fixes 615 of them with no new hardware." | "What is the cheapest fix?" |
-| 0:32 | Ladder: + Protect | "Home batteries at the best-fit host homes clear 149 more." | "Where do batteries go?" |
-| 0:42 | Ladder: + Upgrade | "Only 18 of 3,000 transformers need a new one, and you can see exactly where they sit." | "How much of it needs a new transformer?" |
-| 0:52 | Click a red square, then Next new transformer | "Each transformer opens to its 8 homes summed on its worst 2030 day: base, EV and heat pump against its limit, and the fix it gets." | "Which loads drive it?" |
-| 1:05 | Point at the Synthetic network tag | "The transformers are real homes' meter data grouped 8 to a transformer, and the feeders are an illustrative split; load your map and it is your network." | "Your network is made up." |
-| 1:15 | Terminal: run `bin/ewu screen --profile cautious --scenario moderate --margin 1.15` | "Same network, live on the full meter data in seconds: 780 flagged, 615 shifted, 149 protected, 18 to upgrade." | "Is this real or a cached chart?" |
-| 1:30 | Panel: Inventory; click EV home, then Electric heat | "Equipment is read from each home's hourly meter alone, and 69.07% of the 33,757 usable homes qualify for at least one program." | "Where is the appliance inventory and program list?" |
-| 1:45 | Panel: Overview, then Flag; click x 1.05, then x 1.50 | "Pooled over five seeds, 0.42% need an upgrade; transformer sizing is the input we know least, so flagged runs from 42.84% down to 3.74% and we report a range." | "Your headline depends on how big the transformers are." |
-| 2:05 | Overview: click Same segment, then back | "If neighbors are alike, the upgrade share rises to 1.55%, but the order of fixes holds." | "Random grouping ignores that adoption clusters." |
-| 2:15 | Panel: Protect; click 1 host home, then 2 host homes | "Through Feb 7-8, coldest hour -5.0 F, one host home clears 89.88% of the transformers the cold snap pushes over and two clear 92.84%, with the battery's charge earned all year." | "A battery was never tested on a long cold night." |
-| 2:35 | Panel: Money | "The full ladder costs 51.92% of upgrading every flagged transformer, and a battery beats the upgrade only below $7,730 a unit, so shifting is where the money is." | "Are batteries worth it at all?" |
-| 2:55 | Back to Network | "Give us the meter-to-transformer map and the same command runs on it with `--map`, no other change." | "Your transformers are synthetic." |
+| 0:00 | Page open on Summary | "Deck v3 in one table: home batteries fix 92% to 98% of overloaded transformers and cost 58% to 69% less than upgrading every one." | "What is the answer?" |
+| 0:15 | Panel: Network, then Today | "This is the grid we plan: one substation, 6 feeders and all 3,000 transformers, every one within its limit today." | "Is this a dashboard or a planning tool?" |
+| 0:25 | Ladder: 2030: Flag | "Add 2030's EVs and heat pumps and 292 transformers go over their limit." | "How big is the problem?" |
+| 0:35 | Ladder: + Protect (batteries) | "Home batteries, one to four units each, protect 287 of them." | "Where do batteries go?" |
+| 0:45 | Ladder: + Upgrade | "Only 5 of 3,000 transformers need a new one, and you can see exactly where they sit." | "How much of it needs a new transformer?" |
+| 0:55 | Click an orange square, then Next new transformer | "Each transformer opens to its 8 homes summed on its worst 2030 day: base, EV and heat pump against its limit, and the fix it gets." | "Which loads drive it?" |
+| 1:08 | Point at the Synthetic network tag | "The transformers are real homes' meter data grouped 8 to a transformer, and the feeders are an illustrative split; load your map and it is your network." | "Your network is made up." |
+| 1:18 | Terminal: run `bin/ewu screen` | "Same engine, live on the full meter data in seconds: 9.7% of transformers overload in the moderate case and 29.9% in the high, with the money columns deck v3 shows." | "Is this real or a cached chart?" |
+| 1:33 | Panel: Inventory; click EV home, then Electric heat | "Equipment is read from each home's hourly meter alone, and 69.07% of the 33,757 usable homes qualify for at least one program." | "Where is the appliance inventory and program list?" |
+| 1:48 | Panel: Flag; click 100%, then 140%, then back to 120% | "The overload limit is the input we know least: overloaded runs from 30.0% at a 100% limit down to 2.4% at 140%, and deck v3 reports 120% with the others as its sensitivity." | "Your headline depends on the limit you picked." |
+| 2:05 | Panel: Overview; click High, then back to Moderate | "In the high case 29.9% overload, batteries still fix 92% of them, and 2.5% of all transformers need a new one." | "Does it hold in the high case?" |
+| 2:18 | Panel: Protect | "Each overloaded transformer gets the fewest battery units that cover every day's excess, coldest nights included: 1.5 units on average here, 1.9 in the high case." | "A battery was never tested on a long cold night." |
+| 2:35 | Panel: Money | "On deck v3's basis Avangrid's cost is $34.3M against $111.0M to upgrade every overloaded transformer, 69% less; before the lease and NYSERDA the batteries cost $116.6M, so the saving rests on those two." | "Are batteries worth it at all?" |
+| 2:55 | Back to Summary | "The 2,610 priority homes also cut 8.8 MW off the yearly peak, and with your meter-to-transformer map the same command runs on it with `--map`, no other change." | "Your transformers are synthetic." |
 
 ## If something breaks
 
 - Page will not open: `bin/ewu demo --no-open`, then open `outputs/demo/ewu_demo.html` from Finder.
-- Terminal command fails or hangs: show `docs/demo/cli_output.txt`, the stored output of the same command.
-- Page will not render: one screenshot per view is in `outputs/private/demo_shots/` (network.png to money.png),
-  and every Network ladder step is in `outputs/video/network/`, on this machine only.
+- Terminal command fails or hangs: show `docs/demo/cli_output.txt`, the stored output of the same command (its
+  first block; the second is the earlier cautious method, kept in the CLI only).
+- Page will not render: one screenshot per view is in `outputs/private/demo_shots/` (deck.png for Summary, then
+  network.png to money.png), on this machine only.
 
 ## Questions after the demo
 

@@ -2,16 +2,19 @@
 numbers the code already wrote.
 
 What: collect_values() gathers every fact, private fact and config input the page may show, each under a
-      prefixed key (fact:, private:, config:); steps_built() says which data group (deck, network, inventory,
-      screen, cold snap, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
+      prefixed key (fact:, private:, config:); steps_built() says which data group (summary, network, inventory,
+      ladder, money) has what it needs; build_page() pours both into ewu/demo_template.html and writes
       outputs/demo/ewu_demo.html.
 Why:  the live demo must work with no network and no server, and every number on it must trace to code. The
       page never computes a number of its own: it shows stored values, and each shown number carries its key,
-      which checks/demo_check.py compares with the stored value.
+      which checks/demo_check.py compares with the stored value. Deck v3 is final (Gio, 2026-11-13: "v3 is final
+      numbers and app should reflect that"), so the page reads only the deck profile's facts (ewu.deck.*, the
+      numbers v3 took), the 2,610 priority homes' peak cut v3 shows, the replica facts for one validation line,
+      and the inventory; the cautious profile's facts (ewu.sensitivity, ewu.economics, ewu.coldsnap, ewu.network)
+      stay in the CLI and docs.
 How:  the values travel inside the page as one JSON block; the template's script draws the steps from them.
-      The page shows no real home: Network draws the deck profile's synthetic transformers by default (8 homes summed
-      each, ewu/deck_views.py; optional managed charging and the cautious setup, ewu/network.py, on buttons), Inventory draws a Composite home per segment (segment averages, public facts), and Protect draws one 8-home transformer's cold snap load from
-      outputs/private/facts_private.json with battery charge from the fleet facts, never a host's own charge.
+      The page shows no real home: Network draws the deck profile's synthetic transformers (8 homes summed
+      each, ewu/deck_views.py) and Inventory draws a Composite home per segment (segment averages, public facts).
       The page stays gitignored. A step whose inputs are missing shows "not built" and the keys it lacks,
       instead of failing quietly.
 """
@@ -20,27 +23,25 @@ from ewu import ROOT
 
 TEMPLATE = ROOT / "ewu" / "demo_template.html"
 PAGE = ROOT / "outputs" / "demo" / "ewu_demo.html"
-FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.",
-                 "ewu.deck.", "ewu.deck_replica.", "teammate.audit.rerun.fleet_priority.", "teammate.audit.rerun.priority_homes")
-PRIVATE_PREFIXES = ("ewu.coldsnap.example.", "ewu.network.t.", "ewu.deck.network.t.", "ewu.deck.network_managed.t.")
+FACT_PREFIXES = ("ewu.inventory.", "ewu.demo.", "ewu.deck.", "ewu.deck_replica.", "teammate.audit.rerun.fleet_priority.",
+                 "teammate.audit.rerun.priority_homes", "data.customers_usable")
+NOT_SHOWN = ("ewu.deck.managed.", "ewu.deck.network_managed.", "ewu.deck.recharge.")   # deck-profile runs v3 does not use
+PRIVATE_PREFIXES = ("ewu.deck.network.t.",)
 NEVER_SHOWN = ("soc_kwh", "ewu.demo.home_")   # one host's charge or one real home: retired by audit MUST_FIX 1
+DECK = "fact:ewu.deck.{}.limit_120.{}"
 NEEDS = {
-    "deck": ["fact:ewu.deck.moderate.limit_120.overloaded_pct", "fact:ewu.deck_replica.moderate.limit_120.overloaded_pct",
-             "fact:ewu.deck.peakcut.export_peak_drop_mw", "fact:ewu.deck.inputs.hp_increment.annual_kwh"],
+    "summary": [DECK.format("moderate", "saving_vs_upgrade_all_pct"), DECK.format("high", "nyseg_avangrid_cost_musd"),
+                "fact:teammate.audit.rerun.fleet_priority.peak_cut_mw", "fact:teammate.audit.rerun.priority_homes",
+                "fact:ewu.deck_replica.moderate.limit_120.overloaded_pct"],
     "network": ["fact:ewu.deck.network.transformers_drawn", "fact:ewu.deck.network.moderate.upgrade.upgrade",
                 "private:ewu.deck.network.t.state", "private:ewu.deck.network.t.feeder", "private:ewu.deck.network.t.base_kw",
                 "private:ewu.deck.network.t.over_today"],
     "inventory": ["fact:ewu.inventory.homes", "fact:ewu.inventory.any_program_pct", "fact:ewu.demo.home_count",
                   "fact:ewu.demo.composite_0.flags", "fact:ewu.demo.composite_0.winter_day_kw"],
-    "screen": ["fact:ewu.sensitivity.moderate.random.margin_115.flagged_pct",
-               "fact:ewu.sensitivity.high.same_segment.margin_150.upgrade_left_pct",
-               "fact:ewu.sensitivity.moderate.random.margin_115.new_from_stagger_pct"],
-    "coldsnap": ["private:ewu.coldsnap.example.load_kw", "private:ewu.coldsnap.example.hosts_2.net_kw",
-                 "fact:ewu.coldsnap.moderate.staggered.margin_115.hosts_2.soc_median_pct_by_hour",
-                 "fact:ewu.coldsnap.moderate.staggered.margin_115.hosts_1.cleared_pct"],
-    "money": ["fact:ewu.economics.headline.ladder_share_pct.base", "fact:ewu.sensitivity.cells",
-              "fact:ewu.economics.battery_vs_upgrade.mid.tie_unit_usd_equal_life",
-              "fact:ewu.economics.high.same_segment.margin_150.high.discounted.ladder_share_pct"],
+    "ladder": ["fact:ewu.deck.high.limit_140.fixed_units_3_4_pct", "fact:ewu.deck.moderate.limit_100.upgrade_of_overloaded_pct",
+               "fact:ewu.deck.high.limit_110.winter_of_overloaded_pct", "fact:ewu.deck.moderate.limit_120.average_units"],
+    "money": [DECK.format("moderate", "nyseg_gross_musd"), DECK.format("high", "nyseg_net_without_nyserda_musd"),
+              "fact:ewu.deck.high.limit_140.saving_vs_upgrade_all_pct", "fact:ewu.deck.prices.upgrade_counted_usd"],
 }
 
 
@@ -63,7 +64,8 @@ def collect_values(config, root=ROOT):
     """Every value the page may show, under fact:, private: or config: keys."""
     facts = read_json(root / "facts" / "facts.json")
     private = read_json(root / "outputs" / "private" / "facts_private.json")
-    values = {f"fact:{k}": v["value"] for k, v in facts.items() if k.startswith(FACT_PREFIXES) and not k.endswith(".seconds")}
+    values = {f"fact:{k}": v["value"] for k, v in facts.items()
+              if k.startswith(FACT_PREFIXES) and not k.startswith(NOT_SHOWN) and not k.endswith(".seconds")}
     values |= {f"private:{k}": v["value"] for k, v in private.items()
                if k.startswith(PRIVATE_PREFIXES) and not any(word in k for word in NEVER_SHOWN)}
     values |= {f"config:{k}": v for k, v in config_inputs(config).items()}

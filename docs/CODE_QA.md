@@ -156,20 +156,19 @@ precision shown. `demo_check.py` renders the demo page in headless Chrome, binds
 and compares it with the stored value. `config_check.py` opens the source of every config input.
 
 Code: `analysis/facts.py:18 def record(key, value`, `checks/trace_numbers.py:59 def matching_key`,
-`checks/demo_check.py:99 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
+`checks/demo_audit.py:101 def audit_dom`, `checks/config_check.py:83 def problem_with_source`.
 
 ### Q13. Where does customer data go?
 
 Nowhere off this machine. Per-home and per-transformer values go through `record(..., private=True)` into
 outputs/private/, which git ignores, and a test checks git really ignores it. Commands print aggregates only, and
 a test checks the inventory printout holds no customer number. The demo page shows no real home: the Network view draws
-synthetic transformers (8 homes summed each), Inventory draws Composite homes (segment averages) and the cold
-snap step draws fleet battery charge, never a host's own; a test
-checks the page carries neither. The page is built locally and is gitignored.
+synthetic transformers (8 homes summed each) and Inventory draws Composite homes (segment averages); a test
+checks the page carries no single home and no host's battery charge. The page is built locally and is gitignored.
 
 Code: `analysis/facts.py:19 path = PRIVATE_FACTS if private else FACTS`, `.gitignore:21 outputs/private/`,
-`ewu/coldsnap.py:167 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
-`tests/test_inventory.py:111 def test_printed_table_holds_aggregates_only`,
+`ewu/deck_views.py:84 private=True`, `tests/test_house_rules.py:82 def test_private_outputs_are_ignored_by_git`,
+`tests/test_inventory.py:112 def test_printed_table_holds_aggregates_only`,
 `tests/test_inventory.py:97 def test_demo_page_carries_no_single_home_and_no_host_charge`.
 
 ### Q14. Does it run fast enough to use live, and does it scale?
@@ -179,7 +178,7 @@ time as `ewu.cli.screen_seconds` in facts, and fails at 60 s. Loading is
 summed per transformer with one sparse matrix product per chunk of homes, and every later step works on arrays
 of transformers by hours, so cost grows with the number of transformers, not with loops over homes.
 
-Code: `checks/demo_check.py:134 def time_live_screen`, `checks/demo_check.py:187-188 checks.screen_seconds_max`,
+Code: `checks/demo_check.py:41 def time_live_screen`, `checks/demo_check.py:95 checks.screen_seconds_max`,
 `ewu/stress.py:35-44 out += pick @ rows`.
 
 ### Q15. Random groups change with the seed. How stable are the results?
@@ -194,19 +193,19 @@ Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:18
 
 ### Q16. How is the network built and what changes with our real map?
 
-The Network view draws the live screen's own network, not a picture of one. `run_network` calls the same setup
-and the same ladder states as `bin/ewu screen` for the demo case (moderate 2030, rating x 1.15, random grouping,
-seed 0), so its 3,000 transformers and 24,000 homes split into 2,218 within limit, 615 shifted, 149 protected by
-batteries and 18 for a new transformer, which are the screen's counts; a test holds them equal. Feeders are an
+The Network view draws the deck screen's own network, not a picture of one. `deck_states` calls the same setup and
+the same run as `bin/ewu screen` (the deck profile deck v3 uses: moderate 2030, a 120% limit, random grouping,
+seed 5), so its 3,000 transformers and 24,000 homes split into 2,708 within limit, 287 protected by home
+batteries and 5 for a new transformer, which are the screen's counts; a test holds them equal. Feeders are an
 illustrative split: transformer ids are cut into 6 equal blocks, a config input marked as an assumption, because
 the data has no feeder map. The page draws one substation, a trunk per feeder and every transformer on a
-lateral, and its `look` rule is the same as `looks` in Python; `demo_check.py` counts the drawn transformers in
-each state at every ladder step and fails when they differ from the facts. With your meter-to-transformer map,
+lateral, and its `look` rule is the same as `view_counts` in Python; `demo_check.py` counts the drawn transformers
+in each state at every ladder step and fails when they differ from the facts. With your meter-to-transformer map,
 `bin/ewu screen --map` replaces the random groups through `load_map`; the feeders would then come from your map
 instead of the equal-block split.
 
-Code: `ewu/network.py:95 def run_network`, `ewu/network.py:98 screen.screen_setup`,
-`ewu/network.py:102 sensitivity.ladder_states_for_one_run`, `ewu/network.py:30 def feeder_of`,
-`ewu/network.py:42 def looks`, `config/ewu.yaml:138 feeders:`, `ewu/demo_template.html:277 function look`,
-`ewu/demo_template.html:302 function networkSvg`, `checks/demo_check.py:103 net_view and`,
-`tests/test_network.py:28 def test_state_counts_equal_the_screen_for_the_demo_seed`, `ewu/feeders.py:41 def load_map`.
+Code: `ewu/deck_views.py:23 def deck_states`, `ewu/deck_views.py:26 deck.run_deck`,
+`ewu/deck_views.py:34 def view_counts`, `ewu/network.py:30 def feeder_of`, `config/ewu.yaml:138 feeders:`,
+`ewu/demo_template.html:283 function look`, `ewu/demo_template.html:307 function networkSvg`,
+`checks/demo_audit.py:106 net_view and`,
+`tests/test_network.py:97 def test_the_deck_network_counts_equal_the_deck_screen`, `ewu/feeders.py:41 def load_map`.

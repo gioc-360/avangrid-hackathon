@@ -34,7 +34,7 @@ bin/ewu tophours                                   # MW the battery hosts cut in
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
 bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
 bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
-bin/ewu demo                                       # the offline demo page; opens on the Network view
+bin/ewu demo                                       # the offline demo page, deck v3's numbers only; opens on Summary
 make prototype                                     # rebuild all of the above from data/processed
 ```
 
@@ -50,9 +50,12 @@ make prototype                                     # rebuild all of the above fr
 Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
 one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
 traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
-The demo page opens on Network: one substation, 6 illustrative feeders and every synthetic transformer of the
-live screen, recolored by Today, 2030: Flag, + Shift, + Protect, + Upgrade; click a transformer for its 8 homes
-summed on its worst 2030 day. Each view keeps its assumptions in one closed "How this is computed".
+The demo page shows deck v3's numbers only, all from the engine's deck profile (the cautious profile stays in the
+CLI, `--profile cautious`). It opens on Summary, one column per scenario; Network then draws one substation, 6
+illustrative feeders and every synthetic transformer of the deck profile, recolored by Today, 2030: Flag,
++ Protect (batteries), + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
+Protect, Upgrade and Money switch scenario and overload limit. Each view keeps its assumptions in one closed
+"How this is computed".
 The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
 file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.
 

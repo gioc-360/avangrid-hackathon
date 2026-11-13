@@ -20,27 +20,25 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 # (hash, title, what it answers, who uses it, what to click)
 VIEWS = [
-    ("step=deck", "Deck", "The deck's headline numbers, recomputed by our engine next to the numbers from her code.",
-     "Whoever presents: proves the slides reproduce.", "Hover a number to see the fact it comes from."),
+    ("step=deck", "Summary", "Deck v3's headline numbers, one column per scenario, all from our engine's deck profile.",
+     "Whoever presents: the slides and the tool show the same numbers.", "Hover a number to see the fact it comes from."),
     ("step=network&net=today", "Network: today", "The whole simulated grid: one substation, six feeders, 3,000 transformers of 8 real homes each.",
      "Distribution planner.", "The buttons above the diagram step through the plan on the same network."),
     ("step=network&net=flag", "Network: 2030 Flag", "Which transformers go over their limit once 2030 EVs and heat pumps are added.",
      "Distribution planner.", "Click a transformer to see its worst day against its limit (keep that view on the laptop)."),
-    ("step=network&net=upgrade", "Network: after every fix", "What is left for a new transformer after batteries (and optional managed charging) do their part.",
+    ("step=network&net=upgrade", "Network: after every fix", "What is left for a new transformer after home batteries do their part.",
      "Planner and finance.", "Compare the counts in the top right with the Flag view."),
     ("step=overview", "Overview", "The plan on one screen: problem size, fixes in order, cost against upgrading everything.",
-     "Anyone new to the tool.", "Open “How this is computed” for assumptions and sources."),
+     "Anyone new to the tool.", "Switch scenario and overload limit; open “How this is computed” for assumptions."),
     ("step=inventory", "Inventory", "What equipment each kind of home has, read from hourly meter data, and which programs it qualifies for.",
      "Customer programs team.", "Pick a segment; homes shown are composites of segment averages, not real customers."),
-    ("step=flag", "Flag", "How many transformers overload, as a range over transformer sizing and grouping.",
-     "Distribution planner.", "Switch scenario and sizing to see the range."),
-    ("step=shift", "Shift", "How much managed (staggered) EV charging fixes, an optional scenario in the team setup.",
-     "Customer programs team.", "Compare unmanaged, timer and staggered charging."),
-    ("step=protect", "Protect", "Battery hosts: how many units each transformer needs and whether they last through the Feb 7-8 cold snap.",
-     "Planner and programs team.", "Choose 1 or 2 host homes per transformer."),
-    ("step=upgrade", "Upgrade", "The transformers nothing else can fix.", "Planner and finance.", "Read with the Money view."),
-    ("step=money", "Money", "Cost of the plan against upgrading every overloaded transformer: gross, net without NYSERDA, Avangrid net.",
-     "Finance and regulatory.", "Open “How this is computed” for prices; prices are placeholders to confirm."),
+    ("step=flag", "Flag", "How many transformers overload, and how that moves with the overload limit.",
+     "Distribution planner.", "Switch scenario and limit to see the range."),
+    ("step=protect", "Protect", "How many overloaded transformers home batteries fix, and with how many units each.",
+     "Planner and programs team.", "Read the bar: fixed by a few units, by more, or upgraded."),
+    ("step=upgrade", "Upgrade", "The transformers batteries cannot fix.", "Planner and finance.", "Read with the Money view."),
+    ("step=money", "Money", "Deck v3's money: gross, net without NYSERDA and Avangrid cost against upgrading every overloaded transformer.",
+     "Finance and regulatory.", "Open “How this is computed” for prices and the money basis."),
 ]
 
 
@@ -66,7 +64,7 @@ def page_html(shots):
              "<tr><td>GIVEN</td><td>In the hackathon data: hourly meter data, weather, labeled homes</td></tr>"
              "<tr><td>DERIVED</td><td>Computed from given data: equipment inventory, segments, EV sessions, her EV and heat pump tables</td></tr>"
              "<tr><td>SIMULATED</td><td>Modeled, not observed: transformers and feeders (no map was given), 2030 adopters, overloads and fixes</td></tr>"
-             "<tr><td>ASSUMED</td><td>Placeholders to confirm with Avangrid: ratings rule, 120% limit, prices, discount rate</td></tr></table>"
+             "<tr><td>ASSUMED</td><td>To confirm with Avangrid: kW read as kVA, the overload limit, prices, discount rate</td></tr></table>"
              "<p class='lead'>Run it: <code>bin/ewu demo</code> opens this page; <code>bin/ewu screen</code> runs the plan live in seconds; "
              "<code>bin/ewu plan --showcase</code> writes the action lists (home lists use simulated SIM- homes).</p>")
     body = "".join(

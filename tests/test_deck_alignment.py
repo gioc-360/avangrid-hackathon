@@ -155,3 +155,33 @@ def test_unit_bands_add_up_to_fixed(result, i):
     c = cell(result, i)
     assert c["fixed_units_1_2"] + c["fixed_units_3_4"] == c["fixed"]
     assert c["fixed"] + c["upgrades"] == c["overloaded"]
+
+
+@pytest.mark.parametrize("limit", config_value("profiles.deck.overload_limit_options", CONFIG))
+@pytest.mark.parametrize("scenario", SCENARIOS)
+def test_recorded_money_and_shares_are_deck_v3s(scenario, limit):
+    """Deck v3's money() (deck/v3/build_fact_map.py): same counts, same formula, so the page's money is v3's."""
+    facts = {k: v["value"] for k, v in json.loads((ROOT / "facts/facts.json").read_text()).items()}
+    f = lambda name: facts[f"ewu.deck.{scenario}.{deck_screen.limit_label(limit)}.{name}"]
+    deck_cfg = lambda name: config_value(f"profiles.deck.{name}", CONFIG)
+    u = deck_cfg("upgrade_usd") * facts["ewu.deck.prices.factor"] / facts["ewu.deck.prices.life_factor"]
+    scale = facts["ewu.deck.nyseg_transformers"] / deck_cfg("transformer_count") / 1e6
+    net = (f("batteries") * (deck_cfg("battery_unit_usd") - facts["ewu.deck.prices.lease_pv_usd"] - deck_cfg("nyserda_usd_unit"))
+           + f("upgrades") * u) * scale
+    upall = f("overloaded") * u * scale
+    assert abs(f("nyseg_avangrid_cost_musd") - net) <= 0.06 and abs(f("nyseg_upgrade_all_musd") - upall) <= 0.06
+    assert abs(f("saving_vs_upgrade_all_pct") - 100 * (1 - net / upall)) <= 0.02
+    assert abs(f("fixed_units_1_2_pct") + f("fixed_units_3_4_pct") + f("upgrades_pct") - f("overloaded_pct")) <= 0.03
+
+
+def test_the_page_carries_deck_profile_numbers_only():
+    """Gio, 2026-11-13: "v3 is final numbers and app should reflect that.. no more of the old numbers"."""
+    from ewu import demo_page
+    values = demo_page.collect_values(CONFIG)
+    cautious = ("ewu.sensitivity.", "ewu.economics.", "ewu.coldsnap.", "ewu.network.", "ewu.screen.", "ewu.deck.managed.",
+                "ewu.deck.network_managed.", "ewu.deck.recharge.")
+    assert [k for k in values if k.split(":", 1)[1].startswith(cautious)] == []
+    assert not [k for k in values if k.startswith("config:") and k[7:].startswith(("transformer.", "battery.", "shift."))
+                and k[7:] in demo_page.TEMPLATE.read_text()]
+    saving = sorted(values[f"fact:ewu.deck.{s}.limit_120.saving_vs_upgrade_all_pct"] for s in SCENARIOS)
+    assert [round(x) for x in saving] == [58, 69] and round(values["fact:teammate.audit.rerun.fleet_priority.peak_cut_mw"], 1) == 8.8

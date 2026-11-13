@@ -21,6 +21,15 @@ FIELDS = {"overloaded_pct": "% of transformers", "fixed_of_overloaded_pct": "% o
           "fixed_units_1_2": "transformers fixed by 1 or 2 IQ 10C units", "fixed_units_3_4": "transformers fixed by 3 or 4 IQ 10C units"}
 
 
+SHARES = {"fixed_units_1_2_pct": ("fixed_units_1_2", "transformers"), "fixed_units_3_4_pct": ("fixed_units_3_4", "transformers"),
+          "upgrades_pct": ("upgrades", "transformers"), "upgrade_of_overloaded_pct": ("upgrades", "overloaded")}
+
+
+def band_shares(cell):
+    """Slide 12's bars as % of all transformers (fixed by 1 or 2 units, by 3 or 4, upgrade) and upgrades as % of overloaded."""
+    return {name: deck.percent_of(cell[part], cell[whole]) for name, (part, whole) in SHARES.items()}
+
+
 def limit_label(limit):
     return f"limit_{int(round(limit * 100))}"
 
@@ -48,11 +57,15 @@ def record_deck_screen(result, seconds):
         key = f"{root}.{scenario}.{limit_label(limit)}"
         for name, unit in FIELDS.items():
             record(f"{key}.{name}", cell[name], unit, how)
+        for name, value in band_shares(cell).items():
+            record(f"{key}.{name}", value, f"% of {SHARES[name][1]}", how)
         m = result["money"][(scenario, limit)]
         for column, value in m["nyseg_musd"].items():
             record(f"{key}.nyseg_{column}_musd", value, "$M across NYSEG", "15 years at 7%, upgrade counted 15 of 40 years; " + how)
         record(f"{key}.nyseg_batteries", m["nyseg_batteries"], "IQ 10C units across NYSEG", how)
         record(f"{key}.avangrid_share_of_upgrade_all_pct", m["avangrid_share_of_upgrade_all_pct"], "% of upgrading every overloaded transformer", how)
+        record(f"{key}.saving_vs_upgrade_all_pct", m["saving_vs_upgrade_all_pct"], "% less than upgrading every overloaded transformer",
+               "1 - Avangrid cost / upgrade-all, the deck v3 basis; " + how)
     if result["managed"]:
         return
     prices = next(iter(result["money"].values()))
