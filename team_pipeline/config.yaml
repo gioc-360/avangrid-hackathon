@@ -1,0 +1,49 @@
+# Model settings. Every assumption lives here so results can be rerun when answers change.
+# Status: CONFIRMED = from Avangrid (challenge docs or office hours); ASSUMED = team assumption; OPEN = still to confirm.
+
+data:
+  utility: NYSEG                      # CONFIRMED office hours 11/12
+  customers_in_scope: [1-10000, 20001-35725]   # CONFIRMED: ignore 10001-20000 (duplicate file)
+  min_valid_share: 0.90               # ASSUMED: drop customers missing more than 10% of hours
+
+rate:                                 # CONFIRMED: flat rate only (NYSEG SC1 Standard)
+  name: NYSEG SC1 Standard residential
+  customer_charge_usd_month: 19.00    # NYSEG rate summary, effective 2026-06-01
+  bill_issuance_usd_month: 0.89
+  delivery_usd_kwh: 0.09138           # NYSEG rate summary, effective 2026-06-01
+  supply_usd_kwh: 0.121769            # NYSEG bill explainer, Jan 2026 (varies monthly)
+  other_usd_kwh: 0.018395             # recovery + MFC + SBC + transition + RDM, Jan 2026 explainer
+  all_in_variable_usd_kwh: 0.2315
+  time_varying: false
+
+battery:                              # Enphase IQ Battery 10C, from challenge statement
+  unit_energy_kwh: 10.08
+  unit_power_kw: 3.84
+  units_options: [1, 2]               # OPEN: units per home to be confirmed; model tests both
+  round_trip_efficiency: 0.894
+  reserve_share: 0.20                 # CONFIRMED office hours 11/12
+  grid_charging: true                 # CONFIRMED: not solar only
+  export_to_grid: true                # CONFIRMED: can discharge to the grid
+  dispatch_mode: event_days           # ASSUMED: event days only, like ConnectedSolutions (30 to 60 events)
+  event_days_per_year: 60             # ASSUMED: 60 days with highest combined load, any season
+  hours_per_event_day: 6              # ASSUMED: energy spread over each event day's top 6 system hours
+  charge_hours_overnight: 7           # ASSUMED: slow charge 0 to 7am, about 2.3 kW (under 3 kVA)
+
+peak:
+  basis: customer_own_peak_any_season # CONFIRMED office hours: season does not matter, target where peak is highest
+  report_system_peak_too: true
+
+targets:
+  top_hours: 50                       # CONFIRMED approach (Scott): reduce the top N system hours
+candidates:
+  priority: {min_load_top50_kw: 4.0, min_battery_cut_kw: 2.0}
+  secondary: {min_load_top50_kw: 3.0, min_battery_cut_kw: 1.5}
+  one_unit_if_share_of_two_unit_cut: 0.85
+flexibility:
+  thermostat_share_of_ac_load: 0.25   # ASSUMED: setpoint +2 to 4F (Scott); validate with NYSEG program data
+  thermostat_enrollment: 0.30         # ASSUMED
+  ev_managed_charging_enrollment: 0.50 # ASSUMED
+capacity:
+  value_usd_kw_season: [50, 275]      # ASSUMED range: National Grid Upstate NY $50, Massachusetts $275 (ConnectedSolutions)
+  service_limit_incremental_kva: 3.0  # challenge statement; measurement basis OPEN
+  power_factor: 1.0                   # ASSUMED: 1 kWh in an hour ~ 1 kVA

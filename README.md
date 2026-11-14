@@ -12,8 +12,8 @@ meter-to-transformer map; `bin/ewu screen --map` takes a real one.
 
 ```
 ┌────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────┐
-│ analysis/      │──▶│ ewu/           │──▶│ facts/         │──▶│ results/       │   │ checks/ tests/ │
-│ meter data to  │   │ the engine:    │   │ facts.json:    │   │ aggregate      │   │ every input    │
+│ analysis/,     │──▶│ ewu/           │──▶│ facts/         │──▶│ results/       │   │ checks/ tests/ │
+│ team_pipeline/ │   │ the engine:    │   │ facts.json:    │   │ aggregate      │   │ every input    │
 │ features,      │   │ flag, place,   │   │ every number,  │   │ inputs and     │   │ sourced, every │
 │ classes        │   │ upgrade, price │   │ unit, method   │   │ outputs        │   │ number traced  │
 └────────────────┘   └────────────────┘   └────────────────┘   └────────────────┘   └────────────────┘
@@ -97,9 +97,9 @@ The modules named `deck*.py` hold the battery plan, the profile the team chose a
 profile stays available as `--profile cautious`. The reasoning is in `docs/FINDINGS.md`, the one-page case in
 `docs/BUSINESS_CASE.md`, likely code questions with file:line answers in `docs/CODE_QA.md`.
 
-Classes and segments in the team's final numbers (16,833 central AC homes, seven segments) come from a teammate's
-classification and segmentation run; its aggregate tables are `results/segment_*.csv` and its saved inputs feed the
-engine through `data/processed`. `analysis/` is the team's first, independent pass at Parts 1 to 3 (readout in
+Classes, segments and the 2,610-home battery ranking in the team's final numbers (16,833 central AC homes, seven
+segments) come from Kayin Bejide's pipeline in `team_pipeline/` (its README maps every script); its aggregate tables
+are `results/segment_*.csv`, and two of its outputs feed the engine through `data/processed`. `analysis/` is the team's first, independent pass at Parts 1 to 3 (readout in
 `outputs/readout.txt`); its rules differ (for example 10,961 central AC homes), so its counts are not the final ones.
 
 ## The checks (`make check`)
