@@ -87,7 +87,7 @@ def run_inventory_command(args):
 def run_screen_command(args):
     if args.replica or args.profile == "replica":
         from ewu import deck_replica_run
-        deck_replica_run.main(args.tiers)
+        deck_replica_run.main("teammate" if args.tiers == "team" else args.tiers)   # "teammate" stays the code value
         return 0
     if args.profile == "battery":
         from ewu import deck_screen
@@ -168,8 +168,8 @@ def main(argv=None):
     scr.add_argument("--grouping", default="random", choices=("random", "same_segment"))
     scr.add_argument("--map", help="CSV with meter_id, transformer_id, kva; replaces the synthetic transformers (cautious)")
     add_profile_options(scr, replica=True)
-    scr.add_argument("--replica", action="store_true", help="profile replica: the teammate's model followed exactly")
-    scr.add_argument("--tiers", default="teammate", choices=("teammate", "ours"), help="replica: whose EV and heat tiers")
+    scr.add_argument("--replica", action="store_true", help="profile replica: the team's model followed exactly")
+    scr.add_argument("--tiers", default="team", choices=("team", "ours"), type=lambda s: s.replace("teammate", "team"), help="replica: whose EV and heat tiers")
     scr.set_defaults(run=run_screen_command)
     net = commands.add_parser("network", help="the live screen's synthetic network, transformer by transformer, for the page")
     net.add_argument("--scenario", default=None, choices=("moderate", "high"), help="battery: scenario (default demo.scenario)")

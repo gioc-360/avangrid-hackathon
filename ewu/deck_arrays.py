@@ -49,7 +49,7 @@ def verify_array(name, path, config):
     want = config_value(f"profiles.deck.{name}_sha256", config)
     got = sha256_of(path)
     if got != want:
-        raise ValueError(f"{path.name} sha256 {got[:12]} is not the teammate's {want[:12]} in config/ewu.yaml; "
+        raise ValueError(f"{path.name} sha256 {got[:12]} is not the team's {want[:12]} in config/ewu.yaml; "
                          f"rerun bin/ewu arrays or remove the file to use the derived array")
     return got
 
@@ -91,13 +91,13 @@ def main(folder=None):
     for name, item in found.items():
         print(f"{name:<14} {len(item['values']):>5} values, CSV twin within {item['twin_diff']:.1e}, sha256 {item['sha256'][:12]}, "
               f"copied to data/processed/{name}.npy")
-    print("Provenance: given by the teammate (ewu_inputs.py, 2026-11-13), built from the hackathon meter data. "
+    print("Provenance: given by the team (ewu_inputs.py, 2026-11-13), built from the hackathon meter data. "
           "Set profiles.deck.*_sha256 in config/ewu.yaml to these values once; every battery plan run then checks them.")
     return found
 
 
 def add_command(commands):
     """`bin/ewu arrays [--folder PATH]`."""
-    arr = commands.add_parser("arrays", help="copy and check the teammate's ev_start_pmf and hp_increment arrays (read only)")
-    arr.add_argument("--folder", default=None, help="teammate's folder (default profiles.deck.teammate_folder)")
+    arr = commands.add_parser("arrays", help="copy and check the team's ev_start_pmf and hp_increment arrays (read only)")
+    arr.add_argument("--folder", default=None, help="the team's folder (default profiles.deck.teammate_folder)")
     arr.set_defaults(run=lambda args: main(args.folder) and 0)

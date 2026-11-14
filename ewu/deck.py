@@ -51,8 +51,8 @@ def array_source(name, config):
 
 def array_label(origin):
     """How a printout names an array's origin."""
-    return ("from the teammate (data/processed, sha256 checked; ewu_inputs.py 2026-11-13, built from the meter data)"
-            if origin == "teammate" else "derived from our data (the teammate's file is absent)")
+    return ("the team's ewu_inputs.py (data/processed, sha256 checked; 2026-11-13, built from the meter data)"
+            if origin == "teammate" else "derived from our data (the team's file is absent)")
 
 
 def ev_start_pmf(inputs, config):

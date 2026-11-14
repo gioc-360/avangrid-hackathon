@@ -93,7 +93,7 @@ def seed_spread(config):
 def record_replica(result, rows_equal, steps, spread, tiers, seconds, config):
     from analysis.facts import record, forget
     forget("ewu.deck_replica.")
-    how = f"bin/ewu screen --replica: the teammate's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers {tiers}"
+    how = f"bin/ewu screen --replica: the team's ewu_sim_bo2.py rebuilt in ewu/deck_replica.py; tiers {tiers}"
     for s, (_, cells, money) in result.items():
         for lim, cell in cells.items():
             key = f"ewu.deck_replica.{s}.limit_{int(round(lim * 100))}"
@@ -118,12 +118,12 @@ def record_replica(result, rows_equal, steps, spread, tiers, seconds, config):
 
 
 def print_replica(result, rows_equal, steps, tiers, config):
-    print(f"EWU screen, replica profile: the teammate's ewu_sim_bo2.py followed exactly (groups seed "
+    print(f"EWU screen, replica profile: the team's ewu_sim_bo2.py followed exactly (groups seed "
           f"{deck_replica.replica_value('grouping_seed', config)}, adoption seed {deck_replica.replica_value('adoption_seed', config)}, home-mean fill, "
           f"167 kVA cap, {deck_replica.replica_value('unit_kwh', config)} kWh, her winter rule)")
-    print("Tiers: " + ("the teammate's customer_classification.csv, read in place from her folder, never copied"
+    print("Tiers: " + ("the team's customer_classification.csv, read in place from its folder, never copied"
                        if tiers == "teammate" else "our inventory flags (Level 2 EV, electric heat)"))
-    print("Arrays: ev_start_pmf and hp_increment from the teammate (sha256 checked)\n")
+    print("Arrays: ev_start_pmf and hp_increment from the team's ewu_inputs.py (sha256 checked)\n")
     rows = [("Overloaded, %", "overloaded_pct", "{:.2f}"), ("Fixed without an upgrade, %", "fixed_of_overloaded_pct", "{:.2f}"),
             ("Average units per fixed", "average_units", "{:.2f}"), ("Winter driven (her rule), %", "winter_of_overloaded_pct", "{:.2f}")]
     print(f"{'At 1.20':<30} {'moderate':>10} {'high':>10}")

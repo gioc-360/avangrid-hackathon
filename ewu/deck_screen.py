@@ -48,6 +48,7 @@ def run_deck_screen(inputs, config, managed=None):
             cells[(scenario, limit)] = cell
             money[(scenario, limit)] = deck_money.price_deck(cell, config)
     return {"cells": cells, "money": money, "peak": peakcut.run_peak_cut(inputs, config), "setup": setup,
+            "matrix": tuple(inputs["load"].shape),
             "managed": deck.deck_value("managed_charging", config) if managed is None else managed}
 
 
@@ -97,16 +98,17 @@ def peak_cut_line(config):
         return "Summer peak cut: not recorded yet; run checks/teammate_audit.py"
     homes, peak, top = (facts[k]["value"] for k in keys)
     return (f"Summer peak cut, {homes:,} priority homes x {config_value('profiles.deck.units_per_host', config)} units, "
-            f"the teammate's ranking rerun on our data: export allowed {peak:.2f} MW off the yearly peak "
+            f"the team's ranking rerun on our data: export allowed {peak:.2f} MW off the yearly peak "
             f"(mean over the top {config_value('profiles.deck.peak_hours', config)} hours {top:.2f} MW)")
 
 
 def print_deck_screen(result, config, limit, seconds):
-    setup = result["setup"]
+    setup, (homes, hours) = result["setup"], result["matrix"]
+    print(f"Read {homes:,} homes, hourly meters, {hours:,} hours")
     print(f"EWU screen, battery plan: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
           f"standard kVA rating, overloaded above {limit:.2f} x rating; managed charging {'on' if result['managed'] else 'off'}")
     origins = set(setup["origins"].values())
-    print("The teammate's EV start-hour shares and heat pump curve: " + (deck.array_label(origins.pop()) if len(origins) == 1 else
+    print("EV start-hour shares and heat pump curve: " + (deck.array_label(origins.pop()) if len(origins) == 1 else
           "; ".join(f"{INPUT_WORDS.get(name, name)} {deck.array_label(origin)}" for name, origin in setup["origins"].items())) + "\n")
     rows = [("Overloaded, % of transformers", "overloaded_pct", "{:.1f}"), ("Fixed by batteries, %", "fixed_of_overloaded_pct", "{:.1f}"),
             ("Average units per fixed", "average_units", "{:.2f}"), ("Winter nights, % of overloaded", "winter_of_overloaded_pct", "{:.1f}")]
