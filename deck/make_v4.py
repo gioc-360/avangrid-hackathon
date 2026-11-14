@@ -81,6 +81,7 @@ swap(2, 18, "with 2 units each", "with 2 units each, export allowed")
 # Slide 4: classification
 swap(4, 3, "and about 1,300 likely own an EV", "and 1,331 show EV charging (about 724 expected owners)")
 swap(4, 152, "About 31% of charging sessions", "About 29% of charging sessions")
+swap(4, 152, "triple their use above 75", "more than double their use above 75")   # 25.5 -> 56.3 kWh a day (2.2x)
 # Slide 5: bubbles are top-100-hour averages (A6), so the axes and the average-home lines use that basis too
 swap(5, 221, "at the summer peak (July 2, 5pm)", "in the top 100 summer system hours")
 swap(5, 222, "at the winter peak (Jan 25, 5pm)", "in the top 100 winter system hours")
@@ -98,9 +99,8 @@ vline.left = int(X0 + avg_s * XU)
 label.left = vline.left + 45720
 hline.top = int(Y0 - avg_w * YU)
 log.append((5, "average lines 2.33 / 1.68 kW", f"{avg_s:.2f} / {avg_w:.2f} kW"))
-# Slide 6: share of the summer peak from the A6 table
-two_ac = (seg["heavy"][0] * seg["heavy"][1] + seg["evening"][0] * seg["evening"][1]) / (avg_s * homes)
-swap(6, 3, "but 52% of the summer peak", f"but {round(100 * two_ac)}% of the summer peak")
+# Slide 6 keeps "52% of the summer peak": like the 27% shares on slides 5 and 6 it is the segment file's peak-share
+# column (25.42 + 26.77), not kW x homes from A6 (which gives 54%), so all three shares stay on one basis.
 # Slide 7: a date axis, one label per month (the old category axis put a label every 30 days, so "Oct 25" showed twice)
 import datetime as dt
 from lxml import etree
@@ -128,8 +128,8 @@ for tag, val in (("majorTimeUnit", "months"), ("majorUnit", "1"), ("baseTimeUnit
     offset.addnext(el)
 log.append((7, "axis: a label every 30 days", "date axis, one label per month"))
 # Slide 8 and A8: recharge rate, 16.1 kWh / 0.894 / 7 h
-swap(8, 9, "about 2.3 kW", "about 2.6 kW")
-swap(24, 5, "about 2.3 kW", "about 2.6 kW")
+swap(8, 9, "about 2.3 kW", "up to 2.6 kW")
+swap(24, 5, "about 2.3 kW", "up to 2.6 kW")
 # Slide 9 and 15: the 8.8 MW fleet cut lets batteries export in turns
 swap(9, 7, "peak cut (11%), 2,610 homes", "peak cut (11%), 2,610 homes, export allowed")
 swap(15, 6, "summer peak cut today", "summer peak cut, export allowed")
@@ -138,6 +138,10 @@ swap(10, 19, "≈ $3,000", f"${per_tf[0]:,.0f} to ${per_tf[1]:,.0f}")
 swap(10, 20, "vs a $15,000 upgrade", f"vs ${upgrade_pv:,} for a $15,000 upgrade, same 15-year basis")
 swap(10, 24, "($3,000 over 15 years)", f"(${lease:,} over 15 years)")
 swap(36, 29, "lease ($3,000)", f"lease (${lease:,})")
+swap(10, 28, "Pays: 58% to 69% below upgrading", "Pays: 58% to 69% below upgrading, fleet wide")
+swap_notes(36, "($3,000 present value)", f"(${lease:,} present value)")
+swap_notes(10, "(2, 11, 12, 13, 15, A13)", "(2, 10, 12, 13, A11, A13)")
+swap_notes(9, "doubles the cut", "nearly doubles the cut")
 # Slide 12: results from the engine run
 swap(12, 3, "94% to 98%", FIX)
 swap(12, 3, "59% to 71%", SAVE)
@@ -172,6 +176,10 @@ swap(29, 5, "in every row", "in 7 of 10 rows")
 swap(33, 19, "the one source of every number", "the one source of every transformer and money number")
 swap(33, 21, "deck setup", "battery plan")
 swap(35, 75, "deck v3 equals facts", "slides equal facts")
+swap(34, 39, "slide 9", "slide 8")
+swap_notes(34, "checks/teammate_rerun.py reruns that ranking on our load matrix and checks/teammate_audit.py records the count",
+           "a separate check reruns that ranking on the same meter data and records the count")
+swap_notes(34, "goes only to outputs/private", "stays on Avangrid's machines")
 swap_notes(34, "Replaces v3 slide A18 'How the engine works' (the picture) with three editable slides: A18a top level, A18b mid level, A18c low level. ",
            "Three levels: A18a top, A18b mid, A18c low. ")
 swap_notes(35, "deck/v3/independent_check.py checks deck v3's numbers against facts", "an independent check compares the slides' numbers against facts")

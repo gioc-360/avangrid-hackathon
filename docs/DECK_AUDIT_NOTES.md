@@ -63,7 +63,7 @@ method's name, and no banned pattern matches it. Gio's call whether the two shou
 ## Not changed, for the audit
 
 - `docs/BUSINESS_CASE.md` (from `ewu/business_case_template.md`), `docs/TERMS.md`, `docs/FINDINGS.md` and
-  `docs/TEAMMATE_AUDIT.md` still compare with deck v3 by name: they are team documents, not the app.
+  the teammate audit (kept outside the repo) still compare with deck v3 by name: they are team documents, not the app.
 - `deck/frontend_guide.py` captions: the Summary and Money captions now say "the battery plan"; the guide's
   intro still speaks to the teammates who build the deck.
 - Code comments and docstrings keep their deck citations (slide numbers), since they are provenance.

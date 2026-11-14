@@ -1,4 +1,15 @@
-# Avangrid AMI hackathon: end uses, segments, batteries
+# Electrify Without Upgrade: Avangrid AMI hackathon (Team D4G Cornell 2)
+
+**What:** a planning engine that reads hourly smart-meter data for 33,757 homes and finds the neighborhood
+transformers that 2030 EVs and heat pumps will overload, then prices the cheapest fix for each: 1 to 4 leased home
+batteries, or an upgrade only where batteries cannot fix it. **Why:** a battery fleet for the summer peak alone does
+not pay (benefit to cost 0.85), but a battery placed where it avoids a transformer upgrade does: in the engine's
+run, batteries fix 92% to 98% of overloaded transformers at 58% to 69% lower net cost than upgrading every one
+(present value, 15 years). **How:** `bin/ewu screen` reruns the whole transformer test on the full meter data in
+about 2 seconds; every number it prints is recorded in `facts/facts.json`, and every transformer and money number
+in the final deck traces there. Transformers are synthetic (8 real homes each, 3,000 of them), because the data has
+no meter-to-transformer map; `bin/ewu screen --map` takes a real one.
+
 
 Hourly smart-meter data for 33,757 homes plus weather. The pipeline classifies technology (EV Level 1/2, AC,
 electric and heat-pump heat, water heaters, pools, hot tubs, solar and solar + battery), sorts homes into home types, and
@@ -15,6 +26,11 @@ make check DECK=deck.pptx     # also trace every number and quote on every slide
 ```
 
 Data is not in the repo (event-confidential). Point `DATA=` at the folder holding the four zips.
+
+Also kept outside the repo: the organizers' PDFs and full-text copies of the web articles the citations quote
+(copyright and event confidentiality; `checks/citations.yaml` keeps each URL and quote), a teammate's code that
+`config/ewu.yaml` cites line by line, and the demo video's production code. `make check` reads those local copies,
+so it runs on the team's machines, not on a fresh clone.
 
 ## Run the EWU tool
 
@@ -34,7 +50,7 @@ bin/ewu tophours                                   # MW the battery hosts cut in
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
 bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
 bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
-bin/ewu demo                                       # the offline demo page, deck v3's numbers only; opens on Summary
+bin/ewu demo                                       # the offline demo page, the deck's numbers; opens on Summary
 make prototype                                     # rebuild all of the above from data/processed
 ```
 
@@ -50,11 +66,11 @@ make prototype                                     # rebuild all of the above fr
 Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
 one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
 traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
-The demo page shows deck v3's numbers only, all from the engine's deck profile (the cautious profile stays in the
+The demo page shows the deck's numbers, all from the engine's battery plan profile (the cautious profile stays in the
 CLI, `--profile cautious`). It opens on Summary, one column per scenario; Network then draws one substation, 6
 illustrative feeders and every synthetic transformer of the deck profile, recolored by Today, 2030: Flag,
 + Place batteries, + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
-Place, Upgrade and Money switch scenario and loading limit. The page uses deck v3's terms, one per idea
+Place, Upgrade and Money switch scenario and loading limit. The page uses the deck's terms, one per idea
 (docs/TERMS.md, checked by `checks/terms_check.py` in `make check`). Each view keeps its assumptions in one closed
 "How this is computed".
 The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
@@ -81,7 +97,7 @@ without saying so.
 |---|---|
 | brief | a requirement's quote is not on the cited page of the organizers' PDFs (`checks/requirements.yaml`) |
 | coverage | a requirement has no computed fact or file behind it |
-| source | an outside citation's quote is not on its cited page (`checks/citations.yaml`, web copies in `sources/web/`) |
+| source | an outside citation's quote is not on its cited page (`checks/citations.yaml`; web copies kept outside the repo) |
 | quotes | a quoted phrase on a slide is under 3 words or not found on any cited page |
 | numbers | a number on a slide matches no computed fact and no cited number |
 | assumed | a number rests on an assumption and the slide does not say so |
@@ -97,8 +113,21 @@ and reads the corrected folder `2026 Avangrid Hackathon Data_10001_20000_v2` ins
 That folder holds 8,585 of the 10,000 promised IDs (`data.source.10001_20000.missing_in_range`).
 Homes missing more than 10% of hours are left out, not gap-filled: 33,757 usable of 34,238 with any data.
 
+## Where the deck's numbers come from
+
+| Deck slides | Made by | Check |
+|---|---|---|
+| Transformers, batteries, money (slides 2, 10 to 15, A11 to A13, A18) | `ewu/` engine, `bin/ewu screen` | `facts/facts.json`, `make check DECK=` |
+| Added energy on the same wires (slide 13) | `ewu/deck_energy.py` | `ewu.deck.*.added_energy_pct` |
+| Classes and segments (slides 4 to 6, A1 to A7) | a teammate's classification and segmentation run; its saved outputs feed the engine through `data/processed` | counts checked against those outputs |
+| The v4 deck itself | `deck/make_v4.py` (text and chart values from facts) and `deck/add_demo_video.py` | each edit asserts its old text |
+
+`analysis/` is the team's first, independent pass at Parts 1 to 3 (readout in `outputs/readout.txt`). Its rules
+differ from the teammate's run that the deck uses (for example 10,961 central AC homes against the deck's 16,833),
+so its counts are not the deck's.
+
 ## Main limitations
 
 Labels are positive-only and unverified (EV and heat-pump lists are ~25% samples). Hourly data hides
-15-minute peaks, so the 3 kVA test is optimistic. No transformer map, so relief is system-level, not local.
+15-minute peaks, so the 3 kVA test is optimistic. No transformer map, so the engine groups 8 real homes per synthetic transformer; a real map replaces them.
 All $ values are assumptions until replaced with NYSEG/RG&E tariffs and avoided-cost values.

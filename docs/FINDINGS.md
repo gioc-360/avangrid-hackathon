@@ -307,7 +307,7 @@ line 30). Our earlier readings are still reported beside them.
 Overloaded share by limit on the deck profile (moderate / high): 29.97 / 60.03 at 1.00, 17.23 / 43.17 at 1.10,
 2.43 / 13.87 at 1.40. The optional managed charging scenario cuts the overloaded share to 1.43% and 10.93%. The
 behind-the-meter peak cut is 7.11 MW over the top 50 hours; the deck's 7.0 MW is our earlier number, and the
-teammate's own behind-the-meter figure is 5.6 MW (docs/TEAMMATE_AUDIT.md).
+teammate's own behind-the-meter figure is 5.6 MW (teammate audit, kept outside the repo).
 
 Two deck targets miss on the deck profile, and `tests/test_deck_alignment.py` marks each xfail with its measured
 cause instead of tuning. A ladder walks from her run to ours one change at a time (moderate / high, fixed without

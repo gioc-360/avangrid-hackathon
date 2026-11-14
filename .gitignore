@@ -38,3 +38,12 @@ outputs/plan/
 outputs/showcase/*.csv
 video/rec/ocr
 video/rec/face
+
+# kept outside the public repo (local copies only; see README)
+sources/web/
+runs/class_pack/
+runs/teammate_code_2026-11-13/
+docs/TEAMMATE_AUDIT.md
+docs/VIDEO_LOG.md
+docs/VIDEO_REPORT.md
+video/
