@@ -4,14 +4,13 @@ What: reads docs/TERMS.md (the Terms table: canonical term and banned synonyms a
       Allowlist table: surface, exact text, reason) and fails on any banned synonym in the rendered demo page
       (every view, dropdown and transformer panel, in every scenario x loading limit state demo_check renders),
       in `bin/ewu` printouts (screen, network, plan --showcase, inventory, case) and the help of every command,
-      in README.md and the docs below (inline `code` spans skipped: identifiers, not words), in the front-end
-      guide captions (deck/frontend_guide.py) and in the engine figures' labels (deck/engine_figures.py).
+      and in README.md and the docs below (inline `code` spans skipped: identifiers, not words).
       `--selftest` plants synonyms, an allowlisted text in the wrong surface and a code span.
 Why:  Gio: "make sure terms are consistent and not using synonyms". A reader who sees "Avangrid cost" on one
       screen and "net cost" on the next asks whether they are two numbers; one word per idea, checked by code,
       keeps the page, the CLI and the docs speaking deck v3's words after every later edit.
 How:  Chrome dumps the page DOM after its script runs (checks/demo_audit.py's run_chrome, empty profile, offline);
-      the CLI runs as a subprocess; the guide and figures are imported and their text pulled out. Matching is
+      the CLI runs as a subprocess. Matching is
       per line, case-insensitive; an allowlist entry covers a hit only inside its exact text and surface.
 """
 import html, re, subprocess, sys, tempfile
@@ -22,7 +21,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 TERMS = ROOT / "docs" / "TERMS.md"
-DOCS = ("README.md", "docs/BUSINESS_CASE.md", "docs/DEMO_SCRIPT.md", "docs/CODE_QA.md", "docs/ARCHITECTURE.md",
+DOCS = ("README.md", "docs/BUSINESS_CASE.md", "docs/CODE_QA.md", "docs/ARCHITECTURE.md",
         "docs/TECH_SPECS.md", "docs/demo/cli_output.txt")
 RUNS = (("screen",), ("network",), ("plan", "--showcase"), ("inventory",), ("case",))
 BLOCKS = {"p", "div", "li", "tr", "td", "th", "h1", "h2", "h3", "section", "summary", "dt", "dd", "button", "table",
@@ -117,19 +116,6 @@ def doc_text(path):
     return re.sub(r"`[^`\n]*`", "", (ROOT / path).read_text())
 
 
-def guide_text():
-    from deck import frontend_guide
-    page = re.sub(r"<style>.*?</style>", "", frontend_guide.page_html([]), flags=re.S)
-    captions = "\n".join(" ".join(view[1:]) for view in frontend_guide.VIEWS)
-    return captions + "\n" + html.unescape(re.sub(r"<[^>]+>", "\n", page))
-
-
-def figure_text():
-    from deck import engine_figures
-    svg = engine_figures.architecture_svg() + engine_figures.specs_svg()
-    return "\n".join(html.unescape(t) for t in re.findall(r"<text[^>]*>(.*?)</text>", svg))
-
-
 def run_selftest():
     terms, allow = read_terms(TERMS.read_text())
     ok = len(terms) >= 25 and all(banned for _, banned in terms[:3]) and all(reason for *_, reason in allow)
@@ -168,7 +154,6 @@ def main():
     terms, allow = read_terms(TERMS.read_text())
     surfaces = {"page": page_text()} | cli_texts()
     surfaces |= {path: doc_text(path) for path in DOCS}
-    surfaces |= {"deck/frontend_guide.py": guide_text(), "deck/engine_figures.py": figure_text()}
     problems = [f"{label}: exited non-zero" for label, text in surfaces.items() if "\nEXIT " in text]
     for surface, text in surfaces.items():
         problems += find_synonyms(surface, text, terms, allow)

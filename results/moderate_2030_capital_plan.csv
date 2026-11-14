@@ -1,0 +1,6 @@
+# battery plan, moderate 2030, overloaded above 1.2 x rating; 3,000 synthetic transformers of 8 real homes, summed, no home named; costs net of lease and NYSERDA, upgrade counted 15 of 40 years
+column,sample_usd,nyseg_musd
+gross,3145238,116.6
+net_without_nyserda,1816758,67.4
+avangrid_cost,925686,34.3
+upgrade_all,2992314,111.0

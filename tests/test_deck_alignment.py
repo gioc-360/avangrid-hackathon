@@ -160,7 +160,7 @@ def test_unit_bands_add_up_to_fixed(result, i):
 @pytest.mark.parametrize("limit", config_value("profiles.deck.overload_limit_options", CONFIG))
 @pytest.mark.parametrize("scenario", SCENARIOS)
 def test_recorded_money_and_shares_are_deck_v3s(scenario, limit):
-    """Deck v3's money() (deck/v3/build_fact_map.py): same counts, same formula, so the page's money is v3's."""
+    """The battery plan's money: recorded costs and savings equal the formula recomputed from recorded counts and prices."""
     facts = {k: v["value"] for k, v in json.loads((ROOT / "facts/facts.json").read_text()).items()}
     f = lambda name: facts[f"ewu.deck.{scenario}.{deck_screen.limit_label(limit)}.{name}"]
     deck_cfg = lambda name: config_value(f"profiles.deck.{name}", CONFIG)

@@ -6,8 +6,8 @@ out-of-fold score is the confidence. Validation uses the organizers' note that
 the EV and HP lists are a random ~25% of likely owners:
     implied owners in a flagged group = labeled hits / 0.25
     precision lower bound            = 4 * labeled hits / flagged
-Rules were cross-checked by two independent analyst runs (runs/plain, runs/skills);
-where they chose different thresholds, both are recorded as a sensitivity range.
+Rules were cross-checked by two independent analyst passes; where they chose
+different thresholds, both are recorded as a sensitivity range.
 Writes outputs/customer_classes.csv and facts/facts.json.
 """
 import os, sys

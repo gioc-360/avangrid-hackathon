@@ -5,106 +5,117 @@ transformers that 2030 EVs and heat pumps will overload, then prices the cheapes
 batteries, or an upgrade only where batteries cannot fix it. **Why:** a battery fleet for the summer peak alone does
 not pay (benefit to cost 0.85), but a battery placed where it avoids a transformer upgrade does: in the engine's
 run, batteries fix 92% to 98% of overloaded transformers at 58% to 69% lower net cost than upgrading every one
-(present value, 15 years). **How:** `bin/ewu screen` reruns the whole transformer test on the full meter data in
-about 2 seconds; every number it prints is recorded in `facts/facts.json`, and every transformer and money number
-in the final deck traces there. Transformers are synthetic (8 real homes each, 3,000 of them), because the data has
-no meter-to-transformer map; `bin/ewu screen --map` takes a real one.
+(present value, 15 years), and 50% to 73% across loading limits from 100% to 140%. **How:** `bin/ewu screen` reruns
+the whole transformer test on the full meter data in about 2 seconds; every number it prints is recorded in
+`facts/facts.json`. Transformers are synthetic (3,000 of them, 8 real homes each), because the data has no
+meter-to-transformer map; `bin/ewu screen --map` takes a real one.
 
+```
+┌────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────┐   ┌────────────────┐
+│ analysis/      │──▶│ ewu/           │──▶│ facts/         │──▶│ results/       │   │ checks/ tests/ │
+│ meter data to  │   │ the engine:    │   │ facts.json:    │   │ aggregate      │   │ every input    │
+│ features,      │   │ flag, place,   │   │ every number,  │   │ inputs and     │   │ sourced, every │
+│ classes        │   │ upgrade, price │   │ unit, method   │   │ outputs        │   │ number traced  │
+└────────────────┘   └────────────────┘   └────────────────┘   └────────────────┘   └────────────────┘
+                     inputs: config/ewu.yaml (each with a source or an assumption flag)
+```
 
-Hourly smart-meter data for 33,757 homes plus weather. The pipeline classifies technology (EV Level 1/2, AC,
-electric and heat-pump heat, water heaters, pools, hot tubs, solar and solar + battery), sorts homes into home types, and
-ranks and sizes behind-the-meter batteries (Enphase IQ 10C). The repo also checks itself: one command answers
-"are we still solving the problem they set?" and "does every number and quote trace to code or a source page?"
+## The data
+
+The meter data is not in this repo and cannot be. The challenge statement says the data "is for use during and as
+part of the Hackathon only. Under no circumstances should the data be shared or utilized outside of scope of this
+event." No meter row, customer id or label list is published here. Avangrid's judges already hold the four zips,
+the weather file and the label spreadsheet: point `DATA=` at that folder and `make all` rebuilds every result.
+
+What a reader can check without the meter data is in `results/` (written by `analysis/export_results.py`, which
+fails if any column looks like a customer or meter id):
+
+| File | What it is |
+|---|---|
+| `screen_results_by_loading_limit.csv` | overloaded, fixed by batteries, units, gross cost, net cost and Upgrade all, saving, for both 2030 scenarios at limits 100% to 140% |
+| `moderate_2030_transformer_actions.csv`, `high_2030_transformer_actions.csv` | all 3,000 synthetic transformers: homes, new EVs and heat pumps, today's peak, rating, worst 2030 hour, action, battery units, cost |
+| `moderate_2030_capital_plan.csv`, `high_2030_capital_plan.csv` | the plan priced: gross, net cost without NYSERDA, net cost, Upgrade all |
+| `system_load_hourly.csv`, `system_peak_hours.json` | the hourly sum of all 33,757 homes (MW) and its top summer and winter hours |
+| `ev_charging_start_hour_shares.csv` | when observed EV charging sessions start (engine input) |
+| `heat_pump_added_load_hourly.csv` | the hourly kW one new heat pump adds (engine input) |
+| `segment_summary.csv`, `segment_technology_matrix.csv` | the seven segments: size, load shape, weather slopes, peak shares, technology mix |
+
+Every input the engine uses is in `config/ewu.yaml` with its source line or an `assumption` flag
+(`checks/config_check.py` fails on a missing one), and every number it computes is in `facts/facts.json` with its
+unit, script and method.
 
 ## Run it
 
 ```
 make env                      # Python 3.12 venv from requirements.txt
 make all                      # zips -> matrix -> features -> classes -> home types -> batteries -> readout (~4 min)
-make check                    # problem coverage + source checks + battery recompute (about 70 s)
-make check DECK=deck.pptx     # also trace every number and quote on every slide
+make prototype                # rebuild every engine output from data/processed
+make test                     # tests (about 4 min)
+make check                    # problem coverage, source checks, battery recompute, terms
+.venv/bin/python -I analysis/export_results.py    # refresh results/
 ```
 
-Data is not in the repo (event-confidential). Point `DATA=` at the folder holding the four zips.
-
-Also kept outside the repo: the organizers' PDFs and full-text copies of the web articles the citations quote
-(copyright and event confidentiality; `checks/citations.yaml` keeps each URL and quote), a teammate's code that
-`config/ewu.yaml` cites line by line, and the demo video's production code. `make check` reads those local copies,
-so it runs on the team's machines, not on a fresh clone.
-
-## Run the EWU tool
-
-Electrify Without Upgrade (EWU) finds the neighborhood transformers that 2030 EVs and heat pumps will
-overload and gives each the cheapest fix. It runs offline on the processed meter data; every command
-prints aggregates only. Run it as `bin/ewu` (`python -I -m ewu` does not work, because `-I` keeps the repo
-off the import path).
+Run the engine as `bin/ewu` (`python -I -m ewu` does not work, because `-I` keeps the repo off the import path):
 
 ```
 bin/ewu --help                                     # list the commands
 bin/ewu inventory                                  # Parts 1 and 2: technology, home type, eligible programs per home
 bin/ewu screen --scenario moderate --margin 1.15   # Flag, Shift, Place, Upgrade on the full data, live
 bin/ewu screen --map meters.csv                    # same, on a real map: meter_id, transformer_id, kva
-bin/ewu network                                    # the screen's synthetic network, transformer by transformer, for the page
+bin/ewu plan --scenario high --limit 1.2           # transformer action list and capital plan
 bin/ewu coldsnap --date 2026-02-07                 # battery hour by hour through the Feb 7-8 cold snap
 bin/ewu tophours                                   # MW the battery hosts cut in the system's top 20 and 50 hours
 bin/ewu sensitivity                                # every scenario x sizing margin x grouping, priced
 bin/ewu robustness                                 # heat pump slope x 1.5 and x 2, flag duration, 3 kVA by charge length
-bin/ewu case                                       # docs/BUSINESS_CASE.md, every number filled from facts
-bin/ewu demo                                       # the offline demo page, the deck's numbers; opens on Summary
-make prototype                                     # rebuild all of the above from data/processed
+bin/ewu demo                                       # the offline planner dashboard (outputs/demo/ewu_demo.html)
 ```
+
+## How the engine works
 
 ```
 ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
-│ meter data   │──▶│ FLAG         │──▶│ SHIFT        │──▶│ PLACE        │──▶│ UPGRADE      │
-│ + map (opt.) │   │ stress.py    │   │ shift.py     │   │ fitscore.py  │   │ economics.py │
-│ inventory.py │   │ any hour over│   │ managed EV   │   │ dispatch.py  │   │ what is left │
+│ meter data   │──▶│ FLAG         │──▶│ PLACE        │──▶│ UPGRADE      │──▶│ PRICE        │
+│ + map (opt.) │   │ any hour over│   │ 1 to 4 units │   │ only above 4 │   │ both paths,  │
+│ 8 homes each │   │ 1.2 x rating │   │ per worst day│   │ units        │   │ 15 yr at 7%  │
 └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
-                          every number ──▶ analysis/facts.py record() ──▶ facts/facts.json
 ```
 
-Inputs live in `config/ewu.yaml`, each with a source or an assumption flag (`checks/config_check.py`). The
-one-page case is `docs/BUSINESS_CASE.md` and the reasoning is `docs/FINDINGS.md`; `checks/trace_numbers.py`
-traces every number in both. Tests: `make test`. Demo page check: `.venv/bin/python -I checks/demo_check.py`.
-The demo page shows the deck's numbers, all from the engine's battery plan profile (the cautious profile stays in the
-CLI, `--profile cautious`). It opens on Summary, one column per scenario; Network then draws one substation, 6
-illustrative feeders and every synthetic transformer of the deck profile, recolored by Today, 2030: Flag,
-+ Place batteries, + Upgrade; click a transformer for its 8 homes summed on its worst 2030 day. Overview, Flag,
-Place, Upgrade and Money switch scenario and loading limit. The page uses the deck's terms, one per idea
-(docs/TERMS.md, checked by `checks/terms_check.py` in `make check`). Each view keeps its assumptions in one closed
-"How this is computed".
-The three-minute click path for the live demo is `docs/DEMO_SCRIPT.md`; likely code questions, each answered with
-file:line, are in `docs/CODE_QA.md`, and `checks/qa_refs.py` fails if any cited line no longer holds its code.
-
-## How the pieces fit
-
-| Step | Script | Output |
+| Step | Code | What it does |
 |---|---|---|
-| Ingest | `analysis/ingest.py` | `data/processed/load.npy`: customers x 8,760 hours, float32, ~20 s, nothing unzipped to disk |
-| Features | `analysis/features.py` | one row per home; each feature names the load shape it catches |
-| Part 1 | `analysis/classify.py` | `outputs/customer_classes.csv`, rule + positive-unlabeled model per class |
-| Part 2 | `analysis/segment.py` | `outputs/customer_segments.csv`, peak shares, winter-flip point |
-| Part 3 | `analysis/bess.py` | `outputs/bess_candidates.csv`, relief, sizing, 3 kVA enablement, value |
-| Readout | `analysis/report.py` | `outputs/readout.html`: prose filled from facts, charts from aggregates |
+| Ingest | `analysis/ingest.py` | zips to a 33,757 x 8,760 matrix (float32, about 20 s, nothing unzipped to disk) |
+| Features | `analysis/features.py` | about 60 features per home; each names the load shape it catches |
+| Part 1 | `analysis/classify.py` | rule plus positive-unlabeled model per technology, validated on the label lists |
+| Part 2 | `analysis/segment.py` | segments, their peak shares and the winter-flip point |
+| Part 3 | `analysis/bess.py` | battery relief, sizing, 3 kVA enablement and value per home |
+| Network | `ewu/feeders.py`, `ewu/deck.py` | 3,000 synthetic transformers of 8 real homes, rated at the smallest standard kVA at or above today's peak / 0.85 |
+| 2030 load | `ewu/deck.py`, `ewu/adoption.py` | new EV charging (7.2 kW, start hours from observed sessions) and heat pump load per scenario |
+| Fix | `ewu/deck.py` | units per transformer = the larger of peak excess / 3.84 kW and excess kWh / 8.06 kWh, worst day; above 4 units, upgrade |
+| Money | `ewu/deck_money.py` | $7,000 a unit less lease ($3,006) and NYSERDA ($2,016); an upgrade counted for 15 of its 40 years ($10,248) |
+| Added energy | `ewu/deck_energy.py` | 23.5% to 44.8% more kWh on the same wires |
 
-Every number a slide may use is written by `analysis/facts.py: record()` into `facts/facts.json` with its unit,
-script and method. Dollar inputs live under `assumption.*` and the checker fails any slide that uses them
-without saying so.
+The modules named `deck*.py` hold the battery plan, the profile the team chose as final; the earlier, stricter
+profile stays available as `--profile cautious`. The reasoning is in `docs/FINDINGS.md`, the one-page case in
+`docs/BUSINESS_CASE.md`, likely code questions with file:line answers in `docs/CODE_QA.md`.
 
-## The checks (`checks/check_all.py`)
+Classes and segments in the team's final numbers (16,833 central AC homes, seven segments) come from a teammate's
+classification and segmentation run; its aggregate tables are `results/segment_*.csv` and its saved inputs feed the
+engine through `data/processed`. `analysis/` is the team's first, independent pass at Parts 1 to 3 (readout in
+`outputs/readout.txt`); its rules differ (for example 10,961 central AC homes), so its counts are not the final ones.
+
+## The checks (`make check`)
 
 | Check | Fails when |
 |---|---|
 | brief | a requirement's quote is not on the cited page of the organizers' PDFs (`checks/requirements.yaml`) |
-| coverage | a requirement has no computed fact or file behind it |
-| source | an outside citation's quote is not on its cited page (`checks/citations.yaml`; web copies kept outside the repo) |
-| quotes | a quoted phrase on a slide is under 3 words or not found on any cited page |
-| numbers | a number on a slide matches no computed fact and no cited number |
-| assumed | a number rests on an assumption and the slide does not say so |
-| scope | the deck drifts onto topics the challenge never asked (outages) |
+| coverage | a challenge requirement has no computed fact or file behind it |
+| source | an outside citation's quote is not on its cited page (`checks/citations.yaml`) |
+| config | an engine input has neither a verified source line nor an assumption flag (`checks/config_check.py`, run by `make test`) |
+| battery | a second, independent battery model disagrees with the engine (`checks/recompute_battery.py`) |
+| terms | the dashboard, the CLI or the docs use two words for one idea (`checks/terms_check.py`) |
 
-`checks/compare.py` holds the plain-vs-skills analyst comparison (`runs/`) to the same rule: every quoted
-analyst claim must be word for word in that analyst's report.
+The organizers' PDFs, full-text copies of the cited web articles and the teammate's model, which `config/ewu.yaml` cites
+line by line are kept outside the repo (event confidentiality and copyright), so `make check` runs on the team's
+machines; `checks/citations.yaml` keeps every URL and quote.
 
 ## Known data defects
 
@@ -113,21 +124,10 @@ and reads the corrected folder `2026 Avangrid Hackathon Data_10001_20000_v2` ins
 That folder holds 8,585 of the 10,000 promised IDs (`data.source.10001_20000.missing_in_range`).
 Homes missing more than 10% of hours are left out, not gap-filled: 33,757 usable of 34,238 with any data.
 
-## Where the deck's numbers come from
-
-| Deck slides | Made by | Check |
-|---|---|---|
-| Transformers, batteries, money (slides 2, 10 to 15, A11 to A13, A18) | `ewu/` engine, `bin/ewu screen` | `facts/facts.json`, `make check DECK=` |
-| Added energy on the same wires (slide 13) | `ewu/deck_energy.py` | `ewu.deck.*.added_energy_pct` |
-| Classes and segments (slides 4 to 6, A1 to A7) | a teammate's classification and segmentation run; its saved outputs feed the engine through `data/processed` | counts checked against those outputs |
-| The v4 deck itself | `deck/make_v4.py` (text and chart values from facts) and `deck/add_demo_video.py` | each edit asserts its old text |
-
-`analysis/` is the team's first, independent pass at Parts 1 to 3 (readout in `outputs/readout.txt`). Its rules
-differ from the teammate's run that the deck uses (for example 10,961 central AC homes against the deck's 16,833),
-so its counts are not the deck's.
-
 ## Main limitations
 
 Labels are positive-only and unverified (EV and heat-pump lists are ~25% samples). Hourly data hides
-15-minute peaks, so the 3 kVA test is optimistic. No transformer map, so the engine groups 8 real homes per synthetic transformer; a real map replaces them.
-All $ values are assumptions until replaced with NYSEG/RG&E tariffs and avoided-cost values.
+15-minute peaks, so the 3 kVA test is optimistic. No transformer map, so the engine groups 8 real homes per
+synthetic transformer; a real map replaces them. Battery, lease, NYSERDA and upgrade prices are assumptions until
+replaced with NYSEG and RG&E tariffs and avoided-cost values; before the lease and NYSERDA, the battery path costs
+more than upgrading in 7 of the 8 rows of `results/screen_results_by_loading_limit.csv` (its gross column).

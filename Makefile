@@ -21,7 +21,6 @@ model:           ## classify, segment, size batteries -> facts/facts.json + outp
 	$(PY) analysis/segment.py
 	$(PY) analysis/bess.py
 	$(PY) analysis/report_data.py
-	$(PY) checks/compare.py
 	$(PY) analysis/report.py
 
 check:           ## are we solving their problem, and is every number traced? (+ battery recompute and terms, about 140 s)

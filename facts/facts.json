@@ -6682,28 +6682,28 @@
   "method": "ewu/peakcut.py, top hours of the metered system load"
  },
  "ewu.deck.plan.high.actions.none": {
-  "value": 2083,
+  "value": 2104,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "battery plan, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.high.actions.protect": {
-  "value": 869,
+  "value": 821,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "battery plan, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.high.actions.upgrade": {
-  "value": 48,
+  "value": 75,
   "unit": "transformers",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "battery plan, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.high.avangrid_cost_total_usd": {
-  "value": 3716580,
+  "value": 3876574,
   "unit": "$ for the sample",
   "script": "ewu/deck_views.py",
-  "method": "deck profile, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are Avangrid cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
+  "method": "battery plan, high 2030, limit 1.2 x standard kVA rating; synthetic transformers, 8-home sums; costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years"
  },
  "ewu.deck.plan.moderate.actions.none": {
   "value": 2708,

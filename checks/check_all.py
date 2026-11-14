@@ -2,7 +2,6 @@
 
     python checks/check_all.py                      # problem coverage + sources
     python checks/check_all.py --deck deck.pptx     # also trace every number on every slide
-    python checks/check_all.py --deck runs/plain/REPORT.md
 
 Nothing here asks a person or a model to judge. Each check is a lookup:
   1 BRIEF     each requirement's quote is found on its cited page of the organizers' PDFs

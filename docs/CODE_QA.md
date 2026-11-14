@@ -189,7 +189,7 @@ the widest gap in any cell is 1.37 points. `make prototype`
 rebuilds every output and the demo page from the processed data.
 
 Code: `ewu/feeders.py:30 rng = np.random.default_rng((seed`, `config/ewu.yaml:182 seeds:`,
-`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:37 prototype:`.
+`tests/test_stress.py:115 def test_five_seeds_agree_within_tolerance`, `Makefile:36 prototype:`.
 
 ### Q16. How is the network built and what changes with our real map?
 

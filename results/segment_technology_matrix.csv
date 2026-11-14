@@ -1,0 +1,9 @@
+# segment aggregates from the team's classification and segmentation run (segment_technology_matrix.csv)
+segment,Primary electric heat,Supplemental electric heat,Central AC,EV (any tier),EV high tier,Solar,Pool (possible)
+"High use, heavy AC",6.3,13.7,72.3,16.5,2.7,0.0,3.9
+Evening AC peakers,0.6,7.6,62.7,0.3,0.0,0.0,0.2
+Steady mid users,4.3,13.0,63.6,0.8,0.0,0.0,2.1
+"Low use, light cooling",5.9,25.2,3.9,0.5,0.0,0.0,0.0
+Electric heating homes,80.0,12.4,51.5,8.3,2.9,0.0,1.5
+Seasonal and intermittent,35.6,13.0,26.5,2.9,0.4,0.0,0.7
+Solar prosumers,31.6,25.0,27.8,16.2,4.8,100.0,0.0

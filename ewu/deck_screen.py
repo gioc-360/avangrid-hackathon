@@ -88,14 +88,14 @@ def record_deck_screen(result, seconds):
 
 
 def peak_cut_line(config):
-    """Deck v3's summer peak cut: the teammate's priority homes, her ranking rerun on our data (checks/teammate_audit.py)."""
+    """Deck v3's summer peak cut: the teammate's priority homes, her ranking rerun on our data."""
     import json
     from analysis.facts import FACTS
     facts = json.loads(FACTS.read_text()) if FACTS.exists() else {}
     keys = ("teammate.audit.rerun.priority_homes", "teammate.audit.rerun.fleet_priority.peak_cut_mw",
             "teammate.audit.rerun.fleet_priority.top50_cut_mw")
     if any(k not in facts for k in keys):
-        return "Summer peak cut: not recorded yet; run checks/teammate_audit.py"
+        return "Summer peak cut: not recorded yet"
     homes, peak, top = (facts[k]["value"] for k in keys)
     return (f"Summer peak cut, {homes:,} priority homes x {config_value('profiles.deck.units_per_host', config)} units, "
             f"the team's ranking rerun on our data: export allowed {peak:.2f} MW off the yearly peak "
