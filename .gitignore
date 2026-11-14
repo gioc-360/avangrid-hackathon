@@ -62,3 +62,4 @@ outputs/deck/app_v3_check.md
 outputs/deck/v3/network_*.png
 outputs/deck/v3/numbers.csv
 outputs/deck/v3/render_*/
+outputs/deck/video_script/
