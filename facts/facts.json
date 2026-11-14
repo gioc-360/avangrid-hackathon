@@ -4287,6 +4287,12 @@
   "script": "ewu/deck_screen.py",
   "method": "teammate = their file in data/processed; derived = built from our data"
  },
+ "ewu.deck.high.added_energy_pct": {
+  "value": 44.75,
+  "unit": "% more kWh a year than today, same homes",
+  "script": "ewu/deck_energy.py",
+  "method": "new EV charging plus heat pump kWh over today's kWh on the 3,000 synthetic transformers, battery plan draw"
+ },
  "ewu.deck.high.limit_100.avangrid_share_of_upgrade_all_pct": {
   "value": 49.7,
   "unit": "% of upgrading every overloaded transformer",
@@ -5817,6 +5823,12 @@
   "script": "ewu/deck_screen.py",
   "method": "deck profile, seed 5, 3000 synthetic transformers, standard kVA rating; ev_start_pmf teammate, hp_increment teammate"
  },
+ "ewu.deck.moderate.added_energy_pct": {
+  "value": 23.51,
+  "unit": "% more kWh a year than today, same homes",
+  "script": "ewu/deck_energy.py",
+  "method": "new EV charging plus heat pump kWh over today's kWh on the 3,000 synthetic transformers, battery plan draw"
+ },
  "ewu.deck.moderate.limit_100.avangrid_share_of_upgrade_all_pct": {
   "value": 35.1,
   "unit": "% of upgrading every overloaded transformer",
@@ -6880,7 +6892,7 @@
   "method": "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch"
  },
  "ewu.deck.seconds": {
-  "value": 2.2,
+  "value": 2.0,
   "unit": "s",
   "script": "ewu/deck_screen.py",
   "method": "whole battery plan screen, data load included"
@@ -14564,7 +14576,7 @@
   "method": "one seed (0), 3000 synthetic transformers, rating = today's peak x 1.15"
  },
  "ewu.screen.moderate.random.margin_115.seconds": {
-  "value": 2.4,
+  "value": 2.2,
   "unit": "s",
   "script": "ewu/screen.py",
   "method": "whole live screen, data load included"
