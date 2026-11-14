@@ -37,3 +37,4 @@ video/rec/mouse
 outputs/plan/
 outputs/showcase/*.csv
 video/rec/ocr
+video/rec/face
