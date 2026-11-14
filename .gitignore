@@ -63,3 +63,6 @@ outputs/deck/v3/network_*.png
 outputs/deck/v3/numbers.csv
 outputs/deck/v3/render_*/
 outputs/deck/video_script/
+
+# deck-making scripts stay local (the public repo holds the model and analysis only)
+deck/
