@@ -47,3 +47,18 @@ docs/TEAMMATE_AUDIT.md
 docs/VIDEO_LOG.md
 docs/VIDEO_REPORT.md
 video/
+
+# local deck work (deck copies embed the demo video; renders; scratch)
+*.pptx
+*.pdf
+outputs/deck/final_review/
+outputs/deck/fix_doc/
+outputs/deck/v4/
+outputs/deck/video_slide/
+outputs/deck/frontend_guide/
+outputs/deck/future_slide/
+outputs/deck/engine_appendix/render/
+outputs/deck/app_v3_check.md
+outputs/deck/v3/network_*.png
+outputs/deck/v3/numbers.csv
+outputs/deck/v3/render_*/
