@@ -2,7 +2,7 @@
 
 What: deck_states() runs one deck scenario at one limit and keeps every synthetic transformer's state (within,
       protected by 1 to 4 units, upgrade); network_main() records the per-view counts; plan_table() writes the
-      planner's action list and capital_rows() the three money columns plus upgrade-all, to outputs/plan/deck/.
+      planner's action list and capital_rows() the three money columns plus upgrade-all, to outputs/plan/battery/.
 Why:  the deck profile is the default, so the network and plan commands must give the deck's own transformer
       states and counts, equal to `bin/ewu screen`; the earlier ladder stays under --profile cautious.
 How:  the same setup and run as ewu/deck_screen.py (ewu/deck.py), so counts equal the screen by construction.
@@ -16,7 +16,7 @@ import pandas as pd
 from ewu import PROCESSED, ROOT, config_value, read_config, read_inputs
 from ewu import deck, deck_money, network, plan
 
-OUT = ROOT / "outputs" / "plan" / "deck"
+OUT = ROOT / "outputs" / "plan" / "battery"
 ACTIONS = ("none", "protect", "upgrade")
 
 
@@ -69,7 +69,7 @@ def record_network(states, counts, config, name):
     """Counts to facts under ewu.<name>.<scenario>.; per-transformer arrays to the private facts only, ewu.<name>.t."""
     from analysis.facts import forget, record
     scenario, limit = states["scenario"], states["limit"]
-    how = (f"deck profile, {scenario} 2030, limit {limit} x standard kVA rating, seed {states['setup']['seed']}"
+    how = (f"battery plan, {scenario} 2030, limit {limit} x standard kVA rating, seed {states['setup']['seed']}"
            f"{', managed charging (optional)' if states['cell']['managed'] else ''}; same run as bin/ewu screen")
     forget(f"ewu.{name}.{scenario}.")
     for view, words in counts.items():
@@ -96,7 +96,7 @@ def network_main(scenario=None, limit=None, managed=None):
         record_network(states, counts, config, "deck.network")
         managed_states = deck_states(read_inputs(), config, scenario, limit, True)   # the optional scenario, for the page
         record_network(managed_states, view_counts(managed_states), config, "deck.network_managed")
-    print(f"Network, deck profile: {states['setup']['groups'].count:,} synthetic transformers, {scenario} 2030, loading limit {limit:.2f}")
+    print(f"Network, battery plan: {states['setup']['groups'].count:,} synthetic transformers, {scenario} 2030, loading limit {limit:.2f}")
     for view, words in counts.items():
         print(f"  {SHOW.get(view, view):<8} " + ", ".join(f"{SHOW.get(w, w)} {n:,}" for w, n in words.items()))
     print(f"{time.time() - started:.1f} s, aggregates only; {'facts recorded' if official else 'what-if: facts not recorded'}")
@@ -142,7 +142,7 @@ def plan_main(scenario=None, limit=None, managed=None):
     started = time.time()
     states = deck_states(read_inputs(), config, scenario, limit, managed)
     table, capital = plan_table(states, config), capital_rows(states, config)
-    note = (f"deck profile, {scenario} 2030, limit {limit} x standard kVA rating; synthetic transformers, 8-home sums; "
+    note = (f"battery plan, {scenario} 2030, limit {limit} x standard kVA rating; synthetic transformers, 8-home sums; "
             "costs are net cost (units net of lease and NYSERDA) or an upgrade counted 15 of 40 years")
     paths = [plan.write_csv(table, OUT / "transformer_actions.csv", note), plan.write_csv(capital, OUT / "capital_plan.csv", note)]
     counts = table.action.value_counts()
@@ -151,7 +151,7 @@ def plan_main(scenario=None, limit=None, managed=None):
         for action in ACTIONS:
             record(f"ewu.deck.plan.{scenario}.actions.{action}", int(counts.get(action, 0)), "transformers", note)
         record(f"ewu.deck.plan.{scenario}.avangrid_cost_total_usd", int(table.avangrid_cost_usd.sum()), "$ for the sample", note)
-    print(f"EWU plan, deck profile: {scenario} 2030, loading limit {limit:.2f}, {len(table):,} transformers")
+    print(f"EWU plan, battery plan: {scenario} 2030, loading limit {limit:.2f}, {len(table):,} transformers")
     for action in ACTIONS:
         on = table.action == action
         print(f"{SHOW.get(action, action):<8} {int(on.sum()):>6,} transformers {int(table.units[on].sum()):>6,} units ${int(table.avangrid_cost_usd[on].sum()):>12,}")

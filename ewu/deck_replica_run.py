@@ -23,8 +23,8 @@ RERUN = Path("/private/tmp/claude-501/teammate_audit/run")
 FIELDS = ("overloaded_pct", "fixed_of_overloaded_pct", "average_units", "winter_of_overloaded_pct", "winter_worst_hour_pct",
           "overloaded", "fixed", "upgrades", "batteries", "ev_homes", "hp_homes")
 STEPS = {"a_her_run": "A: her tiers, her groups (seed 11), home-mean fill, 8.064 kWh", "b_our_tiers": "B: our inventory tiers",
-         "c_our_groups": "C: + our deck groups (seed 5), our filled load, 8.06 kWh",
-         "d_deck_eligible": "D: our deck engine, shares of eligible homes (deck default)",
+         "c_our_groups": "C: + our groups (seed 5), our filled load, 8.06 kWh",
+         "d_deck_eligible": "D: our battery plan, shares of eligible homes (default)",
          "e_deck_all_homes": "E: shares of all grouped homes (earlier reading)"}
 
 
@@ -113,12 +113,12 @@ def record_replica(result, rows_equal, steps, spread, tiers, seconds, config):
     for s, by in spread.items():
         for k, values in by.items():
             for stat, v in zip(("min", "max", "mean", "sd"), values):
-                record(f"ewu.deck_replica.spread.{s}.{k}.{stat}", v, "", "deck profile at 1.20, seeds 1 to spread_seeds")
+                record(f"ewu.deck_replica.spread.{s}.{k}.{stat}", v, "", "battery plan at 1.20, seeds 1 to spread_seeds")
     record("ewu.deck_replica.seconds", round(seconds, 1), "s", how)
 
 
 def print_replica(result, rows_equal, steps, tiers, config):
-    print(f"EWU screen, deck-replica profile: the teammate's ewu_sim_bo2.py followed exactly (groups seed "
+    print(f"EWU screen, replica profile: the teammate's ewu_sim_bo2.py followed exactly (groups seed "
           f"{deck_replica.replica_value('grouping_seed', config)}, adoption seed {deck_replica.replica_value('adoption_seed', config)}, home-mean fill, "
           f"167 kVA cap, {deck_replica.replica_value('unit_kwh', config)} kWh, her winter rule)")
     print("Tiers: " + ("the teammate's customer_classification.csv, read in place from her folder, never copied"
@@ -133,7 +133,7 @@ def print_replica(result, rows_equal, steps, tiers, config):
         print(f"{'NYSEG ' + column.replace('_', ' ') + ', $M':<30} " + " ".join(f"{result[s][2][1.2]['nyseg_musd'][column]:>10.1f}" for s in SCENARIOS))
     if rows_equal:
         print("\nTransformers equal to her own run, every field: " + ", ".join(f"{s} {n:,} of 3,000" for s, n in rows_equal.items()))
-    print("\nLadder from her run to our deck profile, overloaded % / fixed % / units / winter % (moderate | high):")
+    print("\nLadder from her run to our battery plan, overloaded % / fixed % / units / winter % (moderate | high):")
     for step, by in steps.items():
         print(f"  {STEPS[step]:<62} " + " | ".join(
             f"{c['overloaded_pct']:.1f} / {c['fixed_of_overloaded_pct']:.1f} / {c['average_units']:.2f} / {c['winter_of_overloaded_pct']:.1f}"
@@ -141,7 +141,7 @@ def print_replica(result, rows_equal, steps, tiers, config):
 
 
 def print_spread(spread):
-    print("\nDeck profile over seeds 1 to 20, min to max (mean): " + "; ".join(
+    print("\nBattery plan over seeds 1 to 20, min to max (mean): " + "; ".join(
         f"{s} {k.replace('_of_overloaded', '').replace('_pct', ' %')} {v[0]:.2f} to {v[1]:.2f} ({v[2]:.2f})"
         for s, by in spread.items() for k, v in by.items() if k in ("fixed_of_overloaded_pct", "winter_of_overloaded_pct")))
 

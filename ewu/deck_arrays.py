@@ -92,7 +92,7 @@ def main(folder=None):
         print(f"{name:<14} {len(item['values']):>5} values, CSV twin within {item['twin_diff']:.1e}, sha256 {item['sha256'][:12]}, "
               f"copied to data/processed/{name}.npy")
     print("Provenance: given by the teammate (ewu_inputs.py, 2026-11-13), built from the hackathon meter data. "
-          "Set profiles.deck.*_sha256 in config/ewu.yaml to these values once; every deck run then checks them.")
+          "Set profiles.deck.*_sha256 in config/ewu.yaml to these values once; every battery plan run then checks them.")
     return found
 
 

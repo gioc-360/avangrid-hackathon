@@ -125,7 +125,7 @@ def print_plan(result):
 
 
 def run_command(args):
-    if args.profile == "deck":
+    if args.profile == "battery":
         from ewu import deck_views
         deck_views.plan_main(args.scenario, args.limit, True if args.managed else None)
         return 0

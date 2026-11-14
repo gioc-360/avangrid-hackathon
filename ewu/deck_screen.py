@@ -55,7 +55,7 @@ def record_deck_screen(result, seconds):
     """Aggregates only to facts/facts.json."""
     from analysis.facts import record
     setup, root = result["setup"], "ewu.deck.managed" if result["managed"] else "ewu.deck"
-    how = (f"deck profile, seed {setup['seed']}, {setup['groups'].count} synthetic transformers, standard kVA rating; "
+    how = (f"battery plan, seed {setup['seed']}, {setup['groups'].count} synthetic transformers, standard kVA rating; "
            f"ev_start_pmf {setup['origins']['ev_start_pmf']}, hp_increment {setup['origins']['hp_increment']}")
     for (scenario, limit), cell in result["cells"].items():
         key = f"{root}.{scenario}.{limit_label(limit)}"
@@ -69,7 +69,7 @@ def record_deck_screen(result, seconds):
         record(f"{key}.nyseg_batteries", m["nyseg_batteries"], "IQ 10C units across NYSEG", how)
         record(f"{key}.avangrid_share_of_upgrade_all_pct", m["avangrid_share_of_upgrade_all_pct"], "% of upgrading every overloaded transformer", how)
         record(f"{key}.saving_vs_upgrade_all_pct", m["saving_vs_upgrade_all_pct"], "% less than upgrading every overloaded transformer",
-               "1 - Avangrid cost / upgrade-all, the deck v3 basis; " + how)
+               "1 - Avangrid cost / upgrade-all, present value basis; " + how)
     if result["managed"]:
         return
     prices = next(iter(result["money"].values()))
@@ -83,7 +83,7 @@ def record_deck_screen(result, seconds):
         record(f"ewu.deck.arrays.{name}", origin, "", "teammate = their file in data/processed; derived = built from our data")
     for name, value in result["peak"].items():
         record(f"ewu.deck.peakcut.{name}", value, "MW" if name.endswith("_mw") else name, "ewu/peakcut.py, top hours of the metered system load")
-    record("ewu.deck.seconds", round(seconds, 1), "s", "whole deck screen, data load included")
+    record("ewu.deck.seconds", round(seconds, 1), "s", "whole battery plan screen, data load included")
 
 
 def peak_cut_line(config):
@@ -96,14 +96,14 @@ def peak_cut_line(config):
     if any(k not in facts for k in keys):
         return "Summer peak cut: not recorded yet; run checks/teammate_audit.py"
     homes, peak, top = (facts[k]["value"] for k in keys)
-    return (f"Summer peak cut (deck v3), {homes:,} priority homes x {config_value('profiles.deck.units_per_host', config)} units, "
+    return (f"Summer peak cut, {homes:,} priority homes x {config_value('profiles.deck.units_per_host', config)} units, "
             f"the teammate's ranking rerun on our data: export allowed {peak:.2f} MW off the yearly peak "
             f"(mean over the top {config_value('profiles.deck.peak_hours', config)} hours {top:.2f} MW)")
 
 
 def print_deck_screen(result, config, limit, seconds):
     setup = result["setup"]
-    print(f"EWU screen, deck profile: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
+    print(f"EWU screen, battery plan: {setup['groups'].count:,} synthetic transformers, 8 random homes, seed {setup['seed']}, "
           f"standard kVA rating, overloaded above {limit:.2f} x rating; managed charging {'on' if result['managed'] else 'off'}")
     origins = set(setup["origins"].values())
     print("The teammate's EV start-hour shares and heat pump curve: " + (deck.array_label(origins.pop()) if len(origins) == 1 else
@@ -116,9 +116,8 @@ def print_deck_screen(result, config, limit, seconds):
     for column in deck_money.COLUMNS:
         print(f"{'NYSEG ' + MONEY_WORDS[column] + ', $M':<34} "
               + " ".join(f"{result['money'][(s, limit)]['nyseg_musd'][column]:>10.1f}" for s in deck.SCENARIOS))
-    in_v3 = config_value("profiles.deck.limits_in_deck_v3", config)
     print("\nOverloaded % by loading limit: " + "; ".join(
-        f"{lim:.2f}{'' if lim in in_v3 else ' (not in deck v3)'}: "
+        f"{lim:.2f}: "
         + "/".join(f"{result['cells'][(s, lim)]['overloaded_pct']:.1f}" for s in deck.SCENARIOS)
         for lim in config_value("profiles.deck.overload_limit_options", config)))
     print(peak_cut_line(config))

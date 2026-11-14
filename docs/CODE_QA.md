@@ -37,7 +37,7 @@ meter listed under two transformers; `bin/ewu screen --map file.csv` runs the sa
 group sizes handled in batches.
 
 Code: `ewu/feeders.py:26 def build_transformers`, `ewu/feeders.py:41 def load_map`,
-`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:168 "--map"`,
+`ewu/screen.py:28 def groups_by_size`, `ewu/cli.py:169 "--map"`,
 `tests/test_screen.py:60 def test_a_real_map_with_uneven_transformers_runs`,
 `tests/test_stress.py:76 def test_no_home_sits_in_two_transformers`.
 
@@ -206,6 +206,6 @@ instead of the equal-block split.
 
 Code: `ewu/deck_views.py:23 def deck_states`, `ewu/deck_views.py:26 deck.run_deck`,
 `ewu/deck_views.py:34 def view_counts`, `ewu/network.py:30 def feeder_of`, `config/ewu.yaml:138 feeders:`,
-`ewu/demo_template.html:290 function look`, `ewu/demo_template.html:314 function networkSvg`,
+`ewu/demo_template.html:297 function look`, `ewu/demo_template.html:321 function networkSvg`,
 `checks/demo_audit.py:106 net_view and`,
 `tests/test_network.py:97 def test_the_deck_network_counts_equal_the_deck_screen`, `ewu/feeders.py:41 def load_map`.

@@ -71,17 +71,17 @@ def main():
     from analysis.facts import record
     config, inputs = read_config(), read_inputs()
     setup = deck.deck_setup(inputs, config)
-    print("Recharge check, deck profile at 1.20: batteries recharge only from headroom under the limit")
+    print("Recharge check, battery plan at 1.20: batteries recharge only from headroom under the limit")
     for s in SCENARIOS:
         r = run_check(inputs, config, s, setup)
         for k, v in r.items():
             record(f"ewu.deck.recharge.{s}.{k}", v, "transformers" if k in ("fixed", "still_over", "fixed_after") else "",
-                   "ewu/deck_recharge.py, deck profile at 1.20, hour-by-hour dispatch")
+                   "ewu/deck_recharge.py, battery plan at 1.20, hour-by-hour dispatch")
         print(f"  {s:<9} {r['still_over']} of {r['fixed']} battery-fixed transformers still go over (worst {r['worst_kw']:.2f} kW); "
               f"resized: fixed {r['fixed_pct']:.2f}% -> {r['fixed_after_pct']:.2f}%, units {r['average_units']:.2f} -> {r['average_units_after']:.2f}")
 
 
 def add_command(commands):
     """`bin/ewu recharge`."""
-    rec = commands.add_parser("recharge", help="deck profile: battery sizes checked with recharge through the transformer")
+    rec = commands.add_parser("recharge", help="battery plan: battery sizes checked with recharge through the transformer")
     rec.set_defaults(run=lambda args: main() or 0)

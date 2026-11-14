@@ -20,7 +20,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 # (hash, title, what it answers, who uses it, what to click)
 VIEWS = [
-    ("step=deck", "Summary", "Deck v3's headline numbers, one column per scenario, all from our engine's deck profile.",
+    ("step=deck", "Summary", "The battery plan's headline numbers, one column per scenario, all from our engine (the slides show the same numbers).",
      "Whoever presents: the slides and the tool show the same numbers.", "Hover a number to see the fact it comes from."),
     ("step=network&net=today", "Network: today", "The whole synthetic network: one substation, six feeders, 3,000 transformers of 8 real homes each.",
      "Distribution planner.", "The buttons above the diagram step through the plan on the same network."),
@@ -37,7 +37,7 @@ VIEWS = [
     ("step=protect", "Place", "How many overloaded transformers batteries fix, and with how many battery units each.",
      "Planner and programs team.", "Read the bar: fixed by batteries with one or two units, with three or four, or upgrade."),
     ("step=upgrade", "Upgrade", "The transformers batteries cannot fix.", "Planner and finance.", "Read with the Money view."),
-    ("step=money", "Money", "Deck v3's money: gross cost, net cost without NYSERDA and net cost against Upgrade all.",
+    ("step=money", "Money", "The battery plan's money: gross cost, net cost without NYSERDA and net cost against Upgrade all.",
      "Finance and regulatory.", "Open “How this is computed” for prices and the money basis."),
 ]
 
