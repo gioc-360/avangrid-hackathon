@@ -75,3 +75,10 @@ slide that carries it.
 
 | Film time | Line | Spoken claim | Fact key | Deck slide | Status |
 |---|---|---|---|---|---|
+| 1:55.1 | pay (Money view) | "A third-party company owns and installs the batteries." | none: the model prices units, it has no owner | to find (business model slide) | not shown by the model; audit against the deck |
+| 1:58.9 | pay | "Host homes pay a monthly lease for backup power." | none for "monthly"; the money basis counts lease $330 a unit a year (`profiles.deck.*`, slides 11, 26 to 29 per the money basis row above) | 11, 26 to 29 | not shown by the model: the model has a yearly lease paid against the cost, not a monthly payment by host homes; audit the wording |
+| 2:02.4 | pay | "NYSERDA's incentive covers part of the cost." (her script's words; the recording sounds like "Nicea...", whisper heard "NYSEG's"; the caption says NYSERDA's, Gio 11-13) | NYSERDA $2,016 a unit in the money basis; the Money view shows Net cost without NYSERDA $67.4M (`ewu.deck.moderate.limit_120.nyseg_net_without_nyserda_musd`) | 11, 26 to 29 | the incentive amount is a model input; the spoken name is unclear in the audio, so the caption carries it |
+| 2:05.6 | pay | "NYSEG recovers the remaining $34 million through electric rates, the same way it would for transformer upgrades." | $34 million is the net cost, `ewu.deck.moderate.limit_120.nyseg_avangrid_cost_musd`; rate recovery: none | to find | the number is a model output; recovery through rates is not modeled; audit against the deck |
+
+Film times are in `outputs/video/v4film/EWU_demo_final.mp4` (2:56.3); the edit decision list beside it maps each to
+her recording.
